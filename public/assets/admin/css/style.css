@@ -1,0 +1,415 @@
+/*!
+Simple-DataTables
+Github: https://github.com/fiduswriter/Simple-DataTables
+*/
+.dataTable-wrapper.no-header .dataTable-container {
+    border-top: 1px solid #d9d9d9
+}
+
+.dataTable-wrapper.no-footer .dataTable-container {
+    border-bottom: 1px solid #d9d9d9
+}
+
+.dataTable-bottom,.dataTable-top {
+    padding: 8px 10px
+}
+
+.dataTable-bottom>div:first-child,.dataTable-bottom>nav:first-child,.dataTable-top>div:first-child,.dataTable-top>nav:first-child {
+    float: left
+}
+
+.dataTable-bottom>div:last-child,.dataTable-bottom>nav:last-child,.dataTable-top>div:last-child,.dataTable-top>nav:last-child {
+    float: right
+}
+
+.dataTable-selector {
+    padding: 6px
+}
+
+.dataTable-input {
+    padding: 6px 12px
+}
+
+.dataTable-info {
+    margin: 7px 0
+}
+
+.dataTable-pagination ul {
+    margin: 0;
+    padding-left: 0
+}
+
+.dataTable-pagination li {
+    list-style: none;
+    float: left
+}
+
+.dataTable-pagination a {
+    border: 1px solid transparent;
+    float: left;
+    margin-left: 2px;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    color: #333
+}
+
+.dataTable-pagination a:hover {
+    background-color: #d9d9d9
+}
+
+.dataTable-pagination .active a,.dataTable-pagination .active a:focus,.dataTable-pagination .active a:hover {
+    background-color: #d9d9d9;
+    cursor: default
+}
+
+.dataTable-pagination .disabled a,.dataTable-pagination .disabled a:focus,.dataTable-pagination .disabled a:hover,.dataTable-pagination .ellipsis a {
+    cursor: not-allowed
+}
+
+.dataTable-pagination .disabled a,.dataTable-pagination .disabled a:focus,.dataTable-pagination .disabled a:hover {
+    cursor: not-allowed;
+    opacity: .4
+}
+
+.dataTable-pagination .pager a {
+    font-weight: 700
+}
+
+.dataTable-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate
+}
+
+.dataTable-table>tbody>tr>td,.dataTable-table>tbody>tr>th,.dataTable-table>tfoot>tr>td,.dataTable-table>tfoot>tr>th,.dataTable-table>thead>tr>td,.dataTable-table>thead>tr>th {
+    vertical-align: top;
+    padding: 8px 10px
+}
+
+.dataTable-table>thead>tr>th {
+    vertical-align: bottom;
+    text-align: left;
+    border-bottom: 1px solid #d9d9d9
+}
+
+.dataTable-table>tfoot>tr>th {
+    border-top: 1px solid #d9d9d9
+}
+
+.dataTable-table>tfoot>tr>th,.dataTable-table th {
+    vertical-align: bottom;
+    text-align: left
+}
+
+.dataTable-table th a {
+    text-decoration: none;
+    color: inherit
+}
+
+.dataTable-sorter {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    width: 100%
+}
+
+.dataTable-sorter:after,.dataTable-sorter:before {
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    right: 4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    opacity: .2
+}
+
+.dataTable-sorter:before {
+    border-top: 4px solid #000;
+    bottom: 0
+}
+
+.dataTable-sorter:after {
+    border-bottom: 4px solid #000;
+    border-top: 4px solid transparent;
+    top: 0
+}
+
+.asc .dataTable-sorter:after,.desc .dataTable-sorter:before {
+    opacity: .6
+}
+
+.dataTables-empty {
+    text-align: center
+}
+
+.dataTable-bottom:after,.dataTable-top:after {
+    clear: both;
+    content: " ";
+    display: table
+}
+
+/*!
+Simple-DataTables
+Github: https://github.com/fiduswriter/Simple-DataTables
+*/
+.dataTable-wrapper .dataTable-top {
+    padding: 1.5rem
+}
+
+.dataTable-wrapper .dataTable-top .dataTable-dropdown {
+    float: left
+}
+
+.dataTable-wrapper .dataTable-top .dataTable-dropdown label {
+    margin-bottom: 0;
+    margin-left: 0;
+    color: #64748b;
+    font-weight: 400
+}
+
+.dataTable-wrapper .dataTable-top .dataTable-dropdown label .dataTable-selector {
+    border-color: #e9ecef;
+    border-radius: .25rem
+}
+
+.dataTable-wrapper .dataTable-top .dataTable-search input {
+    font-size: .875rem;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: .375rem
+}
+
+.dataTable-wrapper .dataTable-top .dataTable-search input:focus-visible {
+    outline: none
+}
+
+.dataTable-wrapper .dataTable-container .table thead tr th {
+    padding: 1rem;
+    opacity: .7;
+    font-weight: bolder;
+    color: #64748b;
+    font-size: .65rem
+}
+
+.dataTable-wrapper .dataTable-container .table tbody tr td {
+    padding: .5rem 1rem
+}
+
+.dataTable-wrapper .dataTable-bottom {
+    padding: 1.5rem;
+    padding-top: .5rem
+}
+
+.dataTable-wrapper .dataTable-bottom .dataTable-info {
+    color: #64748b;
+    font-size: .875rem
+}
+
+.dataTable-wrapper .dataTable-bottom .dataTable-pagination .dataTable-pagination-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    padding: 0;
+    margin: 0 3px;
+    border-radius: .25rem!important;
+    width: 40px;
+    height: 40px;
+    font-size: .875rem;
+    font-weight: 600;
+    margin-left: 0
+}
+
+.dataTable-wrapper .dataTable-bottom .dataTable-pagination .dataTable-pagination-list li a:hover {
+    background: transparent;
+    border: 1px solid #ced4da
+}
+
+.dataTable-wrapper .dataTable-bottom .dataTable-pagination .dataTable-pagination-list .active a {
+    cursor: pointer;
+    background: #e9ecef;
+    color: #64748b;
+    border: 1px solid #ced4da;
+    border-radius: .25rem!important
+}
+
+.dataTable-wrapper .dataTable-bottom .dataTable-pagination .dataTable-pagination-list .active a:hover {
+    background: #e9ecef
+}
+
+.dataTable-wrapper.no-footer .dataTable-container {
+    border-bottom: 0
+}
+
+.dataTable-table tbody td,.dataTable-table tbody th,.dataTable-table tfoot td,.dataTable-table tfoot th,.dataTable-table thead td,.dataTable-table thead th {
+    vertical-align: middle!important
+}
+
+@media (max-width: 575.98px) {
+    .dataTable-top>div:last-child {
+        float:left;
+        margin-top: 1rem
+    }
+}
+
+/*! PhotoSwipe main CSS by Dmitry Semenov | photoswipe.com | MIT license */
+.pswp,ul li.editMode label {
+    display: none
+}
+
+.pswp {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    -ms-touch-action: none;
+    touch-action: none;
+    z-index: 1500;
+    -webkit-text-size-adjust: 100%;
+    -webkit-backface-visibility: hidden;
+    outline: none
+}
+
+.pswp * {
+    box-sizing: border-box;
+}
+
+.pswp img {
+    max-width: none
+}
+
+.pswp--animate_opacity {
+    opacity: .001;
+    will-change: opacity;
+    transition: opacity 333ms cubic-bezier(.4,0,.22,1)
+}
+
+.pswp--open {
+    display: block
+}
+
+.pswp--zoom-allowed .pswp__img {
+    cursor: zoom-in
+}
+
+.pswp--zoomed-in .pswp__img {
+    cursor: grab
+}
+
+.pswp--dragging .pswp__img {
+    cursor: grabbing
+}
+
+.pswp__bg {
+    background: #000;
+    opacity: 0;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden
+}
+
+.pswp__bg,.pswp__scroll-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+
+.pswp__scroll-wrap {
+    overflow: hidden
+}
+
+.pswp__container,.pswp__zoom-wrap {
+    -ms-touch-action: none;
+    touch-action: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+}
+
+.pswp__container,.pswp__img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    border-radius: .75rem;
+    margin-top: 2rem
+}
+
+.pswp__zoom-wrap {
+    position: absolute;
+    width: 100%;
+    transform-origin: left top;
+    transition: transform 333ms cubic-bezier(.4,0,.22,1)
+}
+
+.pswp__bg {
+    will-change: opacity;
+    transition: opacity 333ms cubic-bezier(.4,0,.22,1)
+}
+
+.pswp--animated-in .pswp__bg,.pswp--animated-in .pswp__zoom-wrap {
+    transition: none
+}
+
+.pswp__container,.pswp__zoom-wrap {
+    /* -webkit-backface-visibility:hidden; */
+}
+
+.pswp__item {
+    right: 0;
+    bottom: 0;
+    overflow: hidden
+}
+
+.pswp__img,.pswp__item {
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.pswp__img {
+    width: auto;
+    height: auto
+}
+
+.pswp__img--placeholder {
+    -webkit-backface-visibility: hidden
+}
+
+.pswp__img--placeholder--blank {
+    background: #222
+}
+
+.pswp--ie .pswp__img {
+    width: 100%!important;
+    height: auto!important;
+    left: 0;
+    top: 0
+}
+
+.pswp__error-msg {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: -8px;
+    color: #ccc
+}
+
+.pswp__error-msg a {
+    color: #ccc;
+    text-decoration: underline
+}
