@@ -25,10 +25,7 @@ class Database
             $fielStr = rtrim($fielStr, ',');
             $valueStr = rtrim($valueStr, ',');
             $sql = "INSERT INTO  $table($fielStr) VALUES ($valueStr)";
-<<<<<<< HEAD
-=======
 
->>>>>>> 87887fa259fc6663708dd4f4db3be0f5fb8dc9ad
             $status = $this->query($sql);
             if (!$status) return false;
         }
