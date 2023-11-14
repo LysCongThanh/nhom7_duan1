@@ -20,11 +20,15 @@ class CategoriesController extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
-    public function add_categories() {
-        $request = new Request;
+    public function add_category() {
+        //handle add category
+    }
 
-        if($request->isPost()) {
-            echo 123;
-        }
+    public function add_author() {
+        //handle add author
+    }
+
+    public function add_publisher() {
+        //handle add publisher
     }
 }
