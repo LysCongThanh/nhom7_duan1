@@ -62,6 +62,7 @@
     <link href="<?= _WEB_ROOT; ?>/public/assets/admin/css/nucleo-svg.css" rel="stylesheet" />
 
     <link id="pagestyle" href="<?= _WEB_ROOT; ?>/public/assets/admin/css/corporate-ui-dashboard.min.css?v=1.0.0" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= _WEB_ROOT ?>/public/assets/admin/css/custom.css">
 
     <style>
         .async-hide {
