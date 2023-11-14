@@ -13,10 +13,7 @@ trait QueryBuilder
     public function table($tableName)
     {
         $this->tableName = $tableName;
-<<<<<<< HEAD
 
-=======
->>>>>>> 87887fa259fc6663708dd4f4db3be0f5fb8dc9ad
         return $this;
     }
 
@@ -25,15 +22,10 @@ trait QueryBuilder
         $this->operator = " WHERE";
         if (!empty($this->where)) {
             $this->operator = " AND ";
-<<<<<<< HEAD
             $this->where .= "$this->operator $field $compare $value";
         } else {
             $this->where .= "$this->operator $field $compare '$value'";
         }
-=======
-        }
-        $this->where .= "$this->operator $field $compare '$value'";
->>>>>>> 87887fa259fc6663708dd4f4db3be0f5fb8dc9ad
         return $this;
     }
 
@@ -138,10 +130,7 @@ trait QueryBuilder
     {
         // echo $this->innerJoin;
         $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->where  $this->orderBy $this->limit";
-<<<<<<< HEAD
         
-=======
->>>>>>> 87887fa259fc6663708dd4f4db3be0f5fb8dc9ad
         $query = $this->query($sqlQuery);
         $this->resetQuery();
         if (!empty($query)) return $query->fetchAll(PDO::FETCH_ASSOC);
