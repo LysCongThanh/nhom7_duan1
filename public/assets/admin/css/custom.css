@@ -1,0 +1,125 @@
+html { height: 100%; overflow:auto; }
+body { height: 100%; }
+
+.navbar-vertical .navbar-nav .nav-link[data-bs-toggle="collapse"]:after,
+.navbar-vertical .navbar-nav .nav-link[data-bs-toggle="collapse"][aria-expanded="true"]:after {
+    color: white;
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+    height: 100vh;
+}
+
+.ps__thumb-x {
+    display: none;
+}
+
+.dropzone {
+    min-height: 0px;
+    border-radius: 5px;
+}
+
+.dz-remove {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer !important;
+    z-index: 1001;
+}
+
+.dz-remove i {
+    font-size: 1.5rem;
+}
+
+.sort-editor {
+    height: 150px;
+}
+
+.long-editor {
+    height: 350px;
+}
+
+.generate-sku-btn {
+    cursor: pointer;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.form-group.invalid .input-group input,
+.form-group.invalid .input-group select,
+.form-group.invalid .input-group textarea {
+    border-color: #f33a58;
+    animation: shake 0.1s;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+    animation: shake 0.1s;
+}
+
+.form-group.invalid .input-group .input-group-text{
+    border-color: #f33a58;
+    animation: shake 0.1s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.tab-content {
+    padding: 0;
+}
+
+.card-header {
+    border-radius: 0 !important;
+}
+
+.tab-error {
+    border: 1px solid red !important;
+}
+
+.input-group-text .btn-input-group {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.modal-dialog__products-list {
+    width: 1100px !important;
+}
+
+.dataTable-top {
+    padding: 24px 16px !important;
+}
+
+.is-shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.choices {
+    margin: 0;
+    border-radius: 0 !important;
+}

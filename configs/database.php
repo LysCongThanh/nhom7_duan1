@@ -1,8 +1,8 @@
 <?php
-$config['database'] = [
+ $config['database'] = [
     'host' => 'localhost',
     'user' => 'root',
-    'pass' => '',
-    'db' => 'db_name'
-];
+    'pass' => 'mysql',
+    'db' => 'duanmau_mvc'
+ ];
 ?>
