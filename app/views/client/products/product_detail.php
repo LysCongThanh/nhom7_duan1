@@ -8,13 +8,13 @@
   <div class="card">
   <article class="gallery-wrap"> 
     <div class="img-big-wrap">
-      <div> <a href="#"><img src="image/children books/b7_480.png"></a></div>
+      <div> <a href="#"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7_480.png"></a></div>
     </div> <!-- slider-product.// -->
     <div class="thumbs-wrap">
-      <a href="#" class="item-thumb"> <img src="images/items/15.jpg"></a>
-      <a href="#" class="item-thumb"> <img src="images/items/15-1.jpg"></a>
-      <a href="#" class="item-thumb"> <img src="images/items/15-2.jpg"></a>
-      <a href="#" class="item-thumb"> <img src="images/items/15-1.jpg"></a>
+      <a href="#" class="item-thumb"> <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/items/15.jpg"></a>
+      <a href="#" class="item-thumb"> <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/items/15-1.jpg"></a>
+      <a href="#" class="item-thumb"> <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/items/15-2.jpg"></a>
+      <a href="#" class="item-thumb"> <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/items/15-1.jpg"></a>
     </div> <!-- slider-nav.// -->
   </article> <!-- gallery-wrap .end// -->
   </div> <!-- card.// -->
@@ -147,7 +147,7 @@
  
 
       <article class="media mb-3">
-        <a href="#"><img class="img-sm mr-3" src="image/thinking books/b2_480.png"></a>
+        <a href="#"><img class="img-sm mr-3" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b2_480.png"></a>
         <div class="media-body">
           <h6 class="mt-0"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mahouko Sentei</font></font></a></h6>
           <p class="mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giá: 65.000đ/1 cuốn</font></font></p>
@@ -156,7 +156,7 @@
       </article>
   
       <article class="media mb-3">
-        <a href="#"><img class="img-sm mr-3" src="image/thinking books/b3_480.png"></a>
+        <a href="#"><img class="img-sm mr-3" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b3_480.png"></a>
         <div class="media-body">
           <h6 class="mt-0"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mẹo và thủ thuật mới</font></font></a></h6>
           <p class="mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ngày mai nên rảnh rỗi, không có thai. </font><font style="vertical-align: inherit;">Không cần phải lo lắng về sô cô la trước đây</font></font></p>
@@ -164,7 +164,7 @@
       </article>
   
       <article class="media mb-3">
-        <a href="#"><img class="img-sm mr-3" src="image/thinking books/b4_480.png"></a>
+        <a href="#"><img class="img-sm mr-3" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b4_480.png"></a>
         <div class="media-body">
           <h6 class="mt-0"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mẹo và thủ thuật mới</font></font></a></h6>
           <p class="mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ngày mai nên rảnh rỗi, không có thai. </font><font style="vertical-align: inherit;">Không cần phải lo lắng về sô cô la trước đây</font></font></p>
@@ -181,7 +181,7 @@
  
 
       <article class="media mb-3">
-        <a href="#"><img class="img-sm mr-3" src="image/thinking books/b2_480.png"></a>
+        <a href="#"><img class="img-sm mr-3" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b2_480.png"></a>
         <div class="media-body">
           <h6 class="mt-0"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bom Tấn Sắp Ra Mắt</font></font></a></h6>
           <p class="mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 cuốn tiểu thuyết đặc biệt sắp được mở bán tại Việt Nam</font><font style="vertical-align: inherit;"> Hãy đón chờ vào ngày 27/11/2023</font></font></p>
@@ -189,7 +189,7 @@
       </article>
   
       <article class="media mb-3">
-        <a href="#"><img class="img-sm mr-3" src="image/thinking books/b3_480.png"></a>
+        <a href="#"><img class="img-sm mr-3" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b3_480.png"></a>
         <div class="media-body">
           <h6 class="mt-0"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mẹo và thủ thuật mới</font></font></a></h6>
           <p class="mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ngày mai nên rảnh rỗi, không có thai. </font><font style="vertical-align: inherit;">Không cần phải lo lắng về sô cô la trước đây</font></font></p>
@@ -197,7 +197,7 @@
       </article>
   
       <article class="media mb-3">
-        <a href="#"><img class="img-sm mr-3" src="image/thinking books/b4_480.png"></a>
+        <a href="#"><img class="img-sm mr-3" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b4_480.png"></a>
         <div class="media-body">
           <h6 class="mt-0"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mẹo và thủ thuật mới</font></font></a></h6>
           <p class="mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ngày mai nên rảnh rỗi, không có thai. </font><font style="vertical-align: inherit;">Không cần phải lo lắng về sô cô la trước đây</font></font></p>

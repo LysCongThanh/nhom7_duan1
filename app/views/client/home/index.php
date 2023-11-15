@@ -1,4 +1,4 @@
- <div class="container">
+<div class="container">
 	<!-- ========================= SECTION MAIN  ========================= -->
 	<section class="section-main padding-y">
 	<main class="card">
@@ -31,13 +31,13 @@
 	  </ol>
 	  <div class="carousel-inner">
 		<div class="carousel-item">
-		  <img src="image/banners/ban3.png" alt="First slide"> 
+		  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/banners/ban3.png" alt="First slide"> 
 		</div>
 		<div class="carousel-item">
-		  <img src="image/banners/ban4.jpg" alt="Second slide">
+		  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/banners/ban4.jpg" alt="Second slide">
 		</div>
 		<div class="carousel-item active">
-		  <img src="image/banners/ban5.jpg" alt="Third slide">
+		  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/banners/ban5.jpg" alt="Third slide">
 		</div>
 	  </div>
 	  <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">
@@ -61,7 +61,7 @@
 					<h6 class="card-title">Tư duy tích cực</h6>
 					<a href="#" class="btn btn-secondary btn-sm"> Xem ngay</a>
 				  </div> 
-				  <img src="image/thinking books/b1.jpg" height="80" class="img-bg">
+				  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b1.jpg" height="80" class="img-bg">
 				</div>
 	
 				<div class="card-banner border-bottom">
@@ -69,7 +69,7 @@
 					<h6 class="card-title">Người giàu có nhất thành BABYLON</h6>
 					<a href="#" class="btn btn-secondary btn-sm"> Xem ngay</a>
 				  </div> 
-				  <img src="image/financial books/b2.png" height="80" class="img-bg">
+				  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b2.png" height="80" class="img-bg">
 				</div>
 	
 				<div class="card-banner border-bottom">
@@ -77,7 +77,7 @@
 					<h6 class="card-title">Triệu phú nhà bên</h6>
 					<a href="#" class="btn btn-secondary btn-sm"> Xem ngay</a>
 				  </div> 
-				  <img src="image/financial books/b1.png" height="80" class="img-bg">
+				  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b1.png" height="80" class="img-bg">
 				</div>
 	
 			</aside>
@@ -111,7 +111,7 @@
 		<div class="col-md col-6">
 		 <figure class="card-product-grid card-sm">
 		  <a href="#" class="img-wrap"> 
-		   <img src="image/thinking books/b2.png"> 
+		   <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b2.png"> 
 		  </a>
 		  <div class="text-wrap p-3">
 			   <a href="#" class="title">Đắc Nhân Tâm</a>
@@ -122,7 +122,7 @@
 	 <div class="col-md col-6">
 	   <figure class="card-product-grid card-sm">
 		<a href="#" class="img-wrap"> 
-		 <img src="image/thinking books/b3.png"> 
+		 <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b3.png"> 
 	   </a>
 	   <div class="text-wrap p-3">
 		 <a href="#" class="title">Thành Công</a>
@@ -133,7 +133,7 @@
 	<div class="col-md col-6">
 	 <figure class="card-product-grid card-sm">
 	  <a href="#" class="img-wrap"> 
-	   <img src="image/thinking books/b4.png"> 
+	   <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b4.png"> 
 	 </a>
 	 <div class="text-wrap p-3">
 	   <a href="#" class="title">Dám Ước Mơ</a>
@@ -144,7 +144,7 @@
 	<div class="col-md col-6">
 	 <figure class="card-product-grid card-sm">
 	  <a href="#" class="img-wrap"> 
-	   <img src="image/financial books/b3.png"> 
+	   <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b3.png"> 
 	 </a>
 	 <div class="text-wrap p-3">
 	   <a href="#" class="title">Better & Faster</a>
@@ -155,7 +155,7 @@
 	<div class="col-md col-6">
 	 <figure class="card-product-grid card-sm">
 	  <a href="#" class="img-wrap"> 
-	   <img src="image/thinking books/b5.png"> 
+	   <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b5.png"> 
 	 </a>
 	 <div class="text-wrap p-3">
 	   <a href="#" class="title text-truncate">1001 Ý Tưởng</a>
@@ -183,7 +183,7 @@
 			<h5 class="title">Những Cuốn Sách Nổi Bật Nhất</h5>
 			<p>Hãy cùng nhau khám phá những cuốn Sách tiêu biểu cho thời đại mới </p>
 			<a href="#" class="btn btn-outline-primary rounded-pill">Xem Tất Cả</a>
-			<img src="image/thinking books/n6.png" class="img-bg">
+			<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/n6.png" class="img-bg">
 		</div>
 	
 		</div> <!-- col.// -->
@@ -193,7 +193,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Điều tuyệt vời nhất mà ông mặt trời đã sắp đặt. </h6>
-			<img class="img-sm float-right" src="image/children books/b1.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b1.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i>Công Thành</p>
 		</div>
 	</a>
@@ -202,7 +202,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Loạn Cả Thanh Xuân </h6>
-			<img class="img-sm float-right" src="image/children books/b1_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b1_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i>Nguyễn Triết</p>
 		</div>
 	</a>
@@ -211,7 +211,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Chờ khi nỗi nhớ nở hoa </h6>
-			<img class="img-sm float-right" src="image/children books/b2_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b2_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Tokyo, Japan</p>
 		</div>
 	</a>
@@ -220,7 +220,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">9 Quy tắc đầu tư tiền bạc </h6>
-			<img class="img-sm float-right" src="image/children books/b3_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b3_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Tashkent, Uzb</p>
 		</div>
 	</a>	
@@ -229,7 +229,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Họ đã làm gì để thay đổi thế giới? </h6>
-			<img class="img-sm float-right" src="image/financial books/b1_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b1_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> London, Britain</p>
 		</div>
 	</a>
@@ -238,7 +238,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Khai thác sức mạnh tiềm thức </h6>
-			<img class="img-sm float-right" src="image/thinking books/b1_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b1_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Guanjou, China</p>
 		</div>
 	</a>
@@ -247,7 +247,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Quên hôm qua sống cho ngày mai.</h6>
-			<img class="img-sm float-right" src="image/thinking books/b2_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b2_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Hong Kong, China</p>
 	
 		</div>
@@ -257,7 +257,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Hùng biện kiểu TED  </h6>
-			<img class="img-sm float-right" src="image/thinking books/b3_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b3_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Guanjou, China</p>
 		</div>
 	</a>
@@ -283,7 +283,7 @@
 			<h5 class="title">Cuốn Sách Được Nhiều Lượt Xem Nhất</h5>
 			<p>Cùng nhau khám phá những trang sách đặc này thôi!</p>
 			<a href="#" class="btn btn-outline-primary rounded-pill">Khám phá ngay</a>
-			<img src="image/thinking books/n2.png" class="img-bg">
+			<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/n2.png" class="img-bg">
 		</div>
 	
 		</div> <!-- col.// -->
@@ -293,7 +293,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Đi lên từ thất bại!</h6>
-			<img class="img-sm float-right" src="image/thinking books/b4_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b4_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Tokyo, Japan</p>
 		</div>
 	</a>
@@ -302,7 +302,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Đánh thức con người phi thường trong bạn.</h6>
-			<img class="img-sm float-right" src="image/thinking books/b5_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b5_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Hong Kong, China</p>
 		</div>
 	</a>
@@ -311,7 +311,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Những khoảng lặng cuộc sống.</h6>
-			<img class="img-sm float-right" src="image/thinking books/b6_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b6_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Tashkent, Uzb</p>
 		</div>
 	</a>
@@ -320,7 +320,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Lợi nhuận hay tăng trưởng </h6>
-			<img class="img-sm float-right" src="image/financial books/b2_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b2_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Guanjou, China</p>
 		</div>
 	</a>	
@@ -329,7 +329,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Light Novel Thánh Chiến</h6>
-			<img class="img-sm float-right" src="image/children books/b4_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b4_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Guanjou, China</p>
 		</div>
 	</a>
@@ -338,7 +338,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Sát Thủ Tốt Bụng Nhất Thế Giới</h6>
-			<img class="img-sm float-right" src="image/children books/b5_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b5_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Guanjou, China</p>
 		</div>
 	</a>
@@ -347,7 +347,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">OverLord 3</h6>
-			<img class="img-sm float-right" src="image/children books/b6_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Guanjou, China</p>
 	
 		</div>
@@ -357,7 +357,7 @@
 	<a href="#" class="item"> 
 		<div class="card-body">
 			<h6 class="title">Người bạn thời thơ ấu của tôi.</h6>
-			<img class="img-sm float-right" src="image/children books/b7_480.png"> 
+			<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7_480.png"> 
 			<p class="text-muted"><i class="fa fa-user-alt"></i> Guanjou, China</p>
 		</div>
 	</a>
@@ -381,7 +381,7 @@
 		<div class="row row-sm">
 			<div class="col-xl-2 col-lg-3 col-md-4 col-6">
 				<div href="#" class="card card-sm card-product-grid">
-					<a href="#" class="img-wrap"> <img src="image/children books/b6.png"> </a>
+					<a href="#" class="img-wrap"> <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6.png"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">OverLord 3</a>
 						<div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
@@ -403,7 +403,7 @@
 		<div class="row">
 			<div class="col-md-3 col-sm-6">
 				<article class="card card-post">
-				  <img src="images/posts/1.jpg" class="card-img-top">
+				  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/posts/1.jpg" class="card-img-top">
 				  <div class="card-body">
 					<h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đảm bảo thương mại</font></font></h6>
 					<p class="small text-uppercase text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bảo vệ đơn hàng</font></font></p>
@@ -412,7 +412,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3 col-sm-6">
 				<article class="card card-post">
-				  <img src="images/posts/2.jpg" class="card-img-top">
+				  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/posts/2.jpg" class="card-img-top">
 				  <div class="card-body">
 					<h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thanh toán bất cứ lúc nào</font></font></h6>
 					<p class="small text-uppercase text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giải pháp tài chính</font></font></p>
@@ -421,7 +421,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3 col-sm-6">
 				<article class="card card-post">
-				  <img src="images/posts/3.jpg" class="card-img-top">
+				  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/posts/3.jpg" class="card-img-top">
 				  <div class="card-body">
 					<h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giải pháp kiểm tra</font></font></h6>
 					<p class="small text-uppercase text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kiểm tra dễ dàng</font></font></p>
@@ -430,7 +430,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3 col-sm-6">
 				<article class="card card-post">
-				  <img src="images/posts/4.jpg" class="card-img-top">
+				  <img src="<?= _WEB_ROOT; ?>/public/assets/client/image/posts/4.jpg" class="card-img-top">
 				  <div class="card-body">
 					<h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vận chuyển đường biển và đường hàng không</font></font></h6>
 					<p class="small text-uppercase text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dịch vụ hậu cần</font></font></p>
@@ -450,22 +450,19 @@
 		</header>
 		
 		<ul class="row mt-4">
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/CN.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trung Quốc</font></font></span> </a></li>
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/DE.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nước Đức</font></font></span> </a></li>
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/AU.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Châu Úc</font></font></span> </a></li>
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/RU.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nga</font></font></span> </a></li>
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/IN.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ấn Độ</font></font></span> </a></li>
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/GB.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nước Anh</font></font></span> </a></li>
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/TR.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thổ Nhĩ Kỳ</font></font></span> </a></li>
-			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="images/icons/flags/UZ.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uzbekistan</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/CN.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trung Quốc</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/DE.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nước Đức</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/AU.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Châu Úc</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/RU.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nga</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/IN.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ấn Độ</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/GB.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nước Anh</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/TR.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thổ Nhĩ Kỳ</font></font></span> </a></li>
+			<li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="<?= _WEB_ROOT; ?>/public/assets/client/image/icons/flags/UZ.png"> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uzbekistan</font></font></span> </a></li>
 			<li class="col-md col-6"><a href="#" class="icontext"> <i class="mr-3 fa fa-ellipsis-h"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nhiều khu vực hơn</font></font></span> </a></li>
 		</ul>
 	</section>
 	<!-- =============== SECTION REGION .//END =============== -->
-	
-	<article class="my-4">
-		<img src="images/banners/ad-sm.png" class="w-100">
-	</article>
+
 </div>  
 	<!-- container end.// -->
 	
