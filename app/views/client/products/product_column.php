@@ -208,7 +208,7 @@
 										<span class="badge badge-danger"><font
 												style="vertical-align: inherit;"><font
 													style="vertical-align: inherit;">MỚI</font></font></span>
-										<img src="image/children books/b8.jpg">
+										<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b8.jpg">
 									</a>
 								</aside> <!-- col.// -->
 								<div class="col-md-6">

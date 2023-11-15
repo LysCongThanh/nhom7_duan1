@@ -8,24 +8,24 @@
 
 <title>Trang chủ</title>
 
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="<?= _WEB_ROOT; ?>/public/assets/client/image/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 <!-- jQuery -->
-<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>
+<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/jquery-2.0.0.min.js" type="text/javascript"></script>
 
 <!-- Bootstrap4 files-->
-<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<link href="<?= _WEB_ROOT; ?>/public/assets/client/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 
 <!-- Font awesome 5 -->
-<link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+<link href="<?= _WEB_ROOT; ?>/public/assets/client/fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
 
 <!-- custom style -->
-<link href="css/ui.css" rel="stylesheet" type="text/css"/>
-<link href="css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="<?= _WEB_ROOT; ?>/public/assets/client/css/ui.css" rel="stylesheet" type="text/css"/>
+<link href="<?= _WEB_ROOT; ?>/public/assets/client/css/responsive.css" rel="stylesheet" type="text/css" />
 
 <!-- custom javascript -->
-<script src="js/script.js" type="text/javascript"></script>
+<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/script.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -36,7 +36,7 @@
 				<div class="row align-items-center">
 					<div class="col-xl-2 col-lg-3 col-md-12">
 						<a href="http://bootstrap-ecommerce.com" class="brand-wrap">
-							<img class="logo" src="images/logo.png">
+							<img class="logo" src="<?= _WEB_ROOT; ?>/public/assets/client/image/logo.png">
 						</a> <!-- brand-wrap.// -->
 					</div>
 					<div class="col-xl-6 col-lg-5 col-md-6">

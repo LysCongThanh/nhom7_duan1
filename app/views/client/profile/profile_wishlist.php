@@ -21,7 +21,7 @@
       <div class="row">
           <div class="col-md-6">
             <figure class="itemside mb-4">
-              <div class="aside"><img src="image/children books/b7_480.png" class="border img-md"></div>
+              <div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7_480.png" class="border img-md"></div>
               <figcaption class="info">
                 <a href="#" class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Người bạn thời thơ thấu của tôi</font></font></a>
                 <p class="price mb-2">50.000 đ</p>
@@ -33,7 +33,7 @@
   
           <div class="col-md-6">
             <figure class="itemside mb-4">
-              <div class="aside"><img src="image/children books/b6_480.png" class="border img-md"></div>
+              <div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6_480.png" class="border img-md"></div>
               <figcaption class="info">
                 <a href="#" class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OverLord 3</font></font></a>
                 <p class="price mb-2">90.000 đ</p>
@@ -45,7 +45,7 @@
   
           <div class="col-md-6">
             <figure class="itemside mb-4">
-              <div class="aside"><img src="image/financial books/b2_480.png" class="border img-md"></div>
+              <div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b2_480.png" class="border img-md"></div>
               <figcaption class="info">
                 <a href="#" class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lợi Nhuận Và Tăng Trưởng</font></font></a>
                 <p class="price mb-2">45.000 đ</p>

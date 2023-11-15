@@ -48,7 +48,7 @@
 			<table class="table table-hover">
 				<tbody><tr>
 					<td width="65">
-						<img src="image/thinking books/b10.png" class="img-xs border">
+						<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b10.png" class="img-xs border">
 					</td>
 					<td> 
 						<p class="title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quên Hôm Qua Sống Cho Ngày Mai</font></font></p>
@@ -67,7 +67,7 @@
 				</tr>
 				<tr>
 					<td>
-						<img src="image/thinking books/b11.png" class="img-xs border">
+						<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b11.png" class="img-xs border">
 					</td>
 					<td> 
 						<p class="title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Khai Phá Sức Mạnh Tiềm Thức</font></font></p>
@@ -87,7 +87,7 @@
 				</tr>
 				<tr>
 					<td>
-						<img src="image/thinking books/b12.png" class="img-xs border">
+						<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b12.png" class="img-xs border">
 					</td>
 					<td> 
 						<p class="title mb-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Họ Đã Làm Gì Để Thay Đổi Thế Giới</font></font></p>
