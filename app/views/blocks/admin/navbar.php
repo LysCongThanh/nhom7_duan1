@@ -1,3 +1,4 @@
+
 <nav class=" px-0 mx-5 rounded shadow-none z-index-2 navbar navbar-main navbar-expand-lg" navbar-scroll="true"
             id="navbarBlur">
             <div class="container px-2 py-1 min-w-100">
@@ -147,7 +148,3 @@
                 </div>
             </div>
         </nav>
-
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
