@@ -1,7 +1,7 @@
 Dropzone.autoDiscover = false;
 let myDropzone = new Dropzone("#image-dropzone", {
-    url: '#', // URL để gửi tệp đã chọn đến máy chủ
-    paramName: "image", // Tên của trường tệp trong yêu cầu POST
+    url: 'product/post_product', // URL để gửi tệp đã chọn đến máy chủ
+    paramName: 'image',
     maxFilesize: 5, // Giới hạn dung lượng tệp (MB)
     addRemoveLinks: true, // Hiển thị nút xóa cho từng tệp
     dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
@@ -9,10 +9,9 @@ let myDropzone = new Dropzone("#image-dropzone", {
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
     autoProcessQueue: true, // Tắt tự động tải lên
 });
-
 let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
-    url: "/upload", // URL để gửi tệp đã chọn đến máy chủ
-    paramName: "album_images", // Tên của trường tệp trong yêu cầu POST
+    url: "product/post_product", // URL để gửi tệp đã chọn đến máy chủ
+    paramName: 'album_images', // Tên của trường tệp trong yêu cầu POST
     maxFilesize: 5, // Giới hạn dung lượng tệp (MB)
     addRemoveLinks: true, // Hiển thị nút xóa cho từng tệp
     dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
@@ -20,7 +19,6 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
     autoProcessQueue: true, // Tắt tự động tải lên
 });
-
 Validator({
     form: '#form',
     formGroupSelector: '.form-group',
