@@ -12,7 +12,7 @@ class Connection
             
 
             //------------ Thang nao sai xampp thì đổi lại $config['pass'] thanh ''
-            $con = new PDO($dsn, $config['user'], '');
+            $con = new PDO($dsn, $config['user'], $config['pass']);
             self::$connect = $con;
             
         } catch (Exception $ex) {

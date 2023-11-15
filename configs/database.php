@@ -3,6 +3,6 @@
     'host' => 'localhost',
     'user' => 'root',
     'pass' => 'mysql',
-    'db' => 'duanmau_mvc'
+    'db' => 'book_shop'
  ];
 ?>
