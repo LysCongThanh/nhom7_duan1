@@ -242,14 +242,12 @@
         }
     </script>
 
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script src="<?= _WEB_ROOT; ?>/public/assets/admin/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
-        integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
-        data-cf-beacon='{"rayId":"823d09f3195810a8","version":"2023.10.0","token":"1b7cbb72744b40c580f8633c6b62637e"}'
-        crossorigin="anonymous"></script>
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
+<!-- *****************************JS files required for the current page***************************** -->
+<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/pages/classification-list.js"></script>
 </body>
 
 </html>
