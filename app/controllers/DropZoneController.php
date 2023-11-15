@@ -1,4 +1,5 @@
 <?php 
+
 class DropZoneController extends Controller
 {
     public function upLoadImage() 
@@ -20,7 +21,7 @@ class DropZoneController extends Controller
         }
       
         $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        echo '----' . $file['name'] ;
+       
         $new_file_name = time() . '_' . uniqid() . '.' . $file_extension;
         $new_file_path = $target_directory . $new_file_name;
 
