@@ -19,7 +19,7 @@
 	<tr>
 		<td>
 			<figure class="itemside">
-				<div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7.png" class="img-sm"></div>
+				<div class="aside"><img src="image/children books/b7.png" class="img-sm"></div>
 				<figcaption class="info">
 					<a href="#" class="title text-dark"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Người bạn thời thơ ấu của tôi</font></font></a>
 					<p class="text-muted small"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giới hạn</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thương hiệu: Gucci</font></font></p>
@@ -48,7 +48,7 @@
 	<tr>
 		<td>
 			<figure class="itemside">
-				<div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6.png" class="img-sm"></div>
+				<div class="aside"><img src="image/children books/b6.png" class="img-sm"></div>
 				<figcaption class="info">
 					<a href="#" class="title text-dark"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OverLord 3</font></font></a>
 					<p class="text-muted small"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giới hạn</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thương hiệu: Gucci</font></font></p>
@@ -77,7 +77,7 @@
 	<tr>
 		<td>
 			<figure class="itemside">
-				<div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b5.png" class="img-sm"></div>
+				<div class="aside"><img src="image/children books/b5.png" class="img-sm"></div>
 				<figcaption class="info">
 					<a href="#" class="title text-dark"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sát thủ tốt bụng nhất thế giới.</font></font></a>
 					<p class="small text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giới hạn</font></font></p>
@@ -148,7 +148,7 @@
 						</dl>
 						<hr>
 						<p class="text-center mb-3">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/misc/payments.png" height="26">
+							<img src="images/misc/payments.png" height="26">
 						</p>
 						
 				</div> <!-- card-body.// -->

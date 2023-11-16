@@ -3,7 +3,7 @@
 				<div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
 					<div class="col-12 col-lg-6">
 						<img class="img-fluid rounded" loading="lazy"
-							src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b1_480.png" alt="About 2">
+							src="./image/children books/b1_480.png" alt="About 2">
 					</div>
 					<div class="col-12 col-lg-6">
 						<div class="row justify-content-xl-center">
@@ -75,7 +75,7 @@
 				<div class="row">
 					<aside class="col-md-6">
 						<div class="card card-banner-lg badge-dark">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b9.webp" class="card-img opacity">
+							<img src="image/children books/b9.webp" class="card-img opacity">
 							<div class="card-img-overlay text-white">
 								<h2 class="card-title">Sách Light Novel</h2>
 								<p class="card-text" style="max-width: 80%">Light novel là một thể loại sách dành cho độc giả trẻ, phổ biến ở Nhật Bản. Chúng thường có độ dài ngắn, hình vẽ minh họa và nội dung tương đối nhẹ nhàng. Thường liên quan đến thể loại hài hước, lãng mạn, phiêu lưu, và thường được viết theo phong cách truyện tranh.</p>
@@ -85,7 +85,7 @@
 					</aside>
 					<div class="col-md-6">
 						<div class="card card-banner-lg badge-dark">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/tieuthuyet books/b1.jpg" class="card-img opacity">
+							<img src="image/tieuthuyet books/b1.jpg" class="card-img opacity">
 							<div class="card-img-overlay text-white">
 								<h2 class="card-title">Sách Tiểu Thuyết</h2>
 								<p class="card-text" style="max-width: 80%">Sách tiểu thuyết là thể loại rộng lớn bao gồm nhiều dạng truyện khác nhau. Các tác phẩm này nói về câu chuyện của các nhân vật, thường có cốt truyện phức tạp và sâu sắc. Tiểu thuyết có thể thuộc nhiều thể loại khác nhau như lãng mạn, khoa học viễn tưởng, hình sự, lịch sử, và nhiều thể loại khác, mang lại trải nghiệm đọc đa dạng cho độc giả.</p>
@@ -103,7 +103,7 @@
 				<div class="row">
 					<aside class="col-md-6">
 						<div class="card card-banner-lg badge-dark">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b9.jpg" class="card-img opacity">
+							<img src="image/financial books/b9.jpg" class="card-img opacity">
 							<div class="card-img-overlay text-white">
 								<h2 class="card-title">Sách Kinh Doanh</h2>
 								<p class="card-text" style="max-width: 80%">Sách kinh doanh tập trung vào các khía cạnh liên quan đến doanh nghiệp và quản lý. Chúng có thể bao gồm chủ đề như quản lý dự án, marketing, tài chính, lãnh đạo, và khởi nghiệp. Những cuốn sách này thường cung cấp chiến lược, kinh nghiệm thực tế, và hướng dẫn thực hiện để phát triển sự nghiệp và doanh số kinh doanh.</p>
@@ -113,7 +113,7 @@
 					</aside>
 					<div class="col-md-6">
 						<div class="card card-banner-lg badge-dark">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b13.jpg" class="card-img opacity">
+							<img src="image/thinking books/b13.jpg" class="card-img opacity">
 							<div class="card-img-overlay text-white">
 								<h2 class="card-title">Sách Tâm Lý</h2>
 								<p class="card-text" style="max-width: 80%"> Sách tâm lý tập trung vào nghiên cứu và hiểu về tâm lý con người, cung cấp thông tin về cách tư duy, cảm xúc, và hành vi hoạch định cuộc sống. Những cuốn sách này thường cung cấp chiến lược và kỹ thuật để cải thiện tâm lý cá nhân, quản lý stress, và xây dựng mối quan hệ tích cực.</p>
