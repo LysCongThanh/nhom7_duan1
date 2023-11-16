@@ -2,6 +2,11 @@
 
 class DropZoneController extends Controller
 {
+    public $response;
+    public function __construct()
+    {
+        $this->response = new Response();
+    }
     public function upLoadImage() 
     {   $request = new Request();
         $data = $request->getFields();
@@ -31,10 +36,11 @@ class DropZoneController extends Controller
         }
 
         if (!move_uploaded_file($file['tmp_name'], $new_file_path)) {
-           echo 123;
+           Session::flash('errors', 'Tải lên không thành công');
+           $this->response->redirect('them-san-pham');
         }
 
-        return $new_file_name;
+        
     }
 }
 
