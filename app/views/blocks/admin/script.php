@@ -27,7 +27,7 @@
 <!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
 <!-- *****************************JS files required for the current page***************************** -->
-<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/pages/classification-list.js"></script>
+<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/pages/{{$script_src}}.js"></script>
 </body>
 
 </html>
