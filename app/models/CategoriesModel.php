@@ -17,4 +17,10 @@ class CategoriesModel extends Model {
     {
         return 'id_category';
     }
+
+    public function getListCategories()
+    {
+        $data = $this->db->table('categories')->orderBy('id_category', 'DESC')->get();
+        return $data;
+    }
 }
