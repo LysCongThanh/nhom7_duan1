@@ -1,13 +1,12 @@
 <div class="px-5 py-4 container-fluid">
-    <?= var_dump($data['categories']) ?>
     <!-- Form modal group -->
-    <div class="form-modal-group">
+    <div class="form-add-modal-group">
         <!-- Form add category -->
         <div class="modal fade" id="form-modal-add-category" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-category" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <!-- Form here -->
-                    <form action="" method="post" id="form-add-category">
+                    <form action="/categories/add" method="post" id="form-add-category">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-add-category-title">
                                 Danh mục sách</h6>
@@ -136,27 +135,101 @@
         </div>
     </div>
 
-    <!-- Detail modal group -->
-    <div class="detail-modal-group">
+    <!-- Delete modal group -->
+    <div class="delete-modal-group">
         @foreach($categories as $category)
         <div class="modal fade" id="category-detail_{{$category['id_category']}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h6 class="modal-title" id="form-modal-add-category-title">
-                            Danh mục sách</h6>
+                            Chi tiết danh mục</h6>
                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
-
+                        <p class="text-danger">* Bạn có chắc muốn xóa danh mục này ?</p>
+                        <ul class="list-group">
+                            <li class="list-group-item"><span class="fw-bold">Tên danh mục: </span>{{$category['name_category']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Trạng thái: </span>{{$category['status']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$category['date_created']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$category['date_updated']}}</li>
+                        </ul>
                     </div>
                     <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">Thêm danh
-                                mục</button>
-                            <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
-                        </div>
+                        <form method="post" class="m-0 p-0" action="/categories/delete">
+                            <input type="hidden" name="id_category" value="{{$category['id_category']}}">
+                            <button type="submit" class="btn btn-link bg-warning text-dark ml-auto">Xóa</button>
+                        </form>
+                        <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+                    <!-- Form here -->
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+        @foreach($authors as $athor)
+        <div class="modal fade" id="category-detail_{{$category['id_category']}}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="form-modal-add-category-title">
+                            Xóa tác giả</h6>
+                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger">* Bạn có chắc muốn xóa tác giả này ?</p>
+                        <ul class="list-group">
+                            <li class="list-group-item"><span class="fw-bold">Tên tác giả: </span>{{$author['name']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Trạng thái: </span>{{$category['bio']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$category['date_created']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$category['date_updated']}}</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" class="m-0 p-0" action="/categories/delete">
+                            <input type="hidden" name="id_category" value="{{$category['id_category']}}">
+                            <button type="submit" class="btn btn-link bg-warning text-dark ml-auto">Xóa</button>
+                        </form>
+                        <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+                    <!-- Form here -->
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+        @foreach($categories as $category)
+        <div class="modal fade" id="category-detail_{{$category['id_category']}}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="form-modal-add-category-title">
+                            Chi tiết danh mục</h6>
+                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger">* Bạn có chắc muốn xóa danh mục này ?</p>
+                        <ul class="list-group">
+                            <li class="list-group-item"><span class="fw-bold">Tên danh mục: </span>{{$category['name_category']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Trạng thái: </span>{{$category['status']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$category['date_created']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$category['date_updated']}}</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" class="m-0 p-0" action="/categories/delete">
+                            <input type="hidden" name="id_category" value="{{$category['id_category']}}">
+                            <button type="submit" class="btn btn-link bg-warning text-dark ml-auto">Xóa</button>
+                        </form>
+                        <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
+                    </div>
                     <!-- Form here -->
                 </div>
             </div>
@@ -248,6 +321,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($categories as $category)
                                 <tr>
                                     <td>
                                         <div class="d-flex">
@@ -255,16 +329,16 @@
                                                 <input class="form-check-input" type="checkbox" id="customCheck1" checked>
                                             </div>
                                             <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">Gray Sofa</h6>
+                                            <h6 class="my-auto ms-3">{{$category['name_category']}}</h6>
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge badge-danger badge-sm">Out of Stock</span>
+                                        <span class="badge badge-danger badge-sm">{{$category['status']}}</span>
                                     </td>
-                                    <td class="text-sm">243598234</td>
-                                    <td class="text-sm">0</td>
+                                    <td class="text-sm">{{$category['date_created']}}</td>
+                                    <td class="text-sm">{{$category['date_created']}}</td>
                                     <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#category-detail_{{$category['id_category']}}">
                                             <i class="fas fa-eye text-dark"></i>
                                         </a>
                                         <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
@@ -275,6 +349,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>

@@ -1,5 +1,5 @@
 <?php
 $routes['dashboard'] = 'admin/page';
-$routes['/'] = 'test/test';
-
-
+$routes['/'] = 'categories/test';
+$routes['phan-loai'] = 'categories/page';
+$routes['categories/add'] = 'categories/add_category';
