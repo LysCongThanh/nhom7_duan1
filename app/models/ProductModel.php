@@ -8,8 +8,7 @@ class ProductModel extends Model
     function tableFill()
     {
         return 'books';
-
-    } 
+    }
     function fieldFill()
     {
         return '*';
@@ -24,7 +23,13 @@ class ProductModel extends Model
     {
         $data = $this->db->query("SELECT $this->_field FROM $this->_table")->fetchAll(PDO::FETCH_ASSOC);
         return $data;
-    }      
+    }
+
+    public function getLatestId()
+    {
+        $data = $this->db->query("SELECT MAX(id_book) AS latest_id FROM $this->_table")->fetch(PDO::FETCH_ASSOC);
+        return $data['latest_id'] + 1;
+    }
 
     public function getListProducts()
     {
@@ -37,7 +42,7 @@ class ProductModel extends Model
         $data = $this->db->select($this->_field)->table('books as b')->join('categories as c', 'b.id_category = c.id_category')->where('b.id_category', '=', $id)->get();
         return $data;
     }
-    
+
     public function getDetailProduct($id)
     {
         $data = $this->db->table('books')->where('id_book', '=', $id)->first();
@@ -63,5 +68,4 @@ class ProductModel extends Model
         $data = $this->db->select('COUNT(id) As soLuong')->table('products')->get();
         return $data;
     }
-
 }
