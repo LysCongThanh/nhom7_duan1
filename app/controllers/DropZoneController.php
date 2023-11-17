@@ -91,7 +91,8 @@ class DropZoneController extends Controller
             
             $uploaded_file_names[] = $new_file_name; // Thêm tên file vào mảng uploaded_file_names
         }
-        
+        print_r($uploaded_file_names);
+       
         $id_product = $this->products->getLatestId();
         
         if ($id_product) {

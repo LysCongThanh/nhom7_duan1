@@ -300,7 +300,7 @@
                                         <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                        <a href="" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                             <i class="fas fa-trash text-dark"></i>
                                         </a>
                                     </td>

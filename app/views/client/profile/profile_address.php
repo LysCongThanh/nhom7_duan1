@@ -4,13 +4,13 @@
 	
 	<div class="row">
     <aside class="col-md-3">
-			<nav class="list-group">
-				<a class="list-group-item" href="profile_main.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng quan về tài khoản </font></font></a>
-				<a class="list-group-item active" href="profile_address.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Địa chỉ của tôi</font></font></a>
-				<a class="list-group-item" href="profile_order.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng của tôi</font></font></a>
-				<a class="list-group-item" href="profile_wishlist.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm yêu thích</font></font></a>
-				<a class="list-group-item" href="profile_setting.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cài đặt</font></font></a>
-				<a class="list-group-item" href="home.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đăng xuất</font></font></a>
+            <nav class="list-group">
+				<a class="list-group-item active" href="ca-nhan"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng quan về tài khoản </font></font></a>
+				<a class="list-group-item" href="dia-chi"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Địa chỉ của tôi</font></font></a>
+				<a class="list-group-item" href="don-hang"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng của tôi</font></font></a>
+				<a class="list-group-item" href="yeu-thich"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm yêu thích</font></font></a>
+				<a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cài đặt</font></font></a>
+				<a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đăng xuất</font></font></a>
 			</nav>
 		</aside> 
 		<main class="col-md-9">

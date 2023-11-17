@@ -7,7 +7,7 @@ let myDropzone = new Dropzone("#image-dropzone", {
     dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
     dictDefaultMessage: `<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload`, // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
-    autoProcessQueue: true, // Tắt tự động tải lên
+    autoProcessQueue: false, // Tắt tự động tải lên
 });
 
 let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
@@ -19,7 +19,7 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
     dictDefaultMessage: `<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload`, // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
-    autoProcessQueue: true, // Tắt tự động tải lên
+    autoProcessQueue: false, // Tắt tự động tải lên
 });
 Validator({
     form: '#form',
@@ -65,12 +65,16 @@ Validator({
         sortDescriptionInput.value = sortDescription;
         longDescriptionInput.value = longDescription;
 
-         // Bật tự động xử lý hàng đợi
-        this.processQueue()
+        document.querySelector(this.form).addEventListener('submit', (e) => {
+            e.stopPropagation();
+            myDropzone.processQueue();
+            albumImagesDropzone.processQueue();
+        });
 
         document.querySelector(this.form).submit();
     }
 });
+
 
 Validator({
     form: '#form-add-category',

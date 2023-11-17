@@ -22,7 +22,6 @@
     public function post_product()
     {
         $request = new Request();
-
         if ($request->isPost()) {
             $request->rules([
                 'name' => 'unique:books:name_book'
@@ -33,6 +32,7 @@
             ]);
             
             $validate = $request->validate();
+            
             if (!$validate) {
                 Session::flash('msg', 'Đã có lỗi xảy ra vui lòng kiểm tra lại');
                 Session::flash('errors', $request->errors());

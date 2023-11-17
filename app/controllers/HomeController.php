@@ -15,20 +15,6 @@ class HomeController extends Controller
         $this->render('layouts/client_layout', $this->data);
     }
 
-    public function product_row(){
-        $this->data['content'] = 'client/products/product_row';
-        $this->render('layouts/client_layout', $this->data);
-    }
-
-    public function product_column(){
-        $this->data['content'] = 'client/products/product_column';
-        $this->render('layouts/client_layout', $this->data);
-    }
-    public function product_detail(){
-        $this->data['content'] = 'client/products/product_detail';
-        $this->render('layouts/client_layout', $this->data);
-    }
-
     public function shopping_cart(){
         $this->data['content'] = 'client/products/shopping_cart';
         $this->render('layouts/client_layout', $this->data);
@@ -40,12 +26,12 @@ class HomeController extends Controller
     }
 
     public function contact(){
-        $this->data['content'] = 'client/products/payment';
+        $this->data['content'] = 'client/contact/contact';
         $this->render('layouts/client_layout', $this->data);
     }
 
     public function about(){
-        $this->data['content'] = 'client/products/payment';
+        $this->data['content'] = 'client/about/about';
         $this->render('layouts/client_layout', $this->data);
     }
 
