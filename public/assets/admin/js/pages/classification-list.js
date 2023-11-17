@@ -93,7 +93,7 @@ Validator({
     modal: '#form-modal-add-author',
     rules: [
         Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên tác giả !'),
-        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tiểu sử tác giả !'),
+        Validator.isRequired('.input-group input[name="bio"]', '* Vui lòng nhập tiểu sử tác giả !'),
     ]
 });
 
