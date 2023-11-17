@@ -2,15 +2,14 @@
 // Admin Routings
 $routes['dashboard'] = 'admin/page';
 $routes['/'] = 'categories/test';
-$routes['phan-loai'] = 'categories/page';
+$routes['phan-loai'] = 'classify/page';
 
-$routes['categories/add'] = 'categories/add_category';
-$routes['authors/add'] = 'categories/add_author';
-$routes['publishers/add'] = 'categories/add_publisher';
+$routes['categories/add'] = 'classify/add_category';
+$routes['authors/add'] = 'classify/add_author';
+$routes['publishers/add'] = 'classify/add_publisher';
 $routes['them-san-pham'] = 'product/get_product';
 $routes['danh-sach-san-pham'] = 'product/list';
 $routes['danh-sach-binh-luan'] = 'comments/list';
-$routes['phan-loai'] = 'classify/list';
 
 $routes['categories/edit'] = 'categories/edit_category';
 $routes['authors/edit'] = 'categories/edit_author';
