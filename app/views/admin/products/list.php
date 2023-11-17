@@ -685,13 +685,13 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
+                                    <th>Sản Phẩm</th>
+                                    <th>Loại</th>
+                                    <th>Giá</th>
                                     <th>SKU</th>
-                                    <th>Quantity</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Số Lượng</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Lựa Chọn</th>
                                 </tr>
                             </tfoot>
                         </table>

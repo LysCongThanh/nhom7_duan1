@@ -31,7 +31,7 @@
                         filename: "soft-ui-" + type,
                     };
 
-                    if (type === "csv") {
+                    if (type === "excel") {
                         data.columnDelimiter = "|";
                     }
 

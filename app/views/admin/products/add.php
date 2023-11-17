@@ -168,7 +168,7 @@
 
             <div class="row">
                 <div class="col-12">
-                <form action="" method="post" id="form" class="dropzone" enctype="multipart/form-data">
+                <form action="product/post_product" method="post" id="form" class="dropzone" enctype="multipart/form-data">
                         <div class="nav-tabs-navigation">
                             <div class="card card-custom card-nav-tabs">
                                 <div class="card-header card-header-primary card-header-tab">
