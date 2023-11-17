@@ -1,6 +1,6 @@
 <?php
 
-class CategoriesController extends Controller
+class ClassifyController extends Controller
 {
     public $authors, $publishers, $categories, $data = [];
 
