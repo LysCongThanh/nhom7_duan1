@@ -88,3 +88,4 @@ require_once 'core/Model.php'; // load base model
 require_once 'core/Controller.php'; // load base controller
 require_once 'core/Request.php'; // load request
 require_once 'core/Response.php'; // load response
+require_once 'app/controllers/DropZoneController.php'; // load dropzone controller

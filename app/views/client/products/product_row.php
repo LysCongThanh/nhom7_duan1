@@ -93,7 +93,7 @@
 			<figure class="card card-product-grid">
 				<div class="img-wrap"> 
 					<span class="badge badge-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MỚI</font></font></span>
-					<img src="image/children books/b8.jpg">
+					<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b8.jpg">
 				</div> <!-- img-wrap.// -->
 				<figcaption class="info-wrap">
 						<a href="#" class="title mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; font-weight: bolder;">OverLord 4</font></font></a>

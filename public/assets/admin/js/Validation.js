@@ -77,8 +77,7 @@ function Validator(options) {
                         errorTab = inputElement.closest('.tab-pane');
                     }
                 });
-
-                // Remove 'show' and 'active' classes from all tabs
+// Remove 'show' and 'active' classes from all tabs
                 var allTabs = formElement.querySelectorAll('.tab-pane');
                 allTabs.forEach(function (tab) {
                     tab.classList.remove('show', 'active');
@@ -143,11 +142,11 @@ function Validator(options) {
 
                         return values;
                     }, {});
-                    options.onSubmit(formValues);
+                    options.onSubmit(formValues, e);
                 } else {
                     formElement.submit();
                 }
-            }
+}
         }
 
         options.rules.forEach(function (rule) {
@@ -233,7 +232,7 @@ Validator.isNumber = function (selector, message) {
         selector: selector,
         test: function (value) {          
             if (value.length === 0) {
-                return message || 'Không được bỏ trống';
+return message || 'Không được bỏ trống';
             }
 
             if (isNaN(value)) {

@@ -20,13 +20,13 @@
     <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
     <link href="<?= _WEB_ROOT ?>/public/assets/admin/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link rel="stylesheet" href="<?= _WEB_ROOT ?>/public/assets/admin/css/corporate-ui-dashboard.min.css">
     <link id="pagestyle" href="<?= _WEB_ROOT ?>/public/assets/admin/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
     <!-- Qill js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.css" />
     <link rel="stylesheet" href="<?= _WEB_ROOT ?>/public/assets/admin/css/custom.css">
+    <link rel="stylesheet" href="<?= _WEB_ROOT ?>/public/assets/admin/css/style.css">
     <style>
         .async-hide {
             opacity: 0 !important
@@ -72,6 +72,7 @@
         ga('linker:autoLink', ["2checkout.com", "avangate.com"]);
     </script>
 
+
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -91,4 +92,4 @@
 
 </head>
 
-<body class="g-sidenav-show bg-gray-100">
+<body class="g-sidenav-show  bg-gray-100" id="form-view" data-view="form">

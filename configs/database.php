@@ -2,7 +2,7 @@
  $config['database'] = [
     'host' => 'localhost',
     'user' => 'root',
-    'pass' => '',
-    'db' => 'duan1'
+    'pass' => 'mysql',
+    'db' => 'book_shop'
  ];
 ?>

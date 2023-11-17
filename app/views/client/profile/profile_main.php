@@ -20,7 +20,7 @@
 					
 					<figure class="icontext">
 							<div class="icon">
-								<img class="rounded-circle img-sm border" src="images/avatars/avatar3.jpg">
+								<img class="rounded-circle img-sm border" src="<?= _WEB_ROOT; ?>/public/assets/client/images/avatars/avatar3.jpg">
 							</div>
 							<div class="text">
 								<strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trân Quyền Lực</font></font></strong> <br> 
@@ -76,7 +76,7 @@
 					<div class="row">
 					<div class="col-md-6">
 						<figure class="itemside  mb-3">
-							<div class="aside"><img src="image/children books/b5.png" class="border img-sm"></div>
+							<div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b5.png" class="border img-sm"></div>
 							<figcaption class="info">
 								<time class="text-muted"><i class="fa fa-calendar-alt"></i> 12.09.2019</time>
 								<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sát thủ tốt bụng nhất thế giới</font></font></p>
@@ -86,7 +86,7 @@
 					</div> <!-- col.// -->
 					<div class="col-md-6">
 						<figure class="itemside  mb-3">
-							<div class="aside"><img src="image/children books/b7.png" class="border img-sm"></div>
+							<div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7.png" class="border img-sm"></div>
 							<figcaption class="info">
 								<time class="text-muted"><i class="fa fa-calendar-alt"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12.09.2019</font></font></time>
 								<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Người bạn thời thơ ấu của tôi</font></font></p>
