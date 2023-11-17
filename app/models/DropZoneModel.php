@@ -2,10 +2,10 @@
 
 class DropZoneModel extends Model
 {
-    private $_table = 'authors';
+    private $_table = 'images';
     public function tableFill()
     {
-        return 'authors';
+        return 'images';
     }
 
     public function fieldFill()
@@ -15,7 +15,12 @@ class DropZoneModel extends Model
 
     public function primaryKey()
     {
-        return 'id_author';
+        return 'id_image';
+    }
+
+    public function insertImages($data)
+    {
+        $this->db->table('images')->insert($data);
     }
 
 }
