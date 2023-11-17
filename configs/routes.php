@@ -19,3 +19,4 @@ $routes['categories/delete'] = 'categories/delete_category';
 $routes['authors/delete'] = 'categories/delete_author';
 $routes['publishers/delete'] = 'categories/delete_publisher';
 // Client Routings
+$routes['trang-chu'] = 'home/index';

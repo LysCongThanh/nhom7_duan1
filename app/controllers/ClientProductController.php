@@ -1,5 +1,5 @@
 <?php
-class ClientUserController extends Controller
+class ClientProductController extends Controller
 {
 
     public $data = [];
@@ -7,9 +7,10 @@ class ClientUserController extends Controller
 
      public function page()
         {
-            $this->data['content'] = 'client/home/index';
+            $this->data['content'] = 'client/products/product_row';
             $this->render('layouts/client_layout', $this->data);
         }
+
      
 
     }
