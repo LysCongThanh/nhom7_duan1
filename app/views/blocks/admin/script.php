@@ -12,6 +12,14 @@
 <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe.min.js"></script>
 <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe-ui-default.min.js"></script>
 
+<!-- <script>
+    var alert = new bootstrap.Alert(document.getElementById('alert'));
+
+    setTimeout(() => {
+        alert.close;
+    }, 5000);
+</script> -->
+
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

@@ -1,6 +1,13 @@
 <div class="px-5 py-4 container-fluid">
-    <!-- Form modal group -->
-    <div class="form-add-modal-group">
+    <?= show_message('<div id="alert" class="alert bg-gradient-primary alert-dismissible text-sm  text-white  fade show" role="alert">
+    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+    <span class="alert-text"><strong>', '</strong></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>') ?>
+    <!-- Add modal group -->
+    <div class="add-modal-group">
         <!-- Form add category -->
         <div class="modal fade" id="form-modal-add-category" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-category" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
@@ -21,7 +28,21 @@
                                     <span class="input-group-text">
                                         <i class="fa-solid fa-table"></i>
                                     </span>
-                                    <input type="text" class="form-control" name="category_name" placeholder="Nhập tên danh mục">
+                                    <input type="text" class="form-control" name="name" placeholder="Nhập tên danh mục">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Trạng thái</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <span><i class="far fa-heart"></i></span>
+                                    </div>
+                                    <select class="form-select" name="status">
+                                        <option value="" disabled selected>Chọn trạng thái !</option>
+                                        <option value="Hiện">Hiện</option>
+                                        <option value="Ẩn">Ẩn</option>
+                                    </select>
                                 </div>
                                 <div class="form-message"></div>
                             </div>
@@ -39,10 +60,10 @@
         <div class="modal fade" id="form-modal-add-author" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-author" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
-                    <form action="form.html" method="post" id="form-add-author">
+                    <form action="/authors/add" method="post" id="form-add-author">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-add-author-title">
-                                Tác giả</h6>
+                                Thêm tác giả</h6>
                             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -54,7 +75,7 @@
                                     <span class="input-group-text">
                                         <i class="fa-solid fa-table"></i>
                                     </span>
-                                    <input type="text" class="form-control" name="author_name" placeholder="Nhập tên tác giả">
+                                    <input type="text" class="form-control" name="name" placeholder="Nhập tên tác giả">
                                 </div>
                                 <div class="form-message"></div>
                             </div>
@@ -64,14 +85,13 @@
                                     <span class="input-group-text">
                                         <i class="fa-solid fa-image-portrait"></i>
                                     </span>
-                                    <input type="text" class="form-control" name="author_bio" placeholder="Nhập tên tiểu sử">
+                                    <input type="text" class="form-control" name="bio" placeholder="Nhập tên tiểu sử">
                                 </div>
                                 <div class="form-message"></div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">Thêm danh
-                                mục</button>
+                            <button type="submit" class="btn btn-dark">Thêm tác giả</button>
                             <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
                         </div>
                     </form>
@@ -82,10 +102,10 @@
         <div class="modal fade" id="form-modal-add-publisher" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-author" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
-                    <form action="form.html" method="post" id="form-add-publisher">
+                    <form action="/publishers/add" method="post" id="form-add-publisher">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-add-author-title">
-                                Danh mục sách</h6>
+                                Nhà xuất bản</h6>
                             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -97,7 +117,7 @@
                                     <span class="input-group-text">
                                         <i class="fa-solid fa-table"></i>
                                     </span>
-                                    <input type="text" class="form-control" name="publisher_name" placeholder="Nhập tên nhà xuất bản">
+                                    <input type="text" class="form-control" name="name" placeholder="Nhập tên nhà xuất bản">
                                 </div>
                                 <div class="form-message"></div>
                             </div>
@@ -108,7 +128,7 @@
                                     <span class="input-group-text">
                                         <i class="fa-solid fa-table"></i>
                                     </span>
-                                    <input type="text" class="form-control" name="publisher_address" placeholder="Nhập địa chỉ nhà xuất bản">
+                                    <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ nhà xuất bản">
                                 </div>
                                 <div class="form-message"></div>
                             </div>
@@ -119,20 +139,24 @@
                                     <span class="input-group-text">
                                         <i class="fa-solid fa-table"></i>
                                     </span>
-                                    <input type="text" class="form-control" name="publisher_contact" placeholder="Nhập thông tin nhà xuất bản">
+                                    <input type="text" class="form-control" name="contact" placeholder="Nhập thông tin nhà xuất bản">
                                 </div>
                                 <div class="form-message"></div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">Thêm danh
-                                mục</button>
+                            <button type="submit" class="btn btn-dark">Thêm nhà xuất bản</button>
                             <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Edit modal group -->
+    <div class="edit-modal-group">
+        
     </div>
 
     <!-- Delete modal group -->
@@ -329,22 +353,19 @@
                                                 <input class="form-check-input" type="checkbox" id="customCheck1" checked>
                                             </div>
                                             <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">{{$category['name_category']}}</h6>
+                                            <h6 class="my-auto ms-3">{{$category['name']}}</h6>
                                         </div>
                                     </td>
                                     <td>
                                         <span class="badge badge-danger badge-sm">{{$category['status']}}</span>
                                     </td>
-                                    <td class="text-sm">{{$category['date_created']}}</td>
-                                    <td class="text-sm">{{$category['date_created']}}</td>
+                                    <td class="text-sm">{{$category['created_at']}}</td>
+                                    <td class="text-sm">{{$category['updated_at']}}</td>
                                     <td class="text-sm">
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#category-detail_{{$category['id_category']}}">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                        <a href="" class="me-3" data-bs-toggle="modal" data-bs-target="#category-edit_{{$category['id']}}">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                        <a href data-bs-toggle="modal" data-bs-target="#category-delete_{{$category['id']}}">
                                             <i class="fas fa-trash text-dark"></i>
                                         </a>
                                     </td>
@@ -435,6 +456,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($authors as $author)
                                 <tr>
                                     <td>
                                         <div class="d-flex">
@@ -442,25 +464,25 @@
                                                 <input class="form-check-input" type="checkbox" id="customCheck1" checked>
                                             </div>
                                             <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">Gray Sofa</h6>
+                                            <h6 class="my-auto ms-3">{{$author['name']}}</h6>
                                         </div>
                                     </td>
-                                    <td class="text-sm">243598234</td>
-                                    <td class="text-sm">243598234</td>
-                                    <td class="text-sm">0</td>
+                                    <td class="text-sm text-truncate">{{$author['bio']}}</td>
+                                    <td class="text-sm">{{$author['created_at']}}</td>
+                                    <td class="text-sm">{{$author['updated_at']}}</td>
                                     <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#author-detail_{{$author['id']}}">
                                             <i class="fas fa-eye text-dark"></i>
                                         </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                        <a href="" class="mx-3" data-bs-toggle="modal" data-bs-target="#author-edit_{{$author['id']}}">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#author-delete_{{$author['id']}}">
                                             <i class="fas fa-trash text-dark"></i>
                                         </a>
                                     </td>
                                 </tr>
-
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -547,6 +569,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($publishers as $publisher)
                                 <tr>
                                     <td>
                                         <div class="d-flex">
@@ -554,13 +577,13 @@
                                                 <input class="form-check-input" type="checkbox" id="customCheck1" checked>
                                             </div>
                                             <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">Thành đói bụng</h6>
+                                            <h6 class="my-auto ms-3">{{$publisher['name']}}</h6>
                                         </div>
                                     </td>
-                                    <td class="text-sm">Cần Thơ</td>
-                                    <td class="text-sm">pc06529</td>
-                                    <td class="text-sm">0</td>
-                                    <td class="text-sm">0</td>
+                                    <td class="text-sm">{{$publisher['address']}}</td>
+                                    <td class="text-sm">{{$publisher['contact']}}</td>
+                                    <td class="text-sm">{{$publisher['created_at']}}</td>
+                                    <td class="text-sm">{{$publisher['updated_at']}}</td>
                                     <td class="text-sm">
                                         <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                             <i class="fas fa-eye text-dark"></i>
@@ -573,7 +596,7 @@
                                         </a>
                                     </td>
                                 </tr>
-
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>

@@ -22,4 +22,9 @@ class PublishersModel extends Model {
         $data = $this->db->table('publishers')->orderBy('id', 'DESC')->get();
         return $data;
     }
+
+    public function insertPublisher($data)
+    {
+        $this->db->table('publishers')->insert($data);
+    }
 }

@@ -81,7 +81,8 @@ Validator({
     errorSelector: '.form-message',
     modal: '#form-modal-add-category',
     rules: [
-        Validator.isRequired('.input-group input[name="category_name"]', '* Vui lòng nhập tên danh mục !'),
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên danh mục !'),
+        Validator.isRequired('.input-group select[name="status"]', '* Vui lòng chọn trạng thái !')
     ],
 });
 
@@ -91,8 +92,8 @@ Validator({
     errorSelector: '.form-message',
     modal: '#form-modal-add-author',
     rules: [
-        Validator.isRequired('.input-group input[name="author_name"]', '* Vui lòng nhập tên tác giả !'),
-        Validator.isRequired('.input-group input[name="author_bio"]', '* Vui lòng nhập tiểu sử tác giả !'),
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên tác giả !'),
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tiểu sử tác giả !'),
     ]
 });
 
@@ -102,8 +103,8 @@ Validator({
     errorSelector: '.form-message',
     modal: '#form-modal-add-publisher',
     rules: [
-        Validator.isRequired('.input-group input[name="publisher_name"]', '* Vui lòng nhập tên nhà xuất bản !'),
-        Validator.isRequired('.input-group input[name="publisher_address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
-        Validator.isRequired('.input-group input[name="publisher_contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
     ]
 });

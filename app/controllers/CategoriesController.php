@@ -25,23 +25,89 @@ class CategoriesController extends Controller
         $request = new Request;
         if($request->isPost()) {
             $data = $request->getFields();
-            var_dump($data);
-            // $result = $this->categories->insertCategories($data);
+            $result = $this->categories->insertCategories($data);
 
-            // if ($result) {
-            //     // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
-            //     Session::flash('msg', 'Thêm danh mục thành công');
-            //     $response = new Response();
-            //     $response->redirect('danh-sach-danh-muc');
-            // }
+            if (!$result) {
+                // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
+                Session::flash('msg', 'Thêm danh mục thành công');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
         }
     }
 
     public function add_author() {
-        //handle add author
+        $request = new Request;
+        if($request->isPost()) {
+            $data = $request->getFields();
+            $result = $this->authors->insertAuthor($data);
+
+            if (!$result) {
+                // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
+                Session::flash('msg', 'Thêm tác giả thành công');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
     }
 
     public function add_publisher() {
-        //handle add publisher
+        $request = new Request;
+        if($request->isPost()) {
+            $data = $request->getFields();
+            $result = $this->publishers->insertPublisher($data);
+
+            if (!$result) {
+                // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
+                Session::flash('msg', 'Thêm nhà xuất bản thành công');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
+    }
+
+    public function edit_category() {
+        $request = new Request;
+        if($request->isPost()) {
+            $data = $request->getFields();
+            $result = $this->publishers->insertPublisher($data);
+
+            if (!$result) {
+                // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
+                Session::flash('msg', 'Thêm nhà xuất bản thành công');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
+    }
+
+    public function edit_author() {
+        $request = new Request;
+        if($request->isPost()) {
+            $data = $request->getFields();
+            $result = $this->publishers->insertPublisher($data);
+
+            if (!$result) {
+                // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
+                Session::flash('msg', 'Thêm nhà xuất bản thành công');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
+    }
+
+    public function edit_publisher() {
+        $request = new Request;
+        if($request->isPost()) {
+            $data = $request->getFields();
+            $result = $this->publishers->insertPublisher($data);
+
+            if (!$result) {
+                // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
+                Session::flash('msg', 'Thêm nhà xuất bản thành công');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
     }
 }

@@ -22,4 +22,9 @@ class AuthorsModel extends Model {
         $data = $this->db->table('authors')->orderBy('id', 'DESC')->get();
         return $data;
     }
+
+    public function insertAuthor($data)
+    {
+        $this->db->table('authors')->insert($data);
+    }
 }
