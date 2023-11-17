@@ -1,5 +1,4 @@
 <?php
-
  class ProductController extends Controller 
  {
     public $products, $authors, $publishers, $categories, $data = [];
@@ -55,14 +54,13 @@
                 'price' => $data['price'],
                 'discount_price' => $data['sale_price'],
                 'publication_date' => $data['date_publication'],
-                'ISBN' => $data['ISBN'], 
+                'ISBN' => $data['sku'], 
                 'size' => $data['size'],
                 'num_page' => $data['number_pages']
             );
-            $image = new DropZoneController();
 
-            $convertedData['slug'] = $this->generateSlug($convertedData['name']);
-            $rult = $this->products->insertProduct($convertedData); 
+            
+            $result = $this->products->insertProduct($convertedData); 
 
             if (!$result) {
                 Session::flash('msg', 'Thêm sản phẩm thành công');
@@ -71,6 +69,15 @@
                 
             }
         }
+    }
+
+    public function list()
+    {
+        $this->data['sub_content']['products'] = $this->products->getListProducts();
+        $this->data['sub_content']['title'] = 'Danh Sách Sản Phẩm';
+        $this->data['content'] = 'admin/products/list';
+        $this->data['sub_content']['action'] = 'danh-sach-san-pham';
+        $this->render('layouts/admin_layout', $this->data);
     }
  }
 
