@@ -11,7 +11,7 @@
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe.min.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe-ui-default.min.js"></script>
     <script src="<?= _WEB_ROOT ?>public\assets\admin\js\pages\add-books.js"></script>
-   
+
 
 
     <script>
@@ -41,7 +41,7 @@
         };
     </script>
 
-   
+
 
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
@@ -53,20 +53,12 @@
         }
     </script>
 
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
-    <!-- Main js -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var myView = document.getElementById("form-view");
-            if (myView) {
-                var viewName = myView.getAttribute("data-view");
-                handleView(viewName);
-            }
-        });
-    </script>
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
+<!-- *****************************JS files required for the current page***************************** -->
+<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/pages/{{$script_src}}.js"></script>
 </body>
 
 </html>

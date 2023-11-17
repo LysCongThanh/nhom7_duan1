@@ -14,12 +14,17 @@ class AuthorsModel extends Model {
 
     public function primaryKey()
     {
-        return 'id_author';
+        return 'id';
     }
 
     public function getListAuthors()
     {   
-        $data = $this->db->table('authors')->orderBy('id_author', 'DESC')->get();
+        $data = $this->db->table('authors')->orderBy('id', 'DESC')->get();
         return $data;
+    }
+
+    public function insertAuthor($data)
+    {
+        $this->db->table('authors')->insert($data);
     }
 }

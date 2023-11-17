@@ -14,12 +14,17 @@ class PublishersModel extends Model {
 
     public function primaryKey()
     {
-        return 'id_publisher';
+        return 'id';
     }
 
     public function getListPublishers()
     {   
-        $data = $this->db->table('publishers')->orderBy('id_publisher', 'DESC')->get();
+        $data = $this->db->table('publishers')->orderBy('id', 'DESC')->get();
         return $data;
+    }
+
+    public function insertPublisher($data)
+    {
+        $this->db->table('publishers')->insert($data);
     }
 }

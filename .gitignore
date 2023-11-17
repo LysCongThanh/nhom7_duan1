@@ -1,2 +1,3 @@
-/.idea/
-/public/assets/admin/css/corporate-ui-dashboard.css.map
+.idea
+configs/routes.php
+public/assets/admin/css/corporate-ui-dashboard.css.map
