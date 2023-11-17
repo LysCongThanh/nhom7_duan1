@@ -168,7 +168,7 @@
 
             <div class="row">
                 <div class="col-12">
-                <form action="product/post_product" method="post" id="form" class="dropzone" enctype="multipart/form-data">
+                <form action="" method="post" id="form" class="dropzone" enctype="multipart/form-data">
                         <div class="nav-tabs-navigation">
                             <div class="card card-custom card-nav-tabs">
                                 <div class="card-header card-header-primary card-header-tab">
@@ -346,8 +346,8 @@
                                                                         id="category">
                                                                         <option value="" disabled selected>Chọn tác giả
                                                                         </option>
-                                                                        <option value="book1">Sách 1</option>
-                                                                        <option value="book2">Sách 2</option>
+                                                                        <option value="1">Sách 1</option>
+                                                                        <option value="2">Sách 2</option>
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
                                                                         <button type="button"
@@ -372,8 +372,8 @@
                                                                         <option value="" disabled selected>Chọn nhà xuất
                                                                             bản
                                                                         </option>
-                                                                        <option value="book1">Sách 1</option>
-                                                                        <option value="book2">Sách 2</option>
+                                                                        <option value="1">Sách 1</option>
+                                                                        <option value="2">Sách 2</option>
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
                                                                         <button type="button"
