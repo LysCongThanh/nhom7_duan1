@@ -9,6 +9,8 @@ $routes['them-san-pham'] = 'product/get_product';
 $routes['danh-sach-san-pham'] = 'product/list';
 $routes['danh-sach-binh-luan'] = 'comments/list';
 
+$routes['danh-sach-don-hang'] = 'order/list';
+
 // Client Routings
 $routes['trang-chu'] = 'home/index';
 
@@ -20,7 +22,7 @@ $routes['gioi-thieu'] = 'home/about';
 $routes['lien-he'] = 'home/contact';
 $routes['dia-chi'] = 'profile/address';
 $routes['ca-nhan'] = 'profile/main';
-$routes['don-hang'] = 'profile/orders';
+// $routes['don-hang'] = 'profile/orders';
 $routes['cai-dat'] = 'profile/setting';
 $routes['yeu-thich'] = 'profile/wishlist';
 // $routes['gioi-thieu'] = 'profile/setting';
