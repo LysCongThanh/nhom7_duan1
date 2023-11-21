@@ -6376,6 +6376,7 @@ fieldset:disabled .btn {
 .modal {
   --bs-modal-zindex: 1050;
   --bs-modal-width: 500px;
+  --bs-modal--full-width: 1000px;
   --bs-modal-padding: 1rem;
   --bs-modal-margin: 0.5rem;
   --bs-modal-color: ;
@@ -6395,6 +6396,7 @@ fieldset:disabled .btn {
   --bs-modal-footer-bg: ;
   --bs-modal-footer-border-color: #dde0e5;
   --bs-modal-footer-border-width: 1px;
+  --bs-modal-margin-left: 350px;
   position: fixed;
   top: 0;
   left: 0;
@@ -6538,9 +6540,9 @@ fieldset:disabled .btn {
   }
 
   .modal-dialog {
-    max-width: var(--bs-modal-width);
+    max-width: var(--bs-modal-full-width);
     margin-right: auto;
-    margin-left: auto;
+    margin-left: var(--bs-modal-margin-left);
   }
 
   .modal-sm {

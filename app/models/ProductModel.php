@@ -27,13 +27,17 @@ class ProductModel extends Model
 
     public function getLatestId()
     {
-        $data = $this->db->query("SELECT MAX(id_book) AS latest_id FROM $this->_table")->fetch(PDO::FETCH_ASSOC);
-        return $data['latest_id'] + 1;
+        $data = $this->db->table('books')->orderBy('id_book', 'DESC')->first();
+        return $data['id_book'] + 1;
     }
-
     public function getListProducts()
     {
-        $data = $this->db->select($this->_field)->table('products as p')->join('categories as c', 'p.category_id = c.id')->get();
+        $data = $this->db->select('b.*, c.*, i.name')
+                        ->table('books as b')
+                        ->join('categories as c', 'b.id_category = c.id_category')
+                        ->join('images as i', 'b.id_book = i.id_book')
+                        ->where('i.image_main', '=', 1)
+                        ->get();
         return $data;
     }
 
@@ -45,7 +49,11 @@ class ProductModel extends Model
 
     public function getDetailProduct($id)
     {
-        $data = $this->db->table('books')->where('id_book', '=', $id)->first();
+        $data = $this->db->select($this->_field)->table('books')
+                         ->join('images', 'books.id_book = images.id_book')
+                         ->where('books.id_book', '=', $id)
+                         ->first();
+    
         return $data;
     }
 
@@ -56,12 +64,14 @@ class ProductModel extends Model
 
     public function updateProduct($data, $id)
     {
-        $this->db->table('products')->where('id', '=', $id)->update($data);
+        $this->db->table('books')->where('id', '=', $id)->update($data);
     }
 
     public function deleteProduct($id)
     {
-        $this->db->table('products')->where('id', '=', $id)->delete();
+        $this->db->table('images')->where('id_book', '=', $id)->delete();
+
+        $this->db->table('books')->where('id_book', '=', $id)->delete();
     }
     public function count()
     {

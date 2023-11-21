@@ -9,6 +9,7 @@ trait QueryBuilder
     public $orderBy = '';
     public $innerJoin = '';
     public $insert = '';
+    public $groupBy = '';
 
     public function table($tableName)
     {
@@ -73,6 +74,12 @@ trait QueryBuilder
         return $this;
     }
 
+    public function groupBy($field)
+    {
+        $this->groupBy = " GROUP BY $field";
+        return $this;
+    }
+
     public function select($field = "*")
     {
         $this->selectField = $field;
@@ -119,7 +126,7 @@ trait QueryBuilder
 
     public function first()
     {
-        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->where $this->orderBy $this->limit";
+        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->where $this->groupBy $this->orderBy $this->limit";
         $query = $this->query($sqlQuery);
         $this->resetQuery();
         if (!empty($query)) return $query->fetch(PDO::FETCH_ASSOC);
@@ -127,15 +134,13 @@ trait QueryBuilder
     }
 
     public function get()
-    {
-        // echo $this->innerJoin;
-        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->where  $this->orderBy $this->limit";
-        
-        $query = $this->query($sqlQuery);
-        $this->resetQuery();
-        if (!empty($query)) return $query->fetchAll(PDO::FETCH_ASSOC);
-        return false;
-    }
+{
+    $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->where $this->groupBy $this->orderBy $this->limit";
+    $query = $this->query($sqlQuery);
+    $this->resetQuery();
+    if (!empty($query)) return $query->fetchAll(PDO::FETCH_ASSOC);
+    return false;
+}
 
     public function resetQuery()
     {
@@ -148,5 +153,6 @@ trait QueryBuilder
         $this->orderBy = '';
         $this->innerJoin = '';
         $this->insert = '';
+        $this->groupBy = '';
     }
 }
