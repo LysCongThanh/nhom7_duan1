@@ -75,6 +75,7 @@ if (document.getElementById('authors-list')) {
 
 // Validate 
 
+// Validate form add
 Validator({
     form: '#form-add-category',
     formGroupSelector: '.form-group',
@@ -107,4 +108,12 @@ Validator({
         Validator.isRequired('.input-group input[name="address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
         Validator.isRequired('.input-group input[name="contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
     ]
+});
+
+//Validate a group of edit forms
+
+ValidatorFormsModal({
+    modalGroup: '.edit-modal-group',
+    modalEles: '[id^="category-edit_"]',
+    form: '#form-edit-category',
 });
