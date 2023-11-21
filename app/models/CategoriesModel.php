@@ -35,4 +35,8 @@ class CategoriesModel extends Model {
     {
         $this->db->table('categories')->insert($data);
     }
+
+    public function updateCategory($data, $id) {
+        $this->db->table('categories')->where('id', '=', $id)->update($data);
+    }
 }
