@@ -70,11 +70,12 @@ class ClassifyController extends Controller
         $request = new Request;
         if($request->isPost()) {
             $data = $request->getFields();
-            $result = $this->publishers->insertPublisher($data);
+            $id = $request->getFields()['id'];
+            $result = $this->categories->updateCategory($data, $id);
 
             if (!$result) {
                 // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
-                Session::flash('msg', 'Thêm nhà xuất bản thành công');
+                Session::flash('msg', 'Sửa danh mục thành công');
                 $response = new Response();
                 $response->redirect('phan-loai');
             }
@@ -85,11 +86,12 @@ class ClassifyController extends Controller
         $request = new Request;
         if($request->isPost()) {
             $data = $request->getFields();
-            $result = $this->publishers->insertPublisher($data);
+            $id = $request->getFields()['id'];
+            $result = $this->authors->updateAuthor($data, $id);
 
             if (!$result) {
                 // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
-                Session::flash('msg', 'Thêm nhà xuất bản thành công');
+                Session::flash('msg', 'Sửa tác giả thành công');
                 $response = new Response();
                 $response->redirect('phan-loai');
             }
@@ -100,11 +102,12 @@ class ClassifyController extends Controller
         $request = new Request;
         if($request->isPost()) {
             $data = $request->getFields();
-            $result = $this->publishers->insertPublisher($data);
+            $id = $request->getFields()['id'];
+            $result = $this->publishers->updatePublisher($data, $id);
 
             if (!$result) {
                 // Nếu thành công, lưu thông báo và chuyển hướng đến danh sách danh mục
-                Session::flash('msg', 'Thêm nhà xuất bản thành công');
+                Session::flash('msg', 'Sửa nhà xuất bản thành công');
                 $response = new Response();
                 $response->redirect('phan-loai');
             }
