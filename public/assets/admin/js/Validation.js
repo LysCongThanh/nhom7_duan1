@@ -190,6 +190,24 @@ function Validator(options) {
 
 }
 
+ValidatorFormsModal = (options) => {
+    const modalGroup = document.querySelector(options.modalGroup);
+    const modalElements = modalGroup.querySelectorAll(options.modalEles);
+
+    modalElements.forEach((modalEle, key) => {
+        const formEle = modalEle.querySelector('form').getAttribute('id');
+        Validator({
+            form: `#${formEle}`,
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+
+            rules: [
+                Validator.isRequired('.input-group input[name="name"]', '* Không được bỏ trống !')
+            ],
+        });
+    })
+}
+
 Validator.isRequired = function (selector, message) {
     return {
         selector: selector,
