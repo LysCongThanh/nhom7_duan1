@@ -1,12 +1,13 @@
 <?php
  class ProductController extends Controller 
  {
-    public $products, $authors, $publishers, $categories, $data = [];
+    public $products, $authors, $publishers, $categories, $images, $data = [];
 
     public function __construct()
     {
         $this->products = $this->model('ProductModel');
         $this->categories = $this->model('CategoriesModel');
+        $this->images = $this->model('DropZoneModel');
     }
 
     public function get_product()
@@ -74,10 +75,31 @@
     public function list()
     {
         $this->data['sub_content']['products'] = $this->products->getListProducts();
+        $this->data['sub_content']['images'] = $this->images->getListImages();
         $this->data['sub_content']['title'] = 'Danh Sách Sản Phẩm';
         $this->data['content'] = 'admin/products/list';
         $this->data['sub_content']['action'] = 'danh-sach-san-pham';
         $this->render('layouts/admin_layout', $this->data);
+    }
+
+    public function delete()
+    {  
+        $request = new Request();
+        $id = $request->getFields();
+        $product = $this->model('ProductModel');
+        $product->deleteProduct($id['id']);
+        $response  = new Response();
+        $response->redirect('danh-sach-san-pham');
+    }
+
+    public function detail()
+    {  
+        $request = new Request();
+        $id = $request->getFields();
+        $product = $this->model('ProductModel');
+        $product->deleteProduct($id['id']);
+        $response  = new Response();
+        $response->redirect('danh-sach-san-pham');
     }
  }
 
