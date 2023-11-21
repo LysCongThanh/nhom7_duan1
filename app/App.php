@@ -93,7 +93,7 @@ class App{
             $urlCheck = $this->__controller;
 
         }
-
+      
         if(file_exists('app/controllers/' .($urlCheck). '.php')) {
             require_once 'controllers/' .($urlCheck). '.php';
             // Kiểm tra class $this->__controller tồn tại

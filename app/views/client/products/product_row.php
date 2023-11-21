@@ -78,9 +78,9 @@
 					<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rẻ nhất</font></font></option>
 				</select>
 				<div class="btn-group">
-					<a href="product_row.html" class="btn btn-light active" data-toggle="tooltip" title="" data-original-title="Chế độ hiển thị theo hàng ngang"> 
+					<a href="san-pham" class="btn btn-light active" data-toggle="tooltip" title="" data-original-title="Chế độ hiển thị theo hàng ngang"> 
 						<i class="fa fa-th"></i></a>
-					<a href="product_column.html" class="btn btn-light" data-toggle="tooltip" title="" data-original-title="Chế độ hiển thị theo hàng cột"> 
+					<a href="san-pham-ngang" class="btn btn-light" data-toggle="tooltip" title="" data-original-title="Chế độ hiển thị theo hàng cột"> 
 						<i class="fa fa-bars"></i></a>
 				</div>
 			</div>

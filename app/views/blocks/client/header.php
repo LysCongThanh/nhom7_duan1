@@ -60,7 +60,7 @@
 					<div class="col-xl-4 col-lg-4 col-md-6">
 						<div class="widgets-wrap float-md-right">
 							<div class="widget-header mr-3">
-								<a href="profile_main.html" class="widget-view">
+								<a href="ca-nhan" class="widget-view">
 									<div class="icon-area">
 										<i class="fa fa-user"></i>
 										<span class="notify">0</span>
@@ -78,7 +78,7 @@
 								</a>
 							</div>
 							<div class="widget-header mr-3">
-								<a href="profile_order.html" class="widget-view">
+								<a href="gio-hang" class="widget-view">
 									<div class="icon-area">
 										<i class="fa fa-store"></i>
 									</div>
@@ -123,16 +123,16 @@
 				</li>
 	
 				  <li class="nav-item">
-				   <a class="nav-link" href="home.html">Trang chủ</a>
+				   <a class="nav-link" href="trang-chu">Trang chủ</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="product_row.html">Cửa hàng</a>
+				  <a class="nav-link" href="san-pham">Cửa hàng</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="about us.html">Giới thiệu</a>
+				  <a class="nav-link" href="gioi-thieu">Giới thiệu</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="contact.html">Liên hệ</a>
+				  <a class="nav-link" href="lien-he">Liên hệ</a>
 				</li>
 				
 			  </ul>

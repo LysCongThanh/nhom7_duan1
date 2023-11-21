@@ -148,7 +148,7 @@
 						</dl>
 						<hr>
 						<p class="text-center mb-3">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/misc/payments.png" height="26">
+							<img src="<?= _WEB_ROOT; ?>/public/assets/client/images/misc/payments.png" height="26">
 						</p>
 						
 				</div> <!-- card-body.// -->

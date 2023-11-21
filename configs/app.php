@@ -11,7 +11,7 @@ $config['app'] = [
         // 'danh-sach-nguoi-dung' => AuthMiddleware::class,
         // 'danh-sach-don-hang' => AuthMiddleware::class,
         // 'them-nguoi-dung' => AuthMiddleware::class,
-  
+
     ],
     'globalMiddleware' => [
         ParamsMiddleware::class

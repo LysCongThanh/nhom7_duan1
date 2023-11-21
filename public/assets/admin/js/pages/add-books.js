@@ -1,26 +1,26 @@
 Dropzone.autoDiscover = false;
 let myDropzone = new Dropzone("#image-dropzone", {
-    url: '#', // URL để gửi tệp đã chọn đến máy chủ
-    paramName: "image", // Tên của trường tệp trong yêu cầu POST
+    url: 'dropZone/upLoadImage', // URL để gửi tệp đã chọn đến máy chủ
+    paramName: 'image',
     maxFilesize: 5, // Giới hạn dung lượng tệp (MB)
     addRemoveLinks: true, // Hiển thị nút xóa cho từng tệp
     dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
     dictDefaultMessage: `<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload`, // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
-    autoProcessQueue: true, // Tắt tự động tải lên
+    autoProcessQueue: false, // Tắt tự động tải lên
 });
 
 let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
-    url: "/upload", // URL để gửi tệp đã chọn đến máy chủ
-    paramName: "album_images", // Tên của trường tệp trong yêu cầu POST
+    url: "dropZone/upLoadImages", // URL để gửi tệp đã chọn đến máy chủ
+    paramName: 'album_images', // Tên của trường tệp trong yêu cầu POST
+    uploadMultiple: true, // Tải 1 lần nhiều file
     maxFilesize: 5, // Giới hạn dung lượng tệp (MB)
     addRemoveLinks: true, // Hiển thị nút xóa cho từng tệp
     dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
     dictDefaultMessage: `<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload`, // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
-    autoProcessQueue: true, // Tắt tự động tải lên
+    autoProcessQueue: false, // Tắt tự động tải lên
 });
-
 Validator({
     form: '#form',
     formGroupSelector: '.form-group',
@@ -54,7 +54,7 @@ Validator({
             '* Vui lòng nhập ngày xuất bản !')
     ],
     onSubmit: function (data) {
-        console.log(123);
+        
         // Call API
         const sortDescriptionInput = document.getElementById('sort_description');
         const longDescriptionInput = document.getElementById('long_description');
@@ -65,9 +65,16 @@ Validator({
         sortDescriptionInput.value = sortDescription;
         longDescriptionInput.value = longDescription;
 
+        document.querySelector(this.form).addEventListener('submit', (e) => {
+            e.stopPropagation();
+            myDropzone.processQueue();
+            albumImagesDropzone.processQueue();
+        });
+
         document.querySelector(this.form).submit();
     }
 });
+
 
 Validator({
     form: '#form-add-category',

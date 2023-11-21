@@ -5,12 +5,12 @@
 	<div class="row">
 		<aside class="col-md-3">
 			<nav class="list-group">
-				<a class="list-group-item active" href="profile_main.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng quan về tài khoản </font></font></a>
-				<a class="list-group-item" href="profile_address.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Địa chỉ của tôi</font></font></a>
-				<a class="list-group-item" href="profile_order.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng của tôi</font></font></a>
-				<a class="list-group-item" href="profile_wishlist.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm yêu thích</font></font></a>
-				<a class="list-group-item" href="profile_setting.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cài đặt</font></font></a>
-				<a class="list-group-item" href="home.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đăng xuất</font></font></a>
+				<a class="list-group-item active" href="ca-nhan"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng quan về tài khoản </font></font></a>
+				<a class="list-group-item" href="dia-chi"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Địa chỉ của tôi</font></font></a>
+				<a class="list-group-item" href="don-hang"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng của tôi</font></font></a>
+				<a class="list-group-item" href="yeu-thich"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm yêu thích</font></font></a>
+				<a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cài đặt</font></font></a>
+				<a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đăng xuất</font></font></a>
 			</nav>
 		</aside> 
 		<main class="col-md-9">
@@ -20,7 +20,7 @@
 					
 					<figure class="icontext">
 							<div class="icon">
-								<img class="rounded-circle img-sm border" src="<?= _WEB_ROOT; ?>/public/assets/client/images/avatars/avatar3.jpg">
+								<img class="rounded-circle img-sm border" src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b9.jpg">
 							</div>
 							<div class="text">
 								<strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trân Quyền Lực</font></font></strong> <br> 
@@ -96,7 +96,7 @@
 					</div> <!-- col.// -->
 					<div class="col-md-6">
 						<figure class="itemside mb-3">
-							<div class="aside"><img src="image/children books/b6.png" class="border img-sm"></div>
+							<div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6.png" class="border img-sm"></div>
 							<figcaption class="info">
 								<time class="text-muted"><i class="fa fa-calendar-alt"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12.09.2019</font></font></time>
 								<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OverLord 3</font></font></p>

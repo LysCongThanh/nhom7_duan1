@@ -42,7 +42,7 @@
                     aria-labelledby="form-modal-author__input" aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                         <div class="modal-content">
-                            <form action="form.html" method="post" id="form-add-author">
+                            <form action="" method="post" id="form-add-author">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="form-modal-author__input-title">
                                         Tác giả</h6>
@@ -153,13 +153,13 @@
                 <div class="col-12">
                     <div class="card card-background card-background-after-none align-items-start mt-4 mb-5">
                         <div class="full-background"
-                            style="background-image: url('../assets/img/header-blue-purple.jpg')"></div>
+                            style="background-image: url('<?= _WEB_ROOT; ?>/public/assets/admin/img/header-blue-purple.jpg')"></div>
                         <div class="card-body text-start p-4 w-100">
                             <h3 class="text-white mb-2">Thêm sách</h3>
                             <p class="mb-4 font-weight-semibold">
                                 Check all the advantages and choose the best.
                             </p>
-                            <img src="../assets/img/3d-cube.png" alt="3d-cube"
+                            <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/3d-cube.png" alt="3d-cube"
                                 class="position-absolute top-0 end-1 w-25 max-width-200 mt-n6 d-sm-block d-none" />
                         </div>
                     </div>
@@ -168,7 +168,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <form action="#" method="post" id="form" class="content" enctype="multipart/form-data">
+                <form action="product/post_product" method="post" id="form" class="dropzone" enctype="multipart/form-data">
                         <div class="nav-tabs-navigation">
                             <div class="card card-custom card-nav-tabs">
                                 <div class="card-header card-header-primary card-header-tab">
@@ -200,7 +200,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="tab1" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="tab1" role="tabpanel"
                                             aria-labelledby="tab1-tab">
                                             <div class="card">
                                                 <div class="card-header bg-primary text-center">
@@ -320,8 +320,9 @@
                                                                         <option value="" disabled selected>Chọn danh mục
                                                                             sách
                                                                         </option>
-                                                                        <option value="book1">Sách 1</option>
-                                                                        <option value="book2">Sách 2</option>
+                                                                        @foreach($categories as $category)
+                                                                        <option value="{{$category['id_category']}}">{{$category['name_category']}}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
                                                                         <button type="button"
@@ -345,8 +346,8 @@
                                                                         id="category">
                                                                         <option value="" disabled selected>Chọn tác giả
                                                                         </option>
-                                                                        <option value="book1">Sách 1</option>
-                                                                        <option value="book2">Sách 2</option>
+                                                                        <option value="1">Sách 1</option>
+                                                                        <option value="2">Sách 2</option>
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
                                                                         <button type="button"
@@ -371,8 +372,8 @@
                                                                         <option value="" disabled selected>Chọn nhà xuất
                                                                             bản
                                                                         </option>
-                                                                        <option value="book1">Sách 1</option>
-                                                                        <option value="book2">Sách 2</option>
+                                                                        <option value="1">Sách 1</option>
+                                                                        <option value="2">Sách 2</option>
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
                                                                         <button type="button"
@@ -410,21 +411,10 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="dropzone text-center form-group" id="image-dropzone">
-                                                        <div class="fallback">
-                                                            <div class="input-group">
-                                                                <input id="hidden-image-input" name="image"
-                                                                    type="file" />
-                                                            </div>
                                                             <div class="form-message" id="image-error-message"></div>
-                                                        </div>
                                                     </div>
                                                     <div class="dropzone text-center form-group"
                                                         id="album-images-dropzone">
-                                                        <div class="fallback">
-                                                            <div class="input-group">
-                                                                <input name="album_images" type="file" multiple />
-                                                            </div>
-                                                        </div>
                                                         <div class="form-message"></div>
                                                     </div>
                                                 </div>

@@ -10,5 +10,6 @@ class ClientUserController extends Controller
             $this->data['content'] = 'client/home/index';
             $this->render('layouts/client_layout', $this->data);
         }
+     
 
     }
