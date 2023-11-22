@@ -22,14 +22,18 @@
                                 </svg>
                             </div>
                             <p class="mb-1 text-sm">Người dùng đang hoạt động</p>
-                            <h3 class="mb-0 font-weight-bold">76,000
+                            <h3 class="mb-0 font-weight-bold">{{$count_users['nguoidung']}}
                                 <span class="text-base font-weight-semibold text-success"><svg class="mx-1 mb-2"
                                         width="11" height="6" viewBox="0 0 11 6" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M9.91583 5.83036C10.0289 5.71726 10.0855 5.58333 10.0855 5.42857C10.0855 5.27381 10.0289 5.13988 9.91583 5.02679L5.91583 1.02679C5.80273 0.913691 5.6688 0.857143 5.51404 0.857143C5.35928 0.857143 5.22535 0.913691 5.11226 1.02679L1.11226 5.02679C0.999161 5.13988 0.942614 5.27381 0.942614 5.42857C0.942614 5.58333 0.999161 5.71726 1.11226 5.83036C1.22535 5.94345 1.35928 6 1.51404 6H9.51404C9.6688 6 9.80273 5.94345 9.91583 5.83036Z"
                                             fill="#67C23A" />
-                                    </svg>3.5%</span>
+                                    @if($count_users['nguoidung'] == 0)
+                                    </svg>0%</span>
+                                    @else
+                                    </svg>100%</span>
+                                    @endif
                             </h3>
                         </div>
                     </div>
@@ -50,14 +54,18 @@
                                 </svg>
                             </div>
                             <p class="mb-1 text-sm">Mua Hàng</p>
-                            <h3 class="mb-0 font-weight-bold">4,802
+                            <h3 class="mb-0 font-weight-bold">{{$count_orders['giaodich']}}
                                 <span class="text-base font-weight-semibold text-success"><svg class="mx-1 mb-2"
                                         width="11" height="6" viewBox="0 0 11 6" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M9.91583 5.83036C10.0289 5.71726 10.0855 5.58333 10.0855 5.42857C10.0855 5.27381 10.0289 5.13988 9.91583 5.02679L5.91583 1.02679C5.80273 0.913691 5.6688 0.857143 5.51404 0.857143C5.35928 0.857143 5.22535 0.913691 5.11226 1.02679L1.11226 5.02679C0.999161 5.13988 0.942614 5.27381 0.942614 5.42857C0.942614 5.58333 0.999161 5.71726 1.11226 5.83036C1.22535 5.94345 1.35928 6 1.51404 6H9.51404C9.6688 6 9.80273 5.94345 9.91583 5.83036Z"
                                             fill="#67C23A" />
-                                    </svg>1.3%</span>
+                                    @if($count_orders['giaodich'] == 0)
+                                    </svg>0%</span>
+                                    @else
+                                    </svg>100%</span>
+                                    @endif
                             </h3>
                         </div>
                     </div>
@@ -78,14 +86,18 @@
                                 </svg>
                             </div>
                             <p class="mb-1 text-sm">Đánh Giá</p>
-                            <h3 class="mb-0 font-weight-bold">1.8%
+                            <h3 class="mb-0 font-weight-bold">{{$count_ratings['rating']}}
                                 <span class="text-base font-weight-semibold text-success"><svg class="mx-1 mb-2"
                                         width="11" height="6" viewBox="0 0 11 6" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M9.91583 5.83036C10.0289 5.71726 10.0855 5.58333 10.0855 5.42857C10.0855 5.27381 10.0289 5.13988 9.91583 5.02679L5.91583 1.02679C5.80273 0.913691 5.6688 0.857143 5.51404 0.857143C5.35928 0.857143 5.22535 0.913691 5.11226 1.02679L1.11226 5.02679C0.999161 5.13988 0.942614 5.27381 0.942614 5.42857C0.942614 5.58333 0.999161 5.71726 1.11226 5.83036C1.22535 5.94345 1.35928 6 1.51404 6H9.51404C9.6688 6 9.80273 5.94345 9.91583 5.83036Z"
                                             fill="#67C23A" />
-                                    </svg>33.1%</span>
+                                    @if($count_ratings['rating'] == 0)
+                                    </svg>0%</span>
+                                    @else
+                                    </svg>100%</span>
+                                    @endif
                             </h3>
                         </div>
                     </div>
@@ -291,7 +303,7 @@
                                             </p>
                                         </td>
                                         <td class="px-3 align-middle">
-                                            <span class="text-xs text-secondary font-weight-bold">{{$user['created_ad']}}</span>
+                                            <span class="text-xs text-secondary font-weight-bold">{{$user['created_at']}}</span>
                                         </td>
                                         <td class="align-middle">
                                             <span class="text-sm text-secondary">{{$user['id']}}</span>
