@@ -48,7 +48,8 @@ class DropZoneController extends Controller
         if ($id_product) {
             $data = [
                 'id_book' => $id_product,
-                'name' => $new_file_name
+                'name' => $new_file_name,
+                'image_main' => 1
             ];
             $this->images->insertImages($data);
         }
@@ -60,7 +61,7 @@ class DropZoneController extends Controller
         $request = new Request();
         $data = $request->getFields();
         $files = $data['album_images']; 
-        
+        print_r($data);
         $target_directory = 'public/uploads/products/' . date('Y_m') . '/';
         
         if (!is_dir($target_directory)) {
@@ -91,7 +92,7 @@ class DropZoneController extends Controller
             
             $uploaded_file_names[] = $new_file_name; // Thêm tên file vào mảng uploaded_file_names
         }
-        print_r($uploaded_file_names);
+      
        
         $id_product = $this->products->getLatestId();
         
@@ -99,7 +100,8 @@ class DropZoneController extends Controller
             foreach ($uploaded_file_names as $file_name) {
                 $data = [
                     'id_book' => $id_product,
-                    'name' => $file_name
+                    'name' => $file_name,
+                    'image_main' => 0
                 ];
                 $this->images->insertImages($data);
             }
