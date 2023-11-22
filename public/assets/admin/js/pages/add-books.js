@@ -16,11 +16,14 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     uploadMultiple: true, // Tải 1 lần nhiều file
     maxFilesize: 5, // Giới hạn dung lượng tệp (MB)
     addRemoveLinks: true, // Hiển thị nút xóa cho từng tệp
-    dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
-    dictDefaultMessage: `<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload`, // Tin nhắn mặc định
+    dictRemoveFile: '<i class="fa-solid fa-circle-xmark"></i>', // Chữ hoặc biểu tượng để xóa tệp
+    dictDefaultMessage: '<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload', // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
     autoProcessQueue: false, // Tắt tự động tải lên
-});
+    parallelUploads: 5, // Giảm số lượng tệp tin được tải lên cùng một lúc
+  });
+  
+  
 Validator({
     form: '#form',
     formGroupSelector: '.form-group',
@@ -65,16 +68,18 @@ Validator({
         sortDescriptionInput.value = sortDescription;
         longDescriptionInput.value = longDescription;
 
-        document.querySelector(this.form).addEventListener('submit', (e) => {
-            e.stopPropagation();
-            myDropzone.processQueue();
-            albumImagesDropzone.processQueue();
-        });
-
         document.querySelector(this.form).submit();
     }
 });
 
+
+document.querySelector('#form').addEventListener('submit', (e) => {
+    e.preventDefault(); // Ngăn chặn hành vi submit mặc định
+
+    // Xử lý các thao tác trước khi submit
+    myDropzone.processQueue();
+    albumImagesDropzone.processQueue();
+});
 
 Validator({
     form: '#form-add-category',
@@ -136,6 +141,7 @@ let myToolbar = [
     }],
     ['clean']
 ];
+
 var quillSortEditor = new Quill('#sort-editor', {
     theme: 'snow',
     modules: {
