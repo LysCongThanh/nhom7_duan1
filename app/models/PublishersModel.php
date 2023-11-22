@@ -27,4 +27,9 @@ class PublishersModel extends Model {
     {
         $this->db->table('publishers')->insert($data);
     }
+
+    public function updatePublisher($data, $id)
+    {
+        $this->db->table('publishers')->where('id', '=', $id)->update($data);
+    }
 }

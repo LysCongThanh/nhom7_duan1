@@ -13,7 +13,7 @@
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <!-- Form here -->
-                    <form action="/categories/add" method="post" id="form-add-category">
+                    <form action="classify/add_category" method="post" id="form-add-category">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-add-category-title">
                                 Danh mục sách</h6>
@@ -60,7 +60,7 @@
         <div class="modal fade" id="form-modal-add-author" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-author" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
-                    <form action="/authors/add" method="post" id="form-add-author">
+                    <form action="classify/add_author" method="post" id="form-add-author">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-add-author-title">
                                 Thêm tác giả</h6>
@@ -99,10 +99,10 @@
             </div>
         </div>
         <!-- Form add publisher -->
-        <div class="modal fade" id="form-modal-add-publisher" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-author" aria-hidden="true">
+        <div class="modal fade" id="form-modal-add-publisher" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-publisher" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
-                    <form action="/publishers/add" method="post" id="form-add-publisher">
+                    <form action="classify/add_publisher" method="post" id="form-add-publisher">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-add-author-title">
                                 Nhà xuất bản</h6>
@@ -156,7 +156,160 @@
 
     <!-- Edit modal group -->
     <div class="edit-modal-group">
-        
+<!--        Edit Category-->
+        @foreach($categories as $category)
+        <div class="modal fade" id="category-edit_{{$category['id']}}" tabindex="-1" role="dialog" aria-labelledby="form-modal-edit-category" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                <div class="modal-content">
+                    <!-- Form here -->
+                    <form action="classify/edit_category" method="post" id="form-edit-category_{{$category['id']}}">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="form-modal-add-category-title">
+                                Sửa danh mục</h6>
+                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="id" value="{{$category['id']}}">
+                            <div class="form-group">
+                                <label for="" class="form-label">Tên danh mục</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-table"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="name" placeholder="Nhập tên danh mục" value="{{$category['name']}}">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Trạng thái</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <span><i class="far fa-heart"></i></span>
+                                    </div>
+                                    <select class="form-select" name="status">
+                                        <option value="" disabled>Chọn trạng thái !</option>
+                                        <option value="Hiện" @if(@category['status'] === 'Hiện') selected @endif >Hiện</option>
+                                        <option value="Ẩn" @if(@category['status'] === 'Ẩn') selected @endif >Ẩn</option>
+                                    </select>
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark">Thêm danh
+                                mục</button>
+                            <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+<!--        Edit Author-->
+        @foreach($authors as $author)
+        <div class="modal fade" id="author-edit_{{$author['id']}}" tabindex="-1" role="dialog" aria-labelledby="form-modal-edit-author" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                <div class="modal-content">
+                    <form action="classify/edit_author" method="post" id="form-edit-author_{{$author['id']}}">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="form-modal-add-author-title">
+                                Sửa tác giả</h6>
+                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="id" value="{{$author['id']}}">
+                            <div class="form-group">
+                                <label for="" class="form-label">Tên tác giả</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-table"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="name" value="{{$author['name']}}" placeholder="Nhập tên tác giả">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Tiểu sử tác giả</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-image-portrait"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="bio" value="{{$author['bio']}}" placeholder="Nhập tên tiểu sử">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark">Thêm tác giả</button>
+                            <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+        @foreach($publishers as $publisher)
+        <div class="modal fade" id="publisher-edit_{{$publisher['id']}}" tabindex="-1" role="dialog" aria-labelledby="form-modal-edit-publisher" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                <div class="modal-content">
+                    <form action="classify/edit_publisher" method="post" id="form-edit-author">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="form-modal-add-author-title">
+                                Sửa nhà xuất bản</h6>
+                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="id" value="{{$publisher['id']}}">
+                            <div class="form-group">
+                                <label for="" class="form-label">Tên nhà xuất bản</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-table"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="name" value="{{$publisher['name']}}" placeholder="Nhập tên nhà xuất bản">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="form-label">Địa chỉ nhà xuất bản</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-table"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="address" value="{{$publisher['address']}}" placeholder="Nhập địa chỉ nhà xuất bản">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="form-label">Thông tin nhà xuất bản</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-table"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="contact" value="{{$publisher['contact']}}" placeholder="Nhập thông tin nhà xuất bản">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark">Sửa nhà xuất bản</button>
+                            <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endforeach
     </div>
 
     <!-- Delete modal group -->
@@ -277,6 +430,7 @@
         </div>
     </div>
 
+<!--    List categories-->
     <div class="mt-4 row">
         <div class="col-12">
             <div class="card">
@@ -387,7 +541,7 @@
             </div>
         </div>
     </div>
-
+<!--    List authors-->
     <div class="mt-4 row">
         <div class="col-12">
             <div class="card">
@@ -499,7 +653,7 @@
             </div>
         </div>
     </div>
-
+<!--    List publishers-->
     <div class="mt-4 row">
         <div class="col-12">
             <div class="card">
@@ -588,7 +742,7 @@
                                         <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                             <i class="fas fa-eye text-dark"></i>
                                         </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                        <a href="" class="mx-3" data-bs-toggle="modal" data-bs-target="#publisher-edit_{{$publisher['id']}}">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
                                         <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">

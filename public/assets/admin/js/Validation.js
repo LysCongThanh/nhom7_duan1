@@ -51,7 +51,6 @@ function Validator(options) {
 
     // Lấy element của form cần validate
     var formElement = document.querySelector(options.form);
-
     if (formElement) {
         formElement.onsubmit = function (e) {
             e.preventDefault();
@@ -188,6 +187,22 @@ function Validator(options) {
         });
     }
 
+}
+
+ValidatorFormsModal = (options) => {
+    const modalGroup = document.querySelector(options.modalGroup);
+    const modalElements = modalGroup.querySelectorAll(options.modalEles);
+    modalElements.forEach((modalEle, key) => {
+        const getIdFormElement = modalEle.querySelector('form').getAttribute('id');
+        const getIdModalElement = modalEle.getAttribute('id');
+        Validator({
+            form: `#${getIdFormElement}`,
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            modal: `#${getIdModalElement}`,
+            rules: options.rules,
+        });
+    })
 }
 
 Validator.isRequired = function (selector, message) {

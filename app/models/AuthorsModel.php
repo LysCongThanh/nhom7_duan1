@@ -27,4 +27,9 @@ class AuthorsModel extends Model {
     {
         $this->db->table('authors')->insert($data);
     }
+
+    public function updateAuthor($data, $id)
+    {
+        $this->db->table($this->_table)->where('id', '=', $id)->update($data);
+    }
 }
