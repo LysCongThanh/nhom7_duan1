@@ -1,3 +1,4 @@
+{{print_r($images)}}
 <div class="px-5 py-4 container-fluid">
     <div class="mt-4 row">
         <div class="col-12">
@@ -9,10 +10,12 @@
                             <h3 class="text-white">Kiểm Tra Danh Sách Sản Phẩm</h3>
                             <p class="mb-4 text-white">Xem tất cả các chi tiết về tất cả các đơn đặt hàng của
                                 bạn.</p>
-                            <button class="mb-1 btn btn-dark">
-                                <i class="fas fa-plus me-1"></i>
-                                Thêm Sản Phẩm
-                            </button>
+                            <a href="{{_WEB_ROOT}}them-san-pham">
+                                <button class="mb-1 btn btn-dark">
+                                    <i class="fas fa-plus me-1"></i>
+                                    Thêm Sản Phẩm
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -90,66 +93,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck1" checked>
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">Gray Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$89.53</td>
-                                    <td class="text-sm">243598234</td>
-                                    <td class="text-sm">0</td>
-                                    <td>
-                                        <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                              
+                                @foreach ($products as $product)
+                
                                 <tr>
                                     <td>
                                         <div class="d-flex">
                                             <div class="my-auto form-check">
                                                 <input class="form-check-input" type="checkbox" id="customCheck2" checked>
                                             </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/volant-CUFOVnctleY-unsplash.jpg" alt="pillow">
-                                            <h6 class="my-auto ms-3">Pillow</h6>
+                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['name']}}" alt="pillow">
+                                            <h6 class="my-auto ms-3">{{$product['book_name']}}</h6>
                                         </div>
                                     </td>
-                                    <td class="text-sm">Deco</td>
-                                    <td class="text-sm">$1,869</td>
-                                    <td class="text-sm">877712</td>
-                                    <td class="text-sm">0</td>
+                                    <td class="text-sm">{{$product['name_category']}}</td>
+                                    <td class="text-sm">{{$product['price']}}</td>
+                                    <td class="text-sm">{{$product['ISBN']}}</td>
+                                    <td class="text-sm">{{$product['quantity_inventory']}}</td>
                                     <td>
                                         <span class="badge badge-danger badge-sm">Out of Stock</span>
                                     </td>
                                     <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-original-title="Preview product">
+                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$product['id_book']}}" data-bs-original-title="Preview product">
                                             <i class="fas fa-eye text-dark"></i>
                                         </a>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal{{$product['id_book']}}" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog__products-list modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Modal
-                                                            title</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Chi Tiết sản Phẩm</h5>
                                                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
+                                                    
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-12">
@@ -157,35 +134,24 @@
                                                                     <div class="card-body">
                                                                         <div class="row">
                                                                             <div class="text-center col-lg-6">
-                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-c0JoR_-2x3E-unsplash.jpg" alt="chair">
+                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['name']}}" alt="chair">
                                                                                 <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
+                                                                            
+                                                                                    @foreach ($images[$product['id_book']] as $image)
                                                                                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                                                        <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-c0JoR_-2x3E-unsplash.jpg" itemprop="contentUrl" data-size="600x600">
-                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-c0JoR_-2x3E-unsplash.jpg" alt="Image description" />
+                                                                                        <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/" itemprop="contentUrl" data-size="600x600">
+                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />
                                                                                         </a>
                                                                                     </figure>
-                                                                                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                                                        <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-Kh4tedFdHz4-unsplash.jpg" itemprop="contentUrl" data-size="600x600">
-                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-Kh4tedFdHz4-unsplash.jpg" itemprop="thumbnail" alt="Image description" />
-                                                                                        </a>
-                                                                                    </figure>
-                                                                                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                                                        <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/michael-oxendine-GHCVUtBECuY-unsplash.jpg" itemprop="contentUrl" data-size="600x600">
-                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/assets/admin/img/michael-oxendine-GHCVUtBECuY-unsplash.jpg" itemprop="thumbnail" alt="Image description" />
-                                                                                        </a>
-                                                                                    </figure>
-                                                                                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                                                        <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" itemprop="contentUrl" data-size="600x600">
-                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" itemprop="thumbnail" alt="Image description" />
-                                                                                        </a>
-                                                                                    </figure>
+                                                                                    @endforeach
+                                                                                    
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mx-auto col-lg-6">
                                                                                 <div class="row">
                                                                                     <div class="col-6">
                                                                                         <h3 class="mt-4 mt-lg-0">
-                                                                                            Sofa</h3>
+                                                                                        {{$product['book_name']}}</h3>
                                                                                         <div class="rating">
                                                                                             <i class="fas text-warning fa-star" aria-hidden="true"></i>
                                                                                             <i class="fas text-warning fa-star" aria-hidden="true"></i>
@@ -201,10 +167,10 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <br>
-                                                                                <h6 class="mt-3 mb-0">Price</h6>
-                                                                                <h5>$1,419</h5>
+                                                                                <h6 class="mt-3 mb-0">Giá</h6>
+                                                                                <h5>{{number_format($product['price'])}}VND</h5>
                                                                                 <br>
-                                                                                <label class="mt-4">Description</label>
+                                                                                <label class="mt-4">Mô tả</label>
                                                                                 <ul>
                                                                                     <li>As we live, our hearts
                                                                                         turn colder. </li>
@@ -297,391 +263,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                        <a href="{{_WEB_ROOT}}sua-san-pham?id={{$product['id_book']}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
-                                        <a href="" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                        <a href="{{_WEB_ROOT}}product/delete?id={{$product['id_book']}}" data-bs-toggle="tooltip" data-bs-original-title="Delete product"  onclick="return confirmDeleteProduct(event)">
                                             <i class="fas fa-trash text-dark"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck3">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/kelly-sikkema-Pvse_0mSm6Y-unsplash.jpg" alt="metro-chair">
-                                            <h6 class="my-auto ms-3">Metro Bar Stool</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$99</td>
-                                    <td class="text-sm">0134729</td>
-                                    <td class="text-sm">978</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">in Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck10">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/kam-idris-_HqHX3LBN18-unsplash.jpg" alt="alchimia chair">
-                                            <h6 class="my-auto ms-3">Alchimia Chair</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$2,999</td>
-                                    <td class="text-sm">113213</td>
-                                    <td class="text-sm">0</td>
-                                    <td>
-                                        <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck5">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/collov-home-design-js8AQlw71HA-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">White Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$869</td>
-                                    <td class="text-sm">634729</td>
-                                    <td class="text-sm">725</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">in Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck6">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-Kh4tedFdHz4-unsplash.jpg" alt="beige sofa">
-                                            <h6 class="my-auto ms-3">Beige Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$1,869</td>
-                                    <td class="text-sm">634729</td>
-                                    <td class="text-sm">725</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">in Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck7" checked>
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-c0JoR_-2x3E-unsplash.jpg" alt="cotton sofa">
-                                            <h6 class="my-auto ms-3">Cotton Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$869</td>
-                                    <td class="text-sm">634729</td>
-                                    <td class="text-sm">725</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">In Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck1" checked>
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">Gray Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$89.53</td>
-                                    <td class="text-sm">243598234</td>
-                                    <td class="text-sm">0</td>
-                                    <td>
-                                        <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck2" checked>
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/volant-CUFOVnctleY-unsplash.jpg" alt="pillow">
-                                            <h6 class="my-auto ms-3">Pillow</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Deco</td>
-                                    <td class="text-sm">$1,869</td>
-                                    <td class="text-sm">877712</td>
-                                    <td class="text-sm">0</td>
-                                    <td>
-                                        <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck3">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/kelly-sikkema-Pvse_0mSm6Y-unsplash.jpg" alt="metro-chair">
-                                            <h6 class="my-auto ms-3">Metro Bar Stool</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$99</td>
-                                    <td class="text-sm">0134729</td>
-                                    <td class="text-sm">978</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">in Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck10">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/kam-idris-_HqHX3LBN18-unsplash.jpg" alt="alchimia chair">
-                                            <h6 class="my-auto ms-3">Alchimia Chair</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$2,999</td>
-                                    <td class="text-sm">113213</td>
-                                    <td class="text-sm">0</td>
-                                    <td>
-                                        <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck5">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/collov-home-design-js8AQlw71HA-unsplash.jpg" alt="sofa">
-                                            <h6 class="my-auto ms-3">White Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$869</td>
-                                    <td class="text-sm">634729</td>
-                                    <td class="text-sm">725</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">in Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck6">
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-Kh4tedFdHz4-unsplash.jpg" alt="beige sofa">
-                                            <h6 class="my-auto ms-3">Beige Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$1,869</td>
-                                    <td class="text-sm">634729</td>
-                                    <td class="text-sm">725</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">in Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck7" checked>
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-c0JoR_-2x3E-unsplash.jpg" alt="cotton sofa">
-                                            <h6 class="my-auto ms-3">Cotton Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$869</td>
-                                    <td class="text-sm">634729</td>
-                                    <td class="text-sm">725</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">In Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex">
-                                            <div class="my-auto form-check">
-                                                <input class="form-check-input" type="checkbox" id="customCheck7" checked>
-                                            </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/assets/admin/img/spacejoy-c0JoR_-2x3E-unsplash.jpg" alt="cotton sofa">
-                                            <h6 class="my-auto ms-3">Cotton Sofa</h6>
-                                        </div>
-                                    </td>
-                                    <td class="text-sm">Furniture</td>
-                                    <td class="text-sm">$869</td>
-                                    <td class="text-sm">634729</td>
-                                    <td class="text-sm">725</td>
-                                    <td>
-                                        <span class="badge badge-success badge-sm">In Stock</span>
-                                    </td>
-                                    <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                            <i class="fas fa-user-edit text-dark"></i>
-                                        </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                            <i class="fas fa-trash text-dark"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -733,3 +323,12 @@
         </div>
     </footer>
 </div>
+<script>
+    function confirmDeleteProduct(event) {
+        var confirmation = confirm("Bạn có chắc chắn muốn xóa sản phẩm không?");
+        
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    }
+</script>
