@@ -73,7 +73,7 @@
 
     public function list()
     {
-        $this->data['sub_content']['products'] = $this->products->getListProducts();
+        $this->data['sub_content']['products'] = $this->products->getList();
         $this->data['sub_content']['title'] = 'Danh Sách Sản Phẩm';
         $this->data['content'] = 'admin/products/list';
         $this->data['sub_content']['action'] = 'danh-sach-san-pham';
