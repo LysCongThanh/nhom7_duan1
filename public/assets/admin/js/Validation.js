@@ -51,7 +51,6 @@ function Validator(options) {
 
     // Lấy element của form cần validate
     var formElement = document.querySelector(options.form);
-
     if (formElement) {
         formElement.onsubmit = function (e) {
             e.preventDefault();
@@ -193,17 +192,15 @@ function Validator(options) {
 ValidatorFormsModal = (options) => {
     const modalGroup = document.querySelector(options.modalGroup);
     const modalElements = modalGroup.querySelectorAll(options.modalEles);
-
     modalElements.forEach((modalEle, key) => {
-        const formEle = modalEle.querySelector('form').getAttribute('id');
+        const getIdFormElement = modalEle.querySelector('form').getAttribute('id');
+        const getIdModalElement = modalEle.getAttribute('id');
         Validator({
-            form: `#${formEle}`,
+            form: `#${getIdFormElement}`,
             formGroupSelector: '.form-group',
             errorSelector: '.form-message',
-
-            rules: [
-                Validator.isRequired('.input-group input[name="name"]', '* Không được bỏ trống !')
-            ],
+            modal: `#${getIdModalElement}`,
+            rules: options.rules,
         });
     })
 }

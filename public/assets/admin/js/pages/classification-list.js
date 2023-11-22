@@ -112,8 +112,34 @@ Validator({
 
 //Validate a group of edit forms
 
+// Validate a group of category edit forms
 ValidatorFormsModal({
     modalGroup: '.edit-modal-group',
     modalEles: '[id^="category-edit_"]',
     form: '#form-edit-category',
+    rules: [
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên danh mục !'),
+    ]
 });
+
+// Validate a group of author edit forms
+ValidatorFormsModal({
+    modalGroup: '.edit-modal-group',
+    modalEles: '[id^="author-edit_"]',
+    form: '#form-edit-author',
+    rules: [
+        Validator.isRequired('.input-group input[name="name"]', '* Tên tác giả không được bỏ trống !'),
+        Validator.isRequired('.input-group input[name="bio"]', '* Tiểu sử tác giả không được bỏ trống !')
+    ],
+});
+// Validate a group of publisher edit forms
+ValidatorFormsModal({
+    modalGroup: '.edit-modal-group',
+    modalEles: '[id^="publisher-edit_"]',
+    form: '#form-edit-pulisher',
+    rules: [
+        Validator.isRequired('.input-group input[name="name"]', '* Tên nhà xuất bản không được bỏ trống !'),
+        Validator.isRequired('.input-group input[name="address"]', '* Địa chỉ không được bỏ trống !'),
+        Validator.isRequired('.input-group input[name="contact"]', '* Thông tin liên hệ không được bỏ trống !'),
+    ],
+})

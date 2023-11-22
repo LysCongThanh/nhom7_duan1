@@ -99,7 +99,7 @@
             </div>
         </div>
         <!-- Form add publisher -->
-        <div class="modal fade" id="form-modal-add-publisher" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-author" aria-hidden="true">
+        <div class="modal fade" id="form-modal-add-publisher" tabindex="-1" role="dialog" aria-labelledby="form-modal-add-publisher" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <form action="classify/add_publisher" method="post" id="form-add-publisher">
@@ -213,7 +213,7 @@
         <div class="modal fade" id="author-edit_{{$author['id']}}" tabindex="-1" role="dialog" aria-labelledby="form-modal-edit-author" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
-                    <form action="classify/edit_author" method="post" id="form-edit-author">
+                    <form action="classify/edit_author" method="post" id="form-edit-author_{{$author['id']}}">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-add-author-title">
                                 Sửa tác giả</h6>
