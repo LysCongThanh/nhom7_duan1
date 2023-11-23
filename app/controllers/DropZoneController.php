@@ -43,7 +43,7 @@ class DropZoneController extends Controller
            $this->response->redirect('them-san-pham');
         }
 
-        $id_product = $this->products->getLatestId();
+        $id_product = Session::data('idLatest_product');
 
         if ($id_product) {
             $data = [
