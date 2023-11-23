@@ -314,13 +314,14 @@
 
     <!-- Delete modal group -->
     <div class="delete-modal-group">
+        <!-- Delete category modal group -->
         @foreach($categories as $category)
-        <div class="modal fade" id="category-detail_{{$category['id_category']}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="category-delete_{{$category['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h6 class="modal-title" id="form-modal-add-category-title">
-                            Chi tiết danh mục</h6>
+                            Xóa danh mục</h6>
                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -328,15 +329,15 @@
                     <div class="modal-body">
                         <p class="text-danger">* Bạn có chắc muốn xóa danh mục này ?</p>
                         <ul class="list-group">
-                            <li class="list-group-item"><span class="fw-bold">Tên danh mục: </span>{{$category['name_category']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Tên danh mục: </span>{{$category['name']}}</li>
                             <li class="list-group-item"><span class="fw-bold">Trạng thái: </span>{{$category['status']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$category['date_created']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$category['date_updated']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$category['created_at']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$category['updated_at']}}</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <form method="post" class="m-0 p-0" action="/categories/delete">
-                            <input type="hidden" name="id_category" value="{{$category['id_category']}}">
+                        <form method="post" class="m-0 p-0" action="classify/delete_category">
+                            <input type="hidden" name="id" value="{{$category['id']}}">
                             <button type="submit" class="btn btn-link bg-warning text-dark ml-auto">Xóa</button>
                         </form>
                         <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
@@ -347,13 +348,14 @@
         </div>
         @endforeach
 
-        @foreach($authors as $athor)
-        <div class="modal fade" id="category-detail_{{$category['id_category']}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- Delete author modal group -->
+        @foreach($authors as $author)
+        <div class="modal fade" id="author-delete_{{$author['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h6 class="modal-title" id="form-modal-add-category-title">
-                            Xóa tác giả</h6>
+                             Xóa tác giả</h6>
                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -362,14 +364,14 @@
                         <p class="text-danger">* Bạn có chắc muốn xóa tác giả này ?</p>
                         <ul class="list-group">
                             <li class="list-group-item"><span class="fw-bold">Tên tác giả: </span>{{$author['name']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Trạng thái: </span>{{$category['bio']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$category['date_created']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$category['date_updated']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Tiểu sử: </span>{{$author['bio']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$author['created_at']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$author['updated_at']}}</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <form method="post" class="m-0 p-0" action="/categories/delete">
-                            <input type="hidden" name="id_category" value="{{$category['id_category']}}">
+                        <form method="post" class="m-0 p-0" action="classify/delete_author">
+                            <input type="hidden" name="id" value="{{$author['id']}}">
                             <button type="submit" class="btn btn-link bg-warning text-dark ml-auto">Xóa</button>
                         </form>
                         <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
@@ -380,29 +382,31 @@
         </div>
         @endforeach
 
-        @foreach($categories as $category)
-        <div class="modal fade" id="category-detail_{{$category['id_category']}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- Delete publisher modal group -->
+        @foreach($publishers as $publisher)
+        <div class="modal fade" id="publisher-delete_{{$publisher['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h6 class="modal-title" id="form-modal-add-category-title">
-                            Chi tiết danh mục</h6>
+                            Xóa nhà xuất bản</h6>
                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p class="text-danger">* Bạn có chắc muốn xóa danh mục này ?</p>
+                        <p class="text-danger">* Bạn có chắc muốn xóa nhà xuất bản này ?</p>
                         <ul class="list-group">
-                            <li class="list-group-item"><span class="fw-bold">Tên danh mục: </span>{{$category['name_category']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Trạng thái: </span>{{$category['status']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$category['date_created']}}</li>
-                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$category['date_updated']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Tên nhà xuất bản: </span>{{$publisher['name']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Địa chỉ: </span>{{$publisher['address']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Liên hệ: </span>{{$publisher['contact']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Ngày tạo: </span>{{$publisher['created_at']}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Cập nhật lần cuối: </span>{{$publisher['created_at']}}</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <form method="post" class="m-0 p-0" action="/categories/delete">
-                            <input type="hidden" name="id_category" value="{{$category['id_category']}}">
+                        <form method="post" class="m-0 p-0" action="classify/delete_publisher">
+                            <input type="hidden" name="id" value="{{$publisher['id']}}">
                             <button type="submit" class="btn btn-link bg-warning text-dark ml-auto">Xóa</button>
                         </form>
                         <button type="button" class="btn btn-link text-dark ml-auto" data-bs-dismiss="modal">Đóng</button>
@@ -625,9 +629,6 @@
                                     <td class="text-sm">{{$author['created_at']}}</td>
                                     <td class="text-sm">{{$author['updated_at']}}</td>
                                     <td class="text-sm">
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#author-detail_{{$author['id']}}">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
                                         <a href="" class="mx-3" data-bs-toggle="modal" data-bs-target="#author-edit_{{$author['id']}}">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
@@ -739,13 +740,10 @@
                                     <td class="text-sm">{{$publisher['created_at']}}</td>
                                     <td class="text-sm">{{$publisher['updated_at']}}</td>
                                     <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                            <i class="fas fa-eye text-dark"></i>
-                                        </a>
                                         <a href="" class="mx-3" data-bs-toggle="modal" data-bs-target="#publisher-edit_{{$publisher['id']}}">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#publisher-delete_{{$publisher['id']}}">
                                             <i class="fas fa-trash text-dark"></i>
                                         </a>
                                     </td>

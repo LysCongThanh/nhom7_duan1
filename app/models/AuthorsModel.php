@@ -32,4 +32,8 @@ class AuthorsModel extends Model {
     {
         $this->db->table($this->_table)->where('id', '=', $id)->update($data);
     }
+
+    public function deleteAuthor($id) {
+        $this->db->table($this->_table)->where('id', '=', $id)->delete();
+    }
 }

@@ -32,4 +32,8 @@ class PublishersModel extends Model {
     {
         $this->db->table('publishers')->where('id', '=', $id)->update($data);
     }
+
+    public function deletePublisher($id) {
+        $this->db->table($this->_table)->where('id', '=', $id)->delete();
+    }
 }

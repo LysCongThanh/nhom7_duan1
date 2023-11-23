@@ -39,4 +39,8 @@ class CategoriesModel extends Model {
     public function updateCategory($data, $id) {
         $this->db->table('categories')->where('id', '=', $id)->update($data);
     }
+
+    public function deleteCategory($id) {
+        $this->db->table($this->_table)->where('id', '=', $id)->delete();
+    }
 }
