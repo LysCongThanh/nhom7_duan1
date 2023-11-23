@@ -12,6 +12,7 @@ class AdminController extends Controller
 
     public function index()
     {
+        $this->data['sub_content']['script_src'] = 'chart_dashboard';
         $this->data['sub_content']['best_salers'] = $this->product->best_saler();
         $this->data['sub_content']['count_discounts'] = $this->order->count_discount();
         $this->data['sub_content']['count_order'] = $this->order->count_id();
@@ -37,6 +38,10 @@ class AdminController extends Controller
 
     public function page()
     {
+        $this->data['sub_content']['best_salers'] = $this->product->best_saler();
+        $this->data['sub_content']['count_discounts'] = $this->order->count_discount();
+        $this->data['sub_content']['count_order'] = $this->order->count_id();
+        $this->data['sub_content']['count_price'] = $this->order->count_totalPrice();
         $this->data['sub_content']['title'] = 'Trang Chủ';
         $this->data['content'] = 'admin/home/home';
         $this->render('layouts/admin_layout', $this->data);
