@@ -9,6 +9,7 @@ trait QueryBuilder
     public $orderBy = '';
     public $innerJoin = '';
     public $insert = '';
+    public $groupBy = '';
 
     public function table($tableName)
     {
@@ -139,7 +140,7 @@ trait QueryBuilder
 
     public function groupBy($field)
     {
-        $this->groupBy = " GROUP BY $field";
+        $this->groupBy = "GROUP BY $field";
         return $this;
     }
 
