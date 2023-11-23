@@ -47,7 +47,7 @@ class DropZoneController extends Controller
 
         if ($id_product) {
             $data = [
-                'id_book' => $id_product,
+                'book_id' => $id_product,
                 'name' => $new_file_name,
                 'image_main' => 1
             ];
@@ -99,7 +99,7 @@ class DropZoneController extends Controller
         if ($id_product) {
             foreach ($uploaded_file_names as $file_name) {
                 $data = [
-                    'id_book' => $id_product,
+                    'book_id' => $id_product,
                     'name' => $file_name,
                     'image_main' => 0
                 ];

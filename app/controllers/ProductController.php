@@ -15,6 +15,8 @@
     public function get_product()
     {
         $this->data['sub_content']['categories'] = $this->categories->getList();
+        $this->data['sub_content']['publishers'] = $this->publishers->getList();
+        $this->data['sub_content']['authors'] = $this->authors->getList();
         $this->data['msg'] = Session::flash('msg');
         $this->data['sub_content']['old'] = Session::flash('old');
         $this->data['sub_content']['script_src'] = 'add-books';
@@ -28,7 +30,7 @@
         $request = new Request();
         if ($request->isPost()) {
             $request->rules([
-                'name' => 'unique:books:name_book'
+                'name' => 'unique:books:book_name'
             ]);
 
             $request->messages([
@@ -48,16 +50,15 @@
           
             $data = $request->getFields();
             $convertedData = array(
-                'id_category' => $data['category'],
-                'id_author' => $data['author'],
-                'id_publisher' => $data['publisher'],
+                'category_id' => $data['category'],
+                'author_id' => $data['author'],
+                'publisher_id' => $data['publisher'],
                 'book_name' => $data['name'],
                 'describe_long' => $data['long-editor'],
                 'describe_short' => $data['sort-editor'],
                 'quantity_inventory' => $data['quantity'],
                 'price' => $data['price'],
                 'discount_price' => $data['sale_price'],
-                'publication_date' => $data['date_publication'],
                 'ISBN' => $data['sku'], 
                 'size' => $data['size'],
                 'num_page' => $data['number_pages']

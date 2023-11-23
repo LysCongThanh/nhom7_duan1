@@ -1,7 +1,7 @@
 <?php
 
 class AuthorsModel extends Model {
-    private $_table = 'authors';
+    private $_table = 'authors', $_field = '*';
     public function tableFill()
     {
         return 'authors';
@@ -15,6 +15,12 @@ class AuthorsModel extends Model {
     public function primaryKey()
     {
         return 'id';
+    }
+
+    public function getList()
+    {
+        $data = $this->db->query("SELECT $this->_field FROM $this->_table")->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
     }
 
     public function getListAuthors()

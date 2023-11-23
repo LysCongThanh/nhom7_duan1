@@ -1,7 +1,7 @@
 <?php
 
 class PublishersModel extends Model {
-    private $_table = 'publishers';
+    private $_table = 'publishers', $_field = '*';
     public function tableFill()
     {
         return 'publishers';
@@ -15,6 +15,12 @@ class PublishersModel extends Model {
     public function primaryKey()
     {
         return 'id';
+    }
+
+    public function getList()
+    {
+        $data = $this->db->query("SELECT $this->_field FROM $this->_table")->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
     }
 
     public function getListPublishers()

@@ -34,8 +34,8 @@ class ProductModel extends Model
     {
         $data = $this->db->select('b.*, c.*, i.name')
                         ->table('books as b')
-                        ->join('categories as c', 'b.id_category = c.id_category')
-                        ->join('images as i', 'b.id_book = i.id_book')
+                        ->join('categories as c', 'b.category_id = c.id')
+                        ->join('images as i', 'b.id = i.book_id')
                         ->where('i.image_main', '=', 1)
                         ->get();
         return $data;
