@@ -27,8 +27,8 @@ class ProductModel extends Model
 
     public function getLatestId()
     {
-        $data = $this->db->table('books')->orderBy('id_book', 'DESC')->first();
-        return $data['id_book'] + 1;
+        $data = $this->db->table('books')->lastId();
+        return $data;
     }
     public function getListProducts()
     {
