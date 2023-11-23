@@ -110,4 +110,46 @@ class ClassifyController extends Controller
             }
         }
     }
+
+    public function delete_category() {
+        $request = new Request;
+        if($request->isPost()) {
+            $id = $request->getFields()['id'];
+            $result = $this->categories->deleteCategory($id);
+
+            if(!$result) {
+                Session::flash('msg', 'Xóa danh mục thành công !');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
+    }
+
+    public function delete_author() {
+        $request = new Request;
+        if($request->isPost()) {
+            $id = $request->getFields()['id'];
+            $result = $this->authors->deleteAuthor($id);
+
+            if(!$result) {
+                Session::flash('msg', 'Xóa tác giả thành công !');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
+    }
+
+    public function delete_publisher() {
+        $request = new Request;
+        if($request->isPost()) {
+            $id = $request->getFields()['id'];
+            $result = $this->publishers->deletePublisher($id);
+
+            if(!$result) {
+                Session::flash('msg', 'Xóa nhà xuất bản thành công !');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
+        }
+    }
 }
