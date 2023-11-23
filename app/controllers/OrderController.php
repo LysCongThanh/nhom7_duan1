@@ -18,9 +18,9 @@ class OrderController extends Controller{
 
     public function orders_detail(){
         $request = new Request();
-        $id = $request->getFields();
+        $id = $request->getFields()['id'];
         
-        $this->data['sub_content']['detail'] = $this->orders->getOrdersDetail($id['id']);
+        $this->data['sub_content']['detail'] = $this->orders->getOrdersDetail($id);
         $this->data['sub_content']['title'] = 'Đơn Hàng Chi Tiết';
         $this->data['content'] = 'admin/orders/detail';
         $this->render('layouts/admin_layout', $this->data);
