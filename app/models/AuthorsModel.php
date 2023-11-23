@@ -27,4 +27,8 @@ class AuthorsModel extends Model {
     {
         $this->db->table('authors')->insert($data);
     }
+
+    public function deleteAuthor($id) {
+        $this->db->table($this->_table)->where('id', '=', $id)->delete();
+    }
 }
