@@ -65,13 +65,13 @@
             );
 
             
-            $result = $this->products->insertProduct($convertedData); 
+            $result = $this->products->insertProduct($convertedData);
+            Session::data('idLatest_product', $this->products->getLatestId());
 
             if (!$result) {
                 Session::flash('msg', 'Thêm sản phẩm thành công');
                 $response  = new Response();
                 $response->redirect('danh-sach-san-pham');
-                
             }
         }
     }
