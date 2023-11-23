@@ -105,7 +105,7 @@
                                             <h6 class="my-auto ms-3">{{$product['book_name']}}</h6>
                                         </div>
                                     </td>
-                                    <td class="text-sm">{{$product['name_category']}}</td>
+                                    <td class="text-sm">{{$product['name']}}</td>
                                     <td class="text-sm">{{$product['price']}}</td>
                                     <td class="text-sm">{{$product['ISBN']}}</td>
                                     <td class="text-sm">{{$product['quantity_inventory']}}</td>
@@ -113,10 +113,10 @@
                                         <span class="badge badge-danger badge-sm">Out of Stock</span>
                                     </td>
                                     <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$product['id_book']}}" data-bs-original-title="Preview product">
+                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$product['id']}}" data-bs-original-title="Preview product">
                                             <i class="fas fa-eye text-dark"></i>
                                         </a>
-                                        <div class="modal fade" id="exampleModal{{$product['id_book']}}" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal{{$product['id']}}" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog__products-list modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -136,7 +136,7 @@
                                                                                 <img class="mx-auto shadow-lg w-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['name']}}" alt="chair">
                                                                                 <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
                                                                             
-                                                                                    @foreach ($images[$product['id_book']] as $image)
+                                                                                    @foreach ($images[$product['id']] as $image)
                                                                                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                                                                         <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/" itemprop="contentUrl" data-size="600x600">
                                                                                             <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />
@@ -262,10 +262,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="{{_WEB_ROOT}}sua-san-pham?id={{$product['id_book']}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                        <a href="{{_WEB_ROOT}}sua-san-pham?id={{$product['id']}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
-                                        <a href="{{_WEB_ROOT}}product/delete?id={{$product['id_book']}}" data-bs-toggle="tooltip" data-bs-original-title="Delete product"  onclick="return confirmDeleteProduct(event)">
+                                        <a href="{{_WEB_ROOT}}product/delete?id={{$product['id']}}" data-bs-toggle="tooltip" data-bs-original-title="Delete product"  onclick="return confirmDeleteProduct(event)">
                                             <i class="fas fa-trash text-dark"></i>
                                         </a>
                                     </td>
