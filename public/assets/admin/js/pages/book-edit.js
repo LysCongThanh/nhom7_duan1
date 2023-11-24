@@ -21,32 +21,18 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
     autoProcessQueue: false, // Tắt tự động tải lên
     parallelUploads: 5, // Giảm số lượng tệp tin được tải lên cùng một lúc
-  });
+});
 
-// Trích xuất các đường dẫn ảnh từ chuỗi JSON
-var imageUrlsElement = document.getElementById('imageUrls');
-var imageUrlsData = imageUrlsElement.getAttribute('data-values');
-var imageUrls = JSON.parse(imageUrlsData);
+albumImagesDropzone.emit('addedfile', { name: '1700811848_65605448d899b.png', size: 23 });
+albumImagesDropzone.on('addedfile', function (file) {
+    // Lấy đường dẫn hình ảnh từ server hoặc từ file.input.dataUrl (nếu có)
+    var imageURL = `http://localhost:33/public/uploads/products/2023_11/1700811848_65605448d899b.png`;
 
-// Thêm các ảnh vào Dropzone
-// Lấy đường dẫn gốc của trang hiện tại
-var baseUrl = window.location.origin;
-
-// Thêm các ảnh vào Dropzone
-for (var key in imageUrls) {
-  if (imageUrls.hasOwnProperty(key)) {
-    var images = imageUrls[key];
-    images.forEach(function(image) {
-      var imageUrl = baseUrl + '/public/uploads/products/2023_11/' + image.name;
-
-      // Tạo một mock file từ đường dẫn ảnh
-      var mockFile = { name: imageUrl, size: 12345 };
-
-      // Thêm mock file vào Dropzone
-      albumImagesDropzone.addFile(mockFile);
-    });
-  }
-}
+    // Thiết lập đường dẫn hình ảnh cho thumbnail
+    albumImagesDropzone.emit('thumbnail', {
+        file: { name: '1700811848_65605448d899b.png', size: 12345 },
+        dataUrl: `http://localhost:33/public/uploads/products/2023_11/1700811848_65605448d899b.png`
+});
 
 Validator({
     form: '#form-edit-product',

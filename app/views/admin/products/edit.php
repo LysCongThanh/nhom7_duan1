@@ -3,6 +3,9 @@
     display: none;
 }
 </style> -->
+<script>
+    var albumImages = <?= json_encode($images) ?>
+</script>
 <?php
     echo json_encode($images);
 ?>
@@ -141,6 +144,7 @@
 
 
     </div>
+
     <form action="" method="post" id="form-edit-product" enctype="multipart/form-data">
         <div class="mt-10 row">
             <div class="col-lg-6">
@@ -228,7 +232,7 @@
                                     <p class="text-xs form-text text-muted ms-1 d-inline">
                                         (không bắt buộc)
                                     </p>
-                                    <div id="sort-editor" class="sort-editor">{{html_entity_decode($product['describe_long'])}}</div>
+                                    <div id="sort-editor" class="sort-editor">{{html_entity_decode($product['describe_short'])}}</div>
                                     <div class="input-group">
                                         <input type="hidden" name="sort-editor" class="form-control" id="sort_description">
                                     </div>
@@ -240,7 +244,7 @@
                                     <p class="text-xs form-text text-muted ms-1 d-inline">
                                         (không bắt buộc)
                                     </p>
-                                    <div id="long-editor" class="long-editor">{{html_entity_decode($product['describe_short'])}}</div>
+                                    <div id="long-editor" class="long-editor">{{html_entity_decode($product['describe_long'])}}</div>
                                     <div class="input-group">
                                         <input type="hidden" name="long-editor" class="form-control" id="long_description">
                                     </div>
@@ -277,10 +281,14 @@
                                             <i class="fas fa-graduation-cap"></i>
                                         </span>
                                         <select class="form-select" name="category" id="category">
-                                            <option value="{{$product['name_category']}}" disabled selected>{{$product['name_category']}}
+                                            <option value="0" disabled selected>Chọn danh mục
                                             </option>
                                             @foreach($categories as $category)
-                                            <option value="{{$category['id_category']}}">{{$category['name_category']}}</option>
+                                            <option
+                                                    @if($category['id'] === $product['category_id'])
+                                                    selected
+                                                    @endif
+                                                    value="{{$category['id']}}">{{$category['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -298,9 +306,14 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fa-solid fa-feather"></i></span>
                                         <select class="form-select" name="author" id="author">
-                                            <option value="{{$product['name_author']}}" disabled selected>{{$product['name_author']}}
-                                                @foreach($authors as $author)
-                                            <option value="{{$author['id_author']}}">{{$author['name_author']}}</option>
+                                            <option value="0" disabled selected> Chọn tác giả</option>
+
+                                            @foreach($authors as $author)
+                                            <option
+                                                    @if($author['id'] === $product['author_id'])
+                                                    selected
+                                                    @endif
+                                                    value="{{$author['id']}}">{{$author['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -318,9 +331,14 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fa-solid fa-print"></i></span>
                                         <select class="form-select" name="publisher" id="publisher">
-                                            <option value="{{$product['name_publisher']}}" disabled selected>{{$product['name_publisher']}}
-                                                @foreach($publishers as $publisher)
-                                            <option value="{{$publisher['id_publisher']}}">{{$publisher['name_publisher']}}</option>
+                                            <option value="0" disabled selected>Chọn nhà xuất bản</option>
+
+                                            @foreach($publishers as $publisher)
+                                            <option
+                                                    @if($publisher['id'] === $product['publisher_id'])
+                                                    selected
+                                                    @endif
+                                                    value="{{$publisher['id']}}">{{$publisher['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -417,7 +435,7 @@
                         <div class="row my-images">
                             <div class="col-md-12">
                                 <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
-                                    @foreach ($images[$product['id_book']] as $image)
+                                    @foreach ($images[$product['book_id']] as $image)
                                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                         <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/" itemprop="contentUrl" data-size="600x600">
                                             <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />

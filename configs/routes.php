@@ -6,6 +6,7 @@ $routes['dashboard'] = 'admin/page';
 $routes['phan-loai'] = 'classify/page';
 
 $routes['them-san-pham'] = 'product/get_product';
+$routes['sua-san-pham'] = 'product/update';
 $routes['danh-sach-san-pham'] = 'product/list';
 $routes['danh-sach-binh-luan'] = 'comments/list';
 

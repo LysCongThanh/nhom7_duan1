@@ -49,15 +49,25 @@ class ProductModel extends Model
 
     public function getDetailProduct($id)
     {
-        $data = $this->db->select('b.*, c.*, i.name')
+        $data = $this->db->select('
+        b.*, 
+        c.*, 
+        i.name, 
+        b.id as book_id,
+        c.name as category_name, 
+        a.name as author_name, 
+        p.name as publisher_name, 
+        c.id as category_id,
+        a.id as author_id,
+        p.id as publisher_id')
                         ->table('books as b')
-                        ->join('categories as c', 'b.id_category = c.id_category')
-                        ->join('images as i', 'b.id_book = i.id_book')
-                        // ->join('authors as a', 'a.id_author = b.id_author')
-                        // ->join('publishers as p', 'p.id_publisher = b.id_publisher')
+                        ->join('categories as c', 'b.category_id = c.id')
+                        ->join('images as i', 'b.id = i.book_id')
+                        ->join('authors as a', 'a.id = b.author_id')
+                        ->join('publishers as p', 'p.id = b.publisher_id')
                         ->where('i.image_main', '=', 1)
-                        ->where('b.id_book', '=', $id)
-                         ->first();
+                        ->where('b.id', '=', $id)
+                        ->first();
     
         return $data;
     }
