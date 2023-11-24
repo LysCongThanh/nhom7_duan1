@@ -83,7 +83,7 @@ document.querySelector('#form').addEventListener('submit', function (event) {
             albumImagesDropzone.processQueue();
         })
         .then(() => {
-        // ---------------
+            window.location.href = 'danh-sach-san-pham';
         })
         .catch(error => {
             console.error('Lỗi khi gửi form:', error);

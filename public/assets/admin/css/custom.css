@@ -123,3 +123,12 @@ select:hover {
     margin: 0;
     border-radius: 0 !important;
 }
+
+.main-img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.modal-dialog__products-list {
+    width: 700px;
+}

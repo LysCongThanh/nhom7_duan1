@@ -94,7 +94,7 @@ class DropZoneController extends Controller
         }
       
        
-        $id_product = $this->products->getLatestId();
+        $id_product = Session::data('idLatest_product');
         
         if ($id_product) {
             foreach ($uploaded_file_names as $file_name) {

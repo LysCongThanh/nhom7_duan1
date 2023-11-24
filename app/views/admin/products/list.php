@@ -88,6 +88,8 @@
                                     <th class="text-xs">SKU</th>
                                     <th class="text-xs">Số Lượng</th>
                                     <th class="text-xs">Trạng Thái</th>
+                                    <th class="text-xs">Ngày tạo</th>
+                                    <th class="text-xs">Cập nhật lần cuối</th>
                                     <th class="text-xs">Lựa Chọn</th>
                                 </tr>
                             </thead>
@@ -101,22 +103,24 @@
                                             <div class="my-auto form-check">
                                                 <input class="form-check-input" type="checkbox" id="customCheck2" checked>
                                             </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['name']}}" alt="pillow">
+                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['image_name']}}" alt="pillow">
                                             <h6 class="my-auto ms-3">{{$product['book_name']}}</h6>
                                         </div>
                                     </td>
-                                    <td class="text-sm">{{$product['name']}}</td>
+                                    <td class="text-sm">{{$product['name_category']}}</td>
                                     <td class="text-sm">{{$product['price']}}</td>
                                     <td class="text-sm">{{$product['ISBN']}}</td>
                                     <td class="text-sm">{{$product['quantity_inventory']}}</td>
                                     <td>
-                                        <span class="badge badge-danger badge-sm">Out of Stock</span>
+                                        <span class="badge badge-danger badge-sm">{{$product['status']}}</span>
                                     </td>
+                                    <td class="text-sm">{{$product['created_at']}}</td>
+                                    <td class="text-sm">{{$product['updated_at']}}</td>
                                     <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$product['id']}}" data-bs-original-title="Preview product">
+                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$product['book_id']}}" data-bs-original-title="Preview product">
                                             <i class="fas fa-eye text-dark"></i>
                                         </a>
-                                        <div class="modal fade" id="exampleModal{{$product['id']}}" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal{{$product['book_id']}}" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog__products-list modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -133,10 +137,9 @@
                                                                     <div class="card-body">
                                                                         <div class="row">
                                                                             <div class="text-center col-lg-6">
-                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['name']}}" alt="chair">
+                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg main-img" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['image_name']}}" alt="chair">
                                                                                 <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
-                                                                            
-                                                                                    @foreach ($images[$product['id']] as $image)
+                                                                                    @foreach ($images[$product['book_id']] as $image)
                                                                                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                                                                         <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/" itemprop="contentUrl" data-size="600x600">
                                                                                             <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />
