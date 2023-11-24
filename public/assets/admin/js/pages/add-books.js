@@ -74,19 +74,31 @@ Validator({
 document.querySelector('#form').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    fetch(form.action, {
+    const formPromise = fetch(form.action, {
         method: form.method,
         body: new FormData(form)
-    })
-        .then(() => {
-            myDropzone.processQueue();
-            albumImagesDropzone.processQueue();
-        })
+    });
+
+    const dropzonePromise = new Promise((resolve) => {
+        myDropzone.on('queuecomplete', () => {
+            resolve();
+        });
+        myDropzone.processQueue();
+    });
+
+    const albumImagesDropzonePromise = new Promise((resolve) => {
+        albumImagesDropzone.on('queuecomplete', () => {
+            resolve();
+        });
+        albumImagesDropzone.processQueue();
+    });
+
+    Promise.all([formPromise, dropzonePromise, albumImagesDropzonePromise])
         .then(() => {
             window.location.href = 'danh-sach-san-pham';
         })
         .catch(error => {
-            console.error('Lỗi khi gửi form:', error);
+            console.error('Lỗi khi gửi form hoặc Dropzones:', error);
         });
 });
 
