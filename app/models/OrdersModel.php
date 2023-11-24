@@ -21,13 +21,24 @@ class OrdersModel extends Model {
 
     public function getOrders()
     {
-        $data = $this->db->select($this->_field)->table('orders as o')->join('users as u', 'o.user_id = u.id')->get();
+        $data = $this->db->select('der.id as ID, der.created_at as dayOrder,der.status as trangThai, u.name as name_book, b.book_name as name_user,od.quantity as soLuong, der.total_price as total')
+        ->table('orders as der')
+        ->join('users as u', 'der.user_id = u.id')
+        ->join('orders_detail as od', 'od.order_id=der.id')
+        ->join('books as b', 'b.id=od.book_id')
+        ->get();
         return $data;
     }
 
     public function getOrdersDetail($id)
     {
-        $data = $this->db->table('orders_detail')->where('id', '=', $id)->first();
+        $data = $this->db->select('od.id as ID, o.created_at as dayOrder, b.book_name as name_book, o.status as trangThai, u.name as name_user, u.email as email, b.price as price, o.total_price as total')
+        ->table('orders_detail as od')
+        ->join('orders as o', 'o.id=od.order_id')
+        ->join('users as u', 'u.id=o.user_id')
+        ->join('books as b', 'b.id=od.book_id')
+        ->where('od.id', '=', $id)
+        ->first();
         return $data;
     }
 

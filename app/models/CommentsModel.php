@@ -13,5 +13,11 @@ class CommentsModel extends Model {
     function primaryKey(){
         return 'id';
     }
-
+    
+    public function ratings(){
+        $data = $this->db->select('COUNT(cm.user_id) as rating')
+        ->table('comments as cm')
+        ->first();
+        return $data;
+    }
 }

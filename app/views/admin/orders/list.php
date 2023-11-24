@@ -100,18 +100,18 @@
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="customCheck10">
                           </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">{{$order['id']}}</p>
+                          <p class="mb-0 text-xs font-weight-bold ms-2">{{$order['ID']}}</p>
                         </div>
                       </td>
                       <td class="font-weight-bold">
-                        <span class="my-2 text-xs">{{$order['created_at']}}</span>
+                        <span class="my-2 text-xs">{{$order['dayOrder']}}</span>
                       </td>
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <button disabled
                             class="mb-0 btn btn-icon-only btn-rounded btn-outline-dark me-2 btn-sm d-flex align-items-center justify-content-center"><i
                               class="fas fa-undo" aria-hidden="true"></i></button>
-                          <span>{{$order['status']}}</span>
+                          <span>{{$order['trangThai']}}</span>
                         </div>
                       </td>
                       <td class="text-xs font-weight-bold">
@@ -119,21 +119,21 @@
                           <div class="d-flex align-items-center">
                             <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/ivana-squares.jpg" class="avatar avatar-xs rounded-circle me-2"
                               alt="user image">
-                            <span>{{$order['name']}}</span>
+                            <span>{{$order['name_user']}}</span>
                           </div>
                         </div>
                       </td>
                       <td class="text-xs font-weight-bold">
                         <span class="my-2 text-xs">
-                          Watter Bottle India
-                          <span class="text-secondary ms-2"> x 3 </span>
+                          {{$order['name_book']}}
+                          <span class="text-secondary ms-2"> x {{$order['soLuong']}} </span>
                         </span>
                       </td>
                       <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">{{$order['total_price']}}</span>
+                        <span class="my-2 text-xs">{{$order['total']}}</span>
                       </td>
                       <td>
-                        <form action="{{_WEB_ROOT}}chi-tiet-don-hang?id={{$order['id']}}" method="post">
+                        <form action="chi-tiet-don-hang?id={{$order['ID']}}" method="post">
                           <button type="submit" class="btn bg-gradient-primary btn-sm">Xem Chi Tiết</button>
                         </form>
                       </td>

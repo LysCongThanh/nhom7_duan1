@@ -637,21 +637,21 @@
                                                             class="avatar me-3" alt="image">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{$best_salers['name']}}</h6>
+                                                        <h6 class="mb-0 text-sm">{{$key['name']}}</h6>
                                                         <p class="mb-0 text-sm font-weight-bold text-secondary"><span
                                                                 class="text-success">2.421</span> đơn đặt hàng</p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="mb-0 text-sm font-weight-bold">${{$best_salers['total']}}</p>
+                                                <p class="mb-0 text-sm font-weight-bold">${{$key['total']}}</p>
                                             </td>
                                             <td class="text-sm text-center align-middle">
-                                                <p class="mb-0 text-sm font-weight-bold">${{$best_salers['view']}}</p>
+                                                <p class="mb-0 text-sm font-weight-bold">${{$key['view']}}</p>
                                             </td>
                                             <td class="align-middle text-end">
                                                 <div class="px-3 py-1 d-flex justify-content-center align-items-center">
-                                                    <p class="mb-0 text-sm font-weight-bold">{{$best_salers['comment']}}</p>
+                                                    <p class="mb-0 text-sm font-weight-bold">{{$key['comment']}}</p>
                                                     <i class="mt-1 text-sm ni ni-bold-up ms-1 text-danger"></i>
                                                 </div>
                                             </td>

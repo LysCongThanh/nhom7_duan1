@@ -15,8 +15,14 @@ class UsersModel extends Model {
         return 'id';
     }
 
-    function getListUsers(){
+    public function getListUsers(){
         $data = $this->db->query("SELECT $this->_field FROM $this->_table")->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
+    //Đếm số người dùng
+    public function count_users(){
+        $data = $this->db->select('COUNT(us.id) AS nguoidung')->table('users AS us')->first();
         return $data;
     }
 }
