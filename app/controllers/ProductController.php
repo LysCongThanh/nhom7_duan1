@@ -92,8 +92,8 @@
         $this->data['sub_content']['product'] = $this->products->getDetailProduct($id);
         $this->data['sub_content']['images'] = $this->images->getListImages();
         $this->data['sub_content']['categories'] = $this->categories->getList();
-        // $this->data['sub_content']['authors'] = $this->authors->getList();
-        // $this->data['sub_content']['publishers'] = $this->publishers->getList();
+         $this->data['sub_content']['authors'] = $this->authors->getList();
+         $this->data['sub_content']['publishers'] = $this->publishers->getList();
         $this->data['sub_content']['title'] = 'Sửa Sản Phẩm';
         $this->data['content'] = 'admin/products/edit';
         $this->render('layouts/admin_layout', $this->data);
