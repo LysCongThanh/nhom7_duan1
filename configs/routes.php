@@ -8,6 +8,7 @@ $routes['phan-loai'] = 'classify/page';
 $routes['them-san-pham'] = 'product/get_product';
 $routes['danh-sach-san-pham'] = 'product/list';
 $routes['danh-sach-binh-luan'] = 'comments/list';
+$routes['sua-san-pham'] = 'product/update';
 
 // Client Routings
 $routes['trang-chu'] = 'home/index';
