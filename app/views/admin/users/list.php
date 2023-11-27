@@ -262,20 +262,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    @foreach($users as $user)
+                                <tr>
                                         <td>
                                             <div class="px-2 py-1 d-flex">
                                                 <div>
-                                                    <img src="../assets/img/bruce-mars.jpg" class="avatar avatar-sm me-3"
+                                                    <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/bruce-mars.jpg" class="avatar avatar-sm me-3"
                                                         alt="avatar image">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">John Michael</h6>
+                                                    <h6 class="mb-0 text-sm">{{$user['name']}}</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="mb-0 text-sm text-secondary">Quản Trị Viên</p>
+                                            <p class="mb-0 text-sm text-secondary">{{$user['role']}}</p>
                                         </td>
                                         <td>
                                             <span class="badge badge-dot me-4">
@@ -286,152 +287,17 @@
                                         <td class="text-sm align-middle">
                                             <p class="mb-0 text-sm text-secondary"><a href="/cdn-cgi/l/email-protection"
                                                     class="__cf_email__"
-                                                    data-cfemail="a9c3c6c1c7e9cadbccc8ddc0dfcc84ddc0c487cac6c4">[email&#160;protected]</a>
+                                                    data-cfemail="a9c3c6c1c7e9cadbccc8ddc0dfcc84ddc0c487cac6c4">{{$user['email']}}</a>
                                             </p>
                                         </td>
                                         <td class="px-3 align-middle">
-                                            <span class="text-xs text-secondary font-weight-bold">23/04/18</span>
+                                            <span class="text-xs text-secondary font-weight-bold">{{$user['created_at']}}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <span class="text-sm text-secondary">43431</span>
+                                            <span class="text-sm text-secondary">{{$user['id']}}</span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="px-2 py-1 d-flex">
-                                                <div>
-                                                    <img src="../assets/img/team-1.jpg" class="avatar avatar-sm me-3"
-                                                        alt="avatar image">
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="mb-0 text-sm text-secondary">Người Dùng</p>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-dot me-4">
-                                                <i class="bg-info"></i>
-                                                <span class="text-xs text-dark">Tích Cực</span>
-                                            </span>
-                                        </td>
-                                        <td class="text-sm align-middle">
-                                            <p class="mb-0 text-sm text-secondary"><a href="/cdn-cgi/l/email-protection"
-                                                    class="__cf_email__"
-                                                    data-cfemail="244548415c456447564145504d524109504d490a474b49">[email&#160;protected]</a>
-                                            </p>
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            <span class="text-xs text-secondary font-weight-bold">11/01/19</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="text-sm text-secondary">93021</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="px-2 py-1 d-flex">
-                                                <div>
-                                                    <img src="../assets/img/team-6.jpg" class="avatar avatar-sm me-3"
-                                                        alt="avatar image">
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="mb-0 text-sm text-secondary">Người Dùng</p>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-dot me-4">
-                                                <i class="bg-dark"></i>
-                                                <span class="text-xs text-dark">Bình Thường</span>
-                                            </span>
-                                        </td>
-                                        <td class="text-sm align-middle">
-                                            <p class="mb-0 text-sm text-secondary"><a href="/cdn-cgi/l/email-protection"
-                                                    class="__cf_email__"
-                                                    data-cfemail="f39f928681969d87b390819692879a8596de879a9edd909c9e">[email&#160;protected]</a>
-                                            </p>
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            <span class="text-xs text-secondary font-weight-bold">19/09/17</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="text-sm text-secondary">10392</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="px-2 py-1 d-flex">
-                                                <div>
-                                                    <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3"
-                                                        alt="avatar image">
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Michael Levi</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="mb-0 text-sm text-secondary">Người Dùng</p>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-dot me-4">
-                                                <i class="bg-danger"></i>
-                                                <span class="text-xs text-dark">Tiêu Cực</span>
-                                            </span>
-                                        </td>
-                                        <td class="text-sm align-middle">
-                                            <p class="mb-0 text-sm text-secondary"><a href="/cdn-cgi/l/email-protection"
-                                                    class="__cf_email__"
-                                                    data-cfemail="ea878389828b8f86aa89988f8b9e839c8fc79e8387c4898587">[email&#160;protected]</a>
-                                            </p>
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            <span class="text-xs text-secondary font-weight-bold">24/12/08</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="text-sm text-secondary">34002</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="px-2 py-1 d-flex">
-                                                <div>
-                                                    <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3"
-                                                        alt="avatar image">
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Richard Gran</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="mb-0 text-sm text-secondary">Quản Trị Viên</p>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-dot me-4">
-                                                <i class="bg-info"></i>
-                                                <span class="text-xs text-dark">Tích Cực</span>
-                                            </span>
-                                        </td>
-                                        <td class="text-sm align-middle">
-                                            <p class="mb-0 text-sm text-secondary"><a href="/cdn-cgi/l/email-protection"
-                                                    class="__cf_email__"
-                                                    data-cfemail="295b404a41485b4d694a5b4c485d405f4c045d4044074a4644">[email&#160;protected]</a>
-                                            </p>
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            <span class="text-xs text-secondary font-weight-bold">04/10/21</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="text-sm text-secondary">91879</span>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
