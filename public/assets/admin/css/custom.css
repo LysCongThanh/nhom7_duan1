@@ -132,3 +132,7 @@ select:hover {
 .modal-dialog__products-list {
     width: 700px;
 }
+
+.modal-upload-image-custom-width {
+    max-width: 700px;
+}

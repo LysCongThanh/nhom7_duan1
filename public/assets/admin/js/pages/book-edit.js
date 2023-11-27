@@ -8,6 +8,22 @@ let myDropzone = new Dropzone("#image-dropzone", {
     dictDefaultMessage: `<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload`, // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
     autoProcessQueue: false, // Tắt tự động tải lên
+
+    init: function() {
+        // Show image
+        let mockFile = {
+            name: imagesOfProduct.imageMain.name,
+            size: 123,
+        }
+
+        this.displayExistingFile(mockFile, `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`);
+
+        // Remove
+        this.on("removedfile", function (file) {
+            console.log(file);
+        });
+    }
+
 });
 
 let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
@@ -21,32 +37,20 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
     autoProcessQueue: false, // Tắt tự động tải lên
     parallelUploads: 5, // Giảm số lượng tệp tin được tải lên cùng một lúc
+
+    init: function() {
+        imagesOfProduct.albumImages.forEach((image) => {
+            let mockFile = {
+                name: image.name,
+                size: 123
+            }
+
+            this.displayExistingFile(mockFile, `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`);
+        })
+    }
+
   });
 
-// Trích xuất các đường dẫn ảnh từ chuỗi JSON
-var imageUrlsElement = document.getElementById('imageUrls');
-var imageUrlsData = imageUrlsElement.getAttribute('data-values');
-var imageUrls = JSON.parse(imageUrlsData);
-
-// Thêm các ảnh vào Dropzone
-// Lấy đường dẫn gốc của trang hiện tại
-var baseUrl = window.location.origin;
-
-// Thêm các ảnh vào Dropzone
-for (var key in imageUrls) {
-  if (imageUrls.hasOwnProperty(key)) {
-    var images = imageUrls[key];
-    images.forEach(function(image) {
-      var imageUrl = baseUrl + '/public/uploads/products/2023_11/' + image.name;
-
-      // Tạo một mock file từ đường dẫn ảnh
-      var mockFile = { name: imageUrl, size: 12345 };
-
-      // Thêm mock file vào Dropzone
-      albumImagesDropzone.addFile(mockFile);
-    });
-  }
-}
 
 Validator({
     form: '#form-edit-product',
@@ -86,21 +90,13 @@ Validator({
     }
 });
 
-// document.querySelector('#form').addEventListener('submit', (e) => {
-//     e.preventDefault(); // Ngăn chặn hành vi submit mặc định
-
-//     // Xử lý các thao tác trước khi submit
-//     myDropzone.processQueue();
-//     albumImagesDropzone.processQueue();
-// });
-
 Validator({
     form: '#form-add-category',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
     modal: '#form-modal-category__input',
     rules: [
-        Validator.isRequired('.input-group input[name="category_name"]', '* Vui lòng nhập tên danh mục !'),
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên danh mục !'),
     ]
 });
 
@@ -110,13 +106,9 @@ Validator({
     errorSelector: '.form-message',
 
     rules: [
-        Validator.isRequired('.input-group input[name="author_name"]', '* Vui lòng nhập tên tác giả !'),
-        Validator.isRequired('.input-group input[name="author_bio"]', '* Vui lòng nhập tiểu sử !')
-    ],
-
-    onSubmit: function (value) {
-        console.log(value);
-    }
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên tác giả !'),
+        Validator.isRequired('.input-group input[name="bio"]', '* Vui lòng nhập tiểu sử !')
+    ]
 });
 
 Validator({
@@ -125,9 +117,9 @@ Validator({
     errorSelector: '.form-message',
 
     rules: [
-        Validator.isRequired('.input-group input[name="publisher_name"]', '* Vui lòng nhập tên nhà xuất bản !'),
-        Validator.isRequired('.input-group input[name="publisher_address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
-        Validator.isRequired('.input-group input[name="publisher_contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
     ]
 });
 
@@ -167,3 +159,6 @@ var quillLongEditor = new Quill('#long-editor', {
         toolbar: myToolbar
     }
 });
+
+quillSortEditor.clipboard.dangerouslyPasteHTML(shortDescription);
+quillLongEditor.clipboard.dangerouslyPasteHTML(longDescription);

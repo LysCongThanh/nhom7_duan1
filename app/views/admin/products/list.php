@@ -265,7 +265,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="{{_WEB_ROOT}}sua-san-pham?id={{$product['id']}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                        <a href="{{_WEB_ROOT}}sua-san-pham?id={{$product['book_id']}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
                                         <a href="{{_WEB_ROOT}}product/delete?id={{$product['id']}}" data-bs-toggle="tooltip" data-bs-original-title="Delete product"  onclick="return confirmDeleteProduct(event)">
