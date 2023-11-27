@@ -11,17 +11,31 @@ let myDropzone = new Dropzone("#image-dropzone", {
 
     init: function() {
         // Show image
-        let mockFile = {
-            name: imagesOfProduct.imageMain.name,
-            size: 123,
+        if(imagesOfProduct.imageMain) {
+            let mockFile = {
+                name: imagesOfProduct.imageMain.name,
+                size: 123,
+            }
+
+            this.displayExistingFile(mockFile, `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`);
+
+            // Remove
+            this.on("removedfile", function () {
+                let file = imagesOfProduct.imageMain;
+
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.open("POST", "http://localhost:33/dropzone/removeImage", true);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        // Xử lý phản hồi từ server
+                        console.log(xhttp);
+                    }
+                };
+                xhttp.send(JSON.stringify(file));
+            });
         }
-
-        this.displayExistingFile(mockFile, `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`);
-
-        // Remove
-        this.on("removedfile", function (file) {
-            fetch('dropzone/removeImage')
-        });
     }
 
 });
@@ -56,25 +70,33 @@ Validator({
     form: '#form-edit-product',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
-
     rules: [
-        Validator.isRequired('.input-group input[name="name"]', "* Vui lòng nhập tên sách !"),
-        Validator.isRequired('.input-group input[name="quantity"]', "* Vui lòng nhập số lượng sách !"),
-        Validator.isRequired('.input-group input[name="number_pages"]', '* Vui lòng nhập trang sách !'),
-        Validator.isRequired('.input-group input[name="size"]', '* Vui lòng nhập kích thước sách !'),
-        Validator.isRequired('.input-group select[name="category"]', '* Vui lòng chọn danh mục sách !'),
-        Validator.isRequired('.input-group select[name="author"]', '* Vui lòng chọn tác giả !'),
-        Validator.isRequired('.input-group select[name="publisher"]', '* Vui lòng chọn nhà xuất bản !'),
-        Validator.isRequired('.input-group input[name="date_publication"]', '* Vui lòng nhập ngày xuất bản !'),
-        Validator.isRequired('.input-group input[name="price"]', '* Vui lòng nhập giá sách !'),
-        Validator.isNumber('.input-group input[name="price"]', '* Vui lòng nhập số !'),
-        Validator.isDiscount('.input-group input[name="sale_price"]', () => {
-            return document.querySelector('.input-group input[name="price"]').value;
-        })
-    
+        Validator.isRequired('.input-group input[name="name"]', 'Không được bỏ trống'),
+        Validator.isRequired('.input-group input[name="sku"]',
+            '* Không được bỏ trống !'),
+        Validator.isRequired('.input-group input[name="quantity"]',
+            '* Vui lòng nhập số lượng sách'),
+        Validator.isRequired('.input-group input[name="number_pages"]',
+            '* Vui lòng nhập số trang sách'),
+        Validator.isRequired('.input-group input[name="size"]',
+            '* Vui lòng nhập kích thước sách'),
+        Validator.isNumber('.input-group input[name="price"]'),
+        Validator.isDiscount(
+            '.input-group input[name="sale_price"]',
+            function () {
+                return document.querySelector('.input-group input[name="price"]').value;
+            },
+            '* Giảm giá nhỏ hơn giá gốc !'
+        ),
+        Validator.isRequired('.input-group select[name="category"]',
+            '* Vui lòng chọn danh mục !'),
+        Validator.isRequired('.input-group select[name="author"]',
+            '* Vui lòng chọn tác giả !'),
+        Validator.isRequired('.input-group select[name="publisher"]',
+            '* Vui lòng chọn nhà xuất bản !'),
     ],
     onSubmit: function (data) {
-        
+
         // Call API
         const sortDescriptionInput = document.getElementById('sort_description');
         const longDescriptionInput = document.getElementById('long_description');
@@ -85,7 +107,6 @@ Validator({
         sortDescriptionInput.value = sortDescription;
         longDescriptionInput.value = longDescription;
 
-        document.querySelector(this.form).submit();
     }
 });
 

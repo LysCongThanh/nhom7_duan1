@@ -52,12 +52,10 @@ class ProductModel extends Model
         $data = $this->db->select('
         b.*, 
         b.id as book_id,
-        c.*, 
-        i.name
+        c.* 
         ')
                          ->table('books as b')
                          ->join('categories as c', 'b.category_id = c.id')
-                         ->join('images as i', 'b.id = i.book_id')
                          ->join('authors as a', 'a.id = b.author_id')
                          ->join('publishers as p', 'p.id = b.publisher_id')
                          ->where('b.id', '=', $id)

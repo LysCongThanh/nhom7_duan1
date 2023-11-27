@@ -43,16 +43,17 @@ class DropZoneModel extends Model
         return $result;
     }
 
-    public function getImageDetail($id) {
+    public function getImageMain($id) {
         $data = $this->db->select($this->_field)
                          ->table($this->_table)
                          ->where('book_id', '=', $id)
+                         ->where('image_main', '=', 1)
                          ->first();
 
         return $data;
     }
 
-    public function getAlbumImagesDetail($id) {
+    public function getAlbumImages($id) {
         $data = $this->db->select($this->_field)
                          ->table($this->_table)
                          ->where('book_id', '=', $id)

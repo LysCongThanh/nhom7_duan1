@@ -283,7 +283,11 @@
                                         <select class="form-select" name="category" id="category">
                                             <option disabled selected>Vui lòng chọn danh mục</option>
                                             @foreach($categories as $category)
-                                            <option <?php ($category['id'] === $product['category_id']) ? 'selected' : '' ?> value="{{$category['id']}}">{{$category['name']}}</option>
+                                            <option
+                                                    @if($category['id'] === $product['category_id'])
+                                                    selected
+                                                    @endif
+                                                    value="{{$category['id']}}">{{$category['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -303,7 +307,11 @@
                                         <select class="form-select" name="author" id="author">
                                             <option disabled selected>Vui lòng chọn tác giả</option>
                                             @foreach($authors as $author)
-                                            <option <?php ($author['id'] === $product['author_id']) ? 'selected' : '' ?> value="{{$author['id']}}">{{$author['name']}}</option>
+                                            <option
+                                                    @if($author['id'] === $product['author_id'])
+                                                    selected
+                                                    @endif
+                                                    value="{{$author['id']}}">{{$author['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -323,7 +331,11 @@
                                         <select class="form-select" name="publisher" id="publisher">
                                             <option disabled selected>Vui lòng chọn nhà xuất bản</option>
                                             @foreach($publishers as $publisher)
-                                            <option <?php ($publisher['id'] === $product['publisher_id']) ? 'selected' : '' ?> value="{{$publisher['id']}}">{{$publisher['name']}}</option>
+                                            <option
+                                                    @if($publisher['id'] === $product['publisher_id'])
+                                                    selected
+                                                    @endif
+                                                    value="{{$publisher['id']}}">{{$publisher['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -402,7 +414,14 @@
 
                         <div class="row my-images">
                             <div class="col-12">
-                                <img class="mt-3 shadow-lg w-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['name']}}" alt="product_image">
+                                @if($imageMain != false)
+                                <img class="mt-3 shadow-lg w-100 border-radius-lg"
+                                     src="{{_WEB_ROOT}}/public/uploads/products/2023_11/{{$imageMain['name']}}"
+                                     alt="product_image">
+                                @endif
+                                @if($imageMain === false)
+                                <p class="text-danger text-center">Trống !</p>
+                                @endif
                             </div>
                             <div class="mt-4 col-12">
                             </div>
@@ -410,13 +429,18 @@
                         <div class="row my-images">
                             <div class="col-md-12">
                                 <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
-                                    @foreach ($images[$product['book_id']] as $image)
-                                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/" itemprop="contentUrl" data-size="600x600">
-                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />
+                                    @if($albumImages != false)
+                                    @foreach ($albumImages as $image)
+                                    <figure class="gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a href="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" itemprop="contentUrl" data-size="600x600" data-lightbox="gallery">
+                                            <img class="shadow max-height-100 border-radius-lg img-fluid" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />
                                         </a>
                                     </figure>
                                     @endforeach
+                                    @endif
+                                    @if($albumImages === false)
+                                    <p class="text-danger text-center">Album Trống !</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

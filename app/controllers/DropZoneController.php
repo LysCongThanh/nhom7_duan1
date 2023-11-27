@@ -110,8 +110,15 @@ class DropZoneController extends Controller
 
     public function removeImage() {
         $request = new Request;
-
+        if($request->isPost()) {
+            $json = file_get_contents("php://input");
+            $data = json_decode($json, true);
+            $this->images->removeImage($data['id']);
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'success', 'message' => 'Image removed successfully']);
+        }
     }
+
 }
 
 ?>

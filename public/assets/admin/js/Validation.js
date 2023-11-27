@@ -150,8 +150,6 @@ function Validator(options) {
 
         options.rules.forEach(function (rule) {
 
-            console.log(document.querySelector(rule.selector));
-
             if (Array.isArray(selectorRules[rule.selector])) {
                 selectorRules[rule.selector].push(rule.test);
             } else {
