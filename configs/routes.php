@@ -12,6 +12,8 @@ $routes['danh-sach-binh-luan'] = 'comments/list';
 $routes['danh-sach-don-hang'] = 'order/list';
 $routes['chi-tiet-don-hang'] = 'order/orders_detail';
 
+$routes['danh-sach-nguoi-dung'] = 'users/list';
+
 // Client Routings
 $routes['trang-chu'] = 'home/index';
 
