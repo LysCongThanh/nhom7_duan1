@@ -20,7 +20,7 @@ let myDropzone = new Dropzone("#image-dropzone", {
 
         // Remove
         this.on("removedfile", function (file) {
-            console.log(file);
+            fetch('dropzone/removeImage')
         });
     }
 
@@ -56,7 +56,6 @@ Validator({
     form: '#form-edit-product',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
-    tabs: '#form-edit-tab',
 
     rules: [
         Validator.isRequired('.input-group input[name="name"]', "* Vui lòng nhập tên sách !"),

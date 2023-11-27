@@ -60,6 +60,10 @@ class DropZoneModel extends Model
                          ->get();
         return $data;
     }
+
+    public function removeImage($id) {
+        $this->db->table($this->_table)->where('id', '=', $id)->delete();
+    }
 }
 
 ?>

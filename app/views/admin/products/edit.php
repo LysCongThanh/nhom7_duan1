@@ -227,7 +227,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 h-100">
-                                <div class="form-group">
+                                <div class="">
                                     <label class="mt-4">Mô Tả Ngắn</label>
                                     <p class="text-xs form-text text-muted ms-1 d-inline">
                                         (không bắt buộc)
@@ -239,7 +239,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-12 h-100">
-                                <div class="form-group">
+                                <div class="">
                                     <label class="mt-4">Mô tả chi tiết</label>
                                     <p class="text-xs form-text text-muted ms-1 d-inline">
                                         (không bắt buộc)
@@ -283,11 +283,7 @@
                                         <select class="form-select" name="category" id="category">
                                             <option disabled selected>Vui lòng chọn danh mục</option>
                                             @foreach($categories as $category)
-                                            <option
-                                                    @if($category['id'] === $product['category_id'])
-                                                    selected
-                                                    @endif
-                                                    value="{{$category['id']}}">{{$category['name']}}</option>
+                                            <option <?php ($category['id'] === $product['category_id']) ? 'selected' : '' ?> value="{{$category['id']}}">{{$category['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -307,11 +303,7 @@
                                         <select class="form-select" name="author" id="author">
                                             <option disabled selected>Vui lòng chọn tác giả</option>
                                             @foreach($authors as $author)
-                                            <option
-                                                    @if($author['id'] === $product['author_id'])
-                                                    selected
-                                                    @endif
-                                                    value="{{$author['id']}}">{{$author['name']}}</option>
+                                            <option <?php ($author['id'] === $product['author_id']) ? 'selected' : '' ?> value="{{$author['id']}}">{{$author['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -331,11 +323,7 @@
                                         <select class="form-select" name="publisher" id="publisher">
                                             <option disabled selected>Vui lòng chọn nhà xuất bản</option>
                                             @foreach($publishers as $publisher)
-                                            <option
-                                                    @if($publisher['id'] === $product['publisher_id'])
-                                                    selected
-                                                    @endif
-                                                    value="{{$publisher['id']}}">{{$publisher['name']}}</option>
+                                            <option <?php ($publisher['id'] === $product['publisher_id']) ? 'selected' : '' ?> value="{{$publisher['id']}}">{{$publisher['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -392,11 +380,11 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
-                                                    <div class="dropzone text-center form-group" id="image-dropzone">
+                                                <form action="">
+                                                    <div class="dropzone text-center" id="image-dropzone">
                                                         <div class="form-message" id="image-error-message"></div>
                                                     </div>
-                                                    <div class="dropzone text-center form-group" id="album-images-dropzone">
+                                                    <div class="dropzone text-center" id="album-images-dropzone">
                                                         <div class="form-message"></div>
                                                     </div>
                                                 </form>

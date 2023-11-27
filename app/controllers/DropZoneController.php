@@ -107,6 +107,11 @@ class DropZoneController extends Controller
             }
         }
     }
+
+    public function removeImage() {
+        $request = new Request;
+
+    }
 }
 
 ?>
