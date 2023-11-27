@@ -9,6 +9,8 @@ trait QueryBuilder
     public $orderBy = '';
     public $innerJoin = '';
     public $insert = '';
+    public $leftJoin = '';
+    public $groupBy = '';
 
     public function table($tableName)
     {
@@ -73,6 +75,12 @@ trait QueryBuilder
         return $this;
     }
 
+    public function groupBy($field)
+    {
+        $this->groupBy = " GROUP BY $field";
+        return $this;
+    }
+
     public function select($field = "*")
     {
         $this->selectField = $field;
@@ -83,6 +91,12 @@ trait QueryBuilder
     public function join($tableName, $relationship)
     {
         $this->innerJoin .= " INNER JOIN $tableName ON $relationship ";
+        return $this;
+    }
+
+    public function leftJoin($tableName, $relationship)
+    {
+        $this->leftJoin .= " LEFT JOIN $tableName ON $relationship ";
         return $this;
     }
 
@@ -119,7 +133,7 @@ trait QueryBuilder
 
     public function first()
     {
-        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->where $this->orderBy $this->limit";
+        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->leftJoin $this->where $this->orderBy $this->groupBy $this->limit";
         $query = $this->query($sqlQuery);
         $this->resetQuery();
         if (!empty($query)) return $query->fetch(PDO::FETCH_ASSOC);
@@ -129,7 +143,7 @@ trait QueryBuilder
     public function get()
     {
         // echo $this->innerJoin;
-        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->where  $this->orderBy $this->limit";
+        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->leftJoin $this->where  $this->orderBy $this->groupBy $this->limit";
         
         $query = $this->query($sqlQuery);
         $this->resetQuery();
@@ -146,7 +160,9 @@ trait QueryBuilder
         $this->selectField = '*';
         $this->limit = '';
         $this->orderBy = '';
+        $this->groupBy = '';
         $this->innerJoin = '';
         $this->insert = '';
+        $this->leftJoin = '';
     }
 }
