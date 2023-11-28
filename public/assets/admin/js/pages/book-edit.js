@@ -1,4 +1,5 @@
 Dropzone.autoDiscover = false;
+let existingFile = null;
 let myDropzone = new Dropzone("#image-dropzone", {
     url: 'dropZone/addImage', // URL để gửi tệp đã chọn đến máy chủ
     paramName: 'image',
@@ -17,21 +18,31 @@ let myDropzone = new Dropzone("#image-dropzone", {
         });
 
         this.on("addedfile", function (file) {
-            // Kiểm tra nếu đã vượt quá số lượng tệp cho phép
-            if (this.files.length > this.options.maxFiles) {
-                this.removeFile(file); // Xóa file vừa thêm vào
+            // Check if there's already an existing file, and if so, remove it
+            if (existingFile) {
+               this.removeFile(existingFile);
+
+               existingFile = null;  // Reset the existing file
             }
+
+            fetchUpdatedData();
+
         });
 
         if (imagesOfProduct.imageMain) {
             let mockFile = {
                 name: imagesOfProduct.imageMain.name,
                 size: 123,
-            }
+            };
 
-            this.displayExistingFile(mockFile, `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`);
+            this.displayExistingFile(
+                mockFile,
+                `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`
+            );
 
-            // Remove
+            existingFile = mockFile;  // Keep track of the existing file
+        }
+
             this.on("removedfile", function () {
                 let file = imagesOfProduct.imageMain;
 
@@ -47,7 +58,6 @@ let myDropzone = new Dropzone("#image-dropzone", {
                 };
                 xhttp.send(JSON.stringify(file));
             });
-        }
     }
 });
 
@@ -95,6 +105,7 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
                     xhttp.onreadystatechange = function () {
                         if (xhttp.readyState == 4 && xhttp.status == 200) {
                             console.log(xhttp);
+                            fetchUpdatedData();
                         }
                     };
                     xhttp.send(JSON.stringify(imageDeleted));
@@ -104,6 +115,19 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     }
 
 });
+
+function fetchUpdatedData() {
+    fetch('http://localhost:33/product/getImageAPI?id=3')
+        .then(response => response.json())
+        .then(data => {
+            // Update imagesOfProduct.imageMain with the new data
+            imagesOfProduct.imageMain = data
+            console.log(imagesOfProduct.imageMain)
+
+            // You can now use imagesOfProduct.imageMain with the updated data
+        })
+        .catch(error => console.error('Error fetching updated data:', error));
+}
 
 
 Validator({

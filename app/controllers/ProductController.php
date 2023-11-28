@@ -82,6 +82,7 @@
 
         $id = $request->getFields();
         $id = $id['id'];
+
       
         $this->data['sub_content']['action'] = "sua-san-pham?id=$id";
         $this->data['sub_content']['script_src'] = 'book-edit';
@@ -171,6 +172,14 @@
         $product->deleteProduct($id['id']);
         $response  = new Response();
         $response->redirect('danh-sach-san-pham');
+    }
+
+    public function getImageAPI() {
+        $request = new Request;
+
+        $id = $request->getFields()['id'];
+        header('Content-Type: application/json');
+        echo json_encode($this->images->getImageMain($id));
     }
  }
 
