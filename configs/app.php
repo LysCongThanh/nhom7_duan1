@@ -5,7 +5,7 @@ $config['app'] = [
         HtmlHelper::class
     ],
     'routeMiddleware' => [
-        // 'trang-chu' => AuthMiddleware::class,
+        'dashboard' => AuthMiddleware::class,
         // 'them-san-pham' => AuthMiddleware::class,
         // 'danh-sach-san-pham' => AuthMiddleware::class,
         // 'danh-sach-nguoi-dung' => AuthMiddleware::class,

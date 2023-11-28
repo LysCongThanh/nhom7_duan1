@@ -37,8 +37,8 @@
                                         <label for="exampleFormControlSelect1">Vai Trò</label>
                                         <select class="form-control" id="exampleFormControlSelect1" name="role">
                                             <option value="">---Chọn Chức Năng---</option>
-                                            <option value="admin">Quản Trị Viên</option>
-                                            <option value="user">Người Dùng</option>
+                                            <option value="1">Quản Trị Viên</option>
+                                            <option value="0">Người Dùng</option>
                                         </select>
                                         <?= form_error('role', '<span style="color: #ea0606">', '</span>') ?>
                                     </div>

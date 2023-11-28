@@ -7,15 +7,18 @@ $routes['phan-loai'] = 'classify/page';
 
 $routes['them-san-pham'] = 'product/get_product';
 $routes['danh-sach-san-pham'] = 'product/list';
+$routes['sua-san-pham'] = 'product/update';
+
 $routes['danh-sach-binh-luan'] = 'comments/list';
 $routes['xoa-binh-luan'] = 'comments/delete';
 $routes['tra-loi-binh-luan'] = 'comments/replyComment';
-$routes['sua-san-pham'] = 'product/update';
 
 $routes['danh-sach-don-hang'] = 'order/list';
 $routes['chi-tiet-don-hang'] = 'order/orders_detail';
 
+$routes['them-nguoi-dung'] = 'users/get_user';
 $routes['danh-sach-nguoi-dung'] = 'users/list';
+$routes['thong-tin-nguoi-dung'] = 'users/profile';
 
 // Client Routings
 $routes['trang-chu'] = 'home/index';
@@ -36,3 +39,6 @@ $routes['yeu-thich'] = 'profile/wishlist';
 
 $routes['dang-ky'] = 'admin/register';
 $routes['dang-nhap'] = 'admin/login';
+$routes['dang-nhap-google'] = 'google/loginGoogle';
+$routes['facebook-login'] = 'faceBook/facebookLogin';
+$routes['facebook-callback'] = 'faceBook/facebookCallback';
