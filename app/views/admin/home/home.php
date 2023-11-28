@@ -461,7 +461,7 @@
                                 <div class="col-12">
                                     <div class="w-100">
                                         <p class="text-sm text-secondary mb-1">Doanh Thu</p>
-                                        <h4 class="mb-2 font-weight-bold">$99,118.5</h4>
+                                        <h4 class="mb-2 font-weight-bold">{{$count_price['doanhthu']}}</h4>
                                         <div class="d-flex align-items-center">
                                             <span class="text-sm text-success font-weight-semibold px-2">
                                                 <i class="fa fa-chevron-up text-xs me-1"></i>10.5%
@@ -491,7 +491,7 @@
                                 <div class="col-12">
                                     <div class="w-100">
                                         <p class="text-sm text-secondary mb-1">Giao Dịch</p>
-                                        <h4 class="mb-2 font-weight-bold">376</h4>
+                                        <h4 class="mb-2 font-weight-bold">{{$count_order['giaodich']}}</h4>
                                         <div class="d-flex align-items-center">
                                             <span class="text-sm text-success font-weight-semibold px-2">
                                                 <i class="fa fa-chevron-up text-xs me-1"></i>55%
@@ -551,7 +551,7 @@
                                 <div class="col-12">
                                     <div class="w-100">
                                         <p class="text-sm text-secondary mb-1">Bán Phiếu Giảm Giá</p>
-                                        <h4 class="mb-2 font-weight-bold">$23,364.55</h4>
+                                        <h4 class="mb-2 font-weight-bold">{{$count_discounts['giamgia']}}</h4>
                                         <div class="d-flex align-items-center">
                                             <span class="text-sm text-success font-weight-semibold px-2">
                                                 <i class="fa fa-chevron-up text-xs me-1"></i>18%
@@ -581,7 +581,7 @@
                                 </div>
                             </div>
                             <div class="d-sm-flex align-items-center">
-                                <h3 class="mb-0 font-weight-semibold">$87,982.80</h3>
+                                <h3 class="mb-0 font-weight-semibold">{{$count_price['doanhthu']}}</h3>
                                 <span
                                     class="px-2 border badge badge-sm border-success text-success bg-success border-radius-sm ms-sm-3">
                                     <svg width="9" height="9" viewBox="0 0 10 9" fill="none"
@@ -628,6 +628,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($best_salers as $key)
                                         <tr>
                                             <td>
                                                 <div class="px-3 py-1 d-flex">
@@ -636,85 +637,26 @@
                                                             class="avatar me-3" alt="image">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Yellow Chair</h6>
+                                                        <h6 class="mb-0 text-sm">{{$key['name']}}</h6>
                                                         <p class="mb-0 text-sm font-weight-bold text-secondary"><span
                                                                 class="text-success">2.421</span> đơn đặt hàng</p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="mb-0 text-sm font-weight-bold">$40.600</p>
+                                                <p class="mb-0 text-sm font-weight-bold">${{$key['total']}}</p>
                                             </td>
                                             <td class="text-sm text-center align-middle">
-                                                <p class="mb-0 text-sm font-weight-bold">$9.430</p>
+                                                <p class="mb-0 text-sm font-weight-bold">${{$key['view']}}</p>
                                             </td>
                                             <td class="align-middle text-end">
                                                 <div class="px-3 py-1 d-flex justify-content-center align-items-center">
-                                                    <p class="mb-0 text-sm font-weight-bold">54</p>
+                                                    <p class="mb-0 text-sm font-weight-bold">{{$key['comment']}}</p>
                                                     <i class="mt-1 text-sm ni ni-bold-up ms-1 text-danger"></i>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="px-3 py-1 d-flex">
-                                                    <div>
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/spacejoy-NpF_OYE301E-unsplash.jpg"
-                                                            class="avatar me-3" alt="image">
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Gray Sofa</h6>
-                                                        <p class="mb-0 text-sm font-weight-bold text-secondary"><span
-                                                                class="text-success">5.921</span> đơn đặt hàng</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 text-sm font-weight-bold">$91.300</p>
-                                            </td>
-                                            <td class="text-sm text-center align-middle">
-                                                <p class="mb-0 text-sm font-weight-bold">$7.364</p>
-                                            </td>
-                                            <td class="align-middle text-end">
-                                                <div class="px-3 py-1 d-flex justify-content-center align-items-center">
-                                                    <p class="mb-0 text-sm font-weight-bold">5</p>
-                                                    <i class="mt-1 text-sm ni ni-bold-down ms-1 text-danger"></i>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="px-3 py-1 d-flex">
-                                                    <div>
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/michael-oxendine-GHCVUtBECuY-unsplash.jpg"
-                                                            class="avatar me-3" alt="image">
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Brown Sofa</h6>
-                                                        <p class="mb-0 text-sm font-weight-bold text-secondary"><span
-                                                                class="text-success">921</span> đơn đặt hàng</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 text-sm font-weight-bold">$140.925</p>
-                                            </td>
-                                            <td class="text-sm text-center align-middle">
-                                                <p class="mb-0 text-sm font-weight-bold">$20.531</p>
-                                            </td>
-                                            <td class="align-middle text-end">
-                                                <div class="px-3 py-1 d-flex justify-content-center align-items-center">
-                                                    <p class="mb-0 text-sm font-weight-bold">121</p>
-                                                    <i class="mt-1 text-sm ni ni-bold-up ms-1 text-success"></i>
-                                                    <button type="button"
-                                                        class="mb-0 btn btn-sm btn-icon-only btn-rounded btn-white ms-2 d-flex align-items-center justify-content-center ms-3"
-                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" title
-                                                        data-bs-original-title="Refund rate is higher with 70% than other products">
-                                                        <i class="fas fa-info" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

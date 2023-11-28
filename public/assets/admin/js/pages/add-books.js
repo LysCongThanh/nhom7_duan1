@@ -57,7 +57,7 @@ Validator({
             '* Vui lòng nhập ngày xuất bản !')
     ],
     onSubmit: function (data) {
-        
+
         // Call API
         const sortDescriptionInput = document.getElementById('sort_description');
         const longDescriptionInput = document.getElementById('long_description');
@@ -68,17 +68,38 @@ Validator({
         sortDescriptionInput.value = sortDescription;
         longDescriptionInput.value = longDescription;
 
-        document.querySelector(this.form).submit();
     }
 });
 
+document.querySelector('#form').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-document.querySelector('#form').addEventListener('submit', (e) => {
-    e.preventDefault(); // Ngăn chặn hành vi submit mặc định
+    const formPromise = fetch(form.action, {
+        method: form.method,
+        body: new FormData(form)
+    });
 
-    // Xử lý các thao tác trước khi submit
-    myDropzone.processQueue();
-    albumImagesDropzone.processQueue();
+    const dropzonePromise = new Promise((resolve) => {
+        myDropzone.on('queuecomplete', () => {
+            resolve();
+        });
+        myDropzone.processQueue();
+    });
+
+    const albumImagesDropzonePromise = new Promise((resolve) => {
+        albumImagesDropzone.on('queuecomplete', () => {
+            resolve();
+        });
+        albumImagesDropzone.processQueue();
+    });
+
+    Promise.all([formPromise, dropzonePromise, albumImagesDropzonePromise])
+        .then(() => {
+            window.location.href = 'danh-sach-san-pham';
+        })
+        .catch(error => {
+            console.error('Lỗi khi gửi form hoặc Dropzones:', error);
+        });
 });
 
 Validator({

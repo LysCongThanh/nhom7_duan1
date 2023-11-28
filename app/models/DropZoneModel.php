@@ -16,7 +16,7 @@ class DropZoneModel extends Model
 
     public function primaryKey()
     {
-        return 'id_image';
+        return 'id';
     }
 
     public function insertImages($data)
@@ -33,7 +33,7 @@ class DropZoneModel extends Model
     
         $result = array();
         foreach ($data as $item) {
-            $id_book = $item['id_book'];
+            $id_book = $item['book_id'];
             if (!isset($result[$id_book])) {
                 $result[$id_book] = array();
             }

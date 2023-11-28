@@ -15,7 +15,7 @@ class ProductModel extends Model
     }
     function primaryKey()
     {
-        return 'id_book';
+        return 'id';
     }
 
 
@@ -25,17 +25,29 @@ class ProductModel extends Model
         return $data;
     }
 
+    //Top Sản Phẩm Bán Chạy
+    public function best_saler(){
+        $data = $this->db->select('b.id, b.book_name as name, b.views as view,cm.rating as comment, SUM(od.quantity) as total')
+        ->table('orders_detail as od')
+        ->join('books as b', 'b.id=od.book_id')
+        ->join('comments as cm', 'cm.book_id=b.id')
+        ->groupBy('b.id')
+        ->orderBy('total', 'DESC')
+        ->limit(5)->get();
+        return $data;
+    }
+
     public function getLatestId()
     {
-        $data = $this->db->table('books')->orderBy('id_book', 'DESC')->first();
-        return $data['id_book'] + 1;
+        $data = $this->db->table('books')->lastId();
+        return $data;
     }
     public function getListProducts()
     {
-        $data = $this->db->select('b.*, c.*, i.name')
+        $data = $this->db->select('b.*, c.*, i.name as image_name, b.id as book_id, c.name as name_category')
                         ->table('books as b')
-                        ->join('categories as c', 'b.id_category = c.id_category')
-                        ->join('images as i', 'b.id_book = i.id_book')
+                        ->join('categories as c', 'b.category_id = c.id')
+                        ->join('images as i', 'b.id = i.book_id')
                         ->where('i.image_main', '=', 1)
                         ->get();
         return $data;
@@ -58,7 +70,7 @@ class ProductModel extends Model
                         ->where('i.image_main', '=', 1)
                         ->where('b.id_book', '=', $id)
                          ->first();
-    
+
         return $data;
     }
 

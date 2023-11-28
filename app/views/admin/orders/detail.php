@@ -7,10 +7,10 @@
                 <div>
                   <h6>Chi Tiết Đặt Hàng</h6>
                   <p class="mb-0 text-sm">
-                    Đơn hàng số. <b>241342</b> từ <b>23.02.2021</b>
+                    Đơn hàng số. <b>{{$detail['ID']}}</b> từ <b>{{$detail['dayOrder']}}</b>
                   </p>
                   <p class="text-sm">
-                    Mã số: <b>KF332</b>
+                    Mã số: <b>KF{{$detail['ID']}}</b>
                   </p>
                 </div>
                 <a href="javascript:;"
@@ -34,11 +34,11 @@
                         alt="product image">
                     </div>
                     <div>
-                      <h6 class="mt-2 mb-0 text-lg">One Puch Man</h6>
+                      <h6 class="mt-2 mb-0 text-lg">{{$detail['name_book']}}</h6>
                       <p class="mb-3 text-sm">Đơn hàng đã được giao 2 ngày trước.</p>
                       <span class="badge badge-sm badge-success">
                         <i class="fas fa-check"></i>
-                        Đã giao hàng</span>
+                        {{$detail['trangThai']}}</span>
                     </div>
                   </div>
                 </div>
@@ -108,10 +108,10 @@
                   <ul class="list-group">
                     <li class="p-4 mb-2 bg-gray-100 border-0 list-group-item d-flex border-radius-lg">
                       <div class="d-flex flex-column">
-                        <h6 class="mb-3 text-sm">Oliver Liam</h6>
+                        <h6 class="mb-3 text-sm">{{$detail['name_user']}}</h6>
                         <span class="mb-2 text-xs">Địa Chỉ Email: <span class="text-dark ms-2 font-weight-bold"><a
                               href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                              data-cfemail="a7c8cbced1c2d5e7c5d2d5d5ced3c889c4c8ca">[email&#160;protected]</a></span></span>
+                              data-cfemail="a7c8cbced1c2d5e7c5d2d5d5ced3c889c4c8ca">{{$detail['email']}}</a></span></span>
                         <span class="text-xs">Mã Số Ngân Hàng: <span
                             class="text-dark ms-2 font-weight-bold">FRB1235476</span></span>
                       </div>
@@ -124,7 +124,7 @@
                     <span class="mb-2 text-sm">
                       Giá Sản Phẩm:
                     </span>
-                    <span class="text-dark font-weight-bold ms-2">$90</span>
+                    <span class="text-dark font-weight-bold ms-2">${{$detail['price']}}</span>
                   </div>
                   <div class="d-flex justify-content-between">
                     <span class="mb-2 text-sm">
@@ -142,7 +142,7 @@
                     <span class="mb-2 text-lg">
                       Tổng cộng:
                     </span>
-                    <span class="text-lg text-dark ms-2 font-weight-bold">$105.95</span>
+                    <span class="text-lg text-dark ms-2 font-weight-bold">${{$detail['total']}}</span>
                   </div>
                 </div>
               </div>

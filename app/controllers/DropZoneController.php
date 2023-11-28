@@ -43,11 +43,11 @@ class DropZoneController extends Controller
            $this->response->redirect('them-san-pham');
         }
 
-        $id_product = $this->products->getLatestId();
+        $id_product = Session::data('idLatest_product');
 
         if ($id_product) {
             $data = [
-                'id_book' => $id_product,
+                'book_id' => $id_product,
                 'name' => $new_file_name,
                 'image_main' => 1
             ];
@@ -94,12 +94,12 @@ class DropZoneController extends Controller
         }
       
        
-        $id_product = $this->products->getLatestId();
+        $id_product = Session::data('idLatest_product');
         
         if ($id_product) {
             foreach ($uploaded_file_names as $file_name) {
                 $data = [
-                    'id_book' => $id_product,
+                    'book_id' => $id_product,
                     'name' => $file_name,
                     'image_main' => 0
                 ];

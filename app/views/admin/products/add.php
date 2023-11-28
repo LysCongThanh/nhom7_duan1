@@ -168,7 +168,7 @@
 
             <div class="row">
                 <div class="col-12">
-                <form action="product/post_product" method="post" id="form" class="dropzone" enctype="multipart/form-data">
+                <form action="product/post_product"  method="post" id="form" class="dropzone" enctype="multipart/form-data">
                         <div class="nav-tabs-navigation">
                             <div class="card card-custom card-nav-tabs">
                                 <div class="card-header card-header-primary card-header-tab">
@@ -321,7 +321,7 @@
                                                                             sách
                                                                         </option>
                                                                         @foreach($categories as $category)
-                                                                        <option value="{{$category['id_category']}}">{{$category['name_category']}}</option>
+                                                                        <option value="{{$category['id']}}">{{$category['name']}}</option>
                                                                         @endforeach
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
@@ -346,8 +346,9 @@
                                                                         id="category">
                                                                         <option value="" disabled selected>Chọn tác giả
                                                                         </option>
-                                                                        <option value="1">Sách 1</option>
-                                                                        <option value="2">Sách 2</option>
+                                                                        @foreach($authors as $author)
+                                                                        <option value="{{$author['id']}}">{{$author['name']}}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
                                                                         <button type="button"
@@ -372,8 +373,9 @@
                                                                         <option value="" disabled selected>Chọn nhà xuất
                                                                             bản
                                                                         </option>
-                                                                        <option value="1">Sách 1</option>
-                                                                        <option value="2">Sách 2</option>
+                                                                        @foreach($publishers as $publisher)
+                                                                        <option value="{{$publisher['id']}}">{{$publisher['name']}}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                     <div class="input-group-text m-0 p-0">
                                                                         <button type="button"
