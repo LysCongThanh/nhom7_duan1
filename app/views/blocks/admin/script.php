@@ -11,6 +11,7 @@
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe.min.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe-ui-default.min.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/chartjs.min.js"></script>
+    <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/swiper-bundle.min.js"></script>
 
 
 
