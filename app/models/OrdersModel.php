@@ -51,7 +51,7 @@ class OrdersModel extends Model {
     }
 
     //Tổng giao dịch
-    public function count_id()
+    public function count_order()
     {
         $data = $this->db->select('COUNT(der.id) AS giaodich')->table('orders AS der')->first();
         return $data;
