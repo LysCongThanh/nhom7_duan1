@@ -62,5 +62,11 @@ class OrdersModel extends Model {
         $data = $this->db->select('SUM(od.discount) as giamgia')->table('orders_detail as od')->first();
         return $data;
     }
+
+    //Trung Bình Giao Dịch
+    public function count_avg(){
+        $data = $this->db->select('AVG(der.total_price) AS avg')->table('orders AS der')->first();
+        return $data;
+    }
 }
 ?>
