@@ -1,17 +1,29 @@
 Dropzone.autoDiscover = false;
 let myDropzone = new Dropzone("#image-dropzone", {
-    url: 'dropZone/upLoadImage', // URL để gửi tệp đã chọn đến máy chủ
+    url: 'dropZone/addImage', // URL để gửi tệp đã chọn đến máy chủ
     paramName: 'image',
     maxFilesize: 5, // Giới hạn dung lượng tệp (MB)
     addRemoveLinks: true, // Hiển thị nút xóa cho từng tệp
     dictRemoveFile: `<i class="fa-solid fa-circle-xmark"></i>`, // Chữ hoặc biểu tượng để xóa tệp
     dictDefaultMessage: `<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload`, // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
-    autoProcessQueue: false, // Tắt tự động tải lên
+    autoProcessQueue: true, // Tắt tự động tải lên
+    maxFiles: 1, // Số lượng file có thể tải
 
-    init: function() {
-        // Show image
-        if(imagesOfProduct.imageMain) {
+    init: function () {
+        this.on("sending", function (file, xhr, formData) {
+            let query = new URLSearchParams(window.location.search);
+            formData.append("id", query.get('id'));
+        });
+
+        this.on("addedfile", function (file) {
+            // Kiểm tra nếu đã vượt quá số lượng tệp cho phép
+            if (this.files.length > this.options.maxFiles) {
+                this.removeFile(file); // Xóa file vừa thêm vào
+            }
+        });
+
+        if (imagesOfProduct.imageMain) {
             let mockFile = {
                 name: imagesOfProduct.imageMain.name,
                 size: 123,
@@ -37,11 +49,14 @@ let myDropzone = new Dropzone("#image-dropzone", {
             });
         }
     }
-
 });
 
+
+
+
+
 let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
-    url: "dropZone/upLoadImages", // URL để gửi tệp đã chọn đến máy chủ
+    url: "dropZone/addImages", // URL để gửi tệp đã chọn đến máy chủ
     paramName: 'album_images', // Tên của trường tệp trong yêu cầu POST
     uploadMultiple: true, // Tải 1 lần nhiều file
     maxFilesize: 5, // Giới hạn dung lượng tệp (MB)
@@ -49,21 +64,46 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     dictRemoveFile: '<i class="fa-solid fa-circle-xmark"></i>', // Chữ hoặc biểu tượng để xóa tệp
     dictDefaultMessage: '<i class="fas fa-cloud-upload-alt"></i> Drop files here or click to upload', // Tin nhắn mặc định
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
-    autoProcessQueue: false, // Tắt tự động tải lên
+    autoProcessQueue: true, // Tắt tự động tải lên
     parallelUploads: 5, // Giảm số lượng tệp tin được tải lên cùng một lúc
 
-    init: function() {
-        imagesOfProduct.albumImages.forEach((image) => {
-            let mockFile = {
-                name: image.name,
-                size: 123
-            }
-
-            this.displayExistingFile(mockFile, `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`);
-        })
+    init: function () {
+        const that = this;
+    
+        this.on('sending', function (file, xhr, formData) {
+            let query = new URLSearchParams(window.location.search);
+            formData.append("id", query.get('id'));
+        });
+    
+        if (imagesOfProduct.albumImages) {
+            imagesOfProduct.albumImages.forEach((image) => {
+                let mockFile = {
+                    name: image.name,
+                    size: 123
+                }
+    
+                that.displayExistingFile(mockFile, `http://localhost:33/public/uploads/products/2023_11/${mockFile.name}`);
+            });
+    
+            // Sự kiện 'removedfile' chung
+            that.on('removedfile', function (file) {
+                const imageDeleted = imagesOfProduct.albumImages.find(image => image.name === file.name);
+                if (imageDeleted) {
+                    const xhttp = new XMLHttpRequest();
+                    xhttp.open('POST', `${window.location.origin}/dropzone/removeImage`, true);
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    xhttp.onreadystatechange = function () {
+                        if (xhttp.readyState == 4 && xhttp.status == 200) {
+                            console.log(xhttp);
+                        }
+                    };
+                    xhttp.send(JSON.stringify(imageDeleted));
+                }
+            });
+        }
     }
 
-  });
+});
 
 
 Validator({

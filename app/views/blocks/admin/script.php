@@ -10,7 +10,8 @@
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/dataTables.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe.min.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/photoswipe-ui-default.min.js"></script>
-
+    <!-- Webroot -->
+    <script> const webRoot = window.location.origin </script>
 
 
     <script>

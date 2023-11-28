@@ -56,6 +56,53 @@ class DropZoneController extends Controller
         
     }
 
+    public function addImage() 
+    {   
+        $request = new Request();
+        $data = $request->getFields();
+        $id = $data['id'];
+        $file = $data['image'];
+        $target_file = '';
+        $current_month_year     = date('Y_m');
+        $target_directory = 'public/uploads/products/' . $current_month_year . '/';
+
+        if (!is_dir($target_directory)) {
+            try {
+                mkdir($target_directory, 0755, true);
+            } catch (\Exception $e) {
+                $errors[] = $e->getMessage();
+                return false;
+            }
+        }
+      
+        $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+       
+        $new_file_name = time() . '_' . uniqid() . '.' . $file_extension;
+        $new_file_path = $target_directory . $new_file_name;
+
+        while (file_exists($new_file_path)) {
+            $new_file_name = time() . '_' . uniqid() . '.' . $file_extension;
+            $new_file_path = $target_directory . $new_file_name;
+        }
+
+        if (!move_uploaded_file($file['tmp_name'], $new_file_path)) {
+            Session::flash('errors', 'Tải lên không thành công');
+            $this->response->redirect('them-san-pham');
+         }
+
+        $id_product = $id;
+
+        if ($id_product) {
+            $data = [
+                'book_id' => $id_product,
+                'name' => $new_file_name,
+                'image_main' => 1
+            ];
+            $this->images->insertImages($data);
+        }
+        
+    }
+
     public function upLoadImages() 
     {
         $request = new Request();
