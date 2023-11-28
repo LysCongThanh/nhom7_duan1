@@ -12,6 +12,11 @@ $routes['xoa-binh-luan'] = 'comments/delete';
 $routes['tra-loi-binh-luan'] = 'comments/replyComment';
 $routes['sua-san-pham'] = 'product/update';
 
+$routes['danh-sach-don-hang'] = 'order/list';
+$routes['chi-tiet-don-hang'] = 'order/orders_detail';
+
+$routes['danh-sach-nguoi-dung'] = 'users/list';
+
 // Client Routings
 $routes['trang-chu'] = 'home/index';
 
@@ -23,7 +28,7 @@ $routes['gioi-thieu'] = 'home/about';
 $routes['lien-he'] = 'home/contact';
 $routes['dia-chi'] = 'profile/address';
 $routes['ca-nhan'] = 'profile/main';
-$routes['don-hang'] = 'profile/orders';
+// $routes['don-hang'] = 'profile/orders';
 $routes['cai-dat'] = 'profile/setting';
 $routes['yeu-thich'] = 'profile/wishlist';
 // $routes['gioi-thieu'] = 'profile/setting';

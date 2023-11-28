@@ -89,454 +89,51 @@
                       <th class="text-xxs border-top-0 text-uppercase">Người Dùng</th>
                       <th class="text-xxs border-top-0 text-uppercase">Sản Phẩm</th>
                       <th class="text-xxs border-top-0 text-uppercase">Tổng Tiền</th>
+                      <th class="text-xxs border-top-0 text-uppercase">Chi Tiết</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    @foreach($orders as $order)
+                  <tr>
                       <td>
                         <div class="d-flex align-items-center">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="customCheck1">
                           </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10421</p>
+                          <p class="mb-0 text-xs font-weight-bold ms-2">{{$order['ID']}}</p>
                         </div>
                       </td>
                       <td class="font-weight-bold">
-                        <span class="my-2 text-xs">1 Nov, 10:20 AM</span>
+                        <span class="my-2 text-xs">{{$order['dayOrder']}}</span>
                       </td>
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <button disabled
                             class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
                               class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
+                          <span>{{$order['trangThai']}}</span>
                         </div>
                       </td>
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <img src="../assets/img/team-2.jpg" class="avatar avatar-xs rounded-circle me-2"
                             alt="user image">
-                          <span>Orlando Imieto</span>
+                          <span>{{$order['name_user']}}</span>
                         </div>
                       </td>
                       <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">Sofa Yellow</span>
+                        <span class="my-2 text-xs">{{$order['name_book']}}</span>
                       </td>
                       <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$89,53</span>
+                        <span class="my-2 text-xs">${{$order['total']}}</span>
                       </td>
-                    </tr>
-                    <tr>
                       <td>
-                        <div class="d-flex align-items-center">
-                          <div class="pt-0 form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck2">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10422</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">1 Nov, 10:53 AM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <img src="../assets/img/team-1.jpg" class="avatar avatar-xs rounded-circle me-2"
-                            alt="user image">
-                          <span>Alice Murinho</span>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">Valvet T-shirt</span>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">$42,00</span>
+                        <form action="chi-tiet-don-hang?id={{$order['ID']}}" method="post">
+                          <button type="submit" class="btn bg-gradient-primary btn-sm">Xem Chi Tiết</button>
+                        </form>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck3">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10423</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">1 Nov, 11:13 AM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-dark me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-undo" aria-hidden="true"></i></button>
-                          <span>Đã Hoàn Tiền</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar avatar-xs rounded-circle me-2 bg-gradient-dark">
-                            <span>M</span>
-                          </div>
-                          <span>Michael Mirra</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Leather Wallet
-                          <span class="text-secondary ms-2"> +1 more </span>
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$25,50</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck4">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10424</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">1 Nov, 12:20 PM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center">
-                            <img src="../assets/img/team-3.jpg" class="avatar avatar-xs rounded-circle me-2"
-                              alt="user image">
-                            <span>Andrew Nichel</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Bracelet Onu-Lino
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$19,40</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck5">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10425</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">1 Nov, 1:40 PM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-danger me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-times" aria-hidden="true"></i></button>
-                          <span>Đã Hủy</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center">
-                            <img src="../assets/img/team-4.jpg" class="avatar avatar-xs rounded-circle me-2"
-                              alt="user image">
-                            <span>Sebastian Koga</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Phone Case Pink
-                          <span class="text-secondary ms-2"> x 2 </span>
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$44,90</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck6">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10426</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">1 Nov, 2:19 AM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar avatar-xs rounded-circle me-2 bg-gradient-primary">
-                            <span>L</span>
-                          </div>
-                          <span>Laur Gilbert</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Backpack Niver
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$112,50</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck7">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10427</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">1 Nov, 3:42 AM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar avatar-xs rounded-circle me-2 bg-gradient-dark">
-                            <span>I</span>
-                          </div>
-                          <span>Iryna Innda</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Adidas Vio
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$200,00</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck8">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10428</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">2 Nov, 9:32 AM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar avatar-xs rounded-circle me-2 bg-gradient-dark">
-                            <span>A</span>
-                          </div>
-                          <span>Arrias Liunda</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Airpods 2 Gen
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$350,00</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck9">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10429</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">2 Nov, 10:14 AM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center">
-                            <img src="../assets/img/team-5.jpg" class="avatar avatar-xs rounded-circle me-2"
-                              alt="user image">
-                            <span>Rugna Ilpio</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Bracelet Warret
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$15,00</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck10">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10430</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">2 Nov, 12:56 PM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-dark me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-undo" aria-hidden="true"></i></button>
-                          <span>Đã Hoàn Tiền</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center">
-                            <img src="../assets/img/ivana-squares.jpg" class="avatar avatar-xs rounded-circle me-2"
-                              alt="user image">
-                            <span>Anna Landa</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Watter Bottle India
-                          <span class="text-secondary ms-2"> x 3 </span>
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$25,00</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck11">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10431</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">2 Nov, 3:12 PM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar avatar-xs rounded-circle me-2 bg-gradient-dark">
-                            <span>K</span>
-                          </div>
-                          <span>Karl Innas</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Kitchen Gadgets
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$164,90</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="customCheck12">
-                          </div>
-                          <p class="mb-0 text-xs font-weight-bold ms-2">#10432</p>
-                        </div>
-                      </td>
-                      <td class="font-weight-bold">
-                        <span class="my-2 text-xs">2 Nov, 5:12 PM</span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <button disabled
-                            class="mb-0 btn btn-icon-only btn-rounded btn-outline-success me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                              class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Đã Trả</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar avatar-xs rounded-circle me-2 bg-gradient-info">
-                            <span>O</span>
-                          </div>
-                          <span>Oana Kilas</span>
-                        </div>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">
-                          Office Papers
-                        </span>
-                      </td>
-                      <td class="text-xs font-weight-bold">
-                        <span class="my-2 text-xs">$23,90</span>
-                      </td>
-                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

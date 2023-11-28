@@ -40,4 +40,9 @@ class CommentsModel extends Model {
     }
 
 
+    public function count_comments(){
+        $data = $this->db->select('COUNT(cm.id) AS danhgia')->table('comments AS cm')->first();
+        return $data;
+    }
+
 }
