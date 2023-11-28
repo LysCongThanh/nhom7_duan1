@@ -6,6 +6,11 @@ $routes['dashboard'] = 'admin/page';
 $routes['phan-loai'] = 'classify/page';
 
 $routes['them-san-pham'] = 'product/get_product';
+$routes['them-nguoi-dung'] = 'users/get_user';
+$routes['danh-sach-nguoi-dung'] = 'users/list';
+$routes['thong-tin-nguoi-dung'] = 'users/profile';
+
+
 $routes['danh-sach-san-pham'] = 'product/list';
 $routes['danh-sach-binh-luan'] = 'comments/list';
 
@@ -28,3 +33,6 @@ $routes['yeu-thich'] = 'profile/wishlist';
 
 $routes['dang-ky'] = 'admin/register';
 $routes['dang-nhap'] = 'admin/login';
+$routes['dang-nhap-google'] = 'admin/loginGoogle';
+$routes['facebook-login'] = 'admin/facebookLogin';
+$routes['facebook-callback'] = 'admin/facebookCallback';
