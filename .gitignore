@@ -1,3 +1,4 @@
 /.idea/
 /configs/database.php
 /core/Connection.php
+/vendor/

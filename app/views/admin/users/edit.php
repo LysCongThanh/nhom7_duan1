@@ -1,3 +1,19 @@
+<?
+  $name = $user['name'];
+  $nameParts = explode(' ', $name);
+?>
+
+@if (count($nameParts) >= 2)
+   <?php
+    $user['first_name'] = $nameParts[0];
+    $user['last_name'] = $nameParts[1];
+   ?>
+@else
+   <?php
+    $user['first_name'] = $name;
+    $user['last_name'] = '';
+   ?>
+@endif
 <div class="px-5 py-4 container-fluid">
       <div class="mt-5 mb-5 mt-lg-9 row">
         <div class="col-lg-3 col-12">
@@ -8,18 +24,18 @@
         </div>
         <div class="col-lg-9 col-12">
           <div class="card card-body" id="profile">
-            <img src="../assets/img/header-orange-purple.jpg" alt="pattern-lines"
+            <img src="<?= _WEB_ROOT ?>/public/assets/admin/img/header-orange-purple.jpg" alt="pattern-lines"
               class="top-0 rounded-2 position-absolute start-0 w-100 h-100">
             <div class="row z-index-2 justify-content-center align-items-center">
               <div class="col-sm-auto col-4">
                 <div class="avatar avatar-xl position-relative">
-                  <img src="../assets/img/team-1.jpg" alt="bruce" class="w-100 border-radius-lg shadow-sm">
+                  <img src="<?= _WEB_ROOT ?>/public/assets/admin/img/team-1.jpg" alt="bruce" class="w-100 border-radius-lg shadow-sm">
                 </div>
               </div>
               <div class="col-sm-auto col-8 my-auto">
                 <div class="h-100">
                   <h5 class="mb-1 font-weight-bolder">
-                    Alexa Johnson
+                    {{$user['name']}}
                   </h5>
                   <p class="mb-0 font-weight-bold text-sm">
                     Quản Trị Viên
@@ -54,70 +70,62 @@
               <h5>Thông Tin Cơ Bản</h5>
             </div>
             <div class="pt-0 card-body">
-              <div class="row">
-                <div class="col-6">
-                  <label class="form-label">Họ</label>
-                  <div class="input-group">
-                    <input id="firstName" name="firstName" class="form-control" type="text" placeholder="e.g. Alexa"
-                      required="required">
+              <form action="<?= _WEB_ROOT . $action; ?>" method="post">
+                <input type="hidden" value="{{$user['id']}}">
+                <div class="row">
+                  <div class="col-6">
+                    <label class="form-label">Họ</label>
+                    <div class="input-group">
+                      <input id="firstName" name="firstName" class="form-control" type="text" placeholder="Họ người dùng..." value="{{$user['first_name']}}"
+                        required="required">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <label class="form-label">Tên</label>
+                    <div class="input-group">
+                      <input id="lastName" name="lastName" class="form-control" type="text" placeholder="Tên người dùng..."  value="{{$user['last_name']}}"
+                        required="required">
+                    </div>
                   </div>
                 </div>
-                <div class="col-6">
-                  <label class="form-label">Tên</label>
-                  <div class="input-group">
-                    <input id="lastName" name="lastName" class="form-control" type="text" placeholder="e.g. Johnson"
-                      required="required">
+                <div class="row">
+                  <div class="col-sm-4 col-6">
+                    <label class="mt-4 form-label">Giới Tính</label>
+                    <select class="form-control" name="choices-gender" id="choices-gender">
+                      <option value="Female">Nam</option>
+                      <option value="Male">Nữ</option>
+                    </select>
                   </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4 col-6">
-                  <label class="mt-4 form-label">Giới Tính</label>
-                  <select class="form-control" name="choices-gender" id="choices-gender">
-                    <option value="Female">Nam</option>
-                    <option value="Male">Nữ</option>
-                  </select>
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-5 col-5">
+                  <div class="col-sm-8">
                       <label class="mt-4 form-label">Ngày Sinh</label>
-                      <select class="form-control" name="choices-month" id="choices-month"></select>
+                      <input type="date" class="form-control" name="choices-birthdate" id="choices-birthdate"  value="{{$user['birthdate']}}">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <label class="mt-4 form-label">Email</label>
+                    <div class="input-group">
+                      <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com"  value="{{$user['email']}}">
                     </div>
-                    <div class="col-sm-4 col-3">
-                      <label class="mt-4 form-label">&nbsp;</label>
-                      <select class="form-control" name="choices-day" id="choices-day"></select>
-                    </div>
-                    <div class="col-sm-3 col-4">
-                      <label class="mt-4 form-label">&nbsp;</label>
-                      <select class="form-control" name="choices-year" id="choices-year"></select>
+                  </div>
+                  <div class="col-6">
+                    <label class="mt-4 form-label">Số Điện Thoại</label>
+                    <div class="input-group">
+                      <input id="phone" name="phone" class="form-control" type="number" placeholder="+40 941 538 024"  value="{{$user['tel']}}">
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <label class="mt-4 form-label">Email</label>
-                  <div class="input-group">
-                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com">
+                <div class="row">
+                  <div class="col-6">
+                    <label class="mt-4 form-label">Địa Chỉ</label>
+                    <div class="input-group">
+                      <input id="location" name="location" class="form-control" type="text" placeholder="Sydney, A"  value="{{$user['address']}}">
+                    </div>
                   </div>
                 </div>
-                <div class="col-6">
-                  <label class="mt-4 form-label">Số Điện Thoại</label>
-                  <div class="input-group">
-                    <input id="phone" name="phone" class="form-control" type="number" placeholder="+40 941 538 024">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <label class="mt-4 form-label">Địa Chỉ</label>
-                  <div class="input-group">
-                    <input id="location" name="location" class="form-control" type="text" placeholder="Sydney, A">
-                  </div>
-                </div>
+                <button class="mt-3 mb-0 btn btn-white btn-sm float-end">Cập Nhật Lại Thông Tin</button>
 
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -135,36 +143,40 @@
               <h5>Đổi mật khẩu</h5>
             </div>
             <div class="pt-0 card-body">
-              <label class="form-label">Mật khẩu cũ</label>
-              <div class="form-group">
-                <input class="form-control" type="password" placeholder="Current password">
-              </div>
-              <label class="form-label">Mật Khẩu Mới</label>
-              <div class="form-group">
-                <input class="form-control" type="password" placeholder="New password">
-              </div>Nhập Lại Mật Khẩu Mới</label>
-              <div class="form-group">
-                <input class="form-control" type="password" placeholder="Confirm password">
-              </div>
-              <h5 class="mt-5"></h5>Yêu cầu về mật khẩu</h5>
-              <p class="mb-2 text-muted">
-                Vui lòng làm theo hướng dẫn này để có mật khẩu mạnh:
-              </p>
-              <ul class="mb-0 text-muted ps-4 float-start">
-                <li>
-                  <span class="text-sm">Một ký tự đặc biệt</span>
-                </li>
-                <li>
-                  <span class="text-sm">Tối thiểu 6 ký tự</span>
-                </li>
-                <li>
-                  <span class="text-sm">Một số (khuyên dùng 2)</span>
-                </li>
-                <li>
-                  <span class="text-sm">Thay đổi nó thường xuyên</span>
-                </li>
-              </ul>
-              <button class="mt-6 mb-0 btn btn-white btn-sm float-end">Cập Nhật Lại Mật Khẩu</button>
+                <form action="users/profile" method="post">
+                  <input type="hidden" value="{{$user['id']}}">
+                  <label class="form-label">Mật khẩu cũ</label>
+                  <div class="form-group">
+                    <input class="form-control" name="old_password" type="password" placeholder="Current password">
+                  </div>
+                  <label class="form-label">Mật Khẩu Mới</label>
+                  <div class="form-group">
+                    <input class="form-control" name="new_password" type="password" placeholder="New password">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Nhập Lại Mật Khẩu Mới</label>
+                    <input class="form-control" type="password" placeholder="Confirm password">
+                  </div>
+                  <h5 class="mt-5"></h5>Yêu cầu về mật khẩu</h5>
+                  <p class="mb-2 text-muted">
+                    Vui lòng làm theo hướng dẫn này để có mật khẩu mạnh:
+                  </p>
+                  <ul class="mb-0 text-muted ps-4 float-start">
+                    <li>
+                      <span class="text-sm">Một ký tự đặc biệt</span>
+                    </li>
+                    <li>
+                      <span class="text-sm">Tối thiểu 6 ký tự</span>
+                    </li>
+                    <li>
+                      <span class="text-sm">Một số (khuyên dùng 2)</span>
+                    </li>
+                    <li>
+                      <span class="text-sm">Thay đổi nó thường xuyên</span>
+                    </li>
+                  </ul>
+                  <button class="mt-6 mb-0 btn btn-white btn-sm float-end">Cập Nhật Lại Mật Khẩu</button>
+              </form>
             </div>
           </div>
         </div>
