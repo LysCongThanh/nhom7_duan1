@@ -234,7 +234,8 @@ class Request
                         }
                     }
 
-                    if ($ruleName == 'unique') {
+                   
+                    } if ($ruleName == 'unique') {
                         $tableName = null;
                         $fieldCheck = null;
                     
@@ -263,7 +264,6 @@ class Request
                                 $checkValidate = false;
                             }
                         }
-                    }
 
                     //Callback validate
                     if (preg_match('~^callback_(.+)~is', $ruleName, $callbackArr)) {
