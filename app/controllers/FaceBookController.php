@@ -6,7 +6,7 @@ use Facebook\Facebook;
 
 class FaceBookController extends Controller
 {
-    public $users, $data;
+    public $users, $fb, $data;
 
     public function __construct()
     {
