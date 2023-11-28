@@ -42,6 +42,7 @@ class AdminController extends Controller
         $this->data['sub_content']['best_salers'] = $this->product->best_saler();
         $this->data['sub_content']['count_discounts'] = $this->order->count_discount();
         $this->data['sub_content']['count_order'] = $this->order->count_order();
+        $this->data['sub_content']['count_avg'] = $this->order->count_avg();
         $this->data['sub_content']['count_price'] = $this->order->count_totalPrice();
         $this->data['sub_content']['title'] = 'Trang Chủ';
         $this->data['content'] = 'admin/home/home';
