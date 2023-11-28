@@ -523,7 +523,7 @@
                                 <div class="col-12">
                                     <div class="w-100">
                                         <p class="text-sm text-secondary mb-1">Trung Bình Giao Dịch</p>
-                                        <h4 class="mb-2 font-weight-bold">$450.53</h4>
+                                        <h4 class="mb-2 font-weight-bold">{{$count_avg['avg']}}</h4>
                                         <div class="d-flex align-items-center">
                                             <span class="text-sm text-success font-weight-semibold px-2">
                                                 <i class="fa fa-chevron-up text-xs me-1"></i>22%
