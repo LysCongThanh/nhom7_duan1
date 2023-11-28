@@ -83,4 +83,15 @@ class ProductModel extends Model
         $data = $this->db->select('COUNT(id) As soLuong')->table('products')->get();
         return $data;
     }
+
+    //Top Sản Phẩm Bán Chạy
+    public function best_saler(){
+        $data = $this->db->select('b.id, b.book_name as name, b.views as view,cm.rating as comment, SUM(od.quantity) as total')
+        ->table('orders_detail as od')
+        ->join('books as b', 'b.id=od.book_id')
+        ->join('comments as cm', 'cm.book_id=b.id')
+        ->groupBy('b.id')
+        ->limit(5)->get();
+        return $data;
+    }
 }
