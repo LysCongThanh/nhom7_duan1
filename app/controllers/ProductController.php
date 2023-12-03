@@ -47,8 +47,8 @@
                 $response  = new Response();
                 $response->redirect('them-san-pham');
             }
-          
             $data = $request->getFields();
+            $data['slug'] = $this->generateSlug($data['name']);
             $convertedData = array(
                 'category_id' => $data['category'],
                 'author_id' => $data['author'],
@@ -61,7 +61,8 @@
                 'discount_price' => $data['sale_price'],
                 'ISBN' => $data['sku'], 
                 'size' => $data['size'],
-                'num_page' => $data['number_pages']
+                'num_page' => $data['number_pages'],
+                'slug' => $data['slug'],
             );
 
             
