@@ -12,6 +12,7 @@ class ComposerStaticInit4895a5bd3d706a1b0e2daa35085b9745
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '1f87db08236948d07391152dccb70f04' => __DIR__ . '/..' . '/google/apiclient-services/autoload.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
         'a8d3953fd9959404dd22d3dfcd0a79f0' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
     );
 
@@ -32,6 +33,10 @@ class ComposerStaticInit4895a5bd3d706a1b0e2daa35085b9745
         array (
             'Monolog\\' => 8,
         ),
+        'I' => 
+        array (
+            'Infobip\\' => 8,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -44,6 +49,7 @@ class ComposerStaticInit4895a5bd3d706a1b0e2daa35085b9745
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
+            'Facebook\\' => 9,
         ),
     );
 
@@ -77,6 +83,10 @@ class ComposerStaticInit4895a5bd3d706a1b0e2daa35085b9745
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Infobip\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/infobip/infobip-api-php-client/Infobip',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -104,6 +114,10 @@ class ComposerStaticInit4895a5bd3d706a1b0e2daa35085b9745
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Facebook\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
         ),
     );
 
