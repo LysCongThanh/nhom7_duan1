@@ -197,14 +197,40 @@
             <div class="card-body">
               <div class="d-flex">
                 <p class="my-auto">Khóa bảo mật</p>
-                <p class="my-auto text-sm text-secondary ms-auto me-3">Không có khóa bảo mậts</p>
+                <p class="my-auto text-sm text-secondary ms-auto me-3">{{$status_password}}</p>
                 <button class="mb-0 btn btn-sm btn-white" type="button">Thêm vào</button>
               </div>
               <hr class="horizontal dark">
               <div class="d-flex">
                 <p class="my-auto">Số tin nhắn SMS</p>
                 <p class="my-auto text-sm text-secondary ms-auto me-3">+4012374423</p>
-                <button class="mb-0 btn btn-sm btn-white" type="button">Sửa</button>
+                <button class="mb-0 btn btn-sm btn-white" type="button" data-bs-toggle="modal" data-bs-target="#modelSMS">Sửa</button>
+                <!-- Modal -->
+                <div class="modal fade" id="modelSMS" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tin Nhắn SMS</h5>
+                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="sMS/send" method="post">
+                          <div class="form-group">
+                            <label for="number_phone" class="col-form-label">Số Điện Thoại:</label>
+                            <input type="text" class="form-control" id="number_phone" name="number_phone">
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-dark">Gửi tin nhắn</button>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal -->
               </div>
               <hr class="horizontal dark">
               <div class="d-flex">

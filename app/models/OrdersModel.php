@@ -43,6 +43,32 @@ class OrdersModel extends Model {
         return $data;
     }
 
+    public function getBalanceStats($days, $groupBy)
+    {
+        $data = $this->db->table('payments')
+            ->select("$groupBy(payment_date) AS transaction_date, SUM(payment_amount) AS balance")
+            ->where('payment_date', '>=', "DATE_SUB(NOW(), INTERVAL $days DAY)")
+            ->groupBy('transaction_period')
+            ->orderBy('transaction_period', 'ASC')
+            ->get();
+
+        $balanceData = [];
+
+        for ($i = 1; $i < $days + 1; $i++) {
+            $balanceData[$i] = 0;
+        }
+
+        foreach ($data as $row) {
+            $period = $row->transaction_period;
+            $balance = $row->balance;
+
+            $index = intval($period);
+
+            $balanceData[$index] = $balance;
+        }
+
+        return $balanceData;
+    }
     //Tổng doanh thu
     public function count_totalPrice()
     {

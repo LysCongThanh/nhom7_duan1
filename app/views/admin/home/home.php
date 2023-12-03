@@ -176,11 +176,11 @@
                             <p class="text-sm">Ở đây bạn có thông tin chi tiết về số dư.</p>
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
-                                    checked>
+                                    checked value="365">
                                 <label class="btn btn-white px-3 mb-0" for="btnradio1">12 months</label>
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="30">
                                 <label class="btn btn-white px-3 mb-0" for="btnradio2">30 days</label>
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="7">
                                 <label class="btn btn-white px-3 mb-0" for="btnradio3">7 days</label>
                             </div>
                         </div>
