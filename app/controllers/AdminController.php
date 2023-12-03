@@ -26,6 +26,21 @@ class AdminController extends Controller
 
     public function page()
     {
+        // if(isset($_GET["numberOfDays"]) && $_GET["groupBy"])
+        // {
+        //     $numberOfDays = $_GET["numberOfDays"];
+        //     $groupBy = $_GET["groupBy"];
+        //     $balanceStats = $this->orders->getBalanceStats($numberOfDays, $groupBy);
+    
+        //     // Trả về kết quả dưới dạng JSON
+        //     header("Content-Type: application/json");
+        //     echo json_encode($balanceStats);
+        //     return; // Kết thúc xử lý
+    
+        // } else {
+        //     $numberOfDays = 365;
+        //     $this->data['sub_content']['balanceStats'] = $this->orders->getBalanceStats($numberOfDays, "month");
+        // }
         $this->data['sub_content']['script_src'] = 'chart_dashboard';
         $this->data['sub_content']['best_salers'] = $this->products->best_saler();
         $this->data['sub_content']['count_discounts'] = $this->orders->count_discount();
@@ -36,6 +51,18 @@ class AdminController extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
+    public function getChartData()
+    {
+        $request = new Request();
+        $data = $request->getFields();
+        $salesData = $this->orders->getBalanceStats($data['numberOfDays'], $data['groupBy']);
+        // Gửi dữ liệu dưới dạng JSON
+        header("Content-Type: application/json");
+        echo json_encode([
+            'salesData' => $salesData,   
+        ]);
+        exit(); // Kết thúc xử lý
+    }
     public function authLogin()
     {
         $request = new Request();
