@@ -70,6 +70,12 @@ class UsersController extends Controller{
         $id = Session::data('admin')['id'];
         $this->data['msg'] = Session::flash('msg');
         $this->data['sub_content']['old'] = Session::flash('old');
+        if($this->users->findUser('password', Session::data('admin')['password'])) 
+        {
+            $this->data['sub_content']['status_password'] = 'Đã có khóa bảo mật';
+        } else {
+            $this->data['sub_content']['status_password'] = 'Chưa có khóa bảo mật';
+        }
         $this->data['sub_content']['user'] = $this->users->getDetailUser($id);
         $this->data['sub_content']['title'] = 'Thông Tin Người Dùng';
         $this->data['sub_content']['action'] = 'users/profile';
