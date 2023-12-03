@@ -1,6 +1,7 @@
 {
     "require": {
         "google/apiclient": "^2.15",
-        "facebook/graph-sdk": "^5.7"
+        "facebook/graph-sdk": "^5.7",
+        "infobip/infobip-api-php-client": "^5.1"
     }
 }
