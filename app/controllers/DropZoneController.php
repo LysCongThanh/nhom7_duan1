@@ -49,7 +49,8 @@ class DropZoneController extends Controller
             $data = [
                 'book_id' => $id_product,
                 'name' => $new_file_name,
-                'image_main' => 1
+                'image_main' => 1,
+                'slug' => $new_file_path
             ];
             $this->images->insertImages($data);
         }
@@ -61,10 +62,12 @@ class DropZoneController extends Controller
         $request = new Request();
         $data = $request->getFields();
         $id = $data['id'];
+        $imageMain = $data['imageMain'];
         $file = $data['image'];
         $target_file = '';
         $current_month_year     = date('Y_m');
         $target_directory = 'public/uploads/products/' . $current_month_year . '/';
+        var_dump($file['name']);
 
         if (!is_dir($target_directory)) {
             try {
@@ -96,7 +99,8 @@ class DropZoneController extends Controller
             $data = [
                 'book_id' => $id_product,
                 'name' => $new_file_name,
-                'image_main' => 1
+                'image_main' => $imageMain,
+                'slug' => $new_file_path
             ];
             $this->images->insertImages($data);
         }
@@ -148,18 +152,64 @@ class DropZoneController extends Controller
                 $data = [
                     'book_id' => $id_product,
                     'name' => $file_name,
-                    'image_main' => 0
+                    'image_main' => 0,
+                    'slug' => $new_file_path
                 ];
                 $this->images->insertImages($data);
             }
         }
     }
 
+
+    public function addImages() 
+{
+    $request = new Request();
+    $data = $request->getFields();
+    print_r($data);
+    $files = $data['album_images']; 
+    $id = $data['id'];
+    $target_directory = 'public/uploads/products/' . date('Y_m') . '/';
+    
+    if (!is_dir($target_directory)) {
+        try {
+            mkdir($target_directory, 0755, true);
+        } catch (\Exception $e) {
+            $errors[] = $e->getMessage();
+            return false;
+        }
+    }
+    
+    foreach ($files['tmp_name'] as $key => $tmp_name) {
+        $file_extension = strtolower(pathinfo($files['name'][$key], PATHINFO_EXTENSION));
+        $new_file_name = time() . '_' . uniqid() . '.' . $file_extension;
+        $new_file_path = $target_directory . $new_file_name;
+        
+        while (file_exists($new_file_path)) {
+            $new_file_name = time() . '_' . uniqid() . '.' . $file_extension;
+            $new_file_path = $target_directory . $new_file_name;
+        }
+        
+        if (!move_uploaded_file($tmp_name, $new_file_path)) {
+            Session::flash('errors', 'Tải lên không thành công');
+            $this->response->redirect('them-san-pham');
+        }
+        
+        $data = [
+            'book_id' => $id,
+            'name' => $new_file_name,
+            'image_main' => 0,
+            'slug' => $new_file_path
+        ];
+        $result = $this->images->insertImages($data);
+    }
+}
+
     public function removeImage() {
         $request = new Request;
         if($request->isPost()) {
             $json = file_get_contents("php://input");
             $data = json_decode($json, true);
+            var_dump($data['id']);
             $this->images->removeImage($data['id']);
             header('Content-Type: application/json');
             echo json_encode(['status' => 'success', 'message' => 'Image removed successfully']);
