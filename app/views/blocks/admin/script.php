@@ -14,7 +14,11 @@
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/swiper-bundle.min.js"></script>
 
     <!-- Webroot -->
-    <script> const webRoot = window.location.origin </script>
+    <script> 
+    const webRoot = window.location.origin 
+    const query = new URLSearchParams(window.location.search);
+    </script>
+    
 
 
     <script>
