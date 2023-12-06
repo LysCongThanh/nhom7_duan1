@@ -43,6 +43,7 @@ class Database
             if (!empty($condition)) {
                 $sql = "UPDATE $table SET $updateStr WHERE $condition";
             }
+            var_dump($sql);
             $status = $this->query($sql);
             if (!$status) return false;
         }

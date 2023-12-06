@@ -18,7 +18,6 @@ class ClassifyController extends Controller
         $this->data['sub_content']['script_src'] = 'classification-list';
         $this->data['content'] = 'admin/categories/list';
         $this->render('layouts/admin_layout', $this->data);
-        $this->render('blocks/admin/script', $this->data['sub_content']);
     }
 
     public function add_category() {

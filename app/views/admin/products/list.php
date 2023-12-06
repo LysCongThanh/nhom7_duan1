@@ -1,4 +1,12 @@
 <div class="px-5 py-4 container-fluid">
+    <?= show_message('<div id="alert" class="alert bg-gradient-primary alert-dismissible text-sm  text-white  fade show" role="alert">
+    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+    <span class="alert-text"><strong>', '</strong></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>') ?>
+<div class="px-5 py-4 container-fluid">
     <div class="mt-4 row">
         <div class="col-12">
             <div class="card">
@@ -137,7 +145,7 @@
                                                                     <div class="card-body">
                                                                         <div class="row">
                                                                             <div class="text-center col-lg-6">
-                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg main-img" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['image_name']}}" alt="chair">
+                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg main-img" src="<?= _WEB_ROOT ?>/{{$product['slug']}}" alt="chair">
                                                                                 <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
                                                                                     @foreach ($images[$product['book_id']] as $image)
                                                                                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">

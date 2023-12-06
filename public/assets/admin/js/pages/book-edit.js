@@ -41,8 +41,6 @@ let myDropzone = new Dropzone("#image-dropzone", {
         });
 
         this.on("addedfile", function (file) {
-            // Check if there's already an existing file, and if so, remove it
-
             if (this.files.length > 1) {
                 this.removeFile(this.files[0]);
             }
@@ -247,9 +245,19 @@ Validator({
         ),
     ],
     onSubmit: function (data) {
+        
 
+        const formEditProduct = document.querySelector(this.form);
+        formEditProduct.querySelector('input[name="id"]').value = query.get('id');
+        const sortDescriptionInput = document.getElementById('sort_description');
+        const longDescriptionInput = document.getElementById('long_description');
 
+        shortDescription = quillSortEditor.root.innerHTML;
+        longDescription = quillLongEditor.root.innerHTML;
 
+        sortDescriptionInput.value = shortDescription;
+        longDescriptionInput.value = longDescription;
+        formEditProduct.submit();
     }
 });
 

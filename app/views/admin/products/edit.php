@@ -145,7 +145,7 @@
     </div>
 
 <!--    // FORM EDIT PRODUCT // --------------------------------------->
-    <form action="product/update_product" method="post" id="form-edit-product" enctype="multipart/form-data">
+    <form action="product/update" method="post" id="form-edit-product" enctype="multipart/form-data">
         <div class="mt-10 row">
             <div class="col-lg-6">
                 <h4>Thực hiện các thay đổi bên dưới</h4>
@@ -352,6 +352,7 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="id">
         <div class="mt-4 row">
             <div class="col-lg-4">
                 <div class="card card-plain pe-lg-10">
