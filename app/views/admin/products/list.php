@@ -103,7 +103,7 @@
                                             <div class="my-auto form-check">
                                                 <input class="form-check-input" type="checkbox" id="customCheck2" checked>
                                             </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$product['image_name']}}" alt="pillow">
+                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>{{$product['slug']}}" alt="pillow">
                                             <h6 class="my-auto ms-3">{{$product['book_name']}}</h6>
                                         </div>
                                     </td>

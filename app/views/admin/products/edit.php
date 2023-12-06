@@ -354,102 +354,6 @@
         </div>
         <div class="mt-4 row">
             <div class="col-lg-4">
-                <div class="card card-plain pe-lg-10 is-shadow">
-                    <h5 class="font-weight-semibold">Hình ảnh</h5>
-                    <p class="text-sm">Chúng tôi sẽ ghi có vào tài khoản của bạn nếu bạn cần hạ cấp trong chu kỳ
-                        thanh toán.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card h-100 is-shadow">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="col-6">
-                                <h5 class="font-weight-bolder">Ảnh Sản Phẩm</h5>
-                            </div>
-                            <div class="col-lg-6 text-end">
-                                <button class="mb-0 btn btn-white me-2 btn-sm" type="button" name="button" onclick="removeImages()">
-                                    <svg width="14" height="15" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">rule="evenodd" clip-rule="evenodd" d="M9 2.5C8.62123 2.5 8.27497 2.714 8.10557 3.05279L7.38197 4.5H4C3.44772 4.5 3 4.94772 3 5.5C3 6.05228 3.44772 6.5 4 6.5V16.5C4 17.6046 4.89543 18.5 6 18.5H14C15.1046 18.5 16 17.6046 16 16.5V6.5C16.5523 6.5 17 6.05228 17 5.5C17 4.94772 16.5523 4.5 16 4.5H12.618L11.8944 3.05279C11.725 2.714 11.3788 2.5 11 2.5H9ZM7 8.5C7 7.94772 7.44772 7.5 8 7.5C8.55228 7.5 9 7.94772 9 8.5V14.5C9 15.0523 8.55228 15.5 8 15.5C7.44772 15.5 7 15.0523 7 14.5V8.5ZM12 7.5C11.4477 7.5 11 7.94772 11 8.5V14.5C11 15.0523 11.4477 15.5 12 15.5C12.5523 15.5 13 15.0523 13 14.5V8.5C13 7.94772 12.5523 7.5 12 7.5Z" fill="#111827" />
-                                    </svg>
-                                    Remove
-                                </button>
-                                <button class="mb-0 btn btn-dark btn-sm" type="button" name="button" data-bs-toggle="modal" data-bs-target="#editImage">
-                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9.50816 3.01006C10.0549 2.46332 10.9413 2.46332 11.488 3.01006C12.0348 3.55679 12.0348 4.44322 11.488 4.98995L10.933 5.54498L8.95312 3.56508L9.50816 3.01006Z" fill="#F9FAFB" />
-                                        <path d="M7.96665 4.55502L2.10156 10.4201V12.4H4.08146L9.94653 6.53492L7.96665 4.55502Z" fill="#F9FAFB" />
-                                    </svg>
-                                    Edit
-                                </button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="editImage" tabindex="-1" role="dialog" aria-labelledby="editImageTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-upload-image-custom-width modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa hình ảnh</h5>
-                                                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="">
-                                                    <div class="dropzone text-center" id="image-dropzone">
-                                                        <div class="form-message" id="image-error-message"></div>
-                                                    </div>
-                                                    <div class="dropzone text-center" id="album-images-dropzone">
-                                                        <div class="form-message"></div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-white" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-dark">Send message</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Modal -->
-                            </div>
-                        </div>
-
-                        <div class="row my-images">
-                            <div class="col-12">
-                                @if($imageMain != false)
-                                <img class="mt-3 shadow-lg w-100 border-radius-lg"
-                                     src="{{_WEB_ROOT}}/public/uploads/products/2023_11/{{$imageMain['name']}}"
-                                     alt="product_image">
-                                @endif
-                                @if($imageMain === false)
-                                <p class="text-danger text-center">Trống !</p>
-                                @endif
-                            </div>
-                            <div class="mt-4 col-12">
-                            </div>
-                        </div>
-                        <div class="row my-images">
-                            <div class="col-md-12">
-                                <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
-                                    @if($albumImages != false)
-                                    @foreach ($albumImages as $image)
-                                    <figure class="gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a href="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" itemprop="contentUrl" data-size="600x600" data-lightbox="gallery">
-                                            <img class="shadow max-height-100 border-radius-lg img-fluid" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />
-                                        </a>
-                                    </figure>
-                                    @endforeach
-                                    @endif
-                                    @if($albumImages === false)
-                                    <p class="text-danger text-center">Album Trống !</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-4 row">
-            <div class="col-lg-4">
                 <div class="card card-plain pe-lg-10">
                     <h5 class="font-weight-semibold">Về Giá</h5>
                     <p class="text-sm">Chúng tôi sẽ ghi có vào tài khoản của bạn nếu bạn cần hạ cấp trong chu kỳ
@@ -463,7 +367,7 @@
                         <div class="row">
                             <div class="d-flex align-items-center">
                                 <div class="col-6">
-                                    <h5 class="font-weight-bolder">Phân loại</h5>
+                                    <h5 class="font-weight-bolder">Giá</h5>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -484,6 +388,95 @@
                                         <input type="text" name="sale_price" class="form-control" placeholder="Nhập giảm giá..." value="{{$product['discount_price']}}">
                                     </div>
                                     <div class="form-message"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 row">
+            <div class="col-lg-4">
+                <div class="card card-plain pe-lg-10 is-shadow">
+                    <h5 class="font-weight-semibold">Hình ảnh</h5>
+                    <p class="text-sm">Chúng tôi sẽ ghi có vào tài khoản của bạn nếu bạn cần hạ cấp trong chu kỳ
+                        thanh toán.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card h-100 is-shadow">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="col-6">
+                                <h5 class="font-weight-bolder">Ảnh Sản Phẩm</h5>
+                            </div>
+                            <div class="col-lg-6 text-end">
+                                <button class="mb-0 btn btn-dark btn-sm" type="button" name="button" data-bs-toggle="modal" data-bs-target="#editImage">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.50816 3.01006C10.0549 2.46332 10.9413 2.46332 11.488 3.01006C12.0348 3.55679 12.0348 4.44322 11.488 4.98995L10.933 5.54498L8.95312 3.56508L9.50816 3.01006Z" fill="#F9FAFB" />
+                                        <path d="M7.96665 4.55502L2.10156 10.4201V12.4H4.08146L9.94653 6.53492L7.96665 4.55502Z" fill="#F9FAFB" />
+                                    </svg>
+                                    Sửa
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="editImage" tabindex="-1" role="dialog" aria-labelledby="editImageTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-upload-image-custom-width modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa hình ảnh</h5>
+                                                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="">
+                                                    <div class="dropzone text-center" id="image-dropzone">
+                                                    </div>
+                                                    <div class="dropzone text-center" id="album-images-dropzone">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="cancelBtn" type="button" class="btn btn-white" data-bs-dismiss="modal">Hủy</button>
+                                                <button id="updateBtn" type="button" class="btn btn-dark">Cập nhật</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
+                            </div>
+                        </div>
+
+                        <div class="row my-images">
+                            <div class="col-12">
+                                @if($imageMain != false)
+                                <img class="mt-3 shadow-lg w-100 border-radius-lg"
+                                     src="{{_WEB_ROOT}}/{{$imageMain['slug']}}"
+                                     alt="product_image">
+                                @endif
+                                @if($imageMain === false)
+                                <p class="text-danger text-center">Trống !</p>
+                                @endif
+                            </div>
+                            <div class="mt-4 col-12">
+                            </div>
+                        </div>
+                        <div class="row my-images">
+                            <div class="col-md-12">
+                                <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
+                                    @if($albumImages != false)
+                                    @foreach ($albumImages as $image)
+                                    <figure class="gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a href="<?= _WEB_ROOT ?>/{{$image['slug']}}" itemprop="contentUrl" data-size="600x600" data-lightbox="gallery">
+                                            <img class="shadow max-height-100 border-radius-lg img-fluid" src="<?= _WEB_ROOT ?>/{{$image['slug']}}" alt="Image description" />
+                                        </a>
+                                    </figure>
+                                    @endforeach
+                                    @endif
+                                    @if($albumImages === false)
+                                    <p class="text-danger text-center">Album Trống !</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
