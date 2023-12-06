@@ -32,11 +32,13 @@ class ProductModel extends Model
     }
     public function getListProducts()
     {
-        $data = $this->db->select('b.*, c.*, i.name as image_name, b.id as book_id, c.name as name_category')
+        $data = $this->db->select('b.*, c.*, i.name as image_name, b.id as book_id, c.name as name_category, i.slug')
                         ->table('books as b')
                         ->join('categories as c', 'b.category_id = c.id')
-                        ->join('images as i', 'b.id = i.book_id')
-                        ->where('i.image_main', '=', 1)
+                        ->join('authors as a', 'a.id = b.author_id')
+                        ->join('publishers as p', 'p.id = b.publisher_id')
+                        ->leftJoin('images as i', 'b.id = i.book_id')
+                        ->groupBy('i.book_id')
                         ->get();
         return $data;
     }

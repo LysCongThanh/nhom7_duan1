@@ -176,10 +176,24 @@
 
     public function getImageAPI() {
         $request = new Request;
-
+        $data = [];
         $id = $request->getFields()['id'];
         header('Content-Type: application/json');
-        echo json_encode($this->images->getImageMain($id));
+        $data['image_main'] = $this->images->getImageMain($id);
+        $data['images'] = $this->images->getAlbumImages($id);
+            
+        echo json_encode($data);
+    }
+
+    public function oldData() {
+        $request = new Request;
+        if($request->isPost()) {
+            $jsonData = file_get_contents("php://input");
+            $data = json_decode($jsonData, true);
+            
+            header("Location: " . $data['request']);
+            exit();
+        }
     }
  }
 
