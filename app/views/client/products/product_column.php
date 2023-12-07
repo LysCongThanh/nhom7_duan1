@@ -339,11 +339,12 @@
 													<font style="vertical-align: inherit;"> Thêm vào giỏ hàng</font>
 												</font>
 											</a>
-											<a href="#" class="btn btn-light mt-2"><i class="fa fa-heart" id="{{$column['id']}}" onclick="sendData(event)"></i>
+											<!-- <a href="#" class="btn btn-light mt-2"><i class="fa fa-heart" id="{{$column['id']}}" onclick="sendData(event)"></i>
 												<font style="vertical-align: inherit;">
 													<font style="vertical-align: inherit;"> Thêm vào yêu thích</font>
 												</font>
-											</a>
+											</a> -->
+											<a data-original-title="Save to Wishlist" title="" href="#" class="btn btn-light" data-toggle="tooltip" onclick="sendData(event)" id="{{$column['id']}}"><i class="fa fa-heart"></i></a>
 										</p>
 
 
