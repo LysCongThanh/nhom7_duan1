@@ -40,6 +40,20 @@ class CommentsModel extends Model {
     }
 
 
+    public function rating($book_id)
+    {
+        $data = $this->db->select('c.*, u.name as name')
+        ->table('comments as c')
+        ->join('users as u', 'u.id = c.user_id')
+        ->join('books as b', 'b.id = c.book_id')
+        ->where('c.book_id', '=', $book_id)
+            ->where('u.role', '=', 0)
+            ->orderBy('c.id', 'DESC')
+            ->get();
+
+        return $data;
+    }
+
     public function count_comments(){
         $data = $this->db->select('COUNT(cm.id) AS danhgia')->table('comments AS cm')->first();
         return $data;
