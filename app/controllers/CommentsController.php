@@ -88,7 +88,9 @@ class CommentsController extends Controller{
             foreach ($result as $row) {
                 $review_content[] = array(
                     'user_id' => $row['user_id'],
+                    'name' => $row['name'],
                     'book_id' => $row['book_id'],
+                    'content' => $row['content'],
                     'rating' => $row['rating'],
                     'created_at' => $row['created_at']
                 );
