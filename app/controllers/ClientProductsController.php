@@ -2,7 +2,10 @@
 class ClientProductsController extends Controller
 {
 
-    public $data = [];
+    public $data = [], $products;
+    public function __construct(){
+        $this->products = $this->model('ProductModel');
+    }
 
 
     public function page()
@@ -21,4 +24,13 @@ class ClientProductsController extends Controller
         $this->data['content'] = 'client/products/product_detail';
         $this->render('layouts/client_layout', $this->data);
     }
+    public function detail()
+    {
+        $request = new Request();
+        $id = $request->getFields(); 
+        $this->data['sub_content']['pds'] = $this->products->getDetailProduct($id['id']);
+        $this->data['content'] = 'client/products/product_detail';
+        $this->render('layouts/client_layout', $this->data);  
+    }
+
 }
