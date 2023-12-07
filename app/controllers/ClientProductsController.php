@@ -2,8 +2,12 @@
 class ClientProductsController extends Controller
 {
 
-    public $data = [];
+    public $data = [], $products;
 
+    public function __construct()
+    {
+        $this->products = $this->model('ProductModel');
+    }
 
     public function page()
     {
@@ -11,8 +15,10 @@ class ClientProductsController extends Controller
         $this->render('layouts/client_layout', $this->data);
     }
 
-    public function product_column()
+    public function product_columns()
     {
+        $this->data['sub_content']['product_column'] = $this->products->getProductColumn();
+        $this->data['sub_content']['title'] = 'Sản Phẩm Ngang';
         $this->data['content'] = 'client/products/product_column';
         $this->render('layouts/client_layout', $this->data);
     }
