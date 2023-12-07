@@ -201,8 +201,7 @@
 
 						<button class="btn btn-block btn-primary" fdprocessedid="ndpz0k">
 							<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;">Áp
-									dụng</font>
+								<font style="vertical-align: inherit;">Áp dụng</font>
 							</font>
 						</button>
 
