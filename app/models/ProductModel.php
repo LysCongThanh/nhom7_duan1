@@ -78,9 +78,7 @@ class ProductModel extends Model
 
     public function deleteProduct($id)
     {
-        $this->db->table('images')->where('id_book', '=', $id)->delete();
-
-        $this->db->table('books')->where('id_book', '=', $id)->delete();
+        $this->db->table('books')->where('id', '=', $id)->delete();
     }
     public function count()
     {

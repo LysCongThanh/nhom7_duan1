@@ -116,7 +116,7 @@
                                         </div>
                                     </td>
                                     <td class="text-sm">{{$product['name_category']}}</td>
-                                    <td class="text-sm">{{$product['price']}}</td>
+                                    <td class="text-sm">{{number_format($product['price'])}}</td>
                                     <td class="text-sm">{{$product['ISBN']}}</td>
                                     <td class="text-sm">{{$product['quantity_inventory']}}</td>
                                     <td>
@@ -150,7 +150,7 @@
                                                                                     @foreach ($images[$product['book_id']] as $image)
                                                                                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                                                                         <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/" itemprop="contentUrl" data-size="600x600">
-                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$image['name']}}" alt="Image description" />
+                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>{{$image['slug']}}" alt="Image description" />
                                                                                         </a>
                                                                                     </figure>
                                                                                     @endforeach
@@ -276,7 +276,7 @@
                                         <a href="{{_WEB_ROOT}}sua-san-pham?id={{$product['book_id']}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>
-                                        <a href="{{_WEB_ROOT}}product/delete?id={{$product['id']}}" data-bs-toggle="tooltip" data-bs-original-title="Delete product"  onclick="return confirmDeleteProduct(event)">
+                                        <a href="{{_WEB_ROOT}}product/delete?id={{$product['book_id']}}" data-bs-toggle="tooltip" data-bs-original-title="Delete product"  onclick="return confirmDeleteProduct(event)">
                                             <i class="fas fa-trash text-dark"></i>
                                         </a>
                                     </td>
