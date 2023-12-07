@@ -83,7 +83,8 @@
   .card-post {
     margin-bottom: 20px; }
   .card-product-grid .img-wrap {
-    height: 200px; }
+    width: auto;
+    height: 180px; }
   .section-footer .title {
     margin-bottom: 0;
     margin-top: 20px; }
