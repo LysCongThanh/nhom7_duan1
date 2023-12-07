@@ -32,10 +32,10 @@ class CartController extends Controller
         $user = Session::data('user');
         $data = ['user_id' => $user['id'], 'book_id' => $id];
         $getID = $this->cart->listCart($user['id']);
-
+    
         if ($getID != NULL) {
             $bookIdExists = false;
-
+    
             foreach ($getID as $key) {
                 if ($key['book_id'] == $id) {
                     $bookIdExists = true;
@@ -43,13 +43,18 @@ class CartController extends Controller
                     break;
                 }
             }
-
+    
             if (!$bookIdExists) {
                 $this->data['sub_content']['cart'] = $this->cart->addCartList($data);
             }
         } else {
             $this->data['sub_content']['cart'] = $this->cart->addCartList($data);
         }
+    
+        // Trả về phản hồi JSON
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true]);
+        exit;
     }
 
 
@@ -67,7 +72,11 @@ class CartController extends Controller
     public function addWishList()
     {
         $data = ['user_id' => Session::data('user')['id'], 'book_id' => $_GET['productId']];
+        $result = $this->wishlists->addWishList($data);
 
-        $this->data['sub_content'] = $this->wishlists->addWishList($data);
+        // Trả về phản hồi JSON
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $result]);
+        exit;
     }
 }
