@@ -201,8 +201,7 @@
 
 						<button class="btn btn-block btn-primary" fdprocessedid="ndpz0k">
 							<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;">Áp
-									dụng</font>
+								<font style="vertical-align: inherit;">Áp dụng</font>
 							</font>
 						</button>
 
@@ -241,7 +240,7 @@
 								</div>
 							</div>
 						</header><!-- sect-heading -->
-
+						@foreach($product_column as $column)
 						<article class="card card-product-list">
 							<div class="row no-gutters">
 								<aside class="col-md-3">
@@ -251,14 +250,14 @@
 												<font style="vertical-align: inherit;">MỚI</font>
 											</font>
 										</span>
-										<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b8.jpg">
+										<img src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$column['img']}}">
 									</a>
 								</aside> <!-- col.// -->
 								<div class="col-md-6">
 									<div class="info-main">
 										<a href="#" class="h5 title">
 											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">OverLord 3</font>
+												<font style="vertical-align: inherit;">{{$column['book_name']}}</font>
 											</font>
 										</a>
 										<div class="rating-wrap mb-2">
@@ -290,7 +289,7 @@
 											</span>
 											<span class="tag">
 												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">80 đánh giá</font>
+													<font style="vertical-align: inherit;">{{$column['ratings']}} đánh giá</font>
 												</font>
 											</span>
 											<span class="tag">
@@ -302,11 +301,7 @@
 
 										<p>
 											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Hãy coi nó như thông số kỹ thuật
-													demo, bản thân nỗi đau là quan trọng, consectetuer adipiscing elit,
-													Lorem nỗi đau rất là amit, consectetuer adipiscing elit, Vì vậy, họ
-													ít nhất bị coi là mù quáng vì lòng tham, họ không bước ra, họ có
-													lỗi với những ai làm....</font>
+												<font style="vertical-align: inherit;">{{$column['describe_short']}}</font>
 											</font>
 										</p>
 
@@ -317,7 +312,7 @@
 										<div class="price-wrap">
 											<span class="h5 price">
 												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">65.000 đ</font>
+													<font style="vertical-align: inherit;">{{$column['price']}} đ</font>
 												</font>
 											</span>
 											<small class="text-muted">
@@ -334,20 +329,21 @@
 
 										<p class="text-muted mt-3">
 											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Sách Thiếu Nhi</font>
+												<font style="vertical-align: inherit;">{{$column['categorie']}}</font>
 											</font>
 										</p>
 										<p class="mt-3">
-											<a href="#" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i>
+											<a href="#" class="btn btn-outline-primary" id="{{$column['id']}}" onclick="sendCartData(event)"><i class="fa fa-shopping-cart"></i>
 												<font style="vertical-align: inherit;">
 													<font style="vertical-align: inherit;"> Thêm vào giỏ hàng</font>
 												</font>
 											</a>
-											<a href="#" class="btn btn-light mt-2"><i class="fa fa-heart"></i>
+											<!-- <a href="#" class="btn btn-light mt-2"><i class="fa fa-heart" id="{{$column['id']}}" onclick="sendData(event)"></i>
 												<font style="vertical-align: inherit;">
 													<font style="vertical-align: inherit;"> Thêm vào yêu thích</font>
 												</font>
-											</a>
+											</a> -->
+											<a data-original-title="Save to Wishlist" title="" href="#" class="btn btn-light" data-toggle="tooltip" onclick="sendData(event)" id="{{$column['id']}}"><i class="fa fa-heart"></i></a>
 										</p>
 
 
@@ -355,7 +351,7 @@
 								</aside> <!-- col.// -->
 							</div> <!-- row.// -->
 						</article> <!-- card-product .// -->
-
+						@endforeach
 						<nav class="mb-4" aria-label="Mẫu điều hướng trang">
 							<ul class="pagination">
 								<li class="page-item disabled"><a class="page-link" href="#">

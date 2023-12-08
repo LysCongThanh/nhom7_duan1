@@ -23,7 +23,7 @@ $routes['thong-tin-nguoi-dung'] = 'users/profile';
 // Client Routings
 $routes['trang-chu'] = 'home/index';
 
-$routes['san-pham-ngang'] = 'clientProducts/product_column';
+$routes['san-pham-ngang'] = 'clientProducts/product_columns';
 $routes['chi-tiet-san-pham'] = 'clientProducts/detail';
 $routes['thanh-toan'] = 'payments/page';
 $routes['gio-hang'] = 'cart/page';

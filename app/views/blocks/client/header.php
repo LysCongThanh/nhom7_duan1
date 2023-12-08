@@ -86,7 +86,7 @@
 								</a>
 							</div>
 							<div class="widget-header">
-								<a href="cart.html" class="widget-view">
+								<a href="gio-hang" class="widget-view">
 									<div class="icon-area">
 										<i class="fa fa-shopping-cart"></i>
 									</div>
@@ -126,7 +126,7 @@
 				   <a class="nav-link" href="trang-chu">Trang chủ</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="san-pham">Cửa hàng</a>
+				  <a class="nav-link" href="san-pham-ngang">Cửa hàng</a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" href="gioi-thieu">Giới thiệu</a>

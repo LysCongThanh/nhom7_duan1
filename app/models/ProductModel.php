@@ -30,6 +30,18 @@ class ProductModel extends Model
         $data = $this->db->table('books')->lastId();
         return $data;
     }
+
+    public function getProductColumn()
+    {
+        $data = $this->db->select('b.*, i.name as img, c.name as categorie, cm.rating as ratings')
+        ->table('books as b')
+        ->leftJoin('images as i', 'b.id=i.book_id')
+        ->leftJoin('categories as c', 'c.id=b.category_id')
+        ->leftJoin('comments as cm', 'cm.book_id=b.id')
+        ->get();
+        return $data;
+    }
+
     public function getListProducts()
     {
         $data = $this->db->select('b.*, c.*, i.name as image_name, b.id as book_id, c.name as name_category, i.slug')
