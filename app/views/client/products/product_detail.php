@@ -10,7 +10,7 @@
               <div class="card">
                 <article class="gallery-wrap">
                   <div class="img-big-wrap">
-                    <a href="#"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6_480.png"></a>
+                    <a href="#"><img src="<?= _WEB_ROOT; ?>/public/uploads/products/2023_12/{{$pds['image_name']}}"></a>
                   </div>
 
                   <div class="thumbs-wrap">
@@ -166,8 +166,8 @@
       <hr class="black-hr mb-4">
       <div class="row row-sm">
         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-          <div href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="card card-sm card-product-grid" style="border-radius:10px;">
-            <a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b4_480.png"></a>
+          <div href="" class="card card-sm card-product-grid" style="border-radius:10px;">
+            <a href="" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b4_480.png"></a>
             <figcaption class="info-wrap">
               <a href="" class="title">Người bạn thời thơ ấu của tôi</a>
               <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
@@ -176,8 +176,8 @@
         </div>
 
         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-          <div href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="card card-sm card-product-grid" style="border-radius:10px;">
-            <a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b5_480.png"></a>
+          <div href="" class="card card-sm card-product-grid" style="border-radius:10px;">
+            <a href="" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b5_480.png"></a>
             <figcaption class="info-wrap">
               <a href="" class="title">Người bạn thời thơ ấu của tôi</a>
               <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
@@ -186,8 +186,8 @@
         </div>
 
         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-          <div href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="card card-sm card-product-grid" style="border-radius:10px;">
-            <a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7_480.png"></a>
+          <div href="" class="card card-sm card-product-grid" style="border-radius:10px;">
+            <a href="" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7_480.png"></a>
             <figcaption class="info-wrap">
               <a href="" class="title">Người bạn thời thơ ấu của tôi</a>
               <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
@@ -196,8 +196,8 @@
         </div>
 
         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-          <div href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="card card-sm card-product-grid" style="border-radius:10px;">
-            <a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b1_480.png"></a>
+          <div href="" class="card card-sm card-product-grid" style="border-radius:10px;">
+            <a href="" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b1_480.png"></a>
             <figcaption class="info-wrap">
               <a href="" class="title">Người bạn thời thơ ấu của tôi</a>
               <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
@@ -206,8 +206,8 @@
         </div>
 
         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-          <div href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="card card-sm card-product-grid" style="border-radius:10px;">
-            <a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b2_480.png"></a>
+          <div href="" class="card card-sm card-product-grid" style="border-radius:10px;">
+            <a href="" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b2_480.png"></a>
             <figcaption class="info-wrap">
               <a href="" class="title">Người bạn thời thơ ấu của tôi</a>
               <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
@@ -216,8 +216,8 @@
         </div>
 
         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-          <div href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="card card-sm card-product-grid" style="border-radius:10px;">
-            <a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$latest['id']}}" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6_480.png"></a>
+          <div href="" class="card card-sm card-product-grid" style="border-radius:10px;">
+            <a href="" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6_480.png"></a>
             <figcaption class="info-wrap">
               <a href="" class="title">Người bạn thời thơ ấu của tôi</a>
               <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
@@ -480,3 +480,164 @@
 
 </div>
 
+
+<script>
+  $(document).ready(function() {
+    var rating_data = 0;
+    $('#add_review').click(function() {
+      $('#review_modal').modal('show');
+    });
+
+    $(document).on('mouseenter', '.submit_star', function() {
+      var rating = $(this).data('rating');
+      reset_background();
+      for (var count = 1; count <= rating; count++) {
+        $('#submit_star_' + count).addClass('text-warning');
+      }
+    });
+
+    $(document).on('mouseleave', '.submit_star', function() {
+      reset_background();
+      highlight_stars(rating_data);
+    });
+
+    $(document).on('click', '.submit_star', function() {
+      rating_data = $(this).data('rating');
+      highlight_stars(rating_data);
+    });
+
+    function reset_background() {
+      for (var count = 1; count <= 5; count++) {
+        $('#submit_star_' + count).addClass('star-light');
+        $('#submit_star_' + count).removeClass('text-warning');
+      }
+    }
+
+    function highlight_stars(count) {
+      reset_background();
+      for (var i = 1; i <= count; i++) {
+        $('#submit_star_' + i).addClass('text-warning');
+      }
+    }
+
+    function reset_popup() {
+      rating_data = 0;
+      $('#content').val('');
+      reset_background();
+    }
+
+    $('#save_review').click(function() {
+      var user = $('#user').val();
+      var pds = $('#pds').val();
+      var content = $('#content').val();
+
+      if (rating_data === 0) {
+        alert('Vui lòng đánh giá sao trước khi gửi nhận xét!');
+        return false;
+      }
+
+      if (content == "") {
+        alert('Vui lòng nhập nội dung!');
+        return false;
+      } else {
+        $.ajax({
+          url: "them-binh-luan",
+          method: "POST",
+          data: {
+            user: user,
+            pds: pds,
+            content: content,
+            rating_data: rating_data
+          },
+          success: function(data) {
+            $('#review_modal').modal('hide');
+            alert('Gửi đánh giá thành công');
+            reset_popup();
+            load_rating();
+          }
+        });
+      }
+    });
+    load_rating();
+
+    function load_rating() {
+      var bookId = $('#pds').val();
+
+      $.ajax({
+        url: "load-rating",
+        method: "POST",
+        data: {
+          action: 'load_data',
+          product_id: bookId
+        },
+        dataType: "JSON",
+        success: function(data) {
+          $('.average_rating').text(data.average_rating);
+          $('#total_review').text(data.total_review);
+
+          var starsWidth = (data.average_rating / 5) * 100;
+          $('.full-stars').css('width', starsWidth + '%');
+
+          $('#total_five_star_review').text(data.five_star_review);
+          $('#total_four_star_review').text(data.four_star_review);
+          $('#total_three_star_review').text(data.three_star_review);
+          $('#total_two_star_review').text(data.two_star_review);
+          $('#total_one_star_review').text(data.one_star_review);
+
+
+          $('#five_star_progress').css('width', (data.five_star_review / data.total_review) * 100 + '%');
+          $('#four_star_progress').css('width', (data.four_star_review / data.total_review) * 100 + '%');
+          $('#three_star_progress').css('width', (data.three_star_review / data.total_review) * 100 + '%');
+          $('#two_star_progress').css('width', (data.two_star_review / data.total_review) * 100 + '%');
+          $('#one_star_progress').css('width', (data.one_star_review / data.total_review) * 100 + '%');
+
+          if (data.review_data && data.review_data.length > 0) {
+            var html = '';
+            for (var count = 0; count < data.review_data.length; count++) {
+              html += '<div class="row mb-3">';
+
+
+              html += '<div class="col-sm-11">';
+              html += '<div class="card">';
+
+              html += '<div class="card-header">';
+              html += '<div class="d-flex align-items-center">';
+              html += '<div class="rounded-circle bg-primary text-white pt-1 pb-1 text-center" style="width: 30px; height: 30px;">';
+              html += '<h3 style="font-size: 1rem;">' + data.review_data[count].name.charAt(0) + '</h3>';
+              html += '</div>';
+              html += '<b class="ml-3">' + data.review_data[count].name + '</b>'; // Adjusted margin here
+              html += '</div>';
+              html += '</div>';
+
+              html += '<div class="card-body">';
+              for (var star = 1; star <= 5; star++) {
+                var class_name = '';
+                if (data.review_data[count].rating >= star) {
+                  class_name = 'text-warning';
+                } else {
+                  class_name = 'star-light';
+                }
+                html += '<i class="fas fa-star ' + class_name + ' mr-1"></i>';
+              }
+              html += '<br/>';
+              html += '<div class="text-muted">' + data.review_data[count].created_at + '</div>';
+              html += '<p class="card-text">' + data.review_data[count].content + '</p>';
+              html += '</div>';
+
+              html += '</div>';
+              html += '</div>';
+
+              html += '</div>';
+
+            }
+
+            $('#review_content').html(html);
+
+          }
+
+        }
+      });
+    }
+
+  });
+</script>
