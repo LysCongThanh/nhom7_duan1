@@ -44,6 +44,96 @@ class CommentsController extends Controller{
         }
     }
 
+    public function insertComment()
+    {
+        $request = new Request();
+        if ($request->isPost()) {
+            $data = $request->getFields();
+            $insertData = array(
+                'user_id' => $data['user'],
+                'book_id' => $data['pds'],
+                'rating' => $data['rating_data'],
+                'content' => $data['content'],
+            );
+
+            $result = $this->comments->insertComment($insertData);
+
+            if (!$result) {
+                Session::flash('msg', 'Thêm bình luận thành công');
+            }
+            $response  = new Response();
+            $response->redirect('chi-tiet-san-pham');
+        }
+    }
+
+    public function load_Rating()
+    {
+        $request = new Request();
+        if ($request->isPost()) {
+            $data = $request->getFields();
+            if (isset($data['action']) && $data['action'] == 'load_data') {
+                $average_rating = 0;
+                $total_review = 0;
+                $five_star_review = 0;
+                $four_star_review = 0;
+                $three_star_review = 0;
+                $two_star_review = 0;
+                $one_star_review = 0;
+                $total_rating = 0;
+                $review_content = array();
+            }
+            $product_id = $data['product_id'];
+            $result = $this->comments->rating($product_id);
+
+            foreach ($result as $row) {
+                $review_content[] = array(
+                    'user_id' => $row['user_id'],
+                    'name' => $row['name'],
+                    'book_id' => $row['book_id'],
+                    'content' => $row['content'],
+                    'rating' => $row['rating'],
+                    'created_at' => $row['created_at']
+                );
+
+                switch ($row["rating"]) {
+                    case '5':
+                        $five_star_review++;
+                        break;
+                    case '4':
+                        $four_star_review++;
+                        break;
+                    case '3':
+                        $three_star_review++;
+                        break;
+                    case '2':
+                        $two_star_review++;
+                        break;
+                    case '1':
+                        $one_star_review++;
+                        break;
+                    }
+
+                $total_review++;
+                $total_rating += $row['rating'];
+            }
+
+            $average_rating = ($total_review > 0) ? ($total_rating / $total_review) : 0;
+
+            $output = array(
+                'average_rating' => number_format($average_rating, 1),
+                'total_review' => $total_review,
+                'five_star_review' => $five_star_review,
+                'four_star_review' => $four_star_review,
+                'three_star_review' => $three_star_review,
+                'two_star_review' => $two_star_review,
+                'one_star_review' => $one_star_review,
+                'review_data' => $review_content
+            );
+            echo json_encode($output);
+        }
+    }
+    
+
     public function delete()
     {
         $request = new Request();

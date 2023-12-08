@@ -196,7 +196,9 @@ var {
 
 figure {
   margin-bottom: 0; }
-
+.btn-red{
+  background-color: red;
+}
 .form-noborder input, .form-noborder select, .form-noborder .btn {
   border: 0; }
 
@@ -506,7 +508,7 @@ p:last-child {
 .section-footer .title {
   font-weight: 600;
   margin-bottom: 16px;
-  font-size: 18px; }
+  font-size: 18px;}
 
 .footer-bottom {
   padding-top: 20px;
@@ -841,14 +843,21 @@ a[class*='card'] {
             box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);
     -webkit-transition: .3s;
     transition: .3s; }
-
+    .black-hr {
+      background-color: black;
+      height: 2px; /* Điều chỉnh chiều cao của đường ngang theo nhu cầu */
+      /* Các thuộc tính CSS khác nếu cần */
+      border-radius: 20px;
+    }
 .card-sm {
   min-height: 284px; }
   .card-sm .img-wrap {
-    height: 180px; }
+  height: 270px;
+  border-top-right-radius:10px;
+  border-top-left-radius:10px; }
 
 .card-lg .img-wrap {
-  height: 280px; }
+  height: 250px; }
 
 .card-category {
   display: block;
@@ -909,6 +918,10 @@ a[class*='card'] {
     left: 0;
     bottom: 0;
     position: absolute; }
+    .progress-label-left {
+    float: left; /* hoặc display: inline-block; */}
+    .progress-label-right {
+      float: right; /* hoặc display: inline-block; */}
   .card-banner .text-bottom {
     position: absolute;
     left: 0;
@@ -1266,7 +1279,7 @@ body {
 /* ================== PAGE DETAILS ==================  */
 .gallery-wrap .img-big-wrap {
   margin-bottom: 10px;
-  border-radius: 0.37rem;
+  border-radius: 0.9rem;
   overflow: hidden;
   background-color: #fff; }
   .gallery-wrap .img-big-wrap a {
@@ -1355,3 +1368,57 @@ html[dir='rtl'] .itemside .info {
   padding-right: 15px;
   padding-left: initial; }
 /*# sourceMappingURL=ui.css.map */
+
+.card-product-grid {
+  transition: box-shadow 0.3s; /* Hiệu ứng chuyển động smooth cho shadow */
+}
+
+/* Hiệu ứng shadow khi hover vào sản phẩm */
+.card-product-grid:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Độ sâu và màu của shadow khi hover */
+}
+.average_rating{
+  font-size: 1.8em;
+}
+.ratings {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: black;
+  overflow: hidden;
+}
+
+.full-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #FF6A00;
+  width: 0;
+  transition: width 1s; 
+}
+
+
+.empty-stars:before,
+.full-stars:before {
+  content: "★★★★★";
+  font-size: 14pt;
+
+}
+
+.empty-stars:before {
+  -webkit-text-stroke: 1px black;
+}
+
+.full-stars:before {
+  -webkit-text-stroke: 1px #FF6A00;
+}
+
+/* Webkit-text-stroke is not supported on firefox or IE */
+/* Firefox */
+@-moz-document url-prefix() {
+  .full-stars {
+    color: #ECBE24;
+  }
+}

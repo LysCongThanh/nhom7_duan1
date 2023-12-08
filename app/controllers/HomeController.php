@@ -1,16 +1,16 @@
 <?php
 class HomeController extends Controller
 {
-    public $product, $data;
+    public $products, $data;
 
     public function __construct()
     {
-        $this->product = $this->model('HomeModel');
+        $this->products = $this->model('ProductModel');
     }
 
     public function index()
     {
-       
+        $this->data['sub_content']['pds'] = $this->products->getListProducts();
         $this->data['content'] = 'client/home/index';
         $this->render('layouts/client_layout', $this->data);
     }

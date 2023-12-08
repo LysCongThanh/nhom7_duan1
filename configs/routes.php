@@ -36,6 +36,8 @@ $routes['cai-dat'] = 'profile/setting';
 $routes['yeu-thich'] = 'profile/wishlist';
 // $routes['gioi-thieu'] = 'profile/setting';
 
+$routes['them-binh-luan'] = 'comments/insertComment';
+$routes['load-rating'] = 'comments/load_Rating';
 
 $routes['dang-ky'] = 'admin/register';
 $routes['dang-nhap'] = 'admin/login';
