@@ -32,15 +32,16 @@ class ProductModel extends Model
     }
     public function getListProducts()
     {
-        $data = $this->db->select('b.*, c.*, i.name as image_name, b.id as book_id, c.name as name_category, i.slug')
-                        ->table('books as b')
-                        ->join('categories as c', 'b.category_id = c.id')
-                        ->join('authors as a', 'a.id = b.author_id')
-                        ->join('publishers as p', 'p.id = b.publisher_id')
-                        ->leftJoin('images as i', 'b.id = i.book_id')
-                        ->groupBy('i.book_id')
-                        ->get();
+        $data = $this->db->select('b.*, c.*, MAX(i.name) as image_name, b.id as book_id, c.name as name_category, MAX(i.slug) as image_slug')
+        ->table('books as b')
+        ->join('categories as c', 'b.category_id = c.id')
+        ->join('authors as a', 'a.id = b.author_id')
+        ->join('publishers as p', 'p.id = b.publisher_id')
+        ->leftJoin('images as i', 'b.id = i.book_id')
+        ->groupBy('b.id', 'c.id', 'a.id', 'p.id', 'c.name')
+        ->get();
         return $data;
+
     }
 
     public function getListProductsCategories($id)
@@ -53,16 +54,17 @@ class ProductModel extends Model
     {
         $data = $this->db->select('
         b.*, 
-        b.id as book_id,
+        b.id as book_id, i.name as image_name,
         c.* 
         ')
-                         ->table('books as b')
-                         ->join('categories as c', 'b.category_id = c.id')
-                         ->join('authors as a', 'a.id = b.author_id')
-                         ->join('publishers as p', 'p.id = b.publisher_id')
-                         ->where('b.id', '=', $id)
-                         ->first();
-    
+        ->table('books as b')
+        ->join('categories as c', 'b.category_id = c.id')
+        ->join('authors as a', 'a.id = b.author_id')
+        ->join('publishers as p', 'p.id = b.publisher_id')
+        ->join('images as i', 'b.id = i.book_id')
+        ->where('b.id', '=', $id)
+        ->first();
+
         return $data;
     }
 
