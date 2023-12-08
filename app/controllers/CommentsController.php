@@ -111,7 +111,7 @@ class CommentsController extends Controller{
                     case '1':
                         $one_star_review++;
                         break;
-                }
+                    }
 
                 $total_review++;
                 $total_rating += $row['rating'];
@@ -132,6 +132,7 @@ class CommentsController extends Controller{
             echo json_encode($output);
         }
     }
+    
     
 
     public function delete()
