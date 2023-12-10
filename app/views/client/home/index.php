@@ -104,61 +104,22 @@
 				</div>
 			</div> <!-- col.// -->
 			<div class="row no-gutters items-wrap">
+				@foreach($discount as $dis)
 				<div class="col-md col-6">
 					<figure class="card-product-grid card-sm">
 						<a href="#" class="img-wrap">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b2.png">
+							<img src="<?= _WEB_ROOT; ?>/public/uploads/products/2023_12/{{$dis['image_name']}}">
 						</a>
 						<div class="text-wrap p-3">
-							<a href="#" class="title">Đắc Nhân Tâm</a>
-							<span class="badge badge-danger"> -20% </span>
+							<a href="#" class="title">{{$dis['book_name']}}</a>
+							<span class="badge badge-danger"> {{$dis['discount']}}%</span>
+
+							<p class="text-primary"><i class="fas fa-dollar-sign"></i> {{number_format($dis['discount_money'])}} đ</p>
+							<p class="text-wrap center-line"><i class="fas fa-dollar-sign"></i> {{number_format($dis['price'])}} đ</p>
 						</div>
 					</figure>
 				</div> <!-- col.// -->
-				<div class="col-md col-6">
-					<figure class="card-product-grid card-sm">
-						<a href="#" class="img-wrap">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b3.png">
-						</a>
-						<div class="text-wrap p-3">
-							<a href="#" class="title">Thành Công</a>
-							<span class="badge badge-danger"> -5% </span>
-						</div>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-md col-6">
-					<figure class="card-product-grid card-sm">
-						<a href="#" class="img-wrap">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b4.png">
-						</a>
-						<div class="text-wrap p-3">
-							<a href="#" class="title">Dám Ước Mơ</a>
-							<span class="badge badge-danger"> -20% </span>
-						</div>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-md col-6">
-					<figure class="card-product-grid card-sm">
-						<a href="#" class="img-wrap">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b3.png">
-						</a>
-						<div class="text-wrap p-3">
-							<a href="#" class="title">Better & Faster</a>
-							<span class="badge badge-danger"> -15% </span>
-						</div>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-md col-6">
-					<figure class="card-product-grid card-sm">
-						<a href="#" class="img-wrap">
-							<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b5.png">
-						</a>
-						<div class="text-wrap p-3">
-							<a href="#" class="title text-truncate">1001 Ý Tưởng</a>
-							<span class="badge badge-danger"> -10% </span>
-						</div>
-					</figure>
-				</div> <!-- col.// -->
+				@endforeach
 			</div>
 		</div>
 
@@ -183,15 +144,23 @@
 				</div> <!-- col.// -->
 				<div class="col-md-9">
 					<ul class="row no-gutters bordered-cols">
+						@foreach($stars as $star)
 						<li class="col-6 col-lg-3 col-md-4">
-							<a href="#" class="item">
+							<a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$star['book_id']}}" class="item">
 								<div class="card-body">
-									<h6 class="title">Điều tuyệt vời nhất mà ông mặt trời đã sắp đặt. </h6>
-									<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b1.png">
-									<p class="text-muted"><i class="fa fa-user-alt"></i>Công Thành</p>
+									<h6 class="title">{{$star['book_name']}}</h6>
+									<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/uploads/products/2023_12/{{$star['image_name']}}">
+									<p class="text-primary">
+									<div class="ratings">
+										<div class="empty-stars"></div>
+										<div class="full-stars" style="width: {{ intval($star['percent_rating']) }}%;"></div>
+									</div>
+									</p>
+
 								</div>
 							</a>
 						</li>
+						@endforeach
 					</ul>
 				</div>
 			</div>
@@ -216,18 +185,20 @@
 
 				<div class="col-md-9">
 					<ul class="row no-gutters bordered-cols">
-						
+
+						@foreach($views as $view)
 						<li class="col-6 col-lg-3 col-md-4">
-							<a href="" class="item">
+							<a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$view['book_id']}}" class="item">
 								<div class="card-body">
-									<h6 class="title">Hikari Kosovo</h6>
-									<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b4_480.png">
-									<p class="text-primary"><i class="fas fa-eye"></i>10000</p>
-									<p class="text-primary"><i class="fas fa-dollar-sign"></i> 40,000 đ</p>
+									<h6 class="title">{{$view['book_name']}}</h6>
+									<img class="img-sm float-right" src="<?= _WEB_ROOT; ?>/public/uploads/products/2023_12/{{$view['image_name']}}">
+									<p class="text-primary"><i class="fas fa-eye"></i> {{number_format($view['views'])}}</p>
+									<p class="text-primary"><i class="fas fa-dollar-sign"></i> {{number_format($view['price'])}} đ</p>
 								</div>
 							</a>
 						</li>
-						
+						@endforeach
+
 					</ul>
 				</div>
 			</div>
@@ -245,11 +216,18 @@
 				@foreach($pds as $product)
 				<div class="col-xl-3 col-lg-3 col-md-4 col-6">
 					<div href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$product['book_id']}}" class="card card-sm card-product-grid" style="border-radius:10px;">
-						<a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$product['book_id']}}" class="img-wrap"><img src="<?= _WEB_ROOT; ?>/public/uploads/products/2023_12/{{$product['image_name']}}"></a>
+						<a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$product['book_id']}}" class="img-wrap">
+							<div class="img-zoom-wrap">
+								<img src="<?= _WEB_ROOT; ?>/public/uploads/products/2023_12/{{$product['image_name']}}">
+							</div>
+						</a>
 						<figcaption class="info-wrap">
-							<a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$product['book_id']}}" class="title" title="{{$product['book_name']}}">{{$product['book_name']}}</a>
+							<div class="card__preview_text">
+								<a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$product['book_id']}}" class="title" title="{{$product['book_name']}}">{{$product['book_name']}}</a>
+							</div>
 							<div class="price mt-1 text-primary">{{number_format($product['price'])}} đ</div>
-							<button type="button" class="btn-outline-primary btn btn-block mt-2 mb-2">Thêm vào giỏ hàng</button>
+
+							<button type="button" class="btn-outline-primary btn btn-block mt-2 mb-2">Thêm giỏ hàng</button>
 						</figcaption>
 					</div>
 				</div>
