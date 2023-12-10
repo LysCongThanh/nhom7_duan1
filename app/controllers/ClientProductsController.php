@@ -32,6 +32,7 @@ class ClientProductsController extends Controller
         $request = new Request();
         $id = $request->getFields();
         $this->data['sub_content']['pds'] = $this->products->getDetailProduct($id['id']);
+        $this->products->countView($id['id']);
         $this->data['content'] = 'client/products/product_detail';
         $this->render('layouts/client_layout', $this->data);
     }
