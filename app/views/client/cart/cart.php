@@ -18,12 +18,18 @@
 	<form action="" method="post">
 	<tbody>
 	@if(isset($cart) && $cart != null)
-	@foreach($cart as $key)
-	<?php 
-		$sum = $key['quantity']*$key['price'] ;
-		$discount_price = $key['quantity']*$key['discount_price'];
-		$total = $sum - $discount_price;
-	?>
+	<?php $grandSum = 0; ?>
+    <?php $grandTotal = 0; ?>
+	<?php $grandDiscount = 0; ?>
+    @foreach($cart as $key)
+        <?php 
+            $sum = $key['quantity'] * $key['price'];
+            $discount_price = $key['quantity'] * $key['discount_price'];
+            $total = $sum - $discount_price;
+            $grandSum += $sum;
+            $grandTotal += $total;
+			$grandDiscount += $discount_price;
+        ?>
 	<tr>
 		<td>
 			<figure class="itemside">
@@ -84,18 +90,19 @@
 				</div> <!-- card-body.// -->
 			</div>  <!-- card .// -->
 			<div class="card">
+			@if(isset($sum) && isset($total) && isset($discount_price))
 				<div class="card-body">
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng giá:</font></font></dt>
-						  <dd class="text-right">{{$sum}} đ</dd>
+						  <dd class="text-right">{{$grandSum}} đ</dd>
 						</dl>
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giảm giá:</font></font></dt>
-						  <dd class="text-right">{{$discount_price}} đ</dd>
+						  <dd class="text-right">{{$grandDiscount}} đ</dd>
 						</dl>
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng cộng:</font></font></dt>
-						  <dd class="text-right  h5"><strong>{{$total}} đ</strong></dd>
+						  <dd class="text-right  h5"><strong>{{$grandTotal}} đ</strong></dd>
 						</dl>
 						<hr>
 						<p class="text-center mb-3">
@@ -103,6 +110,27 @@
 						</p>
 						
 				</div> <!-- card-body.// -->
+				@else
+				<div class="card-body">
+						<dl class="dlist-align">
+						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng giá:</font></font></dt>
+						  <dd class="text-right">0 đ</dd>
+						</dl>
+						<dl class="dlist-align">
+						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giảm giá:</font></font></dt>
+						  <dd class="text-right">0 đ</dd>
+						</dl>
+						<dl class="dlist-align">
+						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng cộng:</font></font></dt>
+						  <dd class="text-right  h5"><strong>0 đ</strong></dd>
+						</dl>
+						<hr>
+						<p class="text-center mb-3">
+							<img src="images/misc/payments.png" height="26">
+						</p>
+						
+				</div>
+				@endif
 			</div>  <!-- card .// -->
 		</aside> <!-- col.// -->
 	</div>
