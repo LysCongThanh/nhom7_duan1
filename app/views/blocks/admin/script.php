@@ -17,6 +17,11 @@
     <script> 
     const webRoot = window.location.origin 
     const query = new URLSearchParams(window.location.search);
+    setTimeout(() => {
+        if(document.querySelector('button.btn-close[data-bs-dismiss="alert"][aria-label="Close"]')) {
+            document.querySelector('button.btn-close[data-bs-dismiss="alert"][aria-label="Close"]').click();
+        }
+    }, 4000);
     </script>
     
 
