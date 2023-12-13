@@ -32,7 +32,7 @@ class ProductModel extends Model
     }
     public function getListProducts()
     {
-        $data = $this->db->select('b.*, c.*, MAX(i.name) as image_name, b.id as book_id, c.name as name_category, MAX(i.slug) as image_slug')
+        $data = $this->db->select('b.*, c.*, MAX(i.name) as image_name, b.id as book_id, c.name as name_category, MAX(i.slug) as image_slug, i.slug as image_slug')
         ->table('books as b')
         ->join('categories as c', 'b.category_id = c.id')
         ->join('authors as a', 'a.id = b.author_id')
