@@ -111,7 +111,7 @@
                                             <div class="my-auto form-check">
                                                 <input class="form-check-input" type="checkbox" id="customCheck2" checked>
                                             </div>
-                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>{{$product['slug']}}" alt="pillow">
+                                            <img class="avatar avatar-md ms-3" src="<?= _WEB_ROOT ?>{{$product['image_slug']}}" alt="pillow">
                                             <h6 class="my-auto ms-3">{{$product['book_name']}}</h6>
                                         </div>
                                     </td>
@@ -145,11 +145,11 @@
                                                                     <div class="card-body">
                                                                         <div class="row">
                                                                             <div class="text-center col-lg-6">
-                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg main-img" src="<?= _WEB_ROOT ?>/{{$product['slug']}}" alt="chair">
+                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg main-img" src="<?= _WEB_ROOT ?>/{{$product['image_slug']}}" alt="chair">
                                                                                 <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
                                                                                     @foreach ($images[$product['book_id']] as $image)
                                                                                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                                                        <a href="<?= _WEB_ROOT ?>/public/assets/admin/img/" itemprop="contentUrl" data-size="600x600">
+                                                                                        <a target="_blank" href="<?= _WEB_ROOT ?>{{$image['slug']}}" itemprop="contentUrl" data-size="600x600">
                                                                                             <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>{{$image['slug']}}" alt="Image description" />
                                                                                         </a>
                                                                                     </figure>
@@ -172,97 +172,33 @@
                                                                                     </div>
                                                                                     <div class="align-middle col-6 text-end">
                                                                                         <span class="badge badge-success"><i class="fas fa-check"></i>
-                                                                                            In
-                                                                                            Stock</span>
+                                                                                            {{$product['status']}}</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <br>
                                                                                 <h6 class="mt-3 mb-0">Giá</h6>
                                                                                 <h5>{{number_format($product['price'])}}VND</h5>
                                                                                 <br>
-                                                                                <label class="mt-4">Mô tả</label>
-                                                                                <ul>
-                                                                                    <li>As we live, our hearts
-                                                                                        turn colder. </li>
-                                                                                    <li>Cause pain is what we go
-                                                                                        through as we
-                                                                                        become older. </li>
-                                                                                    <li>We get insulted by
-                                                                                        others, lose trust for
-                                                                                        those others. </li>
-                                                                                    <li>We get back stabbed by
-                                                                                        friends. </li>
-                                                                                    <li>It becomes harder for us
-                                                                                        to give others a
-                                                                                        hand. </li>
-                                                                                </ul>
+                                                                                <label class="mt-4">Mô tả:</label><br>
+                                                                                <?= html_entity_decode($product['describe_short']) ?>
                                                                                 <div class="mt-4 row">
                                                                                     <div class="mt-2 col-lg-4 mt-lg-0">
-                                                                                        <label>Material</label>
-                                                                                        <select class="form-control" name="choices-material" id="choices-material">
-                                                                                            <option value="Choice 1" selected>e.g.
-                                                                                                Textile</option>
-                                                                                            <option value="Choice 2">
-                                                                                                Steel</option>
-                                                                                            <option value="Choice 3">
-                                                                                                Aluminium
-                                                                                            </option>
-                                                                                            <option value="Choice 4">
-                                                                                                Carbon</option>
-                                                                                        </select>
+                                                                                        <label>Danh mục:</label>
+                                                                                        
                                                                                     </div>
                                                                                     <div class="mt-2 col-lg-4 mt-lg-0">
-                                                                                        <label>Color</label>
-                                                                                        <select class="form-control" name="choices-colors" id="choices-colors">
-                                                                                            <option value="Choice 1" selected>e.g.
-                                                                                                Yellow</option>
-                                                                                            <option value="Choice 2">
-                                                                                                Gray</option>
-                                                                                            <option value="Choice 3">
-                                                                                                Black</option>
-                                                                                            <option value="Choice 4">
-                                                                                                Blue</option>
-                                                                                            <option value="Choice 5">
-                                                                                                Red</option>
-                                                                                            <option value="Choice 6">
-                                                                                                Pink</option>
-                                                                                        </select>
+                                                                                        <label>Tác giả:</label>
+                                                                                        
                                                                                     </div>
                                                                                     <div class="col-lg-4">
-                                                                                        <label>Quantity</label>
-                                                                                        <select class="form-control" name="choices-quantity" id="choices-quantity">
-                                                                                            <option value="Choice 1" selected>e.g.
-                                                                                                20</option>
-                                                                                            <option value="Choice 2">
-                                                                                                2</option>
-                                                                                            <option value="Choice 3">
-                                                                                                3</option>
-                                                                                            <option value="Choice 4">
-                                                                                                4</option>
-                                                                                            <option value="Choice 5">
-                                                                                                5</option>
-                                                                                            <option value="Choice 6">
-                                                                                                6</option>
-                                                                                            <option value="Choice 7">
-                                                                                                7</option>
-                                                                                            <option value="Choice 8">
-                                                                                                8</option>
-                                                                                            <option value="Choice 9">
-                                                                                                9</option>
-                                                                                            <option value="Choice 10">
-                                                                                                10</option>
-                                                                                        </select>
+                                                                                        <label>Nhà xuất bản:</label>
+                                                                                        
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="mt-4 row text-end ms-auto">
                                                                                     <div class="col-4"></div>
                                                                                     <div class="col-4"></div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-white" data-bs-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-dark">Save
-                                                                                    changes</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
