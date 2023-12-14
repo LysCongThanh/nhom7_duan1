@@ -268,6 +268,7 @@ Validator({
     modal: '#form-modal-category__input',
     rules: [
         Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên danh mục !'),
+        Validator.isRequired('.input-group select[name="status"]', '* Vui lòng chọn trạng thái !'),
     ]
 });
 

@@ -104,7 +104,7 @@ select:hover {
 }
 
 .modal-dialog__products-list {
-    width: 1100px !important;
+    width: 800px !important;
 }
 
 .dataTable-top {
@@ -134,5 +134,5 @@ select:hover {
 }
 
 .modal-upload-image-custom-width {
-    max-width: 700px;
+    max-width: 500px;
 }

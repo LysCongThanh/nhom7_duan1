@@ -43,7 +43,7 @@
                         </div>
                         <div class="my-auto mt-4 ms-auto mt-lg-0">
                             <div class="my-auto ms-auto">
-                                <a href="../new-product.html" class="me-2 mb-0 btn btn-dark" target="_blank">
+                                <a href="{{_WEB_ROOT}}them-san-pham" class="me-2 mb-0 btn btn-dark" target="_blank">
                                     <i class="fas fa-plus me-1"></i>
                                     Thêm Sản Phẩm
                                 </a>
