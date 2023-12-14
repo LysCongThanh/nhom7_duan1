@@ -25,7 +25,13 @@ $routes['trang-chu'] = 'home/index';
 
 $routes['san-pham-ngang'] = 'clientProducts/product_columns';
 $routes['chi-tiet-san-pham'] = 'clientProducts/detail';
-$routes['thanh-toan'] = 'payments/page';
+$routes['thanh-toan'] = 'checkOut/page';
+$routes['don-hang'] = 'profile/orders';
+
+$routes['thanh-toan-vnpay'] = 'checkOut/vnPay';
+
+
+
 $routes['gio-hang'] = 'cart/page';
 $routes['gioi-thieu'] = 'home/about';
 $routes['lien-he'] = 'home/contact';
