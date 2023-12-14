@@ -23,25 +23,36 @@ function sendData(event) {
   xhr.send();
 }
 
-function confirmDelete(element) {
-    var productId = element.getAttribute("id");
+function confirmDeleteWishList(element) {
+  var productId = element.target.id;
   console.log(productId);
-    var result = confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?");
-    if (result) {
-        element.preventDefault();
-  
-        var xhr = new XMLHttpRequest();
-        var url = "cart/delete_cart?productId=" + productId;
-         xhr.open("POST", url, true);
-       
-         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-       
-       
-         xhr.onload = function() {
-           if (xhr.status === 200) {
-             
-           }
-         };
-         xhr.send();
-    } 
+  var result = confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?");
+  if (result) {
+      var xhr = new XMLHttpRequest();
+      var url = "profile/deleteWishList?id=" + productId;
+      xhr.open("POST", url, true);
+
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.onload = function() {
+          if (xhr.status === 200) {
+              var response = JSON.parse(xhr.responseText);
+              if (response.success) {
+                  // Xóa sản phẩm khỏi danh sách hiển thị trên giao diện
+                  var rowElement = document.querySelector('.wishlist');
+                  if (rowElement) {
+                      while (rowElement.firstChild) {
+                          rowElement.removeChild(rowElement.firstChild);
+                      }
+                  }
+                  // Hiển thị thông báo thành công
+                  alert(response.message);
+              } else {
+                  // Hiển thị thông báo lỗi
+                  alert(response.message);
+              }
+          }
+      };
+      xhr.send();
   }
+}
