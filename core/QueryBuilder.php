@@ -26,7 +26,12 @@ trait QueryBuilder
             $this->operator = " AND ";
             $this->where .= "$this->operator $field $compare $value";
         } else {
-            $this->where .= "$this->operator $field $compare '$value'";
+            // Kiểm tra nếu giá trị $value là một biểu thức SQL, không cần thêm dấu nháy đơn
+            if (strpos($value, ' ') !== false) {
+                $this->where .= "$this->operator $field $compare $value";
+            } else {
+                $this->where .= "$this->operator $field $compare '$value'";
+            }
         }
         return $this;
     }
@@ -120,7 +125,6 @@ trait QueryBuilder
     {
         $whereDelete = str_replace('WHERE', '', $this->where);
         $whereDelete = trim($whereDelete);
-        echo $whereDelete;
         $tableName = $this->tableName;
         $deleteStatus = $this->deleteData($tableName, $whereDelete);
         return $whereDelete;
@@ -143,8 +147,7 @@ trait QueryBuilder
     public function get()
     {
         // echo $this->innerJoin;
-        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->leftJoin $this->where  $this->orderBy $this->groupBy $this->limit";
-        
+        $sqlQuery = "SELECT $this->selectField FROM $this->tableName $this->innerJoin $this->leftJoin $this->where  $this->orderBy $this->groupBy $this->limit";                                                                                                              
         $query = $this->query($sqlQuery);
         $this->resetQuery();
         if (!empty($query)) return $query->fetchAll(PDO::FETCH_ASSOC);
