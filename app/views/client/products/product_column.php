@@ -250,7 +250,7 @@
 												<font style="vertical-align: inherit;">MỚI</font>
 											</font>
 										</span>
-										<img src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/{{$column['img']}}">
+										<img src="<?= _WEB_ROOT ?>/public/uploads/products/2023_12/{{$column['img']}}">
 									</a>
 								</aside> <!-- col.// -->
 								<div class="col-md-6">

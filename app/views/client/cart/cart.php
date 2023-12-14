@@ -19,15 +19,18 @@
 	<tbody>
 	@if(isset($cart) && $cart != null)
 	@foreach($cart as $key)
-	<?php 
-		$sum = $key['quantity']*$key['price'] ;
-		$discount_price = $key['quantity']*$key['discount_price'];
+	<?php
+		$total = $discount_price = $sum = 0;
+		if(isset($key['quantity'])) {
+			$sum = $key['quantity']*$key['price'] ;
+			$discount_price = $key['quantity']*$key['discount_price'];
+		}
 		$total = $sum - $discount_price;
 	?>
 	<tr>
 		<td>
 			<figure class="itemside">
-				<div class="aside"><img src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/bg_7.jpg" class="img-sm"></div>
+				<div class="aside"><img src="<?= _WEB_ROOT ?>/{{$key['slug']}}" class="img-sm"></div>
 				<figcaption class="info">
 					<a href="#" class="title text-dark"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$key['book_name']}}</font></font></a>
 					<p class="small text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giới hạn</font></font></p>
@@ -49,6 +52,7 @@
 		</td>
 	</tr>
 	@endforeach
+	<?php Session::data('total', $total)?>
 	@else
 		<h2>Giỏ hàng trống</h2>
 	@endif
@@ -57,7 +61,7 @@
 	</table>
 	
 	<div class="card-body border-top">
-		<a href="#" class="btn btn-primary float-md-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mua hàng</font></font> <i class="fa fa-chevron-right"></i> </a>
+		<a href="thanh-toan" class="btn btn-primary float-md-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mua hàng</font></font> <i class="fa fa-chevron-right"></i> </a>
 		<a href="san-pham-ngang" class="btn btn-light"> <i class="fa fa-chevron-left"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Tiếp tục mua sắm</font></font></a>
 	</div>	
 	</div> <!-- card.// -->
@@ -87,19 +91,19 @@
 				<div class="card-body">
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng giá:</font></font></dt>
-						  <dd class="text-right">{{$sum}} đ</dd>
+						  <dd class="text-right">{{!empty($sum)?$sum:0}} đ</dd>
 						</dl>
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giảm giá:</font></font></dt>
-						  <dd class="text-right">{{$discount_price}} đ</dd>
+						  <dd class="text-right">{{!empty($discount_price)?$discount_price:0}} đ</dd>
 						</dl>
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng cộng:</font></font></dt>
-						  <dd class="text-right  h5"><strong>{{$total}} đ</strong></dd>
+						  <dd class="text-right  h5"><strong>{{!empty($total)?$total:0}} đ</strong></dd>
 						</dl>
 						<hr>
 						<p class="text-center mb-3">
-							<img src="images/misc/payments.png" height="26">
+							<img src="{{_WEB_ROOT}}public/assets/client/image/misc/payments.png" height="26">
 						</p>
 						
 				</div> <!-- card-body.// -->

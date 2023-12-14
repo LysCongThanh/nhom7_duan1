@@ -1,4 +1,4 @@
-<?
+<?php
   $name = $user['name'];
   $nameParts = explode(' ', $name);
 ?>

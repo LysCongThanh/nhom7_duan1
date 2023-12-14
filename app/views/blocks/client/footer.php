@@ -64,5 +64,6 @@
 	</footer>
 	<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/page/wishlist.js"></script>
 	<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/page/cart.js"></script>
+	<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/page/address.js"></script>
 	</body>
 </html>
