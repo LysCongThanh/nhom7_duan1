@@ -38,6 +38,7 @@ class ProductModel extends Model
         ->leftJoin('images as i', 'b.id=i.book_id')
         ->leftJoin('categories as c', 'c.id=b.category_id')
         ->leftJoin('comments as cm', 'cm.book_id=b.id')
+        ->groupBy('b.id')
         ->get();
         return $data;
     }

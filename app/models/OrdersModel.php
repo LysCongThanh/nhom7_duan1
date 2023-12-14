@@ -19,6 +19,11 @@ class OrdersModel extends Model {
         return $data;
     }
 
+    public function insertOrder($data)
+    {
+        $this->db->table('orders')->insert($data);
+        return $this->db->lastId();
+    }
     public function getOrders()
     {
         $data = $this->db->select('der.id as ID, der.created_at as dayOrder,der.status as trangThai, u.name as name_user, b.book_name as name_book,od.quantity as soLuong, der.total_price as total')
@@ -39,6 +44,31 @@ class OrdersModel extends Model {
         ->join('users as u', 'u.id=o.user_id')
         ->join('books as b', 'b.id=od.book_id')
         ->where('od.id', '=', $id)
+        ->first();
+        return $data;
+    }
+
+    public function getLastIdOrder()
+    {
+        $data = $this->db->select('id')
+        ->table('orders')
+        ->lastId()
+        ->first();
+        return $data;
+    }
+
+    public function getOrdersNew()
+    {
+        $data = $this->db->select('od.id as ID, o.created_at as dayOrder, a.address, s.shipping_cost, a.specific_address, a.tel, a.zip_code, b.book_name as name_book, o.status as trangThai, u.name as name_user, u.email as email, o.total_price as total')
+        ->table('orders_detail as od')
+        ->join('orders as o', 'o.id=od.order_id')
+        ->join('users as u', 'u.id=o.user_id')
+        ->join('addresses as a', 'u.id=a.user_id')
+        ->join('books as b', 'b.id=od.book_id')
+        ->join('shipping as s', 'o.id=s.order_id')
+        ->join('payments as p', 'p.order_id=o.id')
+        ->where('u.id', '=' , "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+        ->limit(1)
         ->first();
         return $data;
     }
