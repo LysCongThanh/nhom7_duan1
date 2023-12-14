@@ -24,18 +24,16 @@ class ClassifyController extends Controller
     public function add_category()
     {
         $request = new Request;
-        var_dump($request->getFields()['id']); die();
         if ($request->isPost()) {
             $referer = $request->getReferer();
             $refererPath = trim(parse_url($referer, PHP_URL_PATH), '/');
-
+            $response = new Response();
             switch ($refererPath) {
                 case 'phan-loai':
                     $data = $request->getFields();
                     $this->categories->insertCategories($data);
 
                     Session::flash('msg', 'Thêm danh mục thành công');
-                    $response = new Response();
                     $response->redirect('phan-loai');
                     break;
 
@@ -46,11 +44,24 @@ class ClassifyController extends Controller
                         'status' => $data['status'],
                     ];
                     $this->categories->insertCategories($dataConverted);
-                    $response = new Response();
                     $response->redirect('them-san-pham');
                     break;
 
                 case 'sua-san-pham':
+                    $data = $request->getFields(); 
+                    $id = $data['id'];
+                    $dataConverted = [
+                        'name' => $data['name'],
+                        'status' => $data['status']
+                    ];
+                    $result = $this->categories->insertCategories($dataConverted);
+                    if(!$result) {
+                        Session::flash('msg', 'Thêm danh mục thành công !');
+                    } else {
+                        Session::flash('msg', 'Thêm danh mục thất bại !');
+                    }
+
+                    $response->redirect("sua-san-pham?id=$id");
                     break;
             }
         }
@@ -63,22 +74,39 @@ class ClassifyController extends Controller
             $referer = $request->getReferer();
             $refererPath = trim(parse_url($referer, PHP_URL_PATH), '/');
             $data = $request->getFields();
-            $dataConverted = [
-                'name' => $data['author_name'],
-                'bio' => $data['bio'],
-            ];
-            $this->authors->insertAuthor($dataConverted);
-            Session::flash('msg', 'Thêm tác giả thành công');
             $response = new Response;
 
             switch ($refererPath) {
                 case 'phan-loai':
+                    $dataConverted = [
+                        'name' => $data['author_name'],
+                        'bio' => $data['bio'],
+                    ];
+                    $this->authors->insertAuthor($dataConverted);
+                    Session::flash('msg', 'Thêm tác giả thành công');
                     $response->redirect('phan-loai');
 
                     break;
 
                 case 'them-san-pham':
+                    $dataConverted = [
+                        'name' => $data['author_name'],
+                        'bio' => $data['bio'],
+                    ];
+                    $this->authors->insertAuthor($dataConverted);
+                    Session::flash('msg', 'Thêm tác giả thành công');
                     $response->redirect('them-san-pham');
+                    break;
+
+                case 'sua-san-pham':
+                    $id = $data['id'];
+                    $dataConverted = [
+                        'name' => $data['name'],
+                        'bio' => $data['bio'],
+                    ];
+                    $this->authors->insertAuthor($dataConverted);
+                    Session::flash('msg', 'Thêm tác giả thành công');
+                    $response->redirect("sua-san-pham?id=$id");
                     break;
             }
         }
@@ -92,30 +120,40 @@ class ClassifyController extends Controller
             $referer = $request->getReferer();
             $refererPath = trim(parse_url($referer, PHP_URL_PATH), '/');
             $data = $request->getFields();
-            $dataConverted = [
-                'name' => $data['publisher_name'],
-                'contact' => $data['publisher_contact'],
-                'address' => $data['publisher_address'],
-                'publication_date' => $data['publication_date'],
-            ];
-            $result = $this->publishers->insertPublisher($dataConverted);
-            if(!$result) {
-                Session::flash('msg', 'Thêm nhà xuất bản thành công');
-            } else {
-                Session::flash('msg', 'Thêm nhà xuất bản thất bại !');
-            }
-
+            Session::flash('msg', 'Thêm nhà xuất bản thành công');
             switch($refererPath) {
                 case 'phan-loai':
+                    $dataConverted = [
+                        'name' => $data['publisher_name'],
+                        'contact' => $data['publisher_contact'],
+                        'address' => $data['publisher_address'],
+                        'publication_date' => $data['publication_date'],
+                    ];
+                    $this->publishers->insertPublisher($dataConverted);
                     $response->redirect('phan-loai');
                     break;
 
                 case 'them-san-pham':
+                    $dataConverted = [
+                        'name' => $data['publisher_name'],
+                        'contact' => $data['publisher_contact'],
+                        'address' => $data['publisher_address'],
+                        'publication_date' => $data['publication_date'],
+                    ];
+                    $this->publishers->insertPublisher($dataConverted);
                     $response->redirect('them-san-pham');
                     break;
 
                 case 'sua-san-pham':
-                    $response->redirect('sua-san-pham');
+                    $id = $data['id'];
+                    $dataConverted = [
+                        'name' => $data['name'],
+                        'contact' => $data['contact'],
+                        'address' => $data['address'],
+                        'publication_date' => $data['date_publication']
+                    ];
+                    $this->publishers->insertPublisher($dataConverted);
+                    $response->redirect("sua-san-pham?id=$id");
                     break;
             }
         }

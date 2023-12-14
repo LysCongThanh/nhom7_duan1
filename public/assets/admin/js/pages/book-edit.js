@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const idEles = document.querySelectorAll('.append-form');
+    idEles.forEach((ele) => {
+        ele.setAttribute('value', query.get('id'));
+    });
     const storedJsonData = localStorage.getItem('jsonData');
 
     if (storedJsonData) {
@@ -261,7 +265,7 @@ Validator({
     }
 });
 
-Validator({
+setupFormValidator({
     form: '#form-add-category',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
@@ -269,10 +273,10 @@ Validator({
     rules: [
         Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên danh mục !'),
         Validator.isRequired('.input-group select[name="status"]', '* Vui lòng chọn trạng thái !'),
-    ]
+    ],
 });
 
-Validator({
+setupFormValidator({
     form: '#form-add-author',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
@@ -283,7 +287,7 @@ Validator({
     ]
 });
 
-Validator({
+setupFormValidator({
     form: '#form-add-publisher',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
@@ -292,8 +296,42 @@ Validator({
         Validator.isRequired('.input-group input[name="name"]', '* Vui lòng nhập tên nhà xuất bản !'),
         Validator.isRequired('.input-group input[name="address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
         Validator.isRequired('.input-group input[name="contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="publication_date"]', '* Vui lòng nhập ngày xuất bản !'),
     ]
-});
+})
+
+function setupFormValidator(options) {
+    Validator({
+        form: options.form,
+        formGroupSelector: options.formGroupSelector,
+        errorSelector: options.errorSelector,
+        modal: options.modal || null,
+        rules: options.rules,
+        onSubmit: function () {
+            const sortDescriptionInput = document.getElementById('sort_description');
+            const longDescriptionInput = document.getElementById('long_description');
+
+            let sortDescription = quillSortEditor.root.innerHTML;
+            let longDescription = quillLongEditor.root.innerHTML;
+
+            sortDescriptionInput.value = sortDescription;
+            longDescriptionInput.value = longDescription;
+
+            const formEdit = document.querySelector('#form-edit-product');
+            const formData = new FormData(formEdit);
+            const jsonData = {};
+
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            console.log(jsonData);
+
+            localStorage.setItem('jsonData', JSON.stringify(jsonData));
+            document.querySelector(this.form).submit();
+        }
+    });
+}
 
 let myToolbar = [
     [{
@@ -334,3 +372,4 @@ var quillLongEditor = new Quill('#long-editor', {
 
 quillSortEditor.clipboard.dangerouslyPasteHTML(shortDescription);
 quillLongEditor.clipboard.dangerouslyPasteHTML(longDescription);
+

@@ -8,12 +8,20 @@
 </script>
 
 <div class="px-5 py-4 container-fluid">
+    <?= show_message('<div id="alert" class="alert bg-gradient-primary alert-dismissible text-sm  text-white  fade show" role="alert">
+    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+    <span class="alert-text"><strong>', '</strong></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>') ?>
     <div class="modal-group">
         <!--        Form add category-->
         <div class="modal fade" id="form-modal-category__input" tabindex="-1" role="dialog" aria-labelledby="form-modal-category__input" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <form action="{{_WEB_ROOT}}classify/add_category" method="post" id="form-add-category">
+                        <input type="hidden" name="id" value="" class="append-form">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-category-title">
                                 Danh mục sách</h6>
@@ -62,6 +70,7 @@
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <form action="classify/add_author" method="post" id="form-add-author">
+                        <input type="hidden" name="id" value="" class="append-form">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-author__input-title">
                                 Tác giả</h6>
@@ -106,6 +115,7 @@
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <form action="classify/add_publisher" method="post" id="form-add-publisher">
+                        <input type="hidden" name="id" value="" class="append-form">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-publisher__input-title">
                                 Nhà xuất bản</h6>
@@ -143,6 +153,17 @@
                                         <i class="fa-solid fa-table"></i>
                                     </span>
                                     <input type="text" class="form-control" name="contact" placeholder="Nhập thông tin nhà xuất bản">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="form-label">Ngày xuất bản</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-table"></i>
+                                    </span>
+                                    <input type="date" class="form-control" name="publication_date" placeholder="Nhập thông tin nhà xuất bản">
                                 </div>
                                 <div class="form-message"></div>
                             </div>
