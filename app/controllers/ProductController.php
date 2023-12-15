@@ -87,7 +87,7 @@ class ProductController extends Controller
                 'category_id' => $data['category'],
                 'author_id' => $data['author'],
                 'publisher_id' => $data['publisher'],
-                'book_name' => $data['name'],
+                'book_name' => '"'.$data['name'].'"',
                 'describe_long' => $data['long-editor'],
                 'describe_short' => $data['sort-editor'],
                 'quantity_inventory' => $data['quantity'],

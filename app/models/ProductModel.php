@@ -73,7 +73,7 @@ class ProductModel extends Model
         ->join('categories as c', 'b.category_id = c.id')
         ->join('authors as a', 'a.id = b.author_id')
         ->join('publishers as p', 'p.id = b.publisher_id')
-        ->join('images as i', 'b.id = i.book_id')
+        ->leftjoin('images as i', 'b.id = i.book_id')
         ->where('b.id', '=', $id)
         ->first();
 
