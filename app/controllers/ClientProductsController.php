@@ -59,4 +59,17 @@ class ClientProductsController extends Controller
         }
     }
 
+    //Lọc sản phẩm
+    public function filter()
+    {
+        $request = new Request();
+        $filter = $request->getFields();
+        header('Content-Type: application/json');
+
+        $data = $this->products->filterBooks($filter);
+
+        echo json_encode($data);
+        exit;
+    }
+
 }
