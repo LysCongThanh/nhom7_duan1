@@ -1,5 +1,5 @@
 <!-- ========================= SECTION CONTENT ========================= -->
-{{print_r($order)}}
+
 <?php 
 	$timestamp = strtotime($order['dayOrder']);
 	$formattedDate = date("d", $timestamp) . " tháng " . date("m", $timestamp) . " năm " . date("Y", $timestamp);
@@ -62,12 +62,12 @@
 						<var class="price text-muted">{{number_format($order_detail['total'])}} đ</var>
 					</td>
 					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Loại </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sách Tư Duy</font></font></td>
-					<td width="250"> <a href="#" class="btn btn-outline-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Theo dõi thứ tự</font></font></a> 
+					<td width="250"> <a href="don-hang?id={{$order_detail['ID']}}" class="btn btn-outline-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Theo dõi thứ tự</font></font></a> 
 						<div class="dropdown d-inline-block">
 							 <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hơn</font></font></a>
 							 <div class="dropdown-menu dropdown-menu-right">
 								 <a href="#" class="dropdown-item"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trở lại</font></font></a>
-								 <a href="#" class="dropdown-item"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hủy đơn hàng</font></font></a>
+								 <a href="profile/deleteOrder?id={{$order_detail['ID']}}" class="dropdown-item"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hủy đơn hàng</font></font></a>
 							 </div>
 						</div> <!-- dropdown.// -->
 					</td>

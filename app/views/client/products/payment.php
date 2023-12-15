@@ -3,7 +3,6 @@
 		display: none;
 	}
 </style>
-{{print_r(Session::data('carts')) . Session::data('total')}}
 
 <section class="section-content padding-y">
 	<div class="container" style="max-width: 720px;">
@@ -16,14 +15,14 @@
 					<div class="form-row">
 						<div class="form-group col-sm-6">
 							<label class="js-check box active">
-								<input type="radio" name="dostavka" value="option1" checked="">
+								<input type="radio" name="dostavka" value="standard_delivery" checked="">
 								<h6 class="title">Giao hàng tiêu chuẩn</h6>
 								<p class="text-muted">Miễn phí giao hàng</p>
 							</label>
 						</div>
 						<div class="form-group col-sm-6">
 							<label class="js-check box">
-								<input type="radio" name="dostavka" value="option1">
+								<input type="radio" name="dostavka" value="express_delivery">
 								<h6 class="title">Chuyển phát nhanh</h6>
 								<p class="text-muted">Thêm 10.000 sẽ được tính phí</p>
 							</label>
