@@ -20,7 +20,9 @@ class CartController extends Controller
     public function page()
     {
         $user = Session::data('user');
-        $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
+        if(isset($user)){
+            $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
+        }
         $this->data['sub_content']['title'] = 'Giỏ Hàng';
         $this->data['content'] = 'client/cart/cart';
         $this->render('layouts/client_layout', $this->data);
