@@ -201,7 +201,13 @@
 		const query = new URLSearchParams(window.location.search);
 	</script>
 	<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/page/wishlist.js"></script>
-	<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/page/{{$script_src}}.js"></script>
+	<?php
+		if(isset($script_src)) {
+			?>
+			<script src="<?= _WEB_ROOT; ?>/public/assets/client/js/page/{{$script_src}}.js"></script>
+			<?php
+		}
+	?>
 	</body>
 
 	</html>

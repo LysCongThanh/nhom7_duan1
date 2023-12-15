@@ -20,6 +20,7 @@ class ClientProductsController extends Controller
 
     public function product_columns()
     {
+        $this->data['sub_content']['script_src'] = 'filter';
         $this->data['sub_content']['product_column'] = $this->products->getProductColumn();
         $this->data['sub_content']['categories'] = $this->categories->getList();
         $this->data['sub_content']['publisher'] = $this->publisher->getList();

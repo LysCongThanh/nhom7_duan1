@@ -10,7 +10,7 @@ formFilter.addEventListener('submit', (e) => {
   });
 
   const query = new URLSearchParams(jsonData);
-
+  
   getDataByFilter(query.toString());
 
 });
