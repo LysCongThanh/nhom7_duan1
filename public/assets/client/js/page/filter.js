@@ -104,7 +104,7 @@ const viewsProducts = (data) => {
   
       <p>
         <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;">${data.describe_short}</font>
+          <font style="vertical-align: inherit;">${removeHtmlTags(data.describe_short)}</font>
         </font>
       </p>
   
@@ -154,4 +154,9 @@ const viewsProducts = (data) => {
   </aside> <!-- col.// -->
   </div> <!-- row.// --> 
   `;
+}
+
+function removeHtmlTags(input) {
+  var doc = new DOMParser().parseFromString(input, 'text/html');
+  return doc.body.textContent || "";
 }

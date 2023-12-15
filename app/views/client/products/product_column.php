@@ -37,7 +37,7 @@
 									<div class="inner">
 										@foreach($categories as $categorie)
 										<div class="form-check">
-											<input id="check_category{{$categorie['id']}}" class="form-check-input" type="radio" name="id_category" value="{{$categorie['id']}}">
+											<input id="check_category{{$categorie['id']}}" class="form-check-input" type="checkbox" name="id_category" value="{{$categorie['id']}}">
 											<label class="form-check-label" for="check_category{{$categorie['id']}}">
 												{{$categorie['name']}}
 											</label>
@@ -60,7 +60,7 @@
 									<div class="inner">
 										@foreach($publisher as $nxb)
 										<div class="form-check">
-											<input id="check_publisher{{$nxb['id']}}" class="form-check-input" type="radio" name="id_publisher" value="{{$nxb['id']}}">
+											<input id="check_publisher{{$nxb['id']}}" class="form-check-input" type="checkbox" name="id_publisher" value="{{$nxb['id']}}">
 											<label class="form-check-label" for="check_publisher{{$nxb['id']}}">
 												{{$nxb['name']}}
 											</label>
@@ -83,7 +83,7 @@
 									<div class="inner">
 										@foreach($authors as $author)
 										<div class="form-check">
-											<input id="check_author{{$author['id']}}" class="form-check-input" type="radio" name="id_author" value="{{$author['id']}}">
+											<input id="check_author{{$author['id']}}" class="form-check-input" type="checkbox" name="id_author" value="{{$author['id']}}">
 											<label class="form-check-label" for="check_author{{$author['id']}}">
 												{{$author['name']}}
 											</label>
