@@ -318,4 +318,8 @@ class Request
     {
         return $this->_errors[$fieldName][$ruleName] = $this->_messages[$fieldName . '.' . $ruleName];
     }
+
+    public function getReferer() {
+        return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+    }
 }

@@ -209,7 +209,7 @@ Validator.isRequired = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value ? undefined : message || 'Vui lòng nhập trường này'
+            return value && value.trim() !== '' ? undefined : message || 'Vui lòng nhập trường này';
         }
     };
 }

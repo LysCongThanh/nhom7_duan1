@@ -16,6 +16,7 @@ class CommentsController extends Controller{
     {
         $this->data['sub_content']['comments'] = $this->comments->getListComments();
         $this->data['sub_content']['title'] = 'Danh Sách Bình Luận';
+        $this->data['sub_content']['script_src'] = 'comments';
         $this->data['content'] = 'admin/comments/list';
         $this->render('layouts/admin_layout', $this->data);
     }

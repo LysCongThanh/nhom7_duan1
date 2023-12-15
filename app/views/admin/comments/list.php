@@ -121,7 +121,7 @@
                                             </a>
 
                                         </div>
-                                        
+
                                         <div class="modal fade" id="confirmDeleteModal{{$comment['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
@@ -152,28 +152,30 @@
                                                             <span aria-hidden="true">X</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <form method="post" action="tra-loi-binh-luan" id="reply-comment{{$comment['id']}}">
+                                                        <div class="modal-body">
 
-                                                        <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">Nội Dung Bình Luận Của: <span style="color:blue;">{{$comment['user_name']}}</span></label>
-                                                            <input type="text" class="form-control" value="{{ $comment['content'] }}" id="recipient-name">
-                                                        </div>
-                                                        <form method="post" action="tra-loi-binh-luan">
+                                                            <div class="form-group">
+                                                                <label for="recipient-name" class="col-form-label">Nội Dung Bình Luận Của: <span style="color:blue;">{{$comment['user_name']}}</span></label>
+                                                                <input type="text" class="form-control" value="{{ $comment['content'] }}" id="recipient-name" disabled>
+                                                            </div>
+
                                                             <div class="form-group">
                                                                 <label for="message-text" class="col-form-label">Tin Nhắn:</label>
                                                                 <textarea class="form-control" id="message-text" name="content" placeholder="Nhập nội dung muốn gửi đến khách hàng....."></textarea>
+                                                                <div class="form-message"></div>
                                                             </div>
 
-                                                    </div>
+                                                        </div>
 
-                                                    <div class="modal-footer">
-                                                        <input type="hidden" name="parent_id" value="{{ $comment['id'] }}">
-                                                        <input type="hidden" name="user_id" value="{{ $_SESSION['users']['id'] = 1 }}">
-                                                        <input type="hidden" name="book_id" value="{{ $comment['book_id'] }}">
-                                                        <button type="button" class="btn btn-white" data-bs-dismiss="modal">Đóng</button>
-                                                        <button type="submit" class="btn btn-dark">Gửi tin nhắn</button>
-                                                        </form>
-                                                    </div>
+                                                        <div class="modal-footer">
+                                                            <input type="hidden" name="parent_id" value="{{ $comment['id'] }}">
+                                                            <input type="hidden" name="user_id" value="{{ $_SESSION['users']['id'] = 1 }}">
+                                                            <input type="hidden" name="book_id" value="{{ $comment['book_id'] }}">
+                                                            <button type="button" class="btn btn-white" data-bs-dismiss="modal">Đóng</button>
+                                                            <button type="submit" class="btn btn-dark">Gửi tin nhắn</button>
+                                                        </div>
+                                                    </form>
 
                                                 </div>
                                             </div>

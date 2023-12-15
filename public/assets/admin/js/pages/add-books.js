@@ -1,3 +1,29 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const storedJsonData = localStorage.getItem('jsonData');
+
+    if (storedJsonData) {
+        const jsonData = JSON.parse(storedJsonData);
+        console.log(jsonData);
+        const formEditProduct = document.querySelector('#form').elements;
+
+        Array.from(formEditProduct).forEach((inputEle) => {
+            const fieldName = inputEle.name;
+            if (jsonData.hasOwnProperty(fieldName)) {
+                inputEle.value = jsonData[fieldName];
+            }
+        });
+
+        quillSortEditor.clipboard.dangerouslyPasteHTML(jsonData['sort-editor']);
+        quillLongEditor.clipboard.dangerouslyPasteHTML(jsonData['long-editor']);
+
+        document.querySelector('#tab2-tab').click(); //Target Tab
+    }
+
+    
+
+    localStorage.removeItem('jsonData');
+});
+
 Dropzone.autoDiscover = false;
 let myDropzone = new Dropzone("#image-dropzone", {
     url: 'dropZone/upLoadImage', // URL để gửi tệp đã chọn đến máy chủ
@@ -21,9 +47,9 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
     acceptedFiles: "image/*", // Loại tệp cho phép (trong trường hợp này, chỉ hình ảnh)
     autoProcessQueue: false, // Tắt tự động tải lên
     parallelUploads: 5, // Giảm số lượng tệp tin được tải lên cùng một lúc
-  });
-  
-  
+});
+
+
 Validator({
     form: '#form',
     formGroupSelector: '.form-group',
@@ -53,8 +79,6 @@ Validator({
             '* Vui lòng chọn tác giả !'),
         Validator.isRequired('.input-group select[name="publisher"]',
             '* Vui lòng chọn nhà xuất bản !'),
-        Validator.isRequired('.input-group input[name="date_publication"]',
-            '* Vui lòng nhập ngày xuất bản !')
     ],
     onSubmit: function (data) {
         const form = document.querySelector(this.form);
@@ -72,21 +96,21 @@ Validator({
             method: form.method,
             body: new FormData(form)
         });
-    
+
         const dropzonePromise = new Promise((resolve) => {
             myDropzone.on('queuecomplete', () => {
                 resolve();
             });
             myDropzone.processQueue();
         });
-    
+
         const albumImagesDropzonePromise = new Promise((resolve) => {
             albumImagesDropzone.on('queuecomplete', () => {
                 resolve();
             });
             albumImagesDropzone.processQueue();
         });
-    
+
         Promise.all([formPromise])
             .then(() => {
                 window.location.href = 'danh-sach-san-pham';
@@ -97,13 +121,41 @@ Validator({
     }
 });
 
-// document.querySelector('#form').addEventListener('submit', function (event) {
-//     event.preventDefault();
+function setupFormValidator(options) {
+    Validator({
+        form: options.form,
+        formGroupSelector: options.formGroupSelector,
+        errorSelector: options.errorSelector,
+        modal: options.modal || null,
+        rules: options.rules,
+        onSubmit: function () {
+            const sortDescriptionInput = document.getElementById('sort_description');
+            const longDescriptionInput = document.getElementById('long_description');
 
-    
-// });
+            let sortDescription = quillSortEditor.root.innerHTML;
+            let longDescription = quillLongEditor.root.innerHTML;
 
-Validator({
+            sortDescriptionInput.value = sortDescription;
+            longDescriptionInput.value = longDescription;
+
+            const formAddProduct = document.querySelector('#form');
+            const formData = new FormData(formAddProduct);
+            const jsonData = {};
+
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            console.log(jsonData);
+
+            localStorage.setItem('jsonData', JSON.stringify(jsonData));
+            document.querySelector(this.form).submit();
+        }
+    });
+}
+
+// Sử dụng hàm để cấu hình Validator cho từng trường hợp
+setupFormValidator({
     form: '#form-add-category',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
@@ -113,30 +165,92 @@ Validator({
     ]
 });
 
-Validator({
+setupFormValidator({
     form: '#form-add-author',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
-
     rules: [
         Validator.isRequired('.input-group input[name="author_name"]', '* Vui lòng nhập tên tác giả !'),
         Validator.isRequired('.input-group input[name="author_bio"]', '* Vui lòng nhập tiểu sử !')
-    ],
-
-    onSubmit: function (value) {
-        console.log(value);
-    }
+    ]
 });
 
-Validator({
+setupFormValidator({
     form: '#form-add-publisher',
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
-
     rules: [
         Validator.isRequired('.input-group input[name="publisher_name"]', '* Vui lòng nhập tên nhà xuất bản !'),
         Validator.isRequired('.input-group input[name="publisher_address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
         Validator.isRequired('.input-group input[name="publisher_contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
+    ]
+});
+function setupFormValidator(options) {
+    Validator({
+        form: options.form,
+        formGroupSelector: options.formGroupSelector,
+        errorSelector: options.errorSelector,
+        modal: options.modal || null,
+        rules: options.rules,
+        onSubmit: function () {
+            const sortDescriptionInput = document.getElementById('sort_description');
+            const longDescriptionInput = document.getElementById('long_description');
+
+            let sortDescription = quillSortEditor.root.innerHTML;
+            let longDescription = quillLongEditor.root.innerHTML;
+
+            sortDescriptionInput.value = sortDescription;
+            longDescriptionInput.value = longDescription;
+
+            const formAddProduct = document.querySelector('#form');
+            const formData = new FormData(formAddProduct);
+            const jsonData = {};
+
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            console.log(jsonData);
+
+            localStorage.setItem('jsonData', JSON.stringify(jsonData));
+            document.querySelector(this.form).submit();
+        }
+    });
+}
+
+// Sử dụng hàm để cấu hình Validator cho từng trường hợp
+setupFormValidator({
+    form: '#form-add-category',
+    formGroupSelector: '.form-group',
+    errorSelector: '.form-message',
+    modal: '#form-modal-category',
+    rules: [
+        Validator.isRequired('.input-group input[name="category_name"]', '* Vui lòng nhập tên danh mục !'),
+        Validator.isRequired('.input-group select[name="status"]', '* Vui lòng chọn trạng thái !'),
+    ]
+});
+
+setupFormValidator({
+    form: '#form-add-author',
+    formGroupSelector: '.form-group',
+    errorSelector: '.form-message',
+    modal: '#form-modal-author',
+    rules: [
+        Validator.isRequired('.input-group input[name="author_name"]', '* Vui lòng nhập tên tác giả !'),
+        Validator.isRequired('.input-group input[name="author_bio"]', '* Vui lòng nhập tiểu sử !')
+    ]
+});
+
+setupFormValidator({
+    form: '#form-add-publisher',
+    formGroupSelector: '.form-group',
+    errorSelector: '.form-message',
+    modal: '#form-modal-publisher',
+    rules: [
+        Validator.isRequired('.input-group input[name="publisher_name"]', '* Vui lòng nhập tên nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="publisher_address"]', '* Vui lòng nhập địa chỉ nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="publisher_contact"]', '* Vui lòng nhập thông tin nhà xuất bản !'),
+        Validator.isRequired('.input-group input[name="publication_date"]', '* Vui lòng nhập ngày xuất bản !'),
     ]
 });
 

@@ -1,6 +1,6 @@
 <script>
-    let shortDescription = '<?= html_entity_decode($product['describe_short']) ?>';
-    let longDescription = '<?= html_entity_decode($product['describe_long']) ?>';
+    let shortDescription = `<?= html_entity_decode($product['describe_short']) ?>`;
+    let longDescription = `<?= html_entity_decode($product['describe_long']) ?>`;
     let imagesOfProduct = {
         imageMain: <?= json_encode($imageMain) ?>,
         albumImages: <?= json_encode($albumImages) ?>,
@@ -8,14 +8,22 @@
 </script>
 
 <div class="px-5 py-4 container-fluid">
+    <?= show_message('<div id="alert" class="alert bg-gradient-primary alert-dismissible text-sm  text-white  fade show" role="alert">
+    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+    <span class="alert-text"><strong>', '</strong></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>') ?>
     <div class="modal-group">
-<!--        Form add category-->
+        <!--        Form add category-->
         <div class="modal fade" id="form-modal-category__input" tabindex="-1" role="dialog" aria-labelledby="form-modal-category__input" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
-                    <form action="classify/add_category" method="post" id="form-add-category">
+                    <form action="{{_WEB_ROOT}}classify/add_category" method="post" id="form-add-category">
+                        <input type="hidden" name="id" value="" class="append-form">
                         <div class="modal-header">
-                            <h6 class="modal-title" id="form-modal-category__input-title">
+                            <h6 class="modal-title" id="form-modal-category-title">
                                 Danh mục sách</h6>
                             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -32,6 +40,21 @@
                                 </div>
                                 <div class="form-message"></div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="">Trạng thái</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <span><i class="far fa-heart"></i></span>
+                                    </div>
+                                    <select class="form-select" name="status">
+                                        <option value="" disabled selected>Chọn trạng thái !</option>
+                                        <option value="Hiện">Hiện</option>
+                                        <option value="Ẩn">Ẩn</option>
+                                    </select>
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-dark">Thêm danh
@@ -42,11 +65,12 @@
                 </div>
             </div>
         </div>
-<!--        Form add author-->
+        <!--        Form add author-->
         <div class="modal fade" id="form-modal-author__input" tabindex="-1" role="dialog" aria-labelledby="form-modal-author__input" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <form action="classify/add_author" method="post" id="form-add-author">
+                        <input type="hidden" name="id" value="" class="append-form">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-author__input-title">
                                 Tác giả</h6>
@@ -86,11 +110,12 @@
                 </div>
             </div>
         </div>
-<!--        Form add publisher-->
+        <!--        Form add publisher-->
         <div class="modal fade" id="form-modal-publisher__input" tabindex="-1" role="dialog" aria-labelledby="form-modal-publisher__input" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <form action="classify/add_publisher" method="post" id="form-add-publisher">
+                        <input type="hidden" name="id" value="" class="append-form">
                         <div class="modal-header">
                             <h6 class="modal-title" id="form-modal-publisher__input-title">
                                 Nhà xuất bản</h6>
@@ -131,6 +156,17 @@
                                 </div>
                                 <div class="form-message"></div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="" class="form-label">Ngày xuất bản</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-table"></i>
+                                    </span>
+                                    <input type="date" class="form-control" name="publication_date" placeholder="Nhập thông tin nhà xuất bản">
+                                </div>
+                                <div class="form-message"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-dark">Thêm nhà xuất bản</button>
@@ -144,7 +180,7 @@
 
     </div>
 
-<!--    // FORM EDIT PRODUCT // --------------------------------------->
+    <!--    // FORM EDIT PRODUCT // --------------------------------------->
     <form action="product/update" method="post" id="form-edit-product" enctype="multipart/form-data">
         <div class="mt-10 row">
             <div class="col-lg-6">
@@ -232,7 +268,7 @@
                                     <p class="text-xs form-text text-muted ms-1 d-inline">
                                         (không bắt buộc)
                                     </p>
-                                    <div id="sort-editor" class="sort-editor">{{html_entity_decode($product['describe_long'])}}</div>
+                                    <div id="sort-editor" class="sort-editor"></div>
                                     <div class="input-group">
                                         <input type="hidden" name="sort-editor" class="form-control" id="sort_description">
                                     </div>
@@ -244,7 +280,7 @@
                                     <p class="text-xs form-text text-muted ms-1 d-inline">
                                         (không bắt buộc)
                                     </p>
-                                    <div id="long-editor" class="long-editor">{{html_entity_decode($product['describe_short'])}}</div>
+                                    <div id="long-editor" class="long-editor"></div>
                                     <div class="input-group">
                                         <input type="hidden" name="long-editor" class="form-control" id="long_description">
                                     </div>
@@ -283,11 +319,7 @@
                                         <select class="form-select" name="category" id="category">
                                             <option disabled selected>Vui lòng chọn danh mục</option>
                                             @foreach($categories as $category)
-                                            <option
-                                                    @if($category['id'] === $product['category_id'])
-                                                    selected
-                                                    @endif
-                                                    value="{{$category['id']}}">{{$category['name']}}</option>
+                                            <option @if($category['id']===$product['category_id']) selected @endif value="{{$category['id']}}">{{$category['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -307,11 +339,7 @@
                                         <select class="form-select" name="author" id="author">
                                             <option disabled selected>Vui lòng chọn tác giả</option>
                                             @foreach($authors as $author)
-                                            <option
-                                                    @if($author['id'] === $product['author_id'])
-                                                    selected
-                                                    @endif
-                                                    value="{{$author['id']}}">{{$author['name']}}</option>
+                                            <option @if($author['id']===$product['author_id']) selected @endif value="{{$author['id']}}">{{$author['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -331,11 +359,7 @@
                                         <select class="form-select" name="publisher" id="publisher">
                                             <option disabled selected>Vui lòng chọn nhà xuất bản</option>
                                             @foreach($publishers as $publisher)
-                                            <option
-                                                    @if($publisher['id'] === $product['publisher_id'])
-                                                    selected
-                                                    @endif
-                                                    value="{{$publisher['id']}}">{{$publisher['name']}}</option>
+                                            <option @if($publisher['id']===$product['publisher_id']) selected @endif value="{{$publisher['id']}}">{{$publisher['name']}}</option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-text m-0 p-0">
@@ -452,9 +476,7 @@
                         <div class="row my-images">
                             <div class="col-12">
                                 @if($imageMain != false)
-                                <img class="mt-3 shadow-lg w-100 border-radius-lg"
-                                     src="{{_WEB_ROOT}}/{{$imageMain['slug']}}"
-                                     alt="product_image">
+                                <img class="mt-3 shadow-lg w-100 border-radius-lg" src="{{_WEB_ROOT}}/{{$imageMain['slug']}}" alt="product_image">
                                 @endif
                                 @if($imageMain === false)
                                 <p class="text-danger text-center">Trống !</p>
