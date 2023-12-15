@@ -29,6 +29,8 @@ $routes['thanh-toan'] = 'checkOut/page';
 $routes['don-hang'] = 'profile/orders';
 
 $routes['thanh-toan-vnpay'] = 'checkOut/vnPay';
+$routes['thanh-toan-momo'] = 'checkOut/momo';
+$routes['thanh-toan-thanh-cong'] = 'checkOut/page_completed';
 
 
 
