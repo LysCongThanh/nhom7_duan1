@@ -2,13 +2,14 @@
 //ProfilesController Controller
 class ProfileController extends Controller{
     
-    public $data = [], $model = [], $wishlist, $addresses, $orders;
+    public $data = [], $model = [], $wishlist, $addresses, $orders, $payments;
     
     public function __construct(){
         //construct
         $this->wishlist = $this->model('WishListModel');
         $this->addresses = $this->model('AddressesModel');
         $this->orders = $this->model('OrdersModel');
+        $this->payments = $this->model('PaymentsModel');
     
     }
     public function main(){
@@ -108,11 +109,22 @@ class ProfileController extends Controller{
         $this->render('layouts/client_layout', $this->data);
     }
     public function orders(){
-        $this->data['sub_content']['order'] = $this->orders->getOrdersNew();
+       if(isset($_GET['id'])) {
+            $this->data['sub_content']['order'] = $this->orders->getOrderById($_GET['id']);
+       } else {
+            $this->data['sub_content']['order'] = $this->orders->getOrdersNew();
+       }
         $this->data['sub_content']['orders'] = $this->orders->getOrders();
         $this->data['content'] = 'client/profile/profile_order';
         $this->render('layouts/client_layout', $this->data);
     }
+    public function deleteOrder(){
+        $id = $_GET['id'];
+        $this->payments->deletePayment($id);
+        $this->orders->deleteOrder($id);
+        $response = new Response();
+        $response->redirect('don-hang');
+     }
 
     public function wishlist(){
         $id = Session::data('user');
