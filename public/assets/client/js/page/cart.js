@@ -40,7 +40,21 @@ function confirmDelete(element) {
 
         xhr.onload = function () {
             if (xhr.status === 200) {
-                location.reload();
+                var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        // Xóa sản phẩm khỏi danh sách hiển thị trên giao diện
+                        var rowElement = document.querySelector('.table-shopping-cart tbody');
+                        if (rowElement) {
+                            while (rowElement.firstChild) {
+                                rowElement.removeChild(rowElement.firstChild);
+                            }
+                        }
+                        // Hiển thị thông báo thành công
+                        alert(response.message);
+                    } else {
+                        // Hiển thị thông báo lỗi
+                        alert(response.message);
+                    }
             }
         };
 

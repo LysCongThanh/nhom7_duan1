@@ -20,6 +20,8 @@ class CartController extends Controller
     public function page()
     {
         $user = Session::data('user');
+        $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
+        Session::data('carts', $this->data['sub_content']['cart']);
         if(isset($user)){
             $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
         }
@@ -65,10 +67,24 @@ class CartController extends Controller
     {
         if (isset($_GET['productId'])) {
             $id = $_GET['productId'];
-            $this->data['sub_content'] = $this->cart->remove($id);
-            $this->data['sub_content']['title'] = 'Xóa Giỏ Hàng';
-            $this->data['content'] = 'client/cart/cart';
-            $this->render('layouts/client_layout', $this->data);
+            $this->cart->remove($id);
+            $responseData = [
+                'success' => true,
+                'message' => 'Xóa sản phẩm khỏi giỏ hàng thành công'
+            ];
+            $response = new Response();
+            $response->setStatusCode(200);
+            $response->send(json_encode($responseData));
+
+        } else {
+            $responseData = [
+                'success' => false,
+                'message' => 'Xóa sản phẩm khỏi giỏ hàng không thành công'
+            ];
+            $response = new Response();
+            $response->setStatusCode(200);
+            $response->send(json_encode($responseData));
+
         }
     }
 
@@ -79,7 +95,7 @@ class CartController extends Controller
         if($request->isPost()) {
             $json = file_get_contents("php://input");
             $data = json_decode($json, true);
-            
+
             $id = $data['id'];
 
             $this->cart->updateCart($data, $id);
@@ -89,12 +105,36 @@ class CartController extends Controller
 
     public function addWishList()
     {
-        $data = ['user_id' => Session::data('user')['id'], 'book_id' => $_GET['productId']];
-        $result = $this->wishlists->addWishList($data);
+        $data = [
+            'user_id' => Session::data('user')['id'],
+            'book_id' => $_GET['productId']
+        ];
+        $result = null;
+        $id = $_GET['productId'];
+        $getID = $this->wishlists->getListWishList($data['user_id']);
 
+        if ($getID != NULL) {
+            $wishListIdExits = false;
+
+            foreach ($getID as $key) {
+                if ($key['book_id'] == $id) {
+                    $wishListIdExits = true;
+                    break;
+                }
+            }
+
+            if (!$wishListIdExits) {
+                $result = $this->wishlists->addWishList($data);
+            }
+        } else {
+            $result = $this->wishlists->addWishList($data);
+        }
         // Trả về phản hồi JSON
         header('Content-Type: application/json');
-        echo json_encode(['success' => $result]);
+        echo json_encode([
+            'success' => $result,
+            'msg' => $getID
+        ]);
         exit;
     }
 

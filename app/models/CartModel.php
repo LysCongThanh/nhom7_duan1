@@ -24,6 +24,11 @@ class CartModel extends Model {
         $this->db->table('carts')->where('id', '=', $id)->delete();
     }
 
+    public function deleteCartByUser($id)
+    {
+        $this->db->table('carts')->where('user_id', '=', $id)->delete();
+    }
+
     public function addCartList($data)
     {
         $this->db->table('carts')->insert($data);
@@ -60,9 +65,11 @@ class CartModel extends Model {
 
     public function getCartByUser($id)
     {
-        $data = $this->db->select('carts.*, books.book_name, books.price, books.discount_price')->table('carts')
-        ->join('books', 'books.id=carts.book_id')
-        ->where('user_id', '=', $id)
+        $data = $this->db->select('c.*, b.book_name, i.slug, b.price, b.discount_price')->table('carts as c')
+        ->join('books as b', 'b.id=c.book_id')
+        ->join('images as i', 'b.id=i.book_id')
+        ->where('c.user_id', '=', $id)
+        ->where('i.image_main', '=', '1')
         ->get();
         return $data;
     }

@@ -18,42 +18,26 @@
       <article class="card">
         <div class="card-body">
   
-      <div class="row">
-          <div class="col-md-6">
-            <figure class="itemside mb-4">
-              <div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b7_480.png" class="border img-md"></div>
-              <figcaption class="info">
-                <a href="#" class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Người bạn thời thơ thấu của tôi</font></font></a>
-                <p class="price mb-2">50.000 đ</p>
-                <a href="#" class="btn btn-secondary btn-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thêm vào giỏ hàng</font></font></a>
-                <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip" title="" data-original-title="Remove from wishlist"> <i class="fa fa-times"></i> </a>
-              </figcaption>
-            </figure>
-          </div> <!-- col.// -->
-  
-          <div class="col-md-6">
-            <figure class="itemside mb-4">
-              <div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/children books/b6_480.png" class="border img-md"></div>
-              <figcaption class="info">
-                <a href="#" class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OverLord 3</font></font></a>
-                <p class="price mb-2">90.000 đ</p>
-                <a href="#" class="btn btn-secondary btn-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thêm vào giỏ hàng</font></font></a>
-                <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip" title="" data-original-title="Remove from wishlist"> <i class="fa fa-times"></i> </a>
-              </figcaption>
-            </figure>
-          </div> <!-- col.// -->
-  
-          <div class="col-md-6">
-            <figure class="itemside mb-4">
-              <div class="aside"><img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b2_480.png" class="border img-md"></div>
-              <figcaption class="info">
-                <a href="#" class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lợi Nhuận Và Tăng Trưởng</font></font></a>
-                <p class="price mb-2">45.000 đ</p>
-                <a href="#" class="btn btn-secondary btn-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thêm vào giỏ hàng</font></font></a>
-                <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip" title="" data-original-title="Remove from wishlist"> <i class="fa fa-times"></i> </a>
-              </figcaption>
-            </figure>
-          </div> <!-- col.// -->
+      <div class="row wishlist">
+        @if($data !== null)
+          @foreach($data as $key)
+            <div class="col-md-6">
+              <figure class="itemside mb-4">
+                <div class="aside"><img src="<?= _WEB_ROOT; ?>{{$key['slug']}}" class="border img-md"></div>
+                <figcaption class="info">
+                  <a href="#" class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$key['book_name']}}</font></font></a>
+                  <p class="price mb-2">{{number_format($key['price'])}} đ</p>
+                  <a href="#" class="btn btn-secondary btn-sm" id="{{$key['book_id']}}" onclick="sendCartData(event)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thêm vào giỏ hàng</font></font></a>
+                  <a href="#"  id="{{$key['id']}}" onclick="confirmDeleteWishList(event)" class="btn btn-danger btn-sm" data-toggle="tooltip" title="" data-original-title="Xóa sản phẩm khỏi yêu thích"> <i class="fa fa-times"></i> </a>
+                </figcaption>
+              </figure>
+            </div> <!-- col.// -->
+          @endforeach
+        @else
+          <div class="col-md-12 alert alert-warning" role="alert">
+            Dữ liệu trống. Vui lòng thêm dữ liệu vào.
+          </div>
+        @endif
         </div> <!-- row .//  -->
   
         </div> <!-- card-body.// -->

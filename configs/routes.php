@@ -26,7 +26,15 @@ $routes['trang-chu'] = 'home/index';
 $routes['tim-kiem'] = 'clientProducts/search';
 $routes['san-pham-ngang'] = 'clientProducts/product_columns';
 $routes['chi-tiet-san-pham'] = 'clientProducts/detail';
-$routes['thanh-toan'] = 'payments/page';
+$routes['thanh-toan'] = 'checkOut/page';
+$routes['don-hang'] = 'profile/orders';
+
+$routes['thanh-toan-vnpay'] = 'checkOut/vnPay';
+$routes['thanh-toan-momo'] = 'checkOut/momo';
+$routes['thanh-toan-thanh-cong'] = 'checkOut/page_completed';
+
+
+
 $routes['gio-hang'] = 'cart/page';
 $routes['gioi-thieu'] = 'home/about';
 $routes['lien-he'] = 'home/contact';

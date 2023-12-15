@@ -2,6 +2,8 @@
 
 class Response
 {
+    private $statusCode;
+
     public function redirect($uri = '')
     {
         if (preg_match('~^(http|https)~is', $uri)) {
@@ -13,13 +15,15 @@ class Response
         exit();
     }
 
-    function getCookie($name)
+    public function setStatusCode($statusCode)
     {
-        return isset($_COOKIE[$name]) ? $_COOKIE[$name] : null;
+        $this->statusCode = $statusCode;
     }
 
-    function setCookie($name, $value, $expires = 0, $path = '/', $domain = null, $secure = false, $httponly = false)
+    public function send($data = '')
     {
-        setcookie($name, $value, $expires, $path, $domain, $secure, $httponly);
+        http_response_code($this->statusCode);
+        echo $data;
+        exit();
     }
 }
