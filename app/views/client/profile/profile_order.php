@@ -5,7 +5,7 @@
 	<div class="row">
 		<aside class="col-md-3">
 		<nav class="list-group">
-				<a class="list-group-item active" href="ca-nhan"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng quan về tài khoản </font></font></a>
+				<a class="list-group-item active" href="{{_WEB_ROOT}}ca-nhan?id=24"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng quan về tài khoản </font></font></a>
 				<a class="list-group-item" href="dia-chi"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Địa chỉ của tôi</font></font></a>
 				<a class="list-group-item" href="don-hang"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng của tôi</font></font></a>
 				<a class="list-group-item" href="yeu-thich"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm yêu thích</font></font></a>
