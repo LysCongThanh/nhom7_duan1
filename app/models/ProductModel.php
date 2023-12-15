@@ -38,6 +38,7 @@ class ProductModel extends Model
         ->leftJoin('images as i', 'b.id=i.book_id')
         ->leftJoin('categories as c', 'c.id=b.category_id')
         ->leftJoin('comments as cm', 'cm.book_id=b.id')
+        ->groupBy('b.id')
         ->get();
         return $data;
     }
@@ -108,6 +109,69 @@ class ProductModel extends Model
         ->join('comments as cm', 'cm.book_id=b.id')
         ->groupBy('b.id')
         ->limit(5)->get();
+        return $data;
+    }
+
+    //Tìm kiếm sản phầm theo tên
+    public function searchProduct($name)
+    {
+        $data = $this->db->select('COUNT(b.id) as quantityFound,b.id as id, b.book_name as name, b.price as price, c.name as categorie, i.name as images')
+            ->table('books as b')
+            ->join('categories as c', 'c.id=b.category_id ')
+            ->join('images as i', 'i.book_id=b.id')
+            ->whereLike('b.book_name', $name)
+            ->groupBy('b.id')
+            ->get();
+        return $data;
+    }
+
+    //Lấy giá cao nhất và thấp nhất
+    public function getPrice()
+    {
+        $data = $this->db->select('MIN(b.price) as min, MAX(b.price) as max')
+            ->table('books as b')
+            ->first();
+        return $data;
+    }
+
+
+    //Lọc sản phẩm
+    public function filterBooks($queryParams)
+    {
+        $query = $this->db->select('b.*, i.name as img, c.name as categorie, cm.rating as ratings')
+            ->table('books as b')
+            ->leftJoin('categories as c', 'b.category_id = c.id')
+            ->leftJoin('images as i', 'i.book_id = b.id')
+            ->leftJoin('comments as cm', 'cm.book_id = b.id')
+            ->groupBy('b.id');
+        // Xử lý lọc theo danh mục
+        if (isset($queryParams['id_category'])) {
+            $query->where('b.category_id', '=', $queryParams['id_category']);
+        }
+
+        // Xử lý lọc theo NXB
+        if (isset($queryParams['id_publisher'])) {
+            $query->join('publishers as p', 'b.publisher_id = p.id')
+                ->where('b.publisher_id', '=', $queryParams['id_publisher']);
+        }
+
+        // Xử lý lọc theo tác giả
+        if (isset($queryParams['id_author'])) {
+            $query->join('authors as a', 'b.author_id = a.id')
+                ->where('b.author_id', '=', $queryParams['id_author']);
+        }
+
+        // Xử lý lọc theo giá
+        if (isset($queryParams['min']) && $queryParams['min'] !== "") {
+            $query->where('b.price', '>=', $queryParams['min']);
+        }
+
+        if (isset($queryParams['max']) && $queryParams['max'] !== "") {
+            $query->where('b.price', '<=', $queryParams['max']);
+        }
+
+        // Thực hiện truy vấn và trả về kết quả
+        $data = $query->get();
         return $data;
     }
 }

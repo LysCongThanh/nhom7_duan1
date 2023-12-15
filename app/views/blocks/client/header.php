@@ -40,14 +40,14 @@
 						</a> <!-- brand-wrap.// -->
 					</div>
 					<div class="col-xl-6 col-lg-5 col-md-6">
-						<form action="#" class="search-header">
+						<form action="tim-kiem" class="search-header">
 							<div class="input-group w-100">
 								<select class="custom-select border-right" name="category_name" fdprocessedid="wwpxc8">
 										<option value="">Tất cả</option><option value="codex">Đặc biệt</option>
 										<option value="comments">Tốt nhất</option>
 										<option value="content">Cũ nhất</option>
 								</select>
-								<input type="text" class="form-control" placeholder="Tìm....." fdprocessedid="69y6pw">
+								<input type="text" class="form-control" placeholder="Tìm....." fdprocessedid="69y6pw" name="search">
 								
 								<div class="input-group-append">
 								  <button class="btn btn-primary" type="submit" fdprocessedid="7tftyw">
