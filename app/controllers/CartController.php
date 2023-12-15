@@ -23,6 +23,7 @@ class CartController extends Controller
         if(isset($user)){
             $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
         }
+        $this->data['sub_content']['script_src'] = 'cart';
         $this->data['sub_content']['title'] = 'Giỏ Hàng';
         $this->data['content'] = 'client/cart/cart';
         $this->render('layouts/client_layout', $this->data);

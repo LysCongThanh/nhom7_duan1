@@ -1,4 +1,3 @@
-const webRoot = window.location.origin;
 updateSumary();
 function sendCartData(event) {
     event.preventDefault();
