@@ -24,6 +24,11 @@ class CartModel extends Model {
         $this->db->table('carts')->where('id', '=', $id)->delete();
     }
 
+    public function deleteCartByUser($id)
+    {
+        $this->db->table('carts')->where('user_id', '=', $id)->delete();
+    }
+
     public function addCartList($data)
     {
         $this->db->table('carts')->insert($data);
