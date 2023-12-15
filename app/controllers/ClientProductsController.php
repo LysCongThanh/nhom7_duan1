@@ -16,11 +16,13 @@ class ClientProductsController extends Controller
 
     public function product_column()
     {
+        $this->data['sub_content']['das'] = 'client/products/product_column';
         $this->data['content'] = 'client/products/product_column';
         $this->render('layouts/client_layout', $this->data);
     }
     public function product_detail()
     {
+        $this->data['sub_content']['das'] = 'client/products/product_column';
         $this->data['content'] = 'client/products/product_detail';
         $this->render('layouts/client_layout', $this->data);
     }
