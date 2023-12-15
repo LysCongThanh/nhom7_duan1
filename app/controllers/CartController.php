@@ -71,6 +71,17 @@ class CartController extends Controller
         }
     }
 
+    public function updateCart()
+    {
+        if (isset($_GET['productId'])) {
+            $id = $_GET['productId'];
+            $this->data['sub_content'] = $this->cart->updateCart($id);
+            $this->data['sub_content']['title'] = 'Cập Nhật Giỏ Hàng';
+            $this->data['content'] = 'client/cart/cart';
+            $this->render('layouts/client_layout', $this->data);
+        }
+    }
+
     public function addWishList()
     {
         $data = ['user_id' => Session::data('user')['id'], 'book_id' => $_GET['productId']];

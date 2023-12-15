@@ -45,6 +45,17 @@ class CartModel extends Model {
         ->table('carts')
         ->where('id', '=', $id)
         ->update($qat);
+        return $data;
+    }
+
+    public function updateCartReduce($id)
+    {
+        $qat = ["quantity" => "quantity - 1"];
+        $data = $this->db
+        ->table('carts')
+        ->where('id', '=', $id)
+        ->update($qat);
+        return $data;
     }
 
 

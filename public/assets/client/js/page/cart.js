@@ -47,4 +47,10 @@ function confirmDelete(element) {
     }
 }
 
+function updateCart(element) {
+    let valueOfEle = element.value;
+    let idEle = element.getAttribute('id');
 
+    
+}
+  

@@ -41,12 +41,12 @@
 			</figure>
 		</td>
 		<td> 
-			<input type="number" min=1 name="quantity" value="{{$key['quantity']}}" style="vertical-align: inherit;" class="form-control">	
+			<input type="number" min=1 name="quantity" value="{{$key['quantity']}}" style="vertical-align: inherit;" class="form-control" onchange="updateCart(this)" id="{{$key['id']}}">	
 		</td>
 		<td> 
 			<div class="price-wrap"> 
-				<var class="price">{{$key['price']}}đ</var> 
-				<small class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$key['discount_price']}} đ</font></font></small> 
+				<var class="price">{{number_format($key['price'])}} đ</var> 
+				<small class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{number_format($key['discount_price'])}} đ</font></font></small> 
 			</div> <!-- price-wrap .// -->
 		</td>
 		<td class="text-right"> 
@@ -94,15 +94,15 @@
 				<div class="card-body">
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng giá:</font></font></dt>
-						  <dd class="text-right">{{$grandSum}} đ</dd>
+						  <dd class="text-right">{{number_format($grandSum)}} đ</dd>
 						</dl>
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giảm giá:</font></font></dt>
-						  <dd class="text-right">{{$grandDiscount}} đ</dd>
+						  <dd class="text-right">{{number_format($grandDiscount)}} đ</dd>
 						</dl>
 						<dl class="dlist-align">
 						  <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng cộng:</font></font></dt>
-						  <dd class="text-right  h5"><strong>{{$grandTotal}} đ</strong></dd>
+						  <dd class="text-right  h5"><strong>{{number_format($grandTotal)}} đ</strong></dd>
 						</dl>
 						<hr>
 						<p class="text-center mb-3">
