@@ -1,82 +1,162 @@
-
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
-  <div class="container">
-  
-  <div class="row">
-    <aside class="col-md-3">
-      <nav class="list-group">
-          <a class="list-group-item active" href="ca-nhan"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tổng quan về tài khoản </font></font></a>
-          <a class="list-group-item" href="dia-chi"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Địa chỉ của tôi</font></font></a>
-          <a class="list-group-item" href="don-hang"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng của tôi</font></font></a>
-          <a class="list-group-item" href="yeu-thich"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm yêu thích</font></font></a>
-          <a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cài đặt</font></font></a>
-          <a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đăng xuất</font></font></a>
+  <div class="container" style="border-radius:10px;">
+
+    <div class="row">
+      <aside class="col-md-3">
+        <nav class="list-group">
+          <a class="list-group-item " href="{{_WEB_ROOT}}ca-nhan">Tổng quan về tài khoản</a>
+          <a class="list-group-item" href="dia-chi">Địa chỉ của tôi</a>
+          <a class="list-group-item" href="don-hang">Đơn hàng của tôi</a>
+          <a class="list-group-item" href="yeu-thich">Sản phẩm yêu thích</a>
+          <a class="list-group-item active" href="cai-dat">Cài đặt</a>
+          <a class="list-group-item" href="cai-dat">Đăng xuất</a>
         </nav>
-		</aside> 
-    <main class="col-md-9">
-  
-    <div class="card">
-        <div class="card-body">
-       <form class="row">
-         <div class="col-md-9">
-           <div class="form-row">
-          <div class="col form-group">
-            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tên</font></font></label>
-              <input type="text" class="form-control" value="Vosidiy" fdprocessedid="9ngxfi">
-          </div> <!-- form-group end.// -->
-          <div class="col form-group">
-            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E-mail</font></font></label>
-              <input type="email" class="form-control" value="vosidiy@gmail.com" fdprocessedid="lrlioc">
-          </div> <!-- form-group end.// -->
-        </div> <!-- form-row.// -->
-        
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quốc gia</font></font></label>
-            <select id="inputState" class="form-control" fdprocessedid="p5zmh">
-              <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chọn...</font></font></option>
-                <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uzbekistan</font></font></option>
-                <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nga</font></font></option>
-                <option selected=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hoa Kỳ</font></font></option>
-                <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ấn Độ</font></font></option>
-                <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afghanistan</font></font></option>
-            </select>
-          </div> <!-- form-group end.// -->
-          <div class="form-group col-md-6">
-            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thành phố</font></font></label>
-            <input type="text" class="form-control" fdprocessedid="qt3us3">
-          </div> <!-- form-group end.// -->
-        </div> <!-- form-row.// -->
-  
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mã zip</font></font></label>
-            <input type="text" class="form-control" value="123009" fdprocessedid="6rhvyq">
-          </div> <!-- form-group end.// -->
-          <div class="form-group col-md-6">
-            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Điện thoại</font></font></label>
-            <input type="text" class="form-control" value="+123456789" fdprocessedid="5n6cwr">
-          </div> <!-- form-group end.// -->
-        </div> <!-- form-row.// -->
-  
-        <button class="btn btn-primary" fdprocessedid="g0286p"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cập Nhật</font></font></button>	
-        <button class="btn btn-light" fdprocessedid="q6u3yk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đổi mật khẩu</font></font></button>	
-  
-        <br><br><br><br><br><br>
-  
-         </div> <!-- col.// -->
-         <div class="col-md">
-           <img src="images/avatars/avatar1.jpg" class="img-md rounded-circle border">
-         </div>  <!-- col.// -->
-        </form>
-        </div> <!-- card-body.// -->
-      </div> <!-- card .// -->
-  
-  
-  
-    </main> <!-- col.// -->
+      </aside>
+      <main class="col-md-9">
+
+        <div class="card" style="border-radius:10px;">
+          <div class="card-body">
+            <form action="cap-nhat-ca-nhan" method="POST" enctype="multipart/form-data">
+              <div class="row col-md-12">
+
+                <div class="col-md-3 d-flex flex-column align-items-center">
+
+                  <img src="{{_WEB_ROOT.$pf['avatar']}}" class="js-img img-md rounded-circle">
+                  <div class="mt-3">
+                    <label for="formFile" class="form-label">Chọn hình ảnh muốn thay đổi</label>
+                    <div class="custom-file">
+                      <input onchange="displayImage(this)" name="image" type="file" class="custom-file-input" id="formFile">
+                      <label class="custom-file-label" id="fileLabel" for="formFile" data-browse="Tải lên">Chọn tệp</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-5 border-left border-right">
+
+                  <div class="form-group">
+                    <label>Tên</label>
+                    <input type="text" class="form-control" name="name" value="{{$pf['name']}} ">
+                  </div>
+
+                  <div class=" form-row">
+                    <div class=" form-group col-md-6">
+                      <label>E-mail</label>
+                      <input type="email" class="form-control" name="email" value="{{$pf['email']}}">
+                    </div>
+                    <div class=" col-md-6">
+                      <label>Số điện thoại</label>
+                      <input type="tel" class="form-control" name="tel" value="{{$pf['tel'] ?? ' '}}">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" class="form-control" name="address" value="{{$pf['address'] ?? ' '}}">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Địa chỉ cụ thể</label>
+                    <input type="text" class="form-control" name="specific_address" value="{{$pf['specific_address'] ?? ' '}}">
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Mã khu vực</label>
+                      <input type="text" class="form-control" name="zip_code" value="{{$pf['zip_code'] ?? ' '}}">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Giới tính</label>
+                      <select id="inputState" class="form-control" name="sex">
+                        <option value="" {{ $pf['sex'] == '' ? 'selected' : '' }}>Chọn</option>
+                        <option value="Nam" {{ $pf['sex'] == 'Nam' ? 'selected' : '' }}>Nam</option>
+                        <option value="Nữ" {{ $pf['sex'] == 'Nữ' ? 'selected' : '' }}>Nữ</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Ngày sinh</label>
+                    <input type="date" class="form-control" name="birthdate" value="{{$pf['birthdate'] ? $pf['birthdate']: ' ' }}">
+                  </div>
+                  <button class="btn btn-outline-primary btn-block mt-4" type="submit">Cập Nhật Thông Tin</button>
+                </div>
+            </form>
+            <div class="col-md-4">
+              <form action="profile/updatePassword">
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label>Mật khẩu cũ</label>
+                    <input type="password" class="form-control" name="old_password" placeholder="Nhập mật khẩu cũ...">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label>Mật khẩu mới</label>
+                    <input type="password" class="form-control" name="new_password" placeholder="Nhập mật khẩu mới...">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label>Xác nhận mật khẩu mới</label>
+                    <input type="password" class="form-control" name="confirm_password" placeholder="Xác nhận mật khẩu... ">
+                  </div>
+                </div>
+
+                <h5>Yêu cầu về mật khẩu</h5>
+                <p class="text-muted">
+                  Vui lòng làm theo hướng dẫn này để có mật khẩu mạnh:
+                </p>
+
+                <ul class="text-muted ps-4 float-start">
+                  <li>
+                    <span class="text-sm">Một ký tự đặc biệt</span>
+                  </li>
+                  <li>
+                    <span class="text-sm">Tối thiểu 6 ký tự</span>
+                  </li>
+                  <li>
+                    <span class="text-sm">Một số (khuyên dùng 2)</span>
+                  </li>
+                  <li>
+                    <span class="text-sm">Thay đổi nó thường xuyên</span>
+                  </li>
+                  <li>
+                    <span class="text-sm">Không sử dụng thông tin cá nhân (tên, ngày sinh) trong mật khẩu</span>
+                  </li>
+                </ul>
+
+                <br>
+                <button class="btn btn-outline-primary mt-2 btn-block" type="submit">Cập Nhật Mật Khẩu</button>
+              </form>
+            </div>
+          </div>
+</div>
+    </div>
   </div>
-  
-  </div> <!-- container .//  -->
+  </main>
+  </div>
+  </div>
 </section>
+<script>
+  function displayImage(input) {
+    var img = document.querySelector('.js-img');
+    var fileLabel = document.getElementById('fileLabel');
+
+    if (input.files && input.files[0]) {
+      var file = input.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        img.src = e.target.result;
+        img.style.display = 'block';
+      };
+
+      reader.readAsDataURL(file);
+
+      fileLabel.innerHTML = file.name;
+    }
+  }
+</script>
