@@ -183,6 +183,20 @@
 		</div><!-- //container -->
 	</footer>
 	<script>
+		function formatCurrency(number) {
+			// Sử dụng Number để đảm bảo giá trị là số
+			number = Number(number);
+
+			// Sử dụng toLocaleString để định dạng số và thêm ký tự tiền tệ (VND)
+			let formattedNumber = number.toLocaleString('vi-VN', {
+				style: 'currency',
+				currency: 'VND'
+			});
+
+			return formattedNumber;
+		}
+	</script>
+	<script>
 		const webRoot = window.location.origin
 		const query = new URLSearchParams(window.location.search);
 	</script>

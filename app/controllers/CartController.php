@@ -71,6 +71,21 @@ class CartController extends Controller
         }
     }
 
+    public function updateCart()
+    {
+
+        $request = new Request;
+        if($request->isPost()) {
+            $json = file_get_contents("php://input");
+            $data = json_decode($json, true);
+            
+            $id = $data['id'];
+
+            $this->cart->updateCart($data, $id);
+            header('Content-Type: application/json');
+        }
+    }
+
     public function addWishList()
     {
         $data = ['user_id' => Session::data('user')['id'], 'book_id' => $_GET['productId']];
@@ -80,5 +95,12 @@ class CartController extends Controller
         header('Content-Type: application/json');
         echo json_encode(['success' => $result]);
         exit;
+    }
+
+    public function getSumaryCart() {
+        header('Content-Type: application/json');
+        $user_id = Session::data('user')['id'];
+        $data = $this->cart->sumary($user_id);
+        echo json_encode($data);
     }
 }
