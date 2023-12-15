@@ -38,14 +38,13 @@ class CartModel extends Model {
         return $data;
     }
 
-    public function updateCart($id)
+    public function updateCart($data, $id)
     {
-        $qat = ["quantity" => "quantity + 1"];
-        $data = $this->db
+        $result = $this->db
         ->table('carts')
         ->where('id', '=', $id)
-        ->update($qat);
-        return $data;
+        ->update($data);
+        return $result;
     }
 
     public function updateCartReduce($id)
@@ -65,6 +64,19 @@ class CartModel extends Model {
         ->join('books', 'books.id=carts.book_id')
         ->where('user_id', '=', $id)
         ->get();
+        return $data;
+    }
+
+    public function sumary($id) {
+        $data = $this->db->select("SUM(carts.quantity * books.price) as total,
+        sum(carts.quantity * books.discount_price) as total_discount, 
+        SUM(carts.quantity * books.price) - sum(carts.quantity * books.discount_price) total_price")
+        ->table('carts')
+        ->join('books', 'books.id = carts.book_id')
+        ->where('carts.user_id', '=', $id)
+        ->groupBy('carts.user_id')
+        ->get();
+
         return $data;
     }
 }
