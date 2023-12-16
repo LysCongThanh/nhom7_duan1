@@ -51,7 +51,7 @@ $routes['yeu-thich'] = 'profile/wishlist';
 $routes['them-binh-luan'] = 'comments/insertComment';
 $routes['load-rating'] = 'comments/load_Rating';
 
-$routes['dang-ky'] = 'admin/register';
+$routes['dang-ky'] = 'admin/page_register';
 $routes['dang-nhap'] = 'admin/login';
 $routes['quen-mat-khau'] = 'admin/forgotPassword';
 $routes['kiem-tra-email'] = 'admin/checkEmail';

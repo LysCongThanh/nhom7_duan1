@@ -201,7 +201,7 @@
 									<p class="px-3 mb-2 text-sm bg-white font-weight-bold text-secondary text-border d-inline z-index-2">or</p>
 								</div>
 								<div class="text-center">
-									<button type="button" class="mt-2 mb-4 btn btn-white w-100">Đăng ký</button>
+									<a href="dang-ky" class="mt-2 mb-4 btn btn-white w-100">Đăng ký</a>
 								</div>
 								<div class="text-center">
 									<a href="kiem-tra-email" class="text-primary">Quên mật khẩu?</a>

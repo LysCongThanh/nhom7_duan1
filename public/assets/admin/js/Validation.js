@@ -224,6 +224,7 @@ Validator.isEmail = function (selector, message) {
     };
 }
 
+
 Validator.minLength = function (selector, min, message) {
     return {
         selector: selector,
@@ -232,6 +233,26 @@ Validator.minLength = function (selector, min, message) {
         }
     };
 }
+
+Validator.isPassword = function (selector, min, message, requireSpecialChar) {
+    return {
+        selector: selector,
+        test: function (value) {
+            const hasMinLength = value.length >= min;
+            const hasSpecialChar = requireSpecialChar ? /[!@#$%^&*(),.?":{}|<>]/.test(value) : true;
+
+            if (!hasMinLength) {
+                return message || `Vui lòng nhập tối thiểu ${min} kí tự`;
+            }
+
+            if (requireSpecialChar && !hasSpecialChar) {
+                return "Vui lòng bao gồm ít nhất 1 ký tự đặc biệt";
+            }
+
+            return undefined;
+        }
+    };
+};
 
 Validator.isConfirmed = function (selector, getConfirmValue, message) {
     return {
