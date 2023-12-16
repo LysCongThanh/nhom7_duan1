@@ -13,7 +13,7 @@ class UsersController extends Controller{
     {
         $this->data['msg'] = Session::flash('msg');
         $this->data['sub_content']['old'] = Session::flash('old');
-        $this->data['sub_content']['script_src'] = 'add-books';
+        $this->data['sub_content']['script_src'] = 'add-users';
         $this->data['sub_content']['action'] = 'users/post_user';
         $this->data['sub_content']['title'] = 'Thêm Người Dùng';
         $this->data['content'] = 'admin/users/add';
@@ -72,6 +72,7 @@ class UsersController extends Controller{
         $this->data['sub_content']['old'] = Session::flash('old');
         $this->data['sub_content']['user'] = $this->users->getDetailUser($id);
         $this->data['sub_content']['title'] = 'Thông Tin Người Dùng';
+        $this->data['sub_content']['script_src'] = 'edit-users';
         $this->data['sub_content']['action'] = 'users/profile';
         $this->data['content'] = 'admin/users/edit';
         $this->render('layouts/admin_layout', $this->data);

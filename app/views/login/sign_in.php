@@ -182,12 +182,18 @@
 						</div>
 						<p class="my-1 text-center lh-base">Hoặc đăng nhập bằng thông tin đăng nhập</p>
 						<div class="px-4 card-body">
-							<form action="<?= _WEB_ROOT . $action?>" method="post" class="text-start">
+							<form id="form_sign_in" action="<?= _WEB_ROOT . $action ?>" method="post" class="text-start">
 								<div class="mb-3">
-									<input type="email" class="form-control" name="email" placeholder="Nhập địa chỉ Email của bạn" aria-label="Email">
+									<div class="form-group">
+										<input type="email" class="form-control" name="email" placeholder="Nhập địa chỉ Email của bạn" aria-label="Email">
+										<div class="form-message text-danger"></div>
+									</div>
 								</div>
 								<div class="mb-3">
-									<input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu của bạn" aria-label="Password">
+									<div class="form-group">
+										<input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu của bạn" aria-label="Password">
+										<div class="form-message text-danger"></div>
+									</div>
 								</div>
 								<div class="form-check form-switch d-flex">
 									<input class="form-check-input" type="checkbox" id="rememberMe">
@@ -247,7 +253,7 @@
 	<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/core/bootstrap.min.js"></script>
 	<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/perfect-scrollbar.min.js"></script>
 	<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/smooth-scrollbar.min.js"></script>
-
+	<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/Validation.js"></script>
 	<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/dragula/dragula.min.js"></script>
 	<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/jkanban/jkanban.js"></script>
 	<script>
@@ -257,6 +263,25 @@
 				damping: '0.5'
 			}
 			Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+		}
+	</script>
+
+	<script>
+		if (document.querySelector('#form_sign_in')) {
+			Validator({
+				form: '#form_sign_in',
+				formGroupSelector: '.form-group',
+				errorSelector: '.form-message',
+				rules: [
+					Validator.isRequired('input[name="email"]',
+						'* Vui lòng nhập email!'),
+					Validator.isEmail('input[name="email"]',
+						'* Email không đúng định dạng!'),
+					Validator.isRequired('input[name="password"]',
+						'* Vui lòng nhập mật khẩu!'),	
+				],
+
+			});
 		}
 	</script>
 

@@ -224,6 +224,20 @@ Validator.isEmail = function (selector, message) {
     };
 }
 
+Validator.isPhone = function (selector, message) {
+    return {
+        selector: selector,
+        test: function (value) {
+
+            let regex = /^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/;
+            if (!regex.test(value)) {
+                return message || "* Số điện thoại không hợp lệ !";
+            }
+
+        }
+    }
+}
+
 Validator.minLength = function (selector, min, message) {
     return {
         selector: selector,
@@ -232,6 +246,26 @@ Validator.minLength = function (selector, min, message) {
         }
     };
 }
+
+Validator.isPassword = function (selector, min, message, requireSpecialChar) {
+    return {
+        selector: selector,
+        test: function (value) {
+            const hasMinLength = value.length >= min;
+            const hasSpecialChar = requireSpecialChar ? /[!@#$%^&*(),.?":{}|<>]/.test(value) : true;
+
+            if (!hasMinLength) {
+                return message || `Vui lòng nhập tối thiểu ${min} kí tự`;
+            }
+
+            if (requireSpecialChar && !hasSpecialChar) {
+                return "Vui lòng bao gồm ít nhất 1 ký tự đặc biệt";
+            }
+
+            return undefined;
+        }
+    };
+};
 
 Validator.isConfirmed = function (selector, getConfirmValue, message) {
     return {

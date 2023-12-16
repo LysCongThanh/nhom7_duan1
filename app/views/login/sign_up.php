@@ -216,7 +216,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="<?php _WEB_ROOT . $action?>"">
+                            <form action="<?php _WEB_ROOT . $action?>">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Name" aria-label="Name">
                                 </div>
