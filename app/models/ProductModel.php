@@ -66,9 +66,11 @@ class ProductModel extends Model
     public function getDetailProduct($id)
     {
         $data = $this->db->select('
-        b.*, 
-        b.id as book_id, i.name as image_name,
-        c.* 
+        b.*, b.created_at as book_created_at, b.id as book_id, 
+        b.id as book_id, i.name as image_name, i.slug as image_slug,
+        c.*, c.name as category_name,
+        p.*, p.name as publisher_name,
+        a.*, a.name as author_name 
         ')
         ->table('books as b')
         ->join('categories as c', 'b.category_id = c.id')

@@ -76,7 +76,7 @@
 					</table>
 
 					<div class="card-body border-top">
-						<a href="#" class="btn btn-primary float-md-right">
+						<a href="thanh-toan" class="btn btn-primary float-md-right">
 							<font style="vertical-align: inherit;">
 								<font style="vertical-align: inherit;"> Mua hàng</font>
 							</font> <i class="fa fa-chevron-right"></i>

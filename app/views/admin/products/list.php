@@ -125,90 +125,9 @@
                                     <td class="text-sm">{{$product['created_at']}}</td>
                                     <td class="text-sm">{{$product['updated_at']}}</td>
                                     <td class="text-sm">
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$product['book_id']}}" data-bs-original-title="Preview product">
+                                        <a href="{{_WEB_ROOT}}san-pham-chi-tiet?id={{$product['book_id']}}">
                                             <i class="fas fa-eye text-dark"></i>
                                         </a>
-                                        <div class="modal fade" id="exampleModal{{$product['book_id']}}" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog__products-list modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Chi Tiết sản Phẩm</h5>
-                                                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        <div class="row">
-                                                                            <div class="text-center col-lg-6">
-                                                                                <img class="mx-auto shadow-lg w-100 border-radius-lg main-img" src="<?= _WEB_ROOT ?>/{{$product['image_slug']}}" alt="chair">
-                                                                                <div class="pt-2 mt-4 my-gallery d-flex justify-content-between align-items-center" itemscope itemtype="http://schema.org/ImageGallery">
-                                                                                    @foreach ($images[$product['book_id']] as $image)
-                                                                                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                                                        <a target="_blank" href="<?= _WEB_ROOT ?>{{$image['slug']}}" itemprop="contentUrl" data-size="600x600">
-                                                                                            <img class="shadow max-height-100 border-radius-lg" src="<?= _WEB_ROOT ?>{{$image['slug']}}" alt="Image description" />
-                                                                                        </a>
-                                                                                    </figure>
-                                                                                    @endforeach
-                                                                                    
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="mx-auto col-lg-6">
-                                                                                <div class="row">
-                                                                                    <div class="col-6">
-                                                                                        <h3 class="mt-4 mt-lg-0">
-                                                                                        {{$product['book_name']}}</h3>
-                                                                                        <div class="rating">
-                                                                                            <i class="fas text-warning fa-star" aria-hidden="true"></i>
-                                                                                            <i class="fas text-warning fa-star" aria-hidden="true"></i>
-                                                                                            <i class="fas text-warning fa-star" aria-hidden="true"></i>
-                                                                                            <i class="fas text-warning fa-star" aria-hidden="true"></i>
-                                                                                            <i class="fas text-warning fa-star-half-alt" aria-hidden="true"></i>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="align-middle col-6 text-end">
-                                                                                        <span class="badge badge-success"><i class="fas fa-check"></i>
-                                                                                            {{$product['status']}}</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <br>
-                                                                                <h6 class="mt-3 mb-0">Giá</h6>
-                                                                                <h5>{{number_format($product['price'])}}VND</h5>
-                                                                                <br>
-                                                                                <label class="mt-4">Mô tả:</label><br>
-                                                                                <?= html_entity_decode($product['describe_short']) ?>
-                                                                                <div class="mt-4 row">
-                                                                                    <div class="mt-2 col-lg-4 mt-lg-0">
-                                                                                        <label>Danh mục:</label>
-                                                                                        
-                                                                                    </div>
-                                                                                    <div class="mt-2 col-lg-4 mt-lg-0">
-                                                                                        <label>Tác giả:</label>
-                                                                                        
-                                                                                    </div>
-                                                                                    <div class="col-lg-4">
-                                                                                        <label>Nhà xuất bản:</label>
-                                                                                        
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="mt-4 row text-end ms-auto">
-                                                                                    <div class="col-4"></div>
-                                                                                    <div class="col-4"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <a href="{{_WEB_ROOT}}sua-san-pham?id={{$product['book_id']}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                             <i class="fas fa-user-edit text-dark"></i>
                                         </a>

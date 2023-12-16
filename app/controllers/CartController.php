@@ -20,12 +20,10 @@ class CartController extends Controller
     public function page()
     {
         $user = Session::data('user');
-        $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
-        Session::data('carts', $this->data['sub_content']['cart']);
         if(isset($user)){
             $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
         }
-        $this->data['sub_content']['script_src'] = 'cart';
+        Session::data('carts', $this->data['sub_content']['cart']);
         $this->data['sub_content']['title'] = 'Giỏ Hàng';
         $this->data['content'] = 'client/cart/cart';
         $this->render('layouts/client_layout', $this->data);
@@ -44,7 +42,7 @@ class CartController extends Controller
             foreach ($getID as $key) {
                 if ($key['book_id'] == $id) {
                     $bookIdExists = true;
-                    $this->cart->updateCart($key['id']);
+                    $this->cart->quantityIncre($key['id']);
                     break;
                 }
             }

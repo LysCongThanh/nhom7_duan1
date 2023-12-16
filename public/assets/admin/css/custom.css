@@ -136,3 +136,7 @@ select:hover {
 .modal-upload-image-custom-width {
     max-width: 500px;
 }
+
+.image_product_detail {
+    object-fit: cover;
+}

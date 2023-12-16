@@ -87,9 +87,9 @@ class ProductController extends Controller
                 'category_id' => $data['category'],
                 'author_id' => $data['author'],
                 'publisher_id' => $data['publisher'],
-                'book_name' => '"'.$data['name'].'"',
-                'describe_long' => $data['long-editor'],
-                'describe_short' => $data['sort-editor'],
+                'book_name' => '"' . $data['name'] . '"',
+                'describe_long' => '"'.$data['long-editor'].'"',
+                'describe_short' => '"'.$data['sort-editor'].'"',
                 'quantity_inventory' => $data['quantity'],
                 'price' => $data['price'],
                 'discount_price' => $data['sale_price'],
@@ -103,7 +103,6 @@ class ProductController extends Controller
                 Session::flash('msg', 'Sửa sản phẩm thành công');
                 $response = new Response();
                 $response->redirect('danh-sach-san-pham');
-
             }
         } else {
             $this->data['sub_content']['action'] = "sua-san-pham?id=$id";
@@ -144,11 +143,27 @@ class ProductController extends Controller
     public function detail()
     {
         $request = new Request();
-        $id = $request->getFields();
-        $product = $this->model('ProductModel');
-        $product->deleteProduct($id['id']);
-        $response = new Response();
-        $response->redirect('danh-sach-san-pham');
+        $id = (isset($request->getFields()['id']) ? $request->getFields()['id'] : null);
+        $this->data['sub_content']['product'] = $this->products->getDetailProduct($id);
+        $this->data['sub_content']['albums'] = $this->images->getAlbumImages($id);
+        $this->data['sub_content']['imageMain'] = $this->images->getImageMain($id);
+
+        ?>
+        <script>console.log(<?=json_encode($this->data['sub_content']['product'])?>)</script>
+        <script>console.log(<?=json_encode($this->data['sub_content']['albums'])?>)</script>
+        <?php
+
+        if ($this->data['sub_content']['product'] !== false) {
+            $this->data['content'] = 'admin/products/detail';
+            // $this->data['sub_content']['script_src'] = 'product_detail';
+            $this->data['sub_content']['title'] = 'Sản phẩm chi tiết';
+            $this->data['sub_content']['action'] = 'detail';
+        } else {
+            $this->data['sub_content']['title'] = 'Không tìm thấy sản phẩm !';
+            $this->data['content'] = 'admin/404';
+        }
+
+        $this->render('layouts/admin_layout', $this->data);
     }
 
     public function getImageAPI()
@@ -175,5 +190,3 @@ class ProductController extends Controller
         }
     }
 }
-
-?>

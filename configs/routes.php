@@ -8,6 +8,7 @@ $routes['phan-loai'] = 'classify/page';
 $routes['them-san-pham'] = 'product/get_product';
 $routes['danh-sach-san-pham'] = 'product/list';
 $routes['sua-san-pham'] = 'product/update';
+$routes['san-pham-chi-tiet'] = 'product/detail';
 
 $routes['danh-sach-binh-luan'] = 'comments/list';
 $routes['xoa-binh-luan'] = 'comments/delete';

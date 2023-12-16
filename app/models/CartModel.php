@@ -52,24 +52,21 @@ class CartModel extends Model {
         return $result;
     }
 
-    public function updateCartReduce($id)
+    public function quantityIncre($id)
     {
-        $qat = ["quantity" => "quantity - 1"];
+        $qat = ["quantity" => "quantity + 1"];
         $data = $this->db
         ->table('carts')
         ->where('id', '=', $id)
         ->update($qat);
-        return $data;
     }
-
 
     public function getCartByUser($id)
     {
         $data = $this->db->select('c.*, b.book_name, i.slug, b.price, b.discount_price')->table('carts as c')
         ->join('books as b', 'b.id=c.book_id')
-        ->join('images as i', 'b.id=i.book_id')
+        ->leftJoin('images as i', 'b.id=i.book_id and i.image_main = 1')
         ->where('c.user_id', '=', $id)
-        ->where('i.image_main', '=', '1')
         ->get();
         return $data;
     }

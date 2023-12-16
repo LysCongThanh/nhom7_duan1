@@ -8,9 +8,9 @@
                 <li class="text-sm breadcrumb-item"><a class="opacity-5 p-0 breadcrumb-text  text-dark "
                         href="javascript:;">Dashboard</a></li>
                 <li class="text-sm breadcrumb-item  breadcrumb-text  text-dark  active" aria-current="page">
-                    Products List</li>
+                    <?= (isset($action)) ? $action : '' ?></li>
             </ol>
-            <h6 class="mb-0 font-weight-bold breadcrumb-text  text-dark ">Products List</h6>
+            <h6 class="mb-0 font-weight-bold breadcrumb-text  text-dark "><?= (isset($title)) ? $title : '' ?></h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">

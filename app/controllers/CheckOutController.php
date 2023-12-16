@@ -58,6 +58,9 @@ class CheckOutController extends Controller
         $response = new Response();
         $id = Session::data('user')['id'];
         $this->data['msg'] = Session::flash('msg');
+
+        $sumary = $this->carts->sumary($id);
+        Session::data('total', $sumary[0]['total_price']);
         if ($request->isPost()) {
             $data = $request->getFields();
             if($data['dostavka'] === 'express_delivery') 
@@ -154,8 +157,9 @@ class CheckOutController extends Controller
 
     public function momo()
     {
-        $total = $this->orders->getOrderDetail(Session::data('id'));
-        $total_price = intval($total['total_price']);
+        $total = Session::data('total');
+        
+        $total_price = intval($total);
 
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
@@ -201,8 +205,8 @@ class CheckOutController extends Controller
     }
     public function vnPay()
     {
-        $total = $this->orders->getOrderDetail(Session::data('id'));
-        $total_price = intval($total['total_price']);
+        $total = Session::data('total');
+        $total_price = floatval($total);
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = _WEB_ROOT . "thanh-toan-thanh-cong";
         $vnp_TmnCode = "H9JB37UX"; //Mã website tại VNPAY 

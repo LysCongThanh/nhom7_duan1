@@ -156,39 +156,27 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
         });
 
         document.getElementById('updateBtn').addEventListener('click', function () {
-            actions.forEach(action => {
-                switch (action.action) {
-                    case 'remove':
-                        let id = action.id;
-                        const xhttp = new XMLHttpRequest();
-                        xhttp.open("POST", "http://localhost:33/dropzone/removeImage", true);
-                        xhttp.setRequestHeader("Content-Type", "application/json");
-                        xhttp.onreadystatechange = function () {
-                            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                                console.log(xhttp);
+            const removeActions = actions.filter(action => action.action === 'remove');
+
+            const removePromises = removeActions.map(action => {
+                return new Promise((resolve, reject) => {
+                    const id = action.id;
+                    const xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost:33/dropzone/removeImage", true);
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    xhttp.onreadystatechange = function () {
+                        if (xhttp.readyState == 4) {
+                            if (xhttp.status == 200) {
+                                console.log(`Image with ID ${id} removed successfully`);
+                                resolve();
+                            } else {
+                                console.error(`Failed to remove image with ID ${id}`);
+                                reject();
                             }
-                        };
-                        xhttp.send(JSON.stringify({ id }));
-                        break;
-                }
-            });
-
-            const formEditProduct = document.querySelector('#form-edit-product');
-            const sortDescriptionInput = document.getElementById('sort_description');
-            const longDescriptionInput = document.getElementById('long_description');
-
-            shortDescription = quillSortEditor.root.innerHTML;
-            longDescription = quillLongEditor.root.innerHTML;
-
-            sortDescriptionInput.value = shortDescription;
-            longDescriptionInput.value = longDescription;
-            const formData = new FormData(formEditProduct);
-            const jsonData = {};
-            formData.append('id', query.get('id'));
-            formData.append('request', `${webRoot}/sua-san-pham/id?${query.get('id')}`);
-
-            formData.forEach((value, key) => {
-                jsonData[key] = value;
+                        }
+                    };
+                    xhttp.send(JSON.stringify({ id }));
+                });
             });
 
             const albumImagesDropzonePromise = new Promise((resolve) => {
@@ -198,16 +186,37 @@ let albumImagesDropzone = new Dropzone('#album-images-dropzone', {
                 albumImagesDropzone.processQueue();
             });
 
-            Promise.all([albumImagesDropzonePromise])
+            // Tạo một Promise tổng hợp cho cả remove và add
+            const combinedPromise = Promise.race([...removePromises, albumImagesDropzonePromise]);
+
+            combinedPromise
                 .then(() => {
+                    // Continue with the rest of your logic
+
+                    const formEditProduct = document.querySelector('#form-edit-product');
+                    const sortDescriptionInput = document.getElementById('sort_description');
+                    const longDescriptionInput = document.getElementById('long_description');
+
+                    shortDescription = quillSortEditor.root.innerHTML;
+                    longDescription = quillLongEditor.root.innerHTML;
+
+                    sortDescriptionInput.value = shortDescription;
+                    longDescriptionInput.value = longDescription;
+                    const formData = new FormData(formEditProduct);
+                    const jsonData = {};
+                    formData.append('id', query.get('id'));
+                    formData.append('request', `${webRoot}/sua-san-pham/id?${query.get('id')}`);
+
+                    formData.forEach((value, key) => {
+                        jsonData[key] = value;
+                    });
+
                     localStorage.setItem('jsonData', JSON.stringify(jsonData));
                     location.reload();
                 })
                 .catch(error => {
-                    console.error('Lỗi khi gửi form hoặc Dropzones:', error);
+                    console.error('Error in processing promises:', error);
                 });
-
-            
         });
     }
 
@@ -249,7 +258,7 @@ Validator({
         ),
     ],
     onSubmit: function (data) {
-        
+
 
         const formEditProduct = document.querySelector(this.form);
         formEditProduct.querySelector('input[name="id"]').value = query.get('id');
