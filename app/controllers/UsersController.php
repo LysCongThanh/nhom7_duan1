@@ -70,34 +70,50 @@ class UsersController extends Controller{
         $id = Session::data('admin')['id'];
         $this->data['msg'] = Session::flash('msg');
         $this->data['sub_content']['old'] = Session::flash('old');
-        $this->data['sub_content']['user'] = $this->users->getDetailUser($id);
+        if($this->users->findUser('password', Session::data('admin')['password'])) 
+        {
+            $this->data['sub_content']['status_password'] = 'Đã có khóa bảo mật';
+        } else {
+            $this->data['sub_content']['status_password'] = 'Chưa có khóa bảo mật';
+        }
+        $checkAddress = $this->addresses->getAddresbyId($id);
+        
+        if (empty($checkAddress)) {
+            // The array has values
+            $this->data['sub_content']['user'] = $this->users->getDetailUser($id);
+        } else {
+            // The array is empty or not set
+            $this->data['sub_content']['user'] = $this->users->getDetailUserAddress($id);
+        }
+      
         $this->data['sub_content']['title'] = 'Thông Tin Người Dùng';
-        $this->data['sub_content']['action'] = 'users/profile';
+        $this->data['sub_content']['action'] = 'thong-tin-nguoi-dung';
         $this->data['content'] = 'admin/users/edit';
         $this->render('layouts/admin_layout', $this->data);
         if ($request->isPost()) {
             $data = $request->getFields();
-            if(!isset($data['new_password']))
-            {
                 $data['name'] =  $data['firstName'] . ' ' .  $data['lastName'];
                 $dataUser = array(
-                    'name' => $data['name'],
+                    'name' => "'" . $data['name'] . "'",
                     'sex' => $data['choices-gender'],
                     'email' => $data['email'],
-                    'birthdate' => $data['choices-birthdate'],
+                    'birthdate' => $data['choices-birthdate']??null,
                 );
               
-                $dataContact = [
+                $updateAddress = array(
                     'tel' => $data['phone'],
+                    'specific_address' => "'" .$data['location']."'",
                     'user_id' => $id
-                ];
-                $dataAddress = [
-                    'address' => $data['location'],
-                    'user_id' => $id
-                ];
+                );
+    
+                $checkAddress = $this->addresses->getAddresbyId($id);
+    
+                if (empty($checkAddress)) {
+                    $address = $this->addresses->insertAddress($updateAddress, $id);
+                } else {
+                    $address = $this->addresses->updateAddress($updateAddress, $id);
+                }
                 $result = $this->users->updateUser($dataUser, $id); 
-                $result = $this->contacts->insertContact($dataContact, $id); 
-                $result = $this->addresses->insertAddress($dataAddress, $id);
 
 
                 if (!$result) {
@@ -106,28 +122,33 @@ class UsersController extends Controller{
                     $response->redirect('thong-tin-nguoi-dung');
                     
                 }
-            } else {  
-                $dataPassword = [
-                    'password' => $data['new_password'],
-                ];
-                $password = $this->users->findUserById($id);
-                if($data['old_password'] == $password['password'])
-                {
-                    $result = $this->users->updateUser($dataPassword, $id); 
-                    if (!$result) {
-                        Session::flash('msg', 'Thay đổi thông tin người dùng thành công!');
-                        $response  = new Response();
-                        $response->redirect('thong-tin-nguoi-dung');
-                    }
-                } else {
-                    Session::flash('msg', 'Mật khẩu không chinh xác!');
-                    $response  = new Response();
-                    $response->redirect('thong-tin-nguoi-dung');
-                }
             }
-        }
+
       
        
+    }
+
+    public function updatePassword()
+    {
+        $id = Session::data('user')['id'];
+        $request = new Request();
+        $data = $request->getFields();
+        $dataPassword = [
+            'password' => password_hash($data['new_password'], PASSWORD_BCRYPT),
+        ];
+        $password = $this->users->findUserById($id);
+        if (password_verify($data['old_password'], $password['password'])) {
+            $result = $this->users->updateUser($dataPassword, $id);
+            if (!$result) {
+                Session::flash('msg', 'Thay đổi thông tin người dùng thành công!');
+                $response  = new Response();
+                $response->redirect('thong-tin-nguoi-dung');
+            }
+        } else {
+            Session::flash('msg', 'Mật khẩu không chinh xác!');
+            $response  = new Response();
+            $response->redirect('thong-tin-nguoi-dung');
+        }
     }
 
     public function list()
