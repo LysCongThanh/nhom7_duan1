@@ -89,7 +89,8 @@ class ProductModel extends Model
     public function updateProduct($data, $id)
     {
         $this->db->table('books')->where('id', '=', $id)->update($data);
-    }
+    } 
+
 
     public function deleteProduct($id)
     {

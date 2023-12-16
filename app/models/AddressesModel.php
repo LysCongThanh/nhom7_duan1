@@ -34,6 +34,7 @@ class AddressesModel extends Model {
     }
     public function deleteAddress($id)
     {
-        $this->db->table('addresses')->where('id', '=', $id)->delete();
+        $data = $this->db->table('addresses')->where('id', '=', $id)->delete();
+        return $data;
     }
 }

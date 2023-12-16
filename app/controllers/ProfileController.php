@@ -85,14 +85,24 @@ class ProfileController extends Controller{
         $response = new Response();
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $this->addresses->deleteAddress($id);
-            $responseData = [
-                'success' => true,
-                'message' => 'Xóa địa chỉ thành công',
-                'id' => $id
-            ];
-            $response->setStatusCode(200);
-            $response->send(json_encode($responseData));
+            $result = $this->addresses->deleteAddress($id);
+            if($result === true) {
+                $responseData = [
+                    'success' => false,
+                    'message' => 'Xóa địa chỉ không thành công',
+                    'id' => $id
+                ];
+                $response->setStatusCode(400);
+                $response->send(json_encode($responseData));
+            } else {
+                $responseData = [
+                    'success' => true,
+                    'message' => 'Xóa địa chỉ thành công',
+                    'id' => $id
+                ];
+                $response->setStatusCode(200);
+                $response->send(json_encode($responseData));
+            }
         } else {
             // Trả về phản hồi lỗi nếu không có id
             $responseData = [

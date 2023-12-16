@@ -26,6 +26,11 @@
                     // Hiển thị thông báo lỗi
                     alert(response.message);
                 }
+            } else {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    alert(response.message);
+                }
             }
         };
         xhr.send();
