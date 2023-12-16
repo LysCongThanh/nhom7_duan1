@@ -113,7 +113,11 @@
                     <span class="nav-link-text ms-1">Danh Sách Người Dùng</span>
                 </a>
             </li>
-           
+            <li class="nav-item">
+                <a class="nav-link position-relative ms-0 ps-2 py-2 " href="admin/logOut">
+                    <span class="nav-link-text ms-1">Đăng Xuất</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

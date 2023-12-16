@@ -137,6 +137,7 @@
 				<div class="mx-auto col-xl-4 col-lg-6 col-md-7">
 					<div class="card z-index-0">
 						<div class="pt-4 text-center card-header">
+
 							<h5>Đăng nhập với</h5>
 						</div>
 						<div class="px-3 row px-xl-5 px-sm-4">
@@ -182,7 +183,7 @@
 						</div>
 						<p class="my-1 text-center lh-base">Hoặc đăng nhập bằng thông tin đăng nhập</p>
 						<div class="px-4 card-body">
-							<form action="<?= _WEB_ROOT . $action?>" method="post" class="text-start">
+							<form action="<?= _WEB_ROOT . $action ?>" method="post" class="text-start">
 								<div class="mb-3">
 									<input type="email" class="form-control" name="email" placeholder="Nhập địa chỉ Email của bạn" aria-label="Email">
 								</div>
@@ -197,12 +198,13 @@
 									<button type="submit" class="my-4 mb-2 btn btn-dark w-100">Đăng nhập</button>
 								</div>
 								<div class="mb-2 text-center position-relative">
-									<p class="px-3 mb-2 text-sm bg-white font-weight-bold text-secondary text-border d-inline z-index-2">
-										or
-									</p>
+									<p class="px-3 mb-2 text-sm bg-white font-weight-bold text-secondary text-border d-inline z-index-2">or</p>
 								</div>
 								<div class="text-center">
 									<button type="button" class="mt-2 mb-4 btn btn-white w-100">Đăng ký</button>
+								</div>
+								<div class="text-center">
+									<a href="kiem-tra-email" class="text-primary">Quên mật khẩu?</a>
 								</div>
 							</form>
 						</div>

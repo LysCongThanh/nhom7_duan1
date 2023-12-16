@@ -98,20 +98,20 @@
                   </div>
                   <div class="col-sm-8">
                       <label class="mt-4 form-label">Ngày Sinh</label>
-                      <input type="date" class="form-control" name="choices-birthdate" id="choices-birthdate"  value="{{$user['birthdate']}}">
+                      <input type="date" class="form-control" name="choices-birthdate" id="choices-birthdate"  value="{{$user['birthdate']??' '}}">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <label class="mt-4 form-label">Email</label>
                     <div class="input-group">
-                      <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com"  value="{{$user['email']}}">
+                      <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com"  value="{{$user['email']??' '}}">
                     </div>
                   </div>
                   <div class="col-6">
                     <label class="mt-4 form-label">Số Điện Thoại</label>
                     <div class="input-group">
-                      <input id="phone" name="phone" class="form-control" type="number" placeholder="+40 941 538 024"  value="{{$user['tel']}}">
+                      <input id="phone" name="phone" class="form-control" type="number" placeholder="+40 941 538 024"  value="{{$user['tel']??' '}}">
                     </div>
                   </div>
                 </div>
@@ -119,7 +119,7 @@
                   <div class="col-6">
                     <label class="mt-4 form-label">Địa Chỉ</label>
                     <div class="input-group">
-                      <input id="location" name="location" class="form-control" type="text" placeholder="Sydney, A"  value="{{$user['address']}}">
+                      <input id="location" name="location" class="form-control" type="text" placeholder="Sydney, A"  value="{{$user['specific_address']??' '}}">
                     </div>
                   </div>
                 </div>
@@ -143,7 +143,7 @@
               <h5>Đổi mật khẩu</h5>
             </div>
             <div class="pt-0 card-body">
-                <form action="users/profile" method="post">
+                <form action="users/updatePassword" method="post">
                   <input type="hidden" value="{{$user['id']}}">
                   <label class="form-label">Mật khẩu cũ</label>
                   <div class="form-group">
@@ -197,20 +197,46 @@
             <div class="card-body">
               <div class="d-flex">
                 <p class="my-auto">Khóa bảo mật</p>
-                <p class="my-auto text-sm text-secondary ms-auto me-3">Không có khóa bảo mậts</p>
+                <p class="my-auto text-sm text-secondary ms-auto me-3">{{$status_password}}</p>
                 <button class="mb-0 btn btn-sm btn-white" type="button">Thêm vào</button>
               </div>
               <hr class="horizontal dark">
               <div class="d-flex">
                 <p class="my-auto">Số tin nhắn SMS</p>
-                <p class="my-auto text-sm text-secondary ms-auto me-3">+4012374423</p>
-                <button class="mb-0 btn btn-sm btn-white" type="button">Sửa</button>
+                <p class="my-auto text-sm text-secondary ms-auto me-3">+352423133</p>
+                <button class="mb-0 btn btn-sm btn-white" type="button" data-bs-toggle="modal" data-bs-target="#modelSMS">Sửa</button>
+                <!-- Modal -->
+                <div class="modal fade" id="modelSMS" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tin Nhắn SMS</h5>
+                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="sMS/send" method="post">
+                          <div class="form-group">
+                            <label for="number_phone" class="col-form-label">Số Điện Thoại:</label>
+                            <input type="text" class="form-control" id="number_phone" name="number_phone">
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-dark">Gửi tin nhắn</button>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal -->
               </div>
               <hr class="horizontal dark">
               <div class="d-flex">
                 <p class="my-auto">Ứng dụng xác thực</p>
                 <p class="my-auto text-sm text-secondary ms-auto me-3">Chưa được định cấu hình</p>
-                <button class="mb-0 btn btn-sm btn-white" type="button">Cài đặt</button>
+               <a href="xac-minh-ung-dung"> <button class="mb-0 btn btn-sm btn-white" type="button">Cài đặt</button></a>
               </div>
             </div>
           </div>

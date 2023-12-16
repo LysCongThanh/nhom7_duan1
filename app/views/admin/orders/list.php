@@ -2,7 +2,7 @@
       <div class="mt-4 row">
         <div class="col-12">
           <div class="card">
-            <img src="../assets/img/header-blue-white.png" alt="pattern-lines"
+            <img src="<?= _WEB_ROOT ?>/public/assets/admin/img/header-blue-white.png" alt="pattern-lines"
               class="top-0 rounded-2 position-absolute start-0 w-100 h-100">
             <div class="px-4 bg-cover card-body z-index-1">
               <div class="row">
@@ -15,7 +15,7 @@
                   </button>
                 </div>
                 <div class="text-end col-lg-4 col-12">
-                  <img class="w-35 ms-auto me-5 d-none d-md-block" src="../assets/img/globe-3d.png" alt="cube image">
+                  <img class="w-35 ms-auto me-5 d-none d-md-block" src="<?= _WEB_ROOT ?>/public/assets/admin/img/globe-3d.png" alt="cube image">
                 </div>
               </div>
             </div>
