@@ -1,11 +1,4 @@
 <div class="px-5 py-4 container-fluid">
-    <?= show_message('<div id="alert" class="alert bg-gradient-primary alert-dismissible text-sm  text-white  fade show" role="alert">
-    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-    <span class="alert-text"><strong>', '</strong></span>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>') ?>
     <!-- Add modal group -->
     <div class="add-modal-group">
         <!-- Form add category -->

@@ -2,13 +2,14 @@
 
 class ClassifyController extends Controller
 {
-    public $authors, $publishers, $categories, $data = [];
+    public $authors, $products, $publishers, $categories, $data = [];
 
     public function __construct()
     {
         $this->authors = $this->model('AuthorsModel');
         $this->publishers = $this->model('PublishersModel');
         $this->categories = $this->model('CategoriesModel');
+        $this->products = $this->model('ProductModel');
     }
 
     public function page()
@@ -215,7 +216,15 @@ class ClassifyController extends Controller
         $request = new Request;
         if ($request->isPost()) {
             $id = $request->getFields()['id'];
-            $result = $this->categories->deleteCategory($id);
+            $checkProduct = $this->products->countProductByCategory($id);
+          
+            if(empty($checkProduct)) {
+                $result = $this->categories->deleteCategory($id);
+            } else {
+                Session::flash('msg', 'Danh mục này không thể xóa');
+                $response = new Response();
+                $response->redirect('phan-loai');
+            }
 
             if (!$result) {
                 Session::flash('msg', 'Xóa danh mục thành công !');

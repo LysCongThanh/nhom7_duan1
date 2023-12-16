@@ -57,7 +57,7 @@ class CommentsController extends Controller{
                 'rating' => $data['rating_data'],
                 'content' => $data['content'],
             );
-
+           
             $result = $this->comments->insertComment($insertData);
 
             if (!$result) {

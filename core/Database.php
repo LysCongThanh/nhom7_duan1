@@ -25,6 +25,8 @@ class Database
             $fielStr = rtrim($fielStr, ',');
             $valueStr = rtrim($valueStr, ',');
             $sql = "INSERT INTO  $table($fielStr) VALUES ($valueStr)";
+            echo $sql;
+            die();
             $status = $this->query($sql);
             if (!$status) return false;
         }

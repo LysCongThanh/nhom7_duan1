@@ -43,4 +43,5 @@ class CategoriesModel extends Model {
     public function deleteCategory($id) {
         $this->db->table($this->_table)->where('id', '=', $id)->delete();
     }
+    
 }

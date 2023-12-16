@@ -43,6 +43,17 @@ class ProductModel extends Model
         return $data;
     }
 
+    public function countProductByCategory($id)
+    {
+        $data = $this->db->select('COUNT(b.category_id) as qtyBook')
+        ->table('books as b')
+        ->leftJoin('categories as c', 'c.id=b.category_id')
+        ->where('c.id', '=', $id)
+        ->groupBy('b.id')
+        ->first();
+        return $data;
+    }
+
     public function getListProducts()
     {
         $data = $this->db->select('b.*, c.*, MAX(i.name) as image_name, b.id as book_id, c.name as name_category, MAX(i.slug) as image_slug, i.slug as image_slug')
