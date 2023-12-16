@@ -88,12 +88,12 @@ class ProductController extends Controller
                 'author_id' => $data['author'],
                 'publisher_id' => $data['publisher'],
                 'book_name' => '"' . $data['name'] . '"',
-                'describe_long' => '"'.$data['long-editor'].'"',
-                'describe_short' => '"'.$data['sort-editor'].'"',
+                'describe_long' => $data['long-editor'],
+                'describe_short' => $data['sort-editor'],
                 'quantity_inventory' => $data['quantity'],
                 'price' => $data['price'],
                 'discount_price' => $data['sale_price'],
-                'size' => $data['size'],
+                'size' => "'" . $data['size'] . "'",
                 'num_page' => $data['number_pages']
             );
 
