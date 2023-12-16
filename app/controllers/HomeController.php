@@ -10,6 +10,9 @@ class HomeController extends Controller
 
     public function index()
     {
+        $this->data['sub_content']['discount'] = $this->products->topDiscount();
+        $this->data['sub_content']['stars'] = $this->products->topStar();
+        $this->data['sub_content']['views'] = $this->products->listTopView();
         $this->data['sub_content']['pds'] = $this->products->getListProducts();
         $this->data['content'] = 'client/home/index';
         $this->render('layouts/client_layout', $this->data);

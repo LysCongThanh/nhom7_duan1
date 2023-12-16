@@ -766,16 +766,30 @@ a[class*='card'] {
 [class*='card-product'] p {
   margin-bottom: 0; }
 
-[class*='card-product'] .img-wrap {
-  overflow: hidden;
-  position: relative; }
-  [class*='card-product'] .img-wrap img {
+  [class*='card-product'] .img-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  [class*='card-product'] .img-wrap .img-zoom-wrap {
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  [class*='card-product'] .img-wrap .img-zoom-wrap img {
     height: 100%;
     max-width: 100%;
     width: auto;
+    margin-top:10px;
     display: inline-block;
     -o-object-fit: cover;
-       object-fit: cover; }
+       object-fit: cover;
+  }
+  
+  [class*='card-product'] .img-wrap:hover .img-zoom-wrap {
+    transform: scale(1.05); /* Hiệu ứng zoom khi hover */
+  }
 
 /* GRID STYLE PRODUCT ITEM */
 .card-product-grid {
@@ -852,7 +866,7 @@ a[class*='card'] {
 .card-sm {
   min-height: 284px; }
   .card-sm .img-wrap {
-  height: 270px;
+  height: 225px;
   border-top-right-radius:10px;
   border-top-left-radius:10px; }
 
@@ -1421,4 +1435,24 @@ html[dir='rtl'] .itemside .info {
   .full-stars {
     color: #ECBE24;
   }
+}
+.card__preview_text {
+  display: -webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  overflow: hidden;
+}
+
+.center-line {
+  position: relative;
+  display: inline-block;
+}
+
+.center-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  border-top: 1px solid #000; /* Đổi màu sắc nếu cần thiết */
 }
