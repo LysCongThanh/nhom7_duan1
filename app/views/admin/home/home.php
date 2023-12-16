@@ -39,13 +39,13 @@
         </div>
         <ul class="nav nav-tabs nav-fill mt-3" id="myTabs">
             <li class="nav-item">
-                <a class="nav-link active" id="doanhThuTabLink" onclick="updateEvent()" data-bs-toggle="tab" href="#doanhThuTab">Doanh thu</a>
+                <a class="nav-link active" id="doanhThuTabLink" data-bs-toggle="tab" href="#doanhThuTab">Doanh thu</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="sanPhamTabLink" onclick="updateEvent()" data-bs-toggle="tab" href="#sanPhamTab">Sản phẩm</a>
+                <a class="nav-link" id="sanPhamTabLink" data-bs-toggle="tab" href="#sanPhamTab">Sản phẩm</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="danhMucTabLink" onclick="updateEvent()" data-bs-toggle="tab" href="#danhMucTab">Danh mục</a>
+                <a class="nav-link" id="danhMucTabLink" data-bs-toggle="tab" href="#danhMucTab">Danh mục</a>
             </li>
         </ul>
         <div class="tab-content is-shadow">

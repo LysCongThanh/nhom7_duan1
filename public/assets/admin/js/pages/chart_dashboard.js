@@ -3,22 +3,25 @@ const chartTypeProducts = document.querySelector('#chartTypeProducts');
 let typeOfChart = 'bar'; // Default chart type
 let currentChart = null;
 
-setTimeout(updateEvent, 3000);
-
-function updateEvent() {
-    chartTypeProducts.dispatchEvent(new Event('change'));
-    chartTypeOrders.dispatchEvent(new Event('change'));
-}
-
 chartTypeOrders.addEventListener('change', () => {
     const selectedOption = chartTypeOrders.options[chartTypeOrders.selectedIndex].value;
     typeOfChart = selectedOption;
+
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
 
     ordersChart(typeOfChart);
 });
 
 chartTypeProducts.addEventListener('change', () => {
     typeOfChart = chartTypeProducts.options[chartTypeProducts.selectedIndex].value;
+
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
+
+    
 
     productsChart(typeOfChart);
 });
@@ -30,10 +33,11 @@ function ordersChart(chartType) {
     xml.open('GET', url, true);
 
     xml.onload = function () {
-        if (xml.status >= 200 && xml.status < 300) {
+        if (true) {
+            console.log('Existing chart destroyed.');
             const response = JSON.parse(xml.responseText);
             console.log(response);
-
+            
 
             let labels = [];
             let datas = [];
@@ -108,7 +112,7 @@ function productsChart(chartType) {
                     fill: true,
                     data: datas.quantityTotal,
                     maxBarThickness: 6
-                }, {
+                },{
                     label: 'Tổng doanh thu',
                     tension: 0.4,
                     borderWidth: 0,
@@ -138,19 +142,16 @@ function productsChart(chartType) {
 }
 
 // Initial chart creation
-ordersChart('bar');
-productsChart('line');
+ordersChart(typeOfChart);
+productsChart(typeOfChart);
 
 // Function to create the chart
 function createChart(chart, chartType, dataOptions) {
     if (document.querySelector(chart)) {
-        var ctx2 = document.querySelector(chart).getContext("2d");
+        const ctx2 = document.querySelector(chart).getContext("2d");
 
-        if (currentChart) {
-            currentChart.destroy();
-        }
 
-        currentChart = new Chart(ctx2, {
+        window.myChart = new Chart(ctx2, {
             type: chartType,
             data: dataOptions,
 
