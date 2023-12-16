@@ -185,11 +185,16 @@ class ProductModel extends Model
 
     //Top Sản Phẩm Bán Chạy
     public function best_saler(){
-        $data = $this->db->select('b.id, b.book_name as name, b.views as view,cm.rating as comment, SUM(od.quantity) as total')
+        $data = $this->db->select('b.id, b.book_name as name, b.views as view,cm.rating as comment, SUM(od.quantity) as total,
+        COUNT(CASE WHEN o.status <> "Đã Thanh Toán" THEN o.id END) as payed,
+        COUNT(CASE WHEN o.status <> "Chưa Thanh Toán" THEN o.id END) as unpayed,
+        SUM(od.price * od.quantity) AS total_revenue')
         ->table('orders_detail as od')
         ->join('books as b', 'b.id=od.book_id')
-        ->join('comments as cm', 'cm.book_id=b.id')
+        ->join('orders as o', ' o.id = od.order_id')
+        ->leftJoin('comments as cm', 'cm.book_id=b.id')
         ->groupBy('b.id')
+        ->orderBy('SUM(od.quantity)', 'DESC')
         ->limit(5)->get();
         return $data;
     }

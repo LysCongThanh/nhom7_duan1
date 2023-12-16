@@ -27,26 +27,77 @@
     </div>
     <hr class="my-0">
     <div class="p-3 card-body">
-        <div class="row">
-            <div class="col-6">
-                <!-- Chọn loại biểu đồ -->
-                <label for="chartType" class="form-label">Loại biểu đồ:</label>
-                <select class="form-select" id="chartType">
-                    <option value="bar">Bar Chart</option>
-                    <option value="line">Line Chart</option>
-                    <option value="pie">Pie Chart</option>
-                    <option value="doughnut">Doughnut Chart</option>
-                    <option value="radar">radar Chart</option>
-                    <option value="polarArea">Polar Area Chart</option>
-                    <!-- Thêm các loại biểu đồ khác nếu cần -->
-                </select>
+        <div class="row d-flex align-items-center">
+            <div class="col-4">
+                <h5 class="mb-0 text-capitalize">Overview</h5>
+                <p class="mb-0">Here you have more details.</p>
             </div>
-
+            <div class="col-8 nav-wrapper position-relative ms-auto">
+                <div class="btn-group" role="tablist">
+                </div>
+            </div>
         </div>
+        <ul class="nav nav-tabs nav-fill mt-3" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="doanhThuTabLink" onclick="updateEvent()" data-bs-toggle="tab" href="#doanhThuTab">Doanh thu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="sanPhamTabLink" onclick="updateEvent()" data-bs-toggle="tab" href="#sanPhamTab">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="danhMucTabLink" onclick="updateEvent()" data-bs-toggle="tab" href="#danhMucTab">Danh mục</a>
+            </li>
+        </ul>
+        <div class="tab-content is-shadow">
+            <div class="tab-pane p-4 fade show active" id="doanhThuTab">
+                <!-- Nội dung cho tab Doanh thu -->
+                <div class="row chart-filter">
+                    <div class="col-6">
+                        <!-- Chọn loại biểu đồ -->
+                        <label for="chartType" class="form-label">Loại biểu đồ:</label>
+                        <select class="form-select" id="chartType">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="pie">Pie Chart</option>
+                            <option value="doughnut">Doughnut Chart</option>
+                            <option value="radar">radar Chart</option>
+                            <option value="polarArea">Polar Area Chart</option>
+                            <!-- Thêm các loại biểu đồ khác nếu cần -->
+                        </select>
+                    </div>
+                </div>
 
-        <!-- Hiển thị biểu đồ -->
-        <div class="chart">
-            <canvas id="chart-line" class="chart-canvas" height="500"></canvas>
+                <!-- Hiển thị biểu đồ -->
+                <div class="chart">
+                    <canvas id="chart-line" class="chart-canvas" height="500"></canvas>
+                </div>
+            </div>
+            <div class="tab-pane p-4 fade" id="sanPhamTab">
+                <div class="row chart-filter">
+                    <div class="col-6">
+                        <!-- Chọn loại biểu đồ -->
+                        <label for="chartType" class="form-label">Loại biểu đồ:</label>
+                        <select class="form-select" id="chartTypeProducts">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="pie">Pie Chart</option>
+                            <option value="doughnut">Doughnut Chart</option>
+                            <option value="radar">radar Chart</option>
+                            <option value="polarArea">Polar Area Chart</option>
+                            <!-- Thêm các loại biểu đồ khác nếu cần -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Hiển thị biểu đồ -->
+                <div class="chart">
+                    <canvas id="chart-products" class="chart-canvas" height="500"></canvas>
+                </div>
+            </div>
+            <div class="tab-pane p-4 fade" id="danhMucTab">
+                <!-- Nội dung cho tab Danh mục -->
+                <p>Danh mục content goes here.</p>
+            </div>
         </div>
     </div>
     <div class="my-4 row">
@@ -114,7 +165,7 @@
                                 </tr>
                             </thead>
                             <tbody class="orders_list">
-                                
+
                             </tbody>
                         </table>
                     </div>

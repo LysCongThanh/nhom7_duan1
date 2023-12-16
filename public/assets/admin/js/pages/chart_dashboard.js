@@ -1,57 +1,29 @@
-const chartTypeElement = document.querySelector('#chartType');
+const chartTypeOrders = document.querySelector('#chartType');
+const chartTypeProducts = document.querySelector('#chartTypeProducts');
 let typeOfChart = 'bar'; // Default chart type
+let currentChart = null;
 
-getOrders({value: 'All'});
+setTimeout(updateEvent, 3000);
 
-function getOrders(req) {
-    fetch(`${webRoot}/order/recent?status=${req.value}`, {
-        method: 'get'
-      })
-        .then(response => response.json())
-        .then(responseDatas => {
-    
-          datas = responseDatas;
-          loadOrders(datas);
-    
-        })
-        .catch(error => {
-          // Xử lý lỗi nếu có
-          console.error(error);
-        });
+function updateEvent() {
+    chartTypeProducts.dispatchEvent(new Event('change'));
+    chartTypeOrders.dispatchEvent(new Event('change'));
 }
 
-const loadOrders = (datas) => {
-    const ordersWrapper = document.querySelector('.orders_list');
-    let template = '';
-    ordersWrapper.innerHTML = '';
-  
-    totalItems = datas.length;
-    if(totalItems === 0) {
-      productsWrapper.innerHTML = '<h4 class="text-danger p-3 text-center">Trống</h4>';
-      return;
-    }
-  
-    datas.forEach((data) => {
-      template += viewsOrders(data);
-    });
-  
-    ordersWrapper.innerHTML = template;
-  }
-
-chartTypeElement.addEventListener('change', () => {
-    const selectedOption = chartTypeElement.options[chartTypeElement.selectedIndex].value;
+chartTypeOrders.addEventListener('change', () => {
+    const selectedOption = chartTypeOrders.options[chartTypeOrders.selectedIndex].value;
     typeOfChart = selectedOption;
 
-    // Destroy the existing chart (if it exists) before creating a new one with the updated type
-    if (window.myChart) {
-        window.myChart.destroy();
-    }
-
-    // Create a new chart with the updated type
-    fetchDataAndCreateChart(typeOfChart);
+    ordersChart(typeOfChart);
 });
 
-function fetchDataAndCreateChart(chartType) {
+chartTypeProducts.addEventListener('change', () => {
+    typeOfChart = chartTypeProducts.options[chartTypeProducts.selectedIndex].value;
+
+    productsChart(typeOfChart);
+});
+
+function ordersChart(chartType) {
     const xml = new XMLHttpRequest();
     const url = `${webRoot}/order/getStatisticsByMonth`; // Replace with the actual URL
 
@@ -62,14 +34,97 @@ function fetchDataAndCreateChart(chartType) {
             const response = JSON.parse(xml.responseText);
             console.log(response);
 
+
             let labels = [];
             let datas = [];
             response.forEach(data => {
                 labels.push(`Tháng ${data.monthNumber}`);
                 datas.push(data.totalPrice);
             });
+            const truncateLabelChars = labels.map(label => truncateLabel(label, 30));
+            const dataOptions = {
+                labels: truncateLabelChars,
+                datasets: [{
+                    label: 'Doanh thu',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#55A6F8",
+                    borderColor: "#55C6F8",
+                    borderWidth: 3,
+                    backgroundColor: "rgba(85, 166, 248, 0.2)",
+                    fill: true,
+                    data: datas,
+                    maxBarThickness: 6
+                },
+                ],
+            }
 
-            createChart(chartType, datas, labels);
+            createChart('#chart-line', chartType, dataOptions);
+        } else {
+            console.error('Failed to fetch data. Status: ' + xml.status);
+        }
+    };
+
+    xml.onerror = function () {
+        console.error('Error making the request.');
+    };
+
+    xml.send();
+}
+
+function productsChart(chartType) {
+    const xml = new XMLHttpRequest();
+    const url = `${webRoot}/product/top_sale`; // Replace with the actual URL
+
+    xml.open('GET', url, true);
+
+    xml.onload = function () {
+        if (xml.status >= 200 && xml.status < 300) {
+            const response = JSON.parse(xml.responseText);
+            console.log(response);
+            let labels = [];
+            let datas = {
+                quantityTotal: [],
+                totalPrice: [],
+            };
+            response.forEach(data => {
+                labels.push(`Sản phẩm: ${data.name}`);
+                datas.quantityTotal.push(data.total);
+                datas.totalPrice.push(data.total_revenue);
+            });
+            const truncateLabelChars = labels.map(label => truncateLabel(label, 30));
+            const dataOptions = {
+                labels: truncateLabelChars,
+                datasets: [{
+                    label: 'Số lượng đã bán',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#55A6F8",
+                    borderColor: "#55A6F8",
+                    borderWidth: 3,
+                    backgroundColor: "rgba(85, 166, 248, 0.2)",
+                    fill: true,
+                    data: datas.quantityTotal,
+                    maxBarThickness: 6
+                }, {
+                    label: 'Tổng doanh thu',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#55A6F8",
+                    borderColor: "#774dd3",
+                    borderWidth: 3,
+                    backgroundColor: "rgba(85, 166, 248, 0.2)",
+                    fill: true,
+                    data: datas.totalPrice,
+                    maxBarThickness: 6
+                }
+                ],
+            }
+
+            createChart('#chart-products', chartType, dataOptions);
         } else {
             console.error('Failed to fetch data. Status: ' + xml.status);
         }
@@ -83,40 +138,22 @@ function fetchDataAndCreateChart(chartType) {
 }
 
 // Initial chart creation
-fetchDataAndCreateChart(typeOfChart);
+ordersChart('bar');
+productsChart('line');
 
 // Function to create the chart
-function createChart(chartType, datas, labels) {
-    if (document.getElementById('chart-line')) {
-        var ctx2 = document.getElementById("chart-line").getContext("2d");
-        var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+function createChart(chart, chartType, dataOptions) {
+    if (document.querySelector(chart)) {
+        var ctx2 = document.querySelector(chart).getContext("2d");
 
-        gradientStroke1.addColorStop(1, 'rgba(85, 166, 248, 0.1)');
-        gradientStroke1.addColorStop(0, 'rgba(21, 137, 255, 0.0001)');
+        if (currentChart) {
+            currentChart.destroy();
+        }
 
-        var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
-        gradientStroke2.addColorStop(1, 'rgba(22, 93, 255, 0.2)');
-        gradientStroke2.addColorStop(0, 'rgba(22, 93, 255, 0.0001)');
-
-        window.myChart = new Chart(ctx2, {
+        currentChart = new Chart(ctx2, {
             type: chartType,
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: "Doanh thu",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    pointRadius: 2,
-                    pointBackgroundColor: "#55A6F8",
-                    borderColor: "#55A6F8",
-                    borderWidth: 3,
-                    backgroundColor: gradientStroke1,
-                    fill: true,
-                    data: datas,
-                    maxBarThickness: 6
-                },
-                ],
-            },
+            data: dataOptions,
+
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -185,6 +222,43 @@ function createChart(chartType, datas, labels) {
             },
         });
     }
+}
+
+getOrders({ value: 'All' });
+
+function getOrders(req) {
+    fetch(`${webRoot}/order/recent?status=${req.value}`, {
+        method: 'get'
+    })
+        .then(response => response.json())
+        .then(responseDatas => {
+
+            datas = responseDatas;
+            loadOrders(datas);
+
+        })
+        .catch(error => {
+            // Xử lý lỗi nếu có
+            console.error(error);
+        });
+}
+
+const loadOrders = (datas) => {
+    const ordersWrapper = document.querySelector('.orders_list');
+    let template = '';
+    ordersWrapper.innerHTML = '';
+
+    totalItems = datas.length;
+    if (totalItems === 0) {
+        productsWrapper.innerHTML = '<h4 class="text-danger p-3 text-center">Trống</h4>';
+        return;
+    }
+
+    datas.forEach((data) => {
+        template += viewsOrders(data);
+    });
+
+    ordersWrapper.innerHTML = template;
 }
 
 if (document.getElementById('chart-bars')) {
@@ -314,4 +388,11 @@ function viewsOrders(data) {
     </td>
 </tr>
     `;
+}
+
+function truncateLabel(label, maxLength) {
+    if (label.length > maxLength) {
+        return label.substring(0, maxLength - 3) + "...";
+    }
+    return label;
 }

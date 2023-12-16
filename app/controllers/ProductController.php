@@ -189,4 +189,12 @@ class ProductController extends Controller
             exit();
         }
     }
+
+    public function top_sale() {
+        $request = new Request;
+        $postData = $request->getFields();
+        header('Content-Type: application/json');
+        $data = $this->products->best_saler();
+        echo json_encode($data);
+    }
 }
