@@ -42,7 +42,7 @@
                   <div class=" form-row">
                     <div class=" form-group col-md-6">
                       <label>E-mail</label>
-                      <input type="email" class="form-control" name="email" value="{{$pf['email']}}">
+                      <input type="email" class="form-control" name="email" value="{{$pf['email'] ?? ' '}}">
                     </div>
                     <div class=" col-md-6">
                       <label>Số điện thoại</label>
