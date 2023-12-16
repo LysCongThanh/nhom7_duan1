@@ -255,7 +255,7 @@
                                     <label for="" class="form-label">Kích thước</label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fa-solid fa-expand"></i></span>
-                                        <input type="text" min="1" class="form-control" name="size" id="" placeholder="Kích thước sách..." value="{{$product['size']}}">
+                                        <input type="text" class="form-control" name="size" id="" placeholder="Kích thước sách..." value="{{$product['size']}}">
                                     </div>
                                     <div class="form-message"></div>
                                 </div>

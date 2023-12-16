@@ -20,8 +20,10 @@ class CartController extends Controller
     public function page()
     {
         $user = Session::data('user');
-        if(isset($user)){
+        if (isset($user)) {
             $this->data['sub_content']['cart'] = $this->cart->getCartByUser($user['id']);
+        } else {
+            $this->data['sub_content']['cart'] = null;
         }
         Session::data('carts', $this->data['sub_content']['cart']);
         $this->data['sub_content']['title'] = 'Giỏ Hàng';
@@ -31,33 +33,40 @@ class CartController extends Controller
 
     public function addCart()
     {
+        header('Content-Type: application/json');
         $id = $_GET['productId'];
-        $user = Session::data('user');
-        $data = ['user_id' => $user['id'], 'book_id' => $id];
-        $getID = $this->cart->listCart($user['id']);
-    
-        if ($getID != NULL) {
-            $bookIdExists = false;
-    
-            foreach ($getID as $key) {
-                if ($key['book_id'] == $id) {
-                    $bookIdExists = true;
-                    $this->cart->quantityIncre($key['id']);
-                    break;
+        if (isset(Session::data('user')['id'])) {
+            $user = Session::data('user');
+            $data = ['user_id' => $user['id'], 'book_id' => $id];
+            $getID = $this->cart->listCart($user['id']);
+
+            if ($getID != NULL) {
+                $bookIdExists = false;
+
+                foreach ($getID as $key) {
+                    if ($key['book_id'] == $id) {
+                        $bookIdExists = true;
+                        $this->cart->quantityIncre($key['id']);
+                        break;
+                    }
                 }
-            }
-    
-            if (!$bookIdExists) {
+
+                if (!$bookIdExists) {
+                    $this->data['sub_content']['cart'] = $this->cart->addCartList($data);
+                }
+            } else {
                 $this->data['sub_content']['cart'] = $this->cart->addCartList($data);
             }
+
+            echo json_encode(['success' => true]);
+            exit;
         } else {
-            $this->data['sub_content']['cart'] = $this->cart->addCartList($data);
+            echo json_encode([
+                'success' => false
+            ]);
         }
-    
-        // Trả về phản hồi JSON
-        header('Content-Type: application/json');
-        echo json_encode(['success' => true]);
-        exit;
+
+
     }
 
 
@@ -73,7 +82,6 @@ class CartController extends Controller
             $response = new Response();
             $response->setStatusCode(200);
             $response->send(json_encode($responseData));
-
         } else {
             $responseData = [
                 'success' => false,
@@ -82,7 +90,6 @@ class CartController extends Controller
             $response = new Response();
             $response->setStatusCode(200);
             $response->send(json_encode($responseData));
-
         }
     }
 
@@ -90,7 +97,7 @@ class CartController extends Controller
     {
 
         $request = new Request;
-        if($request->isPost()) {
+        if ($request->isPost()) {
             $json = file_get_contents("php://input");
             $data = json_decode($json, true);
 
@@ -136,10 +143,18 @@ class CartController extends Controller
         exit;
     }
 
-    public function getSumaryCart() {
+    public function getSumaryCart()
+    {
         header('Content-Type: application/json');
-        $user_id = Session::data('user')['id'];
-        $data = $this->cart->sumary($user_id);
-        echo json_encode($data);
+
+        if (isset(Session::data('user')['id'])) {
+            $user_id = Session::data('user')['id'];
+            $data = $this->cart->sumary($user_id);
+            echo json_encode($data);
+        } else {
+            echo json_encode([
+                'error' => 'error',
+            ]);
+        }
     }
 }

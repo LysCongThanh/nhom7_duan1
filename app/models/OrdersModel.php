@@ -123,5 +123,32 @@ class OrdersModel extends Model {
         $data = $this->db->select('SUM(od.discount) as giamgia')->table('orders_detail as od')->first();
         return $data;
     }
+
+    public function statisticsByMonth() {
+        $data = $this->db->select('MONTH(created_at) AS monthNumber, SUM(total_price) AS totalPrice')
+        ->table('orders')
+        ->groupBy('MONTH(created_at)')
+        ->get();
+
+        return $data;
+    }
+
+    public function newsOrders($status) {
+        $query = $this->db->select('o.*, u.name as name')
+        ->table('orders as o')
+        ->join('users as u', 'u.id=o.user_id')
+        ->limit(5);
+       
+        if ($status !== 'All') {
+            $query->where('status', '=', $status);
+        }
+    
+        $data = $query->orderBy('created_at', 'DESC')
+            ->get();
+    
+        return $data;
+    }
+
+    
 }
 ?>

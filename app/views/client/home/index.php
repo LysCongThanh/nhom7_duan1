@@ -9,12 +9,9 @@
 						<h6>Thể Loại Nổi Bật</h6>
 						<nav class="nav-home-aside">
 							<ul class="menu-category">
-								<li><a href="#">Sách Lịch Sử</a></li>
-								<li><a href="#">Sách Phiêu Lưu</a></li>
-								<li><a href="#">Sách Tiểu Thuyết</a></li>
-								<li><a href="#">Sách Khoa Học Viễn Tưởng</a></li>
-								<li><a href="#">Sách Lãng Mạn</a></li>
-								<li><a href="#">Sách Thiếu Nhi</a></li>
+								@foreach($categoriesPopular as $category)
+								<li><a href="{{_WEB_ROOT}}san-pham-ngang?category={{$category['category_id']}}">{{$category['category_name']}}</a></li>
+								@endforeach
 								<li class="has-submenu"><a href="product.html">Xem ngay</a>
 								</li>
 							</ul>
@@ -56,29 +53,15 @@
 						<aside class="special-home-right">
 							<h6 class="bg-blue text-center text-white mb-0 p-2">Sản phẩm nổi bật</h6>
 
+							@foreach($stars as $star)
 							<div class="card-banner border-bottom">
 								<div class="py-3" style="width:80%">
-									<h6 class="card-title">Tư duy tích cực</h6>
-									<a href="#" class="btn btn-secondary btn-sm"> Xem ngay</a>
+									<h6 class="card-title">{{$star['book_name']}}</h6>
+									<a href="{{_WEB_ROOT}}chi-tiet-san-pham?id={{$star['book_id']}}" class="btn btn-secondary btn-sm"> Xem ngay</a>
 								</div>
-								<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/thinking books/b1.jpg" height="80" class="img-bg">
+								<img src="{{_WEB_ROOT}}{{$star['image_slug']}}" height="80" class="img-bg">
 							</div>
-
-							<div class="card-banner border-bottom">
-								<div class="py-3" style="width:80%">
-									<h6 class="card-title">Người giàu có nhất thành BABYLON</h6>
-									<a href="#" class="btn btn-secondary btn-sm"> Xem ngay</a>
-								</div>
-								<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b2.png" height="80" class="img-bg">
-							</div>
-
-							<div class="card-banner border-bottom">
-								<div class="py-3" style="width:80%">
-									<h6 class="card-title">Triệu phú nhà bên</h6>
-									<a href="#" class="btn btn-secondary btn-sm"> Xem ngay</a>
-								</div>
-								<img src="<?= _WEB_ROOT; ?>/public/assets/client/image/financial books/b1.png" height="80" class="img-bg">
-							</div>
+							@endforeach
 
 						</aside>
 					</div> <!-- col.// -->

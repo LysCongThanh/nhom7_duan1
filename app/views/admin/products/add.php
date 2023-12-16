@@ -1,13 +1,6 @@
 <!-- CONTENT -->
 <div class="container-fluid py-4 px-5">
-    <div class="px-5 py-4 container-fluid">
-        <?= show_message('<div id="alert" class="alert bg-gradient-primary alert-dismissible text-sm  text-white  fade show" role="alert">
-    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-    <span class="alert-text"><strong>', '</strong></span>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>') ?>
+        
         <div class="modal-group">
             <!-- categories add -->
             <div class="modal fade" id="form-modal-category" tabindex="-1" role="dialog" aria-labelledby="form-modal-category" aria-hidden="true">

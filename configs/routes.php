@@ -14,7 +14,7 @@ $routes['danh-sach-binh-luan'] = 'comments/list';
 $routes['xoa-binh-luan'] = 'comments/delete';
 $routes['tra-loi-binh-luan'] = 'comments/replyComment';
 
-$routes['danh-sach-don-hang'] = 'order/list';
+$routes['orders'] = 'order/list';
 $routes['chi-tiet-don-hang'] = 'order/orders_detail';
 
 $routes['them-nguoi-dung'] = 'users/get_user';

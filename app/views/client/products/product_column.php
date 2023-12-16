@@ -107,11 +107,11 @@
 										<div class="form-row">
 											<h6 class="title">Tối Thiểu {{$getPrice['min']}} - Tối đa {{$getPrice['max']}}</h6>
 											<div class="form-group col-md-6">
-												
+
 												<input class="form-control" type="number" fdprocessedid="854m" min="{{$getPrice['min']}}" max="{{$getPrice['max']}}" name="min">
 											</div>
 											<div class="form-group text-right col-md-6">
-												
+
 												<input class="form-control" type="number" fdprocessedid="ccygk8" max="{{$getPrice['max']}}" min="{{$getPrice['min']}}" name="max">
 											</div>
 
@@ -131,8 +131,8 @@
 					</aside> <!-- col.// -->
 					<main class="col-md-10">
 
-						<header class="mb-3">
-							<div class="form-inline">
+						<header class="mb-3 row d-flex">
+							<div class="form-inline col-12">
 								<!-- <strong class="mr-md-auto">
 									<font style="vertical-align: inherit;">
 										<font style="vertical-align: inherit;">32 mặt hàng được tìm thấy</font>
@@ -165,37 +165,12 @@
 						</header><!-- sect-heading -->
 
 						<article class="card card-product-list">
-						<!-- @foreach($product_column as $column)
-						
-							
-						@endforeach -->
+							<!-- product here -->
 						</article> <!-- card-product .// -->
 
 						<nav class="mb-4" aria-label="Mẫu điều hướng trang">
-							<ul class="pagination">
-								<li class="page-item disabled"><a class="page-link" href="#">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">Trước</font>
-										</font>
-									</a></li>
-								<li class="page-item active"><a class="page-link" href="#">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">1</font>
-										</font>
-									</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">3</font>
-										</font>
-									</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#">5</a></li>
-								<li class="page-item"><a class="page-link" href="#">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">Kế tiếp</font>
-										</font>
-									</a></li>
+							<ul id="pagination" class="pagination">
+								<!-- Các nút phân trang sẽ được thêm vào đây -->
 							</ul>
 						</nav>
 

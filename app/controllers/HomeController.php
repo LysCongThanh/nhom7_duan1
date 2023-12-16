@@ -10,6 +10,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        $this->data['sub_content']['categoriesPopular'] = $this->products->categoriesByRating();
         $this->data['sub_content']['discount'] = $this->products->topDiscount();
         $this->data['sub_content']['stars'] = $this->products->topStar();
         $this->data['sub_content']['views'] = $this->products->listTopView();
