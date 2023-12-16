@@ -1,6 +1,9 @@
 {
     "require": {
-        "google/apiclient": "^2.15",
-        "facebook/graph-sdk": "^5.7"
+       
+        "infobip/infobip-api-php-client": "^5.1",
+        "robthree/twofactorauth": "^2.1",
+        "facebook/graph-sdk": "^5.1",
+        "google/apiclient": "^2.15"
     }
 }

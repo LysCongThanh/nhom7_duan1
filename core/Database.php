@@ -38,7 +38,9 @@ class Database
             foreach ($data as $key => $value) {
                 if (strpos($value, ' ') !== false) {
                     $updateStr .= "$key=$value,";
-                } else {
+                } else if($value === 'null') {
+                    $updateStr .= "$key=$value,";
+                }else {
                     $updateStr .= "$key='$value',";
                 }
             }
@@ -47,7 +49,6 @@ class Database
             if (!empty($condition)) {
                 $sql = "UPDATE $table SET $updateStr WHERE $condition";
             }
-
             $status = $this->query($sql);
             if (!$status) return false;
         }

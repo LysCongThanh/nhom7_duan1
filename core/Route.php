@@ -11,17 +11,19 @@ class Route
         $url = trim($url, '/');
         if (empty($url)) $url = '/';
         $handleUrl = $url;
+    
         if (!empty($routes)) {
             foreach ($routes as $key => $value) {
-                if (preg_match('~' . $key . '~is', $url)) {
-                    $handleUrl = preg_replace('~' . $key . '~is', $value, $url);
+                if (strpos($url, $key) === 0) {
+                    $handleUrl = $value . substr($url, strlen($key));
                     $this->_keyRoute = $key;
+                    break;
                 }
             }
         }
+    
         return $handleUrl;
     }
-
     public function getUri()
     {
         return $this->_keyRoute;

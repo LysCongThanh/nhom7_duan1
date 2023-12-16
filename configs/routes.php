@@ -53,6 +53,10 @@ $routes['load-rating'] = 'comments/load_Rating';
 
 $routes['dang-ky'] = 'admin/register';
 $routes['dang-nhap'] = 'admin/login';
+$routes['quen-mat-khau'] = 'admin/forgotPassword';
+$routes['kiem-tra-email'] = 'admin/checkEmail';
 $routes['dang-nhap-google'] = 'google/loginGoogle';
 $routes['facebook-login'] = 'faceBook/facebookLogin';
 $routes['facebook-callback'] = 'faceBook/facebookCallback';
+$routes['xac-minh-2-buoc'] = 'authentication';
+$routes['xac-minh-ung-dung'] = 'qr';
