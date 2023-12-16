@@ -84,4 +84,71 @@ class UsersModel extends Model {
         $data = $this->db->select('COUNT(us.id) AS nguoidung')->table('users AS us')->first();
         return $data;
     }
+
+    public function getProfile($id)
+    {
+        $data = $this->db->select('
+        u.*,
+        DATE(u.birthdate) as birthdate,
+        a.address, 
+        a.tel,
+        a.specific_address,
+        a.zip_code,
+        a.id,
+        COUNT(DISTINCT w.id) as total_wishlist,
+        COUNT(DISTINCT o.id) as total_order,
+        COUNT(DISTINCT CASE WHEN o.status = "Chưa Thanh Toán" THEN o.id END) as unpaid,
+        COUNT(DISTINCT CASE WHEN o.status = "Đã Thanh Toán" THEN o.id END) as paid
+        ')
+        ->table('users as u')
+        ->leftJoin('addresses as a', 'u.id = a.user_id')
+        ->leftJoin('wishlist as w', 'u.id = w.user_id')
+        ->leftJoin('orders as o', 'u.id = o.user_id')
+        ->leftJoin('orders_detail as od', 'od.order_id = o.id')
+        ->leftJoin('books as b', 'b.id = od.book_id')
+        ->where('u.id', '=', $id)
+        ->where('u.id', '=' , "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+        ->groupBy('u.id,a.address,a.tel,a.specific_address,a.zip_code,a.id')
+        ->orderBy('a.id', 'DESC')
+        ->first();
+        return $data;
+    }
+
+    public function showProfile($id){
+        $data = $this->db->select('
+        u.*,
+        DATE(u.birthdate) as birthdate,
+        COUNT(DISTINCT w.id) as total_wishlist,
+        COUNT(DISTINCT o.id) as total_order,
+        COUNT(DISTINCT CASE WHEN o.status = "Chưa Thanh Toán" THEN o.id END) as unpaid,
+        COUNT(DISTINCT CASE WHEN o.status = "Đã Thanh Toán" THEN o.id END) as paid
+        ')
+        ->table('users as u')
+        ->leftJoin('wishlist as w', 'u.id = w.user_id')
+        ->leftJoin('orders as o', 'u.id = o.user_id')
+        ->leftJoin('orders_detail as od', 'od.order_id = o.id')
+        ->leftJoin('books as b', 'b.id = od.book_id')
+        ->where('u.id', '=', $id)
+        ->groupBy('u.id')
+        ->first();
+        return $data;
+
+        
+    }
+
+
+    public function showAll($id)
+    {
+        $data = $this->db->select('o.id as order_id, u.id as user_id, b.book_name as book_name, i.slug as slug,od.quantity as quantity_product,o.status as order_status, o.created_at as order_date')
+            ->table('orders as o')
+            ->join('users as u', 'u.id = o.user_id')
+            ->leftJoin('orders_detail as od', 'o.id = od.order_id')
+            ->leftJoin('books as b', 'b.id = od.book_id')
+            ->leftJoin('images as i', 'b.id = i.book_id') 
+            ->where('u.id', '=', $id)
+            ->where('i.image_main','=',1)
+            ->get();
+    
+        return $data;
+    }
 }

@@ -26,6 +26,7 @@
 
 <!-- custom javascript -->
 <script src="<?= _WEB_ROOT; ?>/public/assets/client/js/script.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -65,7 +66,7 @@
 										<i class="fa fa-user"></i>
 										<span class="notify">0</span>
 									</div>
-									<small class="text"> Cá Nhân </small>
+									<small class="text">Cá Nhân </small>
 								</a>
 							</div>
 							<div class="widget-header mr-3">

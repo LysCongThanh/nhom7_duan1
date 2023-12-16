@@ -18,7 +18,19 @@ class AddressesModel extends Model {
     {
         $this->db->table('addresses')->insert($data);
     }
-    public function getListAddresses($id) 
+
+    public function updateAddress($data,$id)
+    {
+        $this->db->table('addresses')->where('user_id', '=', $id)->update($data);
+
+    }
+
+    public function getAddresbyId($id)
+    {
+       $data = $this->db->select('address, specific_address')->table('addresses')->where('user_id', '=', $id)->get();
+       return $data;
+    }
+    public function getListAddresses($id)
     {
         $data = $this->db
         ->table('addresses a')
@@ -28,10 +40,7 @@ class AddressesModel extends Model {
         ->get();
         return $data;
     }
-    public function updateAddress($data, $id)
-    {
-        $this->db->table('addresses')->where('id', '=', $id)->update($data);
-    }
+
     public function deleteAddress($id)
     {
         $this->db->table('addresses')->where('id', '=', $id)->delete();
