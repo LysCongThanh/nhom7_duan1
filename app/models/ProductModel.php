@@ -145,6 +145,7 @@ class ProductModel extends Model
         ->join('publishers as p', 'p.id = b.publisher_id')
         ->leftjoin('images as i', 'b.id = i.book_id')
         ->where('b.id', '=', $id)
+        ->groupBy('b.id')
         ->first();
 
         return $data;

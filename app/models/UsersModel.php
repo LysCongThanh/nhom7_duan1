@@ -1,17 +1,21 @@
 <?php
 
-class UsersModel extends Model {
+class UsersModel extends Model
+{
     private $_table = 'users', $_field = '*';
 
-    public function tableFill() {
+    public function tableFill()
+    {
         return 'users';
     }
 
-    public function fieldFill() {
+    public function fieldFill()
+    {
         return '*';
     }
 
-    public function primaryKey() {
+    public function primaryKey()
+    {
         return 'id';
     }
 
@@ -26,39 +30,54 @@ class UsersModel extends Model {
         $data = $this->db->table('users')->orderBy('id', 'DESC')->first();
         return $data['id'] + 1;
     }
-   
 
-    public function getDetailUser($id)
+
+    public function getDetailUserAddress($id)
     {
-        $data = $this->db->select('u.*, c.tel, a.address')
-                        ->table('users as u')
-                        ->leftJoin('contacts as c', 'u.id = c.user_id')
-                        ->leftJoin('addresses as a', 'a.user_id = u.id')
-                        ->where('u.id', '=', $id)
-                         ->first();
-    
+        $data = $this->db->select('u.*, DATE(u.birthdate) as birthdate, a.address, 
+        a.tel,
+        a.specific_address,
+        a.zip_code,
+        a.id')
+            ->table('users as u')
+            ->leftJoin('addresses as a', 'u.id = a.user_id')
+            ->where('u.id', '=', $id)
+            ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+            ->groupBy('u.id,a.address,a.tel,a.specific_address,a.zip_code,a.id')
+            ->orderBy('a.id', 'DESC')
+            ->first();
+
         return $data;
     }
 
+    public function getDetailUser($id)
+    {
+        $data = $this->db->select('u.*, DATE(u.birthdate) as birthdate')
+            ->table('users as u')
+            ->where('u.id', '=', $id)
+            ->first();
+
+        return $data;
+    }
     public function findUserByID($id)
     {
         $data = $this->db->select('password')
-                        ->table('users')
-                        ->where('id', '=', $id)
-                         ->first();
-    
+            ->table('users')
+            ->where('id', '=', $id)
+            ->first();
+
         return $data;
     }
 
     public function findUserByEmail($email)
     {
-        $result =$this->db->table('users')->where('email', ' = ', $email)->first();
+        $result = $this->db->table('users')->where('email', ' = ', $email)->first();
         return $result;
     }
 
     public function findUser($field, $value)
     {
-        $result =$this->db->table('users')->where($field, ' = ', $value)->first();
+        $result = $this->db->table('users')->where($field, ' = ', $value)->first();
         return $result;
     }
 
@@ -80,7 +99,8 @@ class UsersModel extends Model {
     // }
 
     //Đếm số người dùng
-    public function count_users(){
+    public function count_users()
+    {
         $data = $this->db->select('COUNT(us.id) AS nguoidung')->table('users AS us')->first();
         return $data;
     }
@@ -100,21 +120,22 @@ class UsersModel extends Model {
         COUNT(DISTINCT CASE WHEN o.status = "Chưa Thanh Toán" THEN o.id END) as unpaid,
         COUNT(DISTINCT CASE WHEN o.status = "Đã Thanh Toán" THEN o.id END) as paid
         ')
-        ->table('users as u')
-        ->leftJoin('addresses as a', 'u.id = a.user_id')
-        ->leftJoin('wishlist as w', 'u.id = w.user_id')
-        ->leftJoin('orders as o', 'u.id = o.user_id')
-        ->leftJoin('orders_detail as od', 'od.order_id = o.id')
-        ->leftJoin('books as b', 'b.id = od.book_id')
-        ->where('u.id', '=', $id)
-        ->where('u.id', '=' , "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
-        ->groupBy('u.id,a.address,a.tel,a.specific_address,a.zip_code,a.id')
-        ->orderBy('a.id', 'DESC')
-        ->first();
+            ->table('users as u')
+            ->leftJoin('addresses as a', 'u.id = a.user_id')
+            ->leftJoin('wishlist as w', 'u.id = w.user_id')
+            ->leftJoin('orders as o', 'u.id = o.user_id')
+            ->leftJoin('orders_detail as od', 'od.order_id = o.id')
+            ->leftJoin('books as b', 'b.id = od.book_id')
+            ->where('u.id', '=', $id)
+            ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+            ->groupBy('u.id,a.address,a.tel,a.specific_address,a.zip_code,a.id')
+            ->orderBy('a.id', 'DESC')
+            ->first();
         return $data;
     }
 
-    public function showProfile($id){
+    public function showProfile($id)
+    {
         $data = $this->db->select('
         u.*,
         DATE(u.birthdate) as birthdate,
@@ -123,17 +144,15 @@ class UsersModel extends Model {
         COUNT(DISTINCT CASE WHEN o.status = "Chưa Thanh Toán" THEN o.id END) as unpaid,
         COUNT(DISTINCT CASE WHEN o.status = "Đã Thanh Toán" THEN o.id END) as paid
         ')
-        ->table('users as u')
-        ->leftJoin('wishlist as w', 'u.id = w.user_id')
-        ->leftJoin('orders as o', 'u.id = o.user_id')
-        ->leftJoin('orders_detail as od', 'od.order_id = o.id')
-        ->leftJoin('books as b', 'b.id = od.book_id')
-        ->where('u.id', '=', $id)
-        ->groupBy('u.id')
-        ->first();
+            ->table('users as u')
+            ->leftJoin('wishlist as w', 'u.id = w.user_id')
+            ->leftJoin('orders as o', 'u.id = o.user_id')
+            ->leftJoin('orders_detail as od', 'od.order_id = o.id')
+            ->leftJoin('books as b', 'b.id = od.book_id')
+            ->where('u.id', '=', $id)
+            ->groupBy('u.id')
+            ->first();
         return $data;
-
-        
     }
 
 
@@ -144,11 +163,11 @@ class UsersModel extends Model {
             ->join('users as u', 'u.id = o.user_id')
             ->leftJoin('orders_detail as od', 'o.id = od.order_id')
             ->leftJoin('books as b', 'b.id = od.book_id')
-            ->leftJoin('images as i', 'b.id = i.book_id') 
+            ->leftJoin('images as i', 'b.id = i.book_id')
             ->where('u.id', '=', $id)
-            ->where('i.image_main','=',1)
+            ->where('i.image_main', '=', 1)
             ->get();
-    
+
         return $data;
     }
 }
