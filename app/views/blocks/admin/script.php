@@ -14,16 +14,27 @@
     <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/plugins/swiper-bundle.min.js"></script>
 
     <!-- Webroot -->
-    <script> 
-    const webRoot = window.location.origin 
-    const query = new URLSearchParams(window.location.search);
-    setTimeout(() => {
-        if(document.querySelector('button.btn-close[data-bs-dismiss="alert"][aria-label="Close"]')) {
-            document.querySelector('button.btn-close[data-bs-dismiss="alert"][aria-label="Close"]').click();
+    <script>
+        function formattedCurrency(amount, currencyCode = 'VND') {
+            // Sử dụng Intl.NumberFormat để định dạng số thành chuỗi tiền tệ
+            const formatter = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: currencyCode,
+                minimumFractionDigits: 0, // Đảm bảo không có phần thập phân
+            });
+
+            // Áp dụng định dạng và trả về chuỗi tiền tệ
+            return formatter.format(amount);
         }
-    }, 4000);
+        const webRoot = window.location.origin
+        const query = new URLSearchParams(window.location.search);
+        setTimeout(() => {
+            if (document.querySelector('button.btn-close[data-bs-dismiss="alert"][aria-label="Close"]')) {
+                document.querySelector('button.btn-close[data-bs-dismiss="alert"][aria-label="Close"]').click();
+            }
+        }, 4000);
     </script>
-    
+
 
 
     <script>
@@ -34,8 +45,8 @@
                 perPage: 7
             });
 
-            document.querySelectorAll(".export").forEach(function (el) {
-                el.addEventListener("click", function (e) {
+            document.querySelectorAll(".export").forEach(function(el) {
+                el.addEventListener("click", function(e) {
                     var type = el.dataset.type;
 
                     var data = {
@@ -65,12 +76,12 @@
         }
     </script>
 
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
-<!-- *****************************JS files required for the current page***************************** -->
-<script src="<?= _WEB_ROOT ?>/public/assets/admin/js/pages/{{$script_src}}.js"></script>
-</body>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
+    <!-- *****************************JS files required for the current page***************************** -->
+    <script src="<?= _WEB_ROOT ?>/public/assets/admin/js/pages/{{$script_src}}.js"></script>
+    </body>
 
-</html>
+    </html>

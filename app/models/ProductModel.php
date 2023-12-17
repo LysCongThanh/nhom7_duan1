@@ -63,7 +63,6 @@ class ProductModel extends Model
         ->join('publishers as p', 'p.id = b.publisher_id')
         ->leftJoin('images as i', 'b.id = i.book_id and i.image_main = 1')
         ->groupBy('b.id', 'c.id', 'a.id', 'p.id', 'c.name')
-        ->where('i.image_main', '=', 1)
         ->get();
         return $data;
 
@@ -96,15 +95,29 @@ class ProductModel extends Model
         return $result;
     }
 
+    public function categoriesByRating() {
+        $data = $this->db->select('
+        c.*, c.id as category_id, AVG(co.rating), c.name as category_name
+        ')->table('categories as c')
+        ->join('books as b', 'b.category_id = c.id')
+        ->join('comments as co', 'co.book_id = b.id')
+        ->groupBy('c.id')
+        ->orderBy('AVG(co.rating)', 'DESC')
+        ->limit('5')
+        ->get();
+
+        return $data;
+    }
+
     // Hiển thị 8 sản phẩm có phần trăm đánh giá sao cao nhất
     public function topStar()
     {
-        $data = $this->db->select('b.*, b.id as book_id, i.name as image_name, ROUND(AVG(co.rating), 1) / 5 * 100 as percent_rating, COUNT(co.book_id) AS total_reviews')
+        $data = $this->db->select('b.*, b.id as book_id, i.name as image_name, ROUND(AVG(co.rating), 1) / 5 * 100 as percent_rating, COUNT(co.book_id) AS total_reviews, i.slug as image_slug')
         ->table('books as b')
         ->join('categories as c', 'b.category_id = c.id')
         ->join('authors as a', 'a.id = b.author_id')
         ->join('publishers as p', 'p.id = b.publisher_id')
-        ->join('images as i', 'b.id = i.book_id')
+        ->join('images as i', 'b.id = i.book_id and i.image_main = 1')
         ->leftJoin('comments as co', 'b.id = co.book_id')
         ->groupBy('b.id, i.name')
         ->orderBy('percent_rating', 'DESC')
@@ -122,7 +135,7 @@ class ProductModel extends Model
         ->join('categories as c', 'b.category_id = c.id')
         ->join('authors as a', 'a.id = b.author_id')
         ->join('publishers as p', 'p.id = b.publisher_id')
-        ->join('images as i', 'b.id = i.book_id')
+        ->join('images as i', 'b.id = i.book_id and i.image_main = 1')
         ->orderBy('discount', 'DESC')
         ->where('b.discount_price','>', 0)
         ->limit(5)
@@ -184,11 +197,16 @@ class ProductModel extends Model
 
     //Top Sản Phẩm Bán Chạy
     public function best_saler(){
-        $data = $this->db->select('b.id, b.book_name as name, b.views as view,cm.rating as comment, SUM(od.quantity) as total')
+        $data = $this->db->select('b.id, b.book_name as name, b.views as view,cm.rating as comment, SUM(od.quantity) as total,
+        COUNT(CASE WHEN o.status <> "Đã Thanh Toán" THEN o.id END) as payed,
+        COUNT(CASE WHEN o.status <> "Chưa Thanh Toán" THEN o.id END) as unpayed,
+        SUM(od.price * od.quantity) AS total_revenue')
         ->table('orders_detail as od')
         ->join('books as b', 'b.id=od.book_id')
-        ->join('comments as cm', 'cm.book_id=b.id')
+        ->join('orders as o', ' o.id = od.order_id')
+        ->leftJoin('comments as cm', 'cm.book_id=b.id')
         ->groupBy('b.id')
+        ->orderBy('SUM(od.quantity)', 'DESC')
         ->limit(5)->get();
         return $data;
     }

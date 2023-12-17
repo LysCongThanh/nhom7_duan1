@@ -25,5 +25,20 @@ class OrderController extends Controller{
         $this->render('layouts/admin_layout', $this->data);
     }
     
+    public function getStatisticsByMonth() {
+        header('Content-Type: application/json');
+        $data = $this->orders->statisticsByMonth();
+        echo json_encode($data);
+    }
+
+    public function recent() {
+        $request = new Request;
+        $postData = $request->getFields();
+        $status = $_GET['status'];
+        // echo $status;
+        header('Content-Type: application/json');
+        $data = $this->orders->newsOrders($status);
+        echo json_encode($data);
+    }
 }
 ?>

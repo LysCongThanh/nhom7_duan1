@@ -1,704 +1,265 @@
 
 <div class="px-5 py-4 container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="mx-2 mb-3 d-md-flex align-items-center">
-                        <div class="mb-3 mb-md-0">
-                            <h3 class="mb-0 font-weight-bold">Chào, Noah</h3>
-                            <p class="mb-0">Đây là trang quản trị!</p>
-                        </div>
-                        <button type="button"
-                            class="mb-0 mb-2 btn btn-sm btn-white btn-icon d-flex align-items-center ms-md-auto mb-sm-0 me-2">
-                            <span class="btn-inner--icon">
-                                <span class="p-1 bg-success rounded-circle d-flex ms-auto me-2">
-                                    <span class="visually-hidden">New</span>
-                                </span>
-                            </span>
-                            <span class="btn-inner--text">Tin Nhắn</span>
-                        </button>
-                        <button type="button" class="mb-0 btn btn-sm btn-dark btn-icon d-flex align-items-center">
-                            <span class="btn-inner--icon">
-                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="d-block me-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                </svg>
-                            </span>
-                            <span class="btn-inner--text">Đồng Bộ Hóa</span>
-                        </button>
-                    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mx-2 mb-3 d-md-flex align-items-center">
+                <div class="mb-3 mb-md-0">
+                    <h3 class="mb-0 font-weight-bold">Chào, <?= Session::data('admin')['name'] ?></h3>
+                    <p class="mb-0">Đây là trang quản trị!</p>
                 </div>
+                <!-- <button type="button" class="mb-0 mb-2 btn btn-sm btn-white btn-icon d-flex align-items-center ms-md-auto mb-sm-0 me-2">
+                    <span class="btn-inner--icon">
+                        <span class="p-1 bg-success rounded-circle d-flex ms-auto me-2">
+                            <span class="visually-hidden">New</span>
+                        </span>
+                    </span>
+                    <span class="btn-inner--text">Tin Nhắn</span>
+                </button>
+                <button type="button" class="mb-0 btn btn-sm btn-dark btn-icon d-flex align-items-center">
+                    <span class="btn-inner--icon">
+                        <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="d-block me-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                    </span>
+                    <span class="btn-inner--text">Đồng Bộ Hóa</span>
+                </button> -->
             </div>
-            <hr class="my-0">
-            <div class="row">
-                <div class="position-relative overflow-hidden">
-                    <div class="swiper mySwiper mt-4 mb-2">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div>
-                                    <div
-                                        class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
-                                        <div class="full-background bg-cover"
-                                            style="background-image: url('<?= _WEB_ROOT; ?>/public/assets/admin/img/img-2.jpg')"></div>
-                                        <div class="card-body text-start px-3 py-0 w-100">
-                                            <div class="row mt-12">
-                                                <div class="col-sm-3 mt-auto">
-                                                    <h4 class="text-dark font-weight-bolder">#1</h4>
-                                                    <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Name
-                                                    </p>
-                                                    <h5 class="text-dark font-weight-bolder">Secured</h5>
-                                                </div>
-                                                <div class="col-sm-3 ms-auto mt-auto">
-                                                    <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">
-                                                        Category</p>
-                                                    <h5 class="text-dark font-weight-bolder">Banking</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                    class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
-                                    <div class="full-background bg-cover"
-                                        style="background-image: url('<?= _WEB_ROOT; ?>/public/assets/admin/img/img-1.jpg')"></div>
-                                    <div class="card-body text-start px-3 py-0 w-100">
-                                        <div class="row mt-12">
-                                            <div class="col-sm-3 mt-auto">
-                                                <h4 class="text-dark font-weight-bolder">#2</h4>
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Name</p>
-                                                <h5 class="text-dark font-weight-bolder">Cyber</h5>
-                                            </div>
-                                            <div class="col-sm-3 ms-auto mt-auto">
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Category
-                                                </p>
-                                                <h5 class="text-dark font-weight-bolder">Security</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                    class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
-                                    <div class="full-background bg-cover"
-                                        style="background-image: url('<?= _WEB_ROOT; ?>/public/assets/admin/img/img-3.jpg')"></div>
-                                    <div class="card-body text-start px-3 py-0 w-100">
-                                        <div class="row mt-12">
-                                            <div class="col-sm-3 mt-auto">
-                                                <h4 class="text-dark font-weight-bolder">#3</h4>
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Name</p>
-                                                <h5 class="text-dark font-weight-bolder">Alpha</h5>
-                                            </div>
-                                            <div class="col-sm-3 ms-auto mt-auto">
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Category
-                                                </p>
-                                                <h5 class="text-dark font-weight-bolder">Blockchain</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                    class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
-                                    <div class="full-background bg-cover"
-                                        style="background-image: url('<?= _WEB_ROOT; ?>/public/assets/admin/img/img-4.jpg')"></div>
-                                    <div class="card-body text-start px-3 py-0 w-100">
-                                        <div class="row mt-12">
-                                            <div class="col-sm-3 mt-auto">
-                                                <h4 class="text-dark font-weight-bolder">#4</h4>
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Name</p>
-                                                <h5 class="text-dark font-weight-bolder">Beta</h5>
-                                            </div>
-                                            <div class="col-sm-3 ms-auto mt-auto">
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Category
-                                                </p>
-                                                <h5 class="text-dark font-weight-bolder">Web3</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                    class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
-                                    <div class="full-background bg-cover"
-                                        style="background-image: url('<?= _WEB_ROOT; ?>/public/assets/admin/img/img-5.jpg')"></div>
-                                    <div class="card-body text-start px-3 py-0 w-100">
-                                        <div class="row mt-12">
-                                            <div class="col-sm-3 mt-auto">
-                                                <h4 class="text-dark font-weight-bolder">#5</h4>
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Name</p>
-                                                <h5 class="text-dark font-weight-bolder">Gama</h5>
-                                            </div>
-                                            <div class="col-sm-3 ms-auto mt-auto">
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Category
-                                                </p>
-                                                <h5 class="text-dark font-weight-bolder">Design</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                    class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
-                                    <div class="full-background bg-cover"
-                                        style="background-image: url('<?= _WEB_ROOT; ?>/public/assets/admin/img/img-1.jpg')"></div>
-                                    <div class="card-body text-start px-3 py-0 w-100">
-                                        <div class="row mt-12">
-                                            <div class="col-sm-3 mt-auto">
-                                                <h4 class="text-dark font-weight-bolder">#6</h4>
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Name</p>
-                                                <h5 class="text-dark font-weight-bolder">Rompro</h5>
-                                            </div>
-                                            <div class="col-sm-3 ms-auto mt-auto">
-                                                <p class="text-dark opacity-6 text-xs font-weight-bolder mb-0">Category
-                                                </p>
-                                                <h5 class="text-dark font-weight-bolder">Security</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
-            <div class="my-4 row">
-                <div class="mb-4 col-lg-4 col-md-6 mb-md-0">
-                    <div class="card shadow-xs border h-100">
-                        <div class="card-header border-0 pb-0">
-                            <h6 class="font-weight-semibold text-lg mb-0">Số dư theo thời gian</h6>
-                            <p class="text-sm">Ở đây bạn có thông tin chi tiết về số dư.</p>
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
-                                    checked>
-                                <label class="btn btn-white px-3 mb-0" for="btnradio1">12 months</label>
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                <label class="btn btn-white px-3 mb-0" for="btnradio2">30 days</label>
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                                <label class="btn btn-white px-3 mb-0" for="btnradio3">7 days</label>
-                            </div>
-                        </div>
-                        <div class="card-body py-3">
-                            <div class="chart mb-2">
-                                <canvas id="chart-bars" class="chart-canvas" height="240"></canvas>
-                            </div>
-                            <button class="btn btn-white mb-0 ms-auto">Xem Báo Cáo</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-6">
-                    <div class="border shadow-xs card">
-                        <div class="pb-0 card-header border-bottom">
-                            <div class="mb-3 d-sm-flex align-items-center">
-                                <div>
-                                    <h6 class="mb-0 text-lg font-weight-semibold">Giao dịch gần đây</h6>
-                                    <p class="mb-2 text-sm mb-sm-0">Đây là thông tin chi tiết về các giao dịch cuối cùng
-                                    </p>
-                                </div>
-                                <div class="ms-auto d-flex">
-                                    <button type="button" class="mb-0 btn btn-sm btn-white me-2">
-                                        Xem Báo Cáo
-                                    </button>
-                                    <button type="button"
-                                        class="mb-0 btn btn-sm btn-dark btn-icon d-flex align-items-center">
-                                        <span class="btn-inner--icon">
-                                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                class="d-block me-2">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                            </svg>
-                                        </span>
-                                        <span class="btn-inner--text">Tải Xuống</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="pb-3 d-sm-flex align-items-center">
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradiotable" id="btnradiotable1"
-                                        autocomplete="off" checked>
-                                    <label class="px-3 mb-0 btn btn-white" for="btnradiotable1">Tất Cả</label>
-                                    <input type="radio" class="btn-check" name="btnradiotable" id="btnradiotable2"
-                                        autocomplete="off">
-                                    <label class="px-3 mb-0 btn btn-white" for="btnradiotable2">Đã Theo Dõi</label>
-                                    <input type="radio" class="btn-check" name="btnradiotable" id="btnradiotable3"
-                                        autocomplete="off">
-                                    <label class="px-3 mb-0 btn btn-white" for="btnradiotable3">Không Được Giám
-                                        Sát</label>
-                                </div>
-                                <div class="input-group w-sm-25 ms-auto">
-                                    <span class="input-group-text text-body">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none"
-                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z">
-                                            </path>
-                                        </svg>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="px-0 py-0 card-body">
-                            <div class="p-0 table-responsive">
-                                <table class="table mb-0 align-items-center justify-content-center">
-                                    <thead class="bg-gray-100">
-                                        <tr>
-                                            <th class="text-xs text-secondary font-weight-semibold opacity-7">
-                                                Giao Dịch</th>
-                                            <th class="text-xs text-secondary font-weight-semibold opacity-7 ps-2">
-                                                Số Lượng</th>
-                                            <th class="text-xs text-secondary font-weight-semibold opacity-7 ps-2">Thời
-                                                Gian
-                                            </th>
-                                            <th class="text-xs text-secondary font-weight-semibold opacity-7 ps-2">
-                                                Tìa Khoản</th>
-                                            <th
-                                                class="text-xs text-center text-secondary font-weight-semibold opacity-7">
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="px-2 d-flex">
-                                                    <div class="my-2 bg-gray-100 avatar avatar-sm rounded-circle me-2">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/small-logos/logo-spotify.svg"
-                                                            class="w-80" alt="spotify">
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <h6 class="mb-0 text-sm">Spotify</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 text-sm font-weight-normal">$2,500</p>
-                                            </td>
-                                            <td>
-                                                <span class="text-sm font-weight-normal">Wed 3:00pm</span>
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="d-flex">
-                                                    <div
-                                                        class="px-1 py-1 my-auto text-center border max-width-50 d-flex align-items-center border-radius-sm">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/logos/visa.png" class="mx-auto w-90"
-                                                            alt="visa">
-                                                    </div>
-                                                    <div class="ms-4">
-                                                        <p class="mb-0 text-sm text-dark">Visa 1234</p>
-                                                        <p class="mb-0 text-sm text-secondary">Expiry 06/2026</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                <a href="javascript:;" class="text-xs text-secondary font-weight-bold"
-                                                    data-bs-toggle="tooltip" data-bs-title="Edit user">
-                                                    <svg width="14" height="14" viewBox="0 0 15 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11.2201 2.02495C10.8292 1.63482 10.196 1.63545 9.80585 2.02636C9.41572 2.41727 9.41635 3.05044 9.80726 3.44057L11.2201 2.02495ZM12.5572 6.18502C12.9481 6.57516 13.5813 6.57453 13.9714 6.18362C14.3615 5.79271 14.3609 5.15954 13.97 4.7694L12.5572 6.18502ZM11.6803 1.56839L12.3867 2.2762L12.3867 2.27619L11.6803 1.56839ZM14.4302 4.31284L15.1367 5.02065L15.1367 5.02064L14.4302 4.31284ZM3.72198 15V16C3.98686 16 4.24091 15.8949 4.42839 15.7078L3.72198 15ZM0.999756 15H-0.000244141C-0.000244141 15.5523 0.447471 16 0.999756 16L0.999756 15ZM0.999756 12.2279L0.293346 11.5201C0.105383 11.7077 -0.000244141 11.9624 -0.000244141 12.2279H0.999756ZM9.80726 3.44057L12.5572 6.18502L13.97 4.7694L11.2201 2.02495L9.80726 3.44057ZM12.3867 2.27619C12.7557 1.90794 13.3549 1.90794 13.7238 2.27619L15.1367 0.860593C13.9869 -0.286864 12.1236 -0.286864 10.9739 0.860593L12.3867 2.27619ZM13.7238 2.27619C14.0917 2.64337 14.0917 3.23787 13.7238 3.60504L15.1367 5.02064C16.2875 3.8721 16.2875 2.00913 15.1367 0.860593L13.7238 2.27619ZM13.7238 3.60504L3.01557 14.2922L4.42839 15.7078L15.1367 5.02065L13.7238 3.60504ZM3.72198 14H0.999756V16H3.72198V14ZM1.99976 15V12.2279H-0.000244141V15H1.99976ZM1.70617 12.9357L12.3867 2.2762L10.9739 0.86059L0.293346 11.5201L1.70617 12.9357Z"
-                                                            fill="#64748B" />
-                                                    </svg>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="px-2 d-flex">
-                                                    <div class="my-2 bg-gray-100 avatar avatar-sm rounded-circle me-2">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/small-logos/logo-invision.svg"
-                                                            class="w-80" alt="invision">
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <h6 class="mb-0 text-sm">Invision</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 text-sm font-weight-normal">$5,000</p>
-                                            </td>
-                                            <td>
-                                                <span class="text-sm font-weight-normal">Wed 1:00pm</span>
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="d-flex">
-                                                    <div
-                                                        class="px-1 py-1 my-auto text-center border max-width-50 d-flex align-items-center border-radius-sm">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/logos/mastercard.png"
-                                                            class="mx-auto w-90" alt="mastercard">
-                                                    </div>
-                                                    <div class="ms-4">
-                                                        <p class="mb-0 text-sm text-dark">Mastercard 1234</p>
-                                                        <p class="mb-0 text-sm text-secondary">Expiry 06/2026</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                <a href="javascript:;" class="text-xs text-secondary font-weight-bold"
-                                                    data-bs-toggle="tooltip" data-bs-title="Edit user">
-                                                    <svg width="14" height="14" viewBox="0 0 15 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11.2201 2.02495C10.8292 1.63482 10.196 1.63545 9.80585 2.02636C9.41572 2.41727 9.41635 3.05044 9.80726 3.44057L11.2201 2.02495ZM12.5572 6.18502C12.9481 6.57516 13.5813 6.57453 13.9714 6.18362C14.3615 5.79271 14.3609 5.15954 13.97 4.7694L12.5572 6.18502ZM11.6803 1.56839L12.3867 2.2762L12.3867 2.27619L11.6803 1.56839ZM14.4302 4.31284L15.1367 5.02065L15.1367 5.02064L14.4302 4.31284ZM3.72198 15V16C3.98686 16 4.24091 15.8949 4.42839 15.7078L3.72198 15ZM0.999756 15H-0.000244141C-0.000244141 15.5523 0.447471 16 0.999756 16L0.999756 15ZM0.999756 12.2279L0.293346 11.5201C0.105383 11.7077 -0.000244141 11.9624 -0.000244141 12.2279H0.999756ZM9.80726 3.44057L12.5572 6.18502L13.97 4.7694L11.2201 2.02495L9.80726 3.44057ZM12.3867 2.27619C12.7557 1.90794 13.3549 1.90794 13.7238 2.27619L15.1367 0.860593C13.9869 -0.286864 12.1236 -0.286864 10.9739 0.860593L12.3867 2.27619ZM13.7238 2.27619C14.0917 2.64337 14.0917 3.23787 13.7238 3.60504L15.1367 5.02064C16.2875 3.8721 16.2875 2.00913 15.1367 0.860593L13.7238 2.27619ZM13.7238 3.60504L3.01557 14.2922L4.42839 15.7078L15.1367 5.02065L13.7238 3.60504ZM3.72198 14H0.999756V16H3.72198V14ZM1.99976 15V12.2279H-0.000244141V15H1.99976ZM1.70617 12.9357L12.3867 2.2762L10.9739 0.86059L0.293346 11.5201L1.70617 12.9357Z"
-                                                            fill="#64748B" />
-                                                    </svg>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="px-2 d-flex">
-                                                    <div class="my-2 bg-gray-100 avatar avatar-sm rounded-circle me-2">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/small-logos/logo-jira.svg" class="w-80"
-                                                            alt="jira">
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <h6 class="mb-0 text-sm">Jira</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 text-sm font-weight-normal">$3,400</p>
-                                            </td>
-                                            <td>
-                                                <span class="text-sm font-weight-normal">Mon 7:40pm</span>
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="d-flex">
-                                                    <div
-                                                        class="px-1 py-1 my-auto text-center border max-width-50 d-flex align-items-center border-radius-sm">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/logos/mastercard.png"
-                                                            class="mx-auto w-90" alt="mastercard">
-                                                    </div>
-                                                    <div class="ms-4">
-                                                        <p class="mb-0 text-sm text-dark">Mastercard 1234</p>
-                                                        <p class="mb-0 text-sm text-secondary">Expiry 06/2026</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                <a href="javascript:;" class="text-xs text-secondary font-weight-bold"
-                                                    data-bs-toggle="tooltip" data-bs-title="Edit user">
-                                                    <svg width="14" height="14" viewBox="0 0 15 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11.2201 2.02495C10.8292 1.63482 10.196 1.63545 9.80585 2.02636C9.41572 2.41727 9.41635 3.05044 9.80726 3.44057L11.2201 2.02495ZM12.5572 6.18502C12.9481 6.57516 13.5813 6.57453 13.9714 6.18362C14.3615 5.79271 14.3609 5.15954 13.97 4.7694L12.5572 6.18502ZM11.6803 1.56839L12.3867 2.2762L12.3867 2.27619L11.6803 1.56839ZM14.4302 4.31284L15.1367 5.02065L15.1367 5.02064L14.4302 4.31284ZM3.72198 15V16C3.98686 16 4.24091 15.8949 4.42839 15.7078L3.72198 15ZM0.999756 15H-0.000244141C-0.000244141 15.5523 0.447471 16 0.999756 16L0.999756 15ZM0.999756 12.2279L0.293346 11.5201C0.105383 11.7077 -0.000244141 11.9624 -0.000244141 12.2279H0.999756ZM9.80726 3.44057L12.5572 6.18502L13.97 4.7694L11.2201 2.02495L9.80726 3.44057ZM12.3867 2.27619C12.7557 1.90794 13.3549 1.90794 13.7238 2.27619L15.1367 0.860593C13.9869 -0.286864 12.1236 -0.286864 10.9739 0.860593L12.3867 2.27619ZM13.7238 2.27619C14.0917 2.64337 14.0917 3.23787 13.7238 3.60504L15.1367 5.02064C16.2875 3.8721 16.2875 2.00913 15.1367 0.860593L13.7238 2.27619ZM13.7238 3.60504L3.01557 14.2922L4.42839 15.7078L15.1367 5.02065L13.7238 3.60504ZM3.72198 14H0.999756V16H3.72198V14ZM1.99976 15V12.2279H-0.000244141V15H1.99976ZM1.70617 12.9357L12.3867 2.2762L10.9739 0.86059L0.293346 11.5201L1.70617 12.9357Z"
-                                                            fill="#64748B" />
-                                                    </svg>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="px-2 d-flex">
-                                                    <div class="my-2 bg-gray-100 avatar avatar-sm rounded-circle me-2">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/small-logos/logo-slack.svg" class="w-80"
-                                                            alt="slack">
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <h6 class="mb-0 text-sm">Slack</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 text-sm font-weight-normal">$1,000</p>
-                                            </td>
-                                            <td>
-                                                <span class="text-sm font-weight-normal">Wed 5:00pm</span>
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="d-flex">
-                                                    <div
-                                                        class="px-1 py-1 my-auto text-center border max-width-50 d-flex align-items-center border-radius-sm">
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/logos/visa.png" class="mx-auto w-90"
-                                                            alt="visa">
-                                                    </div>
-                                                    <div class="ms-4">
-                                                        <p class="mb-0 text-sm text-dark">Visa 1234</p>
-                                                        <p class="mb-0 text-sm text-secondary">Expiry 06/2026</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                <a href="javascript:;" class="text-xs text-secondary font-weight-bold"
-                                                    data-bs-toggle="tooltip" data-bs-title="Edit user">
-                                                    <svg width="14" height="14" viewBox="0 0 15 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11.2201 2.02495C10.8292 1.63482 10.196 1.63545 9.80585 2.02636C9.41572 2.41727 9.41635 3.05044 9.80726 3.44057L11.2201 2.02495ZM12.5572 6.18502C12.9481 6.57516 13.5813 6.57453 13.9714 6.18362C14.3615 5.79271 14.3609 5.15954 13.97 4.7694L12.5572 6.18502ZM11.6803 1.56839L12.3867 2.2762L12.3867 2.27619L11.6803 1.56839ZM14.4302 4.31284L15.1367 5.02065L15.1367 5.02064L14.4302 4.31284ZM3.72198 15V16C3.98686 16 4.24091 15.8949 4.42839 15.7078L3.72198 15ZM0.999756 15H-0.000244141C-0.000244141 15.5523 0.447471 16 0.999756 16L0.999756 15ZM0.999756 12.2279L0.293346 11.5201C0.105383 11.7077 -0.000244141 11.9624 -0.000244141 12.2279H0.999756ZM9.80726 3.44057L12.5572 6.18502L13.97 4.7694L11.2201 2.02495L9.80726 3.44057ZM12.3867 2.27619C12.7557 1.90794 13.3549 1.90794 13.7238 2.27619L15.1367 0.860593C13.9869 -0.286864 12.1236 -0.286864 10.9739 0.860593L12.3867 2.27619ZM13.7238 2.27619C14.0917 2.64337 14.0917 3.23787 13.7238 3.60504L15.1367 5.02064C16.2875 3.8721 16.2875 2.00913 15.1367 0.860593L13.7238 2.27619ZM13.7238 3.60504L3.01557 14.2922L4.42839 15.7078L15.1367 5.02065L13.7238 3.60504ZM3.72198 14H0.999756V16H3.72198V14ZM1.99976 15V12.2279H-0.000244141V15H1.99976ZM1.70617 12.9357L12.3867 2.2762L10.9739 0.86059L0.293346 11.5201L1.70617 12.9357Z"
-                                                            fill="#64748B" />
-                                                    </svg>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-3 col-sm-6 mb-xl-0">
-                    <div class="card border shadow-xs mb-4">
-                        <div class="card-body text-start p-3 w-100">
-                            <div
-                                class="icon icon-shape icon-sm bg-dark text-white text-center border-radius-sm d-flex align-items-center justify-content-center mb-3">
-                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 4C2.89543 4 2 4.89543 2 6V7H18V6C18 4.89543 17.1046 4 16 4H4Z" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M18 9H2V14C2 15.1046 2.89543 16 4 16H16C17.1046 16 18 15.1046 18 14V9ZM4 13C4 12.4477 4.44772 12 5 12H6C6.55228 12 7 12.4477 7 13C7 13.5523 6.55228 14 6 14H5C4.44772 14 4 13.5523 4 13ZM9 12C8.44772 12 8 12.4477 8 13C8 13.5523 8.44772 14 9 14H10C10.5523 14 11 13.5523 11 13C11 12.4477 10.5523 12 10 12H9Z" />
-                                </svg>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="w-100">
-                                        <p class="text-sm text-secondary mb-1">Doanh Thu</p>
-                                        <h4 class="mb-2 font-weight-bold">{{$count_price['doanhthu']}}</h4>
-                                        <div class="d-flex align-items-center">
-                                            <span class="text-sm text-success font-weight-semibold px-2">
-                                                <i class="fa fa-chevron-up text-xs me-1"></i>10.5%
-                                            </span>
-                                            <span class="text-sm ms-3">từ $89,740.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mb-xl-0">
-                    <div class="card border shadow-xs mb-4">
-                        <div class="card-body text-start p-3 w-100">
-                            <div
-                                class="icon icon-shape icon-sm bg-dark text-white text-center border-radius-sm d-flex align-items-center justify-content-center mb-3">
-                                <svg width="17" height="16" viewBox="0 0 17 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M5.3001 4.80001V4.00001C5.3001 2.67453 6.37462 1.60001 7.7001 1.60001H9.3001C10.6256 1.60001 11.7001 2.67453 11.7001 4.00001V4.80001H13.3001C14.1838 4.80001 14.9001 5.51635 14.9001 6.40001V9.25665C12.9078 9.99577 10.752 10.3999 8.5001 10.3999C6.24821 10.3999 4.09239 9.99577 2.1001 9.25657V6.40001C2.1001 5.51635 2.81644 4.80001 3.7001 4.80001H5.3001ZM6.9001 4.00001C6.9001 3.55818 7.25827 3.20001 7.7001 3.20001H9.3001C9.74194 3.20001 10.1001 3.55818 10.1001 4.00001V4.80001H6.9001V4.00001ZM7.7001 8.00001C7.7001 7.55818 8.05827 7.20001 8.5001 7.20001H8.5081C8.94994 7.20001 9.3081 7.55818 9.3081 8.00001C9.3081 8.44185 8.94994 8.80001 8.5081 8.80001H8.5001C8.05827 8.80001 7.7001 8.44185 7.7001 8.00001Z" />
-                                    <path
-                                        d="M2.1001 10.9538V12.8C2.1001 13.6837 2.81644 14.4 3.7001 14.4H13.3001C14.1838 14.4 14.9001 13.6837 14.9001 12.8V10.9538C12.8899 11.6323 10.7372 11.9999 8.5001 11.9999C6.263 11.9999 4.11033 11.6323 2.1001 10.9538Z" />
-                                </svg>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="w-100">
-                                        <p class="text-sm text-secondary mb-1">Giao Dịch</p>
-                                        <h4 class="mb-2 font-weight-bold">{{$count_order['giaodich']}}</h4>
-                                        <div class="d-flex align-items-center">
-                                            <span class="text-sm text-success font-weight-semibold px-2">
-                                                <i class="fa fa-chevron-up text-xs me-1"></i>55%
-                                            </span>
-                                            <span class="text-sm ms-3">từ 243</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mb-xl-0">
-                    <div class="card border shadow-xs mb-4">
-                        <div class="card-body text-start p-3 w-100">
-                            <div
-                                class="icon icon-shape icon-sm bg-dark text-white text-center border-radius-sm d-flex align-items-center justify-content-center mb-3">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M1.6001 8.8C1.6001 8.35816 1.95827 8 2.4001 8H4.0001C4.44192 8 4.8001 8.35816 4.8001 8.8V12.8C4.8001 13.2418 4.44192 13.6 4.0001 13.6H2.4001C1.95827 13.6 1.6001 13.2418 1.6001 12.8V8.8Z" />
-                                    <path
-                                        d="M6.3999 5.6C6.3999 5.15818 6.75808 4.8 7.1999 4.8H8.7999C9.24174 4.8 9.5999 5.15818 9.5999 5.6V12.8C9.5999 13.2418 9.24174 13.6 8.7999 13.6H7.1999C6.75808 13.6 6.3999 13.2418 6.3999 12.8V5.6Z" />
-                                    <path
-                                        d="M11.2 3.19999C11.2 2.75817 11.5581 2.39999 12 2.39999H13.6C14.0418 2.39999 14.4 2.75817 14.4 3.19999V12.8C14.4 13.2418 14.0418 13.6 13.6 13.6H12C11.5581 13.6 11.2 13.2418 11.2 12.8V3.19999Z" />
-                                </svg>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="w-100">
-                                        <p class="text-sm text-secondary mb-1">Trung Bình Giao Dịch</p>
-                                        <h4 class="mb-2 font-weight-bold">$450.53</h4>
-                                        <div class="d-flex align-items-center">
-                                            <span class="text-sm text-success font-weight-semibold px-2">
-                                                <i class="fa fa-chevron-up text-xs me-1"></i>22%
-                                            </span>
-                                            <span class="text-sm ms-3">từ $369.30</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border shadow-xs mb-4">
-                        <div class="card-body text-start p-3 w-100">
-                            <div
-                                class="icon icon-shape icon-sm bg-dark text-white text-center border-radius-sm d-flex align-items-center justify-content-center mb-3">
-                                <svg width="17" height="16" viewBox="0 0 17 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M14.6658 7.43432C14.9782 7.74674 14.9782 8.25329 14.6658 8.56569L9.06578 14.1657C8.75338 14.4781 8.24683 14.4781 7.93441 14.1657L2.33441 8.56569C2.17818 8.40945 2.10007 8.20465 2.1001 7.99991V4.00001C2.1001 2.67453 3.17462 1.60001 4.5001 1.60001H8.50034C8.70498 1.60006 8.90962 1.67817 9.06578 1.83432L14.6658 7.43432ZM4.5001 4.80001C4.94192 4.80001 5.3001 4.44183 5.3001 4.00001C5.3001 3.55818 4.94192 3.20001 4.5001 3.20001C4.05827 3.20001 3.7001 3.55818 3.7001 4.00001C3.7001 4.44183 4.05827 4.80001 4.5001 4.80001Z" />
-                                </svg>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="w-100">
-                                        <p class="text-sm text-secondary mb-1">Bán Phiếu Giảm Giá</p>
-                                        <h4 class="mb-2 font-weight-bold">{{$count_discounts['giamgia']}}</h4>
-                                        <div class="d-flex align-items-center">
-                                            <span class="text-sm text-success font-weight-semibold px-2">
-                                                <i class="fa fa-chevron-up text-xs me-1"></i>18%
-                                            </span>
-                                            <span class="text-sm ms-3">từ $19,800.40</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="border shadow-xs card">
-                        <div class="pb-0 card-header border-0">
-                            <div class="mb-3 d-sm-flex align-items-center">
-                                <div>
-                                    <h6 class="mb-0 text-lg font-weight-semibold">Số dư tổng quan</h6>
-                                    <p class="mb-2 text-sm mb-sm-0">Ở đây bạn có thông tin chi tiết về số dư.</p>
-                                </div>
-                                <div class="ms-auto d-flex">
-                                    <button type="button" class="mb-0 btn btn-sm btn-white me-2">
-                                        Xem Báo Cáo
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="d-sm-flex align-items-center">
-                                <h3 class="mb-0 font-weight-semibold">{{$count_price['doanhthu']}}</h3>
-                                <span
-                                    class="px-2 border badge badge-sm border-success text-success bg-success border-radius-sm ms-sm-3">
-                                    <svg width="9" height="9" viewBox="0 0 10 9" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M0.46967 4.46967C0.176777 4.76256 0.176777 5.23744 0.46967 5.53033C0.762563 5.82322 1.23744 5.82322 1.53033 5.53033L0.46967 4.46967ZM5.53033 1.53033C5.82322 1.23744 5.82322 0.762563 5.53033 0.46967C5.23744 0.176777 4.76256 0.176777 4.46967 0.46967L5.53033 1.53033ZM5.53033 0.46967C5.23744 0.176777 4.76256 0.176777 4.46967 0.46967C4.17678 0.762563 4.17678 1.23744 4.46967 1.53033L5.53033 0.46967ZM8.46967 5.53033C8.76256 5.82322 9.23744 5.82322 9.53033 5.53033C9.82322 5.23744 9.82322 4.76256 9.53033 4.46967L8.46967 5.53033ZM1.53033 5.53033L5.53033 1.53033L4.46967 0.46967L0.46967 4.46967L1.53033 5.53033ZM4.46967 1.53033L8.46967 5.53033L9.53033 4.46967L5.53033 0.46967L4.46967 1.53033Z"
-                                            fill="#67C23A"></path>
-                                    </svg>
-                                    10.5%
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-3 card-body">
-                            <div class="chart">
-                                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-4 row">
-                <div class="col-12">
-                    <div class="mb-4 card">
-                        <div class="pb-0 card-header">
-                            <h6>Top Sản Phẩm Bán Chạy</h6>
-                        </div>
-                        <div class="px-0 pt-0 pb-2 card-body">
-                            <div class="p-0 table-responsive">
-                                <table class="table mb-0 align-items-center">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                class="border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Sản Phẩm</th>
-                                            <th
-                                                class="border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Giá Trị</th>
-                                            <th
-                                                class="text-center border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Lượt Truy Cập</th>
-                                            <th
-                                                class="text-center border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Đánh Giá</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($best_salers as $best_saler)
-                                    <tr>
-                                            <td>
-                                                <div class="px-3 py-1 d-flex">
-                                                    <div>
-                                                        <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/kam-idris-_HqHX3LBN18-unsplash.jpg"
-                                                            class="avatar me-3" alt="image">
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{$best_saler['name']}}</h6>
-                                                        <p class="mb-0 text-sm font-weight-bold text-secondary"><span
-                                                                class="text-success">2.421</span> đơn đặt hàng</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 text-sm font-weight-bold">{{$best_saler['total']}}</p>
-                                            </td>
-                                            <td class="text-sm text-center align-middle">
-                                                <p class="mb-0 text-sm font-weight-bold">{{$best_saler['view']}}</p>
-                                            </td>
-                                            <td class="align-middle text-end">
-                                                <div class="px-3 py-1 d-flex justify-content-center align-items-center">
-                                                    <p class="mb-0 text-sm font-weight-bold">{{$best_saler['comment']}}</p>
-                                                    <i class="mt-1 text-sm ni ni-bold-up ms-1 text-danger"></i>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer class="footer pt-3  ">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
-                        <div class="copyright text-center text-xs text-muted text-lg-start">
-                            Copyright
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            Corporate UI Dashboard PRO by
-                            <a href="https://www.creative-tim.com" class="text-secondary" target="_blank">Creative
-                                Tim</a>.
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link text-xs text-muted"
-                                    target="_blank">Creative Tim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-xs text-muted"
-                                    target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/blog" class="nav-link text-xs text-muted"
-                                    target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/license" class="nav-link text-xs pe-0 text-muted"
-                                    target="_blank">License</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
         </div>
+    </div>
+    <hr class="my-0">
+    <div class="p-3 card-body">
+        <div class="row d-flex align-items-center">
+            <div class="col-4">
+                <h5 class="mb-0 text-capitalize">Overview</h5>
+                <p class="mb-0">Here you have more details.</p>
+            </div>
+            <div class="col-8 nav-wrapper position-relative ms-auto">
+                <div class="btn-group" role="tablist">
+                </div>
+            </div>
+        </div>
+        <ul class="nav nav-tabs nav-fill mt-3" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="doanhThuTabLink" data-bs-toggle="tab" href="#doanhThuTab">Doanh thu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="sanPhamTabLink" data-bs-toggle="tab" href="#sanPhamTab">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="danhMucTabLink" data-bs-toggle="tab" href="#danhMucTab">Danh mục</a>
+            </li>
+        </ul>
+        <div class="tab-content is-shadow">
+            <div class="tab-pane p-4 fade show active" id="doanhThuTab">
+                <!-- Nội dung cho tab Doanh thu -->
+                <div class="row chart-filter">
+                    <div class="col-6">
+                        <!-- Chọn loại biểu đồ -->
+                        <label for="chartType" class="form-label">Loại biểu đồ:</label>
+                        <select class="form-select" id="chartType">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="pie">Pie Chart</option>
+                            <option value="doughnut">Doughnut Chart</option>
+                            <option value="radar">radar Chart</option>
+                            <option value="polarArea">Polar Area Chart</option>
+                            <!-- Thêm các loại biểu đồ khác nếu cần -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Hiển thị biểu đồ -->
+                <div class="chart">
+                    <canvas id="chart-line" class="chart-canvas" height="500"></canvas>
+                </div>
+            </div>
+            <div class="tab-pane p-4 fade" id="sanPhamTab">
+                <div class="row chart-filter">
+                    <div class="col-6">
+                        <!-- Chọn loại biểu đồ -->
+                        <label for="chartType" class="form-label">Loại biểu đồ:</label>
+                        <select class="form-select" id="chartTypeProducts">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="pie">Pie Chart</option>
+                            <option value="doughnut">Doughnut Chart</option>
+                            <option value="radar">radar Chart</option>
+                            <option value="polarArea">Polar Area Chart</option>
+                            <!-- Thêm các loại biểu đồ khác nếu cần -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Hiển thị biểu đồ -->
+                <div class="chart">
+                    <canvas id="chart-products" class="chart-canvas" height="500"></canvas>
+                </div>
+            </div>
+            <div class="tab-pane p-4 fade" id="danhMucTab">
+                <!-- Nội dung cho tab Danh mục -->
+                <p>Danh mục content goes here.</p>
+            </div>
+        </div>
+    </div>
+    <div class="my-4 row">
+        <div class="mb-4 col-lg-4 col-md-6 mb-md-0">
+            <div class="card shadow-xs border h-100">
+                <div class="card-header border-0 pb-0">
+                    <h6 class="font-weight-semibold text-lg mb-0">Số dư theo thời gian</h6>
+                    <p class="text-sm">Ở đây bạn có thông tin chi tiết về số dư.</p>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-white px-3 mb-0" for="btnradio1">12 months</label>
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-white px-3 mb-0" for="btnradio2">30 days</label>
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                        <label class="btn btn-white px-3 mb-0" for="btnradio3">7 days</label>
+                    </div>
+                </div>
+                <div class="card-body py-3">
+                    <div class="chart mb-2">
+                        <canvas id="chart-bars" class="chart-canvas" height="240"></canvas>
+                    </div>
+                    <button class="btn btn-white mb-0 ms-auto">Xem Báo Cáo</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6">
+            <div class="border shadow-xs card">
+                <div class="pb-0 card-header border-bottom">
+                    <div class="mb-3 d-sm-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0 text-lg font-weight-semibold">Giao dịch gần đây</h6>
+                            <p class="mb-2 text-sm mb-sm-0">Đây là thông tin chi tiết về các giao dịch cuối cùng
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pb-3 d-sm-flex align-items-center">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="status" value="All" onclick="getOrders(this)" id="btnradiotable1" autocomplete="off" checked>
+                            <label class="px-3 mb-0 btn btn-white" for="btnradiotable1">Tất Cả</label>
+                            <input type="radio" class="btn-check" name="status" value="'Đã Thanh Toán'" onclick="getOrders(this)" id="btnradiotable2" autocomplete="off">
+                            <label class="px-3 mb-0 btn btn-white" for="btnradiotable2">Đã Thanh Toán</label>
+                            <input type="radio" class="btn-check" name="status" value="'Chưa Thanh Toán'" onclick="getOrders(this)" id="btnradiotable3" autocomplete="off">
+                            <label class="px-3 mb-0 btn btn-white" for="btnradiotable3">Chưa Thanh Toán</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-0 py-0 card-body">
+                    <div class="p-0 table-responsive">
+                        <table class="table mb-0 align-items-center justify-content-center">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="text-xs text-secondary font-weight-semibold opacity-7">
+                                        Tài Khoản</th>
+                                    <th class="text-xs text-secondary font-weight-semibold opacity-7">
+                                        Trạng thái</th>
+                                    <th class="text-xs text-secondary font-weight-semibold opacity-7 ps-2">
+                                        Tổng tiền</th>
+                                    <th class="text-xs text-secondary font-weight-semibold opacity-7 ps-2">Thời
+                                        Gian
+                                    </th>
+                                    <th class="text-xs text-secondary font-weight-semibold opacity-7 ps-2">
+                                        Phương thức thanh toán</th>
+                                    <th class="text-xs text-center text-secondary font-weight-semibold opacity-7">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="orders_list">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 row">
+        <div class="col-12">
+            <div class="mb-4 card">
+                <div class="pb-0 card-header">
+                    <h6>Top Sản Phẩm Bán Chạy</h6>
+                </div>
+                <div class="px-0 pt-0 pb-2 card-body">
+                    <div class="p-0 table-responsive">
+                        <table class="table mb-0 align-items-center">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Sản Phẩm</th>
+                                    <th class="border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Giá Trị</th>
+                                    <th class="text-center border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Lượt Truy Cập</th>
+                                    <th class="text-center border-top-0 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Đánh Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($best_salers as $best_saler)
+                                <tr>
+                                    <td>
+                                        <div class="px-3 py-1 d-flex">
+                                            <div>
+                                                <img src="<?= _WEB_ROOT; ?>/public/assets/admin/img/kam-idris-_HqHX3LBN18-unsplash.jpg" class="avatar me-3" alt="image">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{$best_saler['name']}}</h6>
+                                                <p class="mb-0 text-sm font-weight-bold text-secondary"><span class="text-success">2.421</span> đơn đặt hàng</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0 text-sm font-weight-bold">{{$best_saler['total']}}</p>
+                                    </td>
+                                    <td class="text-sm text-center align-middle">
+                                        <p class="mb-0 text-sm font-weight-bold">{{$best_saler['view']}}</p>
+                                    </td>
+                                    <td class="align-middle text-end">
+                                        <div class="px-3 py-1 d-flex justify-content-center align-items-center">
+                                            <p class="mb-0 text-sm font-weight-bold">{{$best_saler['comment']}}</p>
+                                            <i class="mt-1 text-sm ni ni-bold-up ms-1 text-danger"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer pt-3  ">
+        <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+                <div class="copyright text-center text-xs text-muted text-lg-start">
+                    Copyright
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    Corporate UI Dashboard PRO by
+                    <a href="https://www.creative-tim.com" class="text-secondary" target="_blank">Creative
+                        Tim</a>.
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                    <li class="nav-item">
+                        <a href="https://www.creative-tim.com" class="nav-link text-xs text-muted" target="_blank">Creative Tim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-xs text-muted" target="_blank">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.creative-tim.com/blog" class="nav-link text-xs text-muted" target="_blank">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.creative-tim.com/license" class="nav-link text-xs pe-0 text-muted" target="_blank">License</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>

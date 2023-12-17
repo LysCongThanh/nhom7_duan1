@@ -1,18 +1,32 @@
 
 const formFilter = document.querySelector('#filter-form');
+let category = query.get('category');
+let totalItems = 0;
+let perPage = 5; 
+let currentPage = 1;
+let datas;
+
 getDataByFilter('');
+
 let jsonData = {};
 formFilter.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(formFilter);
-  formData.forEach((data, key) => {
-    jsonData[key] = data;
-  });
+  const filteredFormData = new FormData();
 
-  const query = new URLSearchParams(jsonData);
-  
+  // Lặp qua các cặp key-value trong formData
+  for (const [key, value] of formData) {
+    // Kiểm tra nếu value không phải là chuỗi rỗng và thêm vào filteredFormData
+    if (value !== '') {
+      filteredFormData.append(key, value);
+    }
+  }
+
+  // Tạo query từ filteredFormData
+  const query = new URLSearchParams(filteredFormData);
+
+  // Gọi hàm để lấy dữ liệu theo bộ lọc
   getDataByFilter(query.toString());
-
 });
 
 function getDataByFilter(req) {
@@ -20,8 +34,9 @@ function getDataByFilter(req) {
     method: 'get'
   })
     .then(response => response.json())
-    .then(datas => {
+    .then(responseDatas => {
 
+      datas = responseDatas;
       loadProducts(datas);
 
     })
@@ -36,16 +51,72 @@ const loadProducts = (datas) => {
   let template = '';
   productsWrapper.innerHTML = '';
 
-  datas.forEach((data) => {
+  totalItems = datas.length;
+  if(totalItems === 0) {
+    productsWrapper.innerHTML = '<h4 class="text-danger p-3 text-center">Không tìm thấy sản phẩm</h4>';
+    return;
+  }
+  let totalPages = calculateTotalPages(totalItems, perPage);
+
+  // Hiển thị sản phẩm cho trang hiện tại
+  let startIndex = (currentPage - 1) * perPage;
+  let endIndex = startIndex + perPage;
+  let currentProducts = datas.slice(startIndex, endIndex);
+
+  currentProducts.forEach((data) => {
     template += viewsProducts(data);
   });
+
+  renderPaginationButtons(totalPages, currentPage);
 
   productsWrapper.innerHTML = template;
 }
 
+function onPageButtonClick(page) {
+  currentPage = page;
+  loadProducts(datas);
+}
+
+const paginationElement = document.getElementById('pagination');
+
+function renderPaginationButtons(totalPages, currentPage) {
+    paginationElement.innerHTML = '';
+
+    paginationElement.appendChild(createPaginationButton(currentPage - 1, 'Trước', currentPage === 1));
+
+    for (let i = 1; i <= totalPages; i++) {
+        paginationElement.appendChild(createPaginationButton(i, i, i === currentPage));
+    }
+
+    paginationElement.appendChild(createPaginationButton(currentPage + 1, 'Kế tiếp', currentPage === totalPages));
+}
+
+function createPaginationButton(page, text, isActive = false) {
+  const li = document.createElement('li');
+  li.className = `page-item${isActive ? ' active' : ''}`;
+  
+  const a = document.createElement('a');
+  a.className = 'page-link';
+  a.href = '#';
+  a.textContent = text;
+  a.addEventListener('click', () => onPageButtonClick(page));
+
+  li.appendChild(a);
+  return li;
+}
+
+function removeHtmlTags(input) {
+  var doc = new DOMParser().parseFromString(input, 'text/html');
+  return doc.body.textContent || "";
+}
+
+function calculateTotalPages(totalItems, itemsPerPage) {
+  return Math.ceil(totalItems / itemsPerPage);
+}
+
 const viewsProducts = (data) => {
   return `
-  <div class="row no-gutters my-2">
+    <div class="row no-gutters my-2">
   <aside class="col-md-3">
     <a href="#" class="img-wrap">
       <span class="badge badge-danger">
@@ -153,10 +224,6 @@ const viewsProducts = (data) => {
     </div> <!-- info-aside.// -->
   </aside> <!-- col.// -->
   </div> <!-- row.// --> 
-  `;
-}
 
-function removeHtmlTags(input) {
-  var doc = new DOMParser().parseFromString(input, 'text/html');
-  return doc.body.textContent || "";
+  `;
 }

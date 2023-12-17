@@ -153,11 +153,7 @@ class UsersController extends Controller{
 
     public function list()
     {
-        $this->data['sub_content']['script_src'] = 'chart_users';
-        $this->data['sub_content']['count_comments'] = $this->comments->count_comments();
-        $this->data['sub_content']['count_orders'] = $this->orders->count_order();
-        $this->data['sub_content']['count_price'] = $this->orders->count_totalPrice(); 
-        $this->data['sub_content']['count_users'] = $this->users->count_users();        
+        $this->data['sub_content']['script_src'] = 'chart_users';      
         $this->data['sub_content']['users'] = $this->users->getListUsers();
         $this->data['sub_content']['title'] = 'Danh Sách Người Dùng';
         $this->data['content'] = 'admin/users/list';
