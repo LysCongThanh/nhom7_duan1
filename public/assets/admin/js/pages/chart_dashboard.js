@@ -1,30 +1,30 @@
-const chartTypeOrders = document.querySelector('#chartType');
-const chartTypeProducts = document.querySelector('#chartTypeProducts');
+// const chartTypeOrders = document.querySelector('#chartType');
+// const chartTypeProducts = document.querySelector('#chartTypeProducts');
 let typeOfChart = 'bar'; // Default chart type
 let currentChart = null;
 
-chartTypeOrders.addEventListener('change', () => {
-    const selectedOption = chartTypeOrders.options[chartTypeOrders.selectedIndex].value;
-    typeOfChart = selectedOption;
+// chartTypeOrders.addEventListener('change', () => {
+//     const selectedOption = chartTypeOrders.options[chartTypeOrders.selectedIndex].value;
+//     typeOfChart = selectedOption;
 
-    if (window.myChart) {
-        window.myChart.destroy();
-    }
+//     if (window.myChart) {
+//         window.myChart.destroy();
+//     }
 
-    ordersChart(typeOfChart);
-});
+//     ordersChart(typeOfChart);
+// });
 
-chartTypeProducts.addEventListener('change', () => {
-    typeOfChart = chartTypeProducts.options[chartTypeProducts.selectedIndex].value;
+// chartTypeProducts.addEventListener('change', () => {
+//     typeOfChart = chartTypeProducts.options[chartTypeProducts.selectedIndex].value;
 
-    if (window.myChart) {
-        window.myChart.destroy();
-    }
+//     if (window.myChart) {
+//         window.myChart.destroy();
+//     }
 
     
 
-    productsChart(typeOfChart);
-});
+//     productsChart(typeOfChart);
+// });
 
 function ordersChart(chartType) {
     const xml = new XMLHttpRequest();
@@ -141,9 +141,58 @@ function productsChart(chartType) {
     xml.send();
 }
 
+function categoriesChart(chartType) {
+    const xml = new XMLHttpRequest();
+    const url = `${webRoot}/classify/categoriesStatistics`; // Replace with the actual URL
+
+    xml.open('GET', url, true);
+
+    xml.onload = function () {
+        if (xml.status >= 200 && xml.status < 300) {
+            const response = JSON.parse(xml.responseText);
+            console.log(response);
+            let labels = [];
+            let datas = [];
+            response.forEach(data => {
+                labels.push(`Danh mục: ${data.category_name}`);
+                datas.push(data.product_count);
+            });
+            const truncateLabelChars = labels.map(label => truncateLabel(label, 30));
+            const dataOptions = {
+                labels: truncateLabelChars,
+                datasets: [{
+                    label: 'Sản phẩm thuộc danh mục',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#55A6F8",
+                    borderColor: "#55A6F8",
+                    borderWidth: 3,
+                    backgroundColor: "rgba(85, 166, 248, 0.2)",
+                    fill: true,
+                    data: datas,
+                    maxBarThickness: 6
+                }
+                ],
+            }
+
+            createChart('#chart-categories', chartType, dataOptions);
+        } else {
+            console.error('Failed to fetch data. Status: ' + xml.status);
+        }
+    };
+
+    xml.onerror = function () {
+        console.error('Error making the request.');
+    };
+
+    xml.send();
+}
+
 // Initial chart creation
 ordersChart(typeOfChart);
-productsChart(typeOfChart);
+productsChart('line');
+categoriesChart('pie');
 
 // Function to create the chart
 function createChart(chart, chartType, dataOptions) {

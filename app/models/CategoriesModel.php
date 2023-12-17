@@ -43,4 +43,18 @@ class CategoriesModel extends Model {
     public function deleteCategory($id) {
         $this->db->table($this->_table)->where('id', '=', $id)->delete();
     }
+
+    public function countProducts() {
+        $data = $this->db->select('
+        c.id AS category_id,
+        c.name AS category_name,
+        COUNT(b.id) AS product_count')->
+        table('categories as c')->
+        leftJoin('books as b', 'c.id = b.category_id')->
+        groupBy('c.id, c.name')->
+        orderBy('count(b.id)', 'DESC')->
+        get();
+
+        return $data;
+    }
 }

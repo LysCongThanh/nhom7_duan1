@@ -254,4 +254,10 @@ class ClassifyController extends Controller
             }
         }
     }
+
+    public function categoriesStatistics() {
+        header('Content-Type: application/json');
+        $data = $this->categories->countProducts();
+        echo json_encode($data);
+    }
 }

@@ -51,9 +51,9 @@
         <div class="tab-content is-shadow">
             <div class="tab-pane p-4 fade show active" id="doanhThuTab">
                 <!-- Nội dung cho tab Doanh thu -->
-                <div class="row chart-filter">
+                <!-- <div class="row chart-filter">
                     <div class="col-6">
-                        <!-- Chọn loại biểu đồ -->
+                        
                         <label for="chartType" class="form-label">Loại biểu đồ:</label>
                         <select class="form-select" id="chartType">
                             <option value="bar">Bar Chart</option>
@@ -62,10 +62,10 @@
                             <option value="doughnut">Doughnut Chart</option>
                             <option value="radar">radar Chart</option>
                             <option value="polarArea">Polar Area Chart</option>
-                            <!-- Thêm các loại biểu đồ khác nếu cần -->
+                            
                         </select>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Hiển thị biểu đồ -->
                 <div class="chart">
@@ -73,21 +73,7 @@
                 </div>
             </div>
             <div class="tab-pane p-4 fade" id="sanPhamTab">
-                <div class="row chart-filter">
-                    <div class="col-6">
-                        <!-- Chọn loại biểu đồ -->
-                        <label for="chartType" class="form-label">Loại biểu đồ:</label>
-                        <select class="form-select" id="chartTypeProducts">
-                            <option value="bar">Bar Chart</option>
-                            <option value="line">Line Chart</option>
-                            <option value="pie">Pie Chart</option>
-                            <option value="doughnut">Doughnut Chart</option>
-                            <option value="radar">radar Chart</option>
-                            <option value="polarArea">Polar Area Chart</option>
-                            <!-- Thêm các loại biểu đồ khác nếu cần -->
-                        </select>
-                    </div>
-                </div>
+            
 
                 <!-- Hiển thị biểu đồ -->
                 <div class="chart">
@@ -96,7 +82,9 @@
             </div>
             <div class="tab-pane p-4 fade" id="danhMucTab">
                 <!-- Nội dung cho tab Danh mục -->
-                <p>Danh mục content goes here.</p>
+                <div class="chart">
+                    <canvas id="chart-categories" class="chart-canvas" height="500"></canvas>
+                </div>
             </div>
         </div>
     </div>
