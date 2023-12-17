@@ -67,9 +67,9 @@ class ProfileController extends Controller
 
 
             $updateAddress = array(
-                'address' => $data['address'],
+                'address' => "'" .$data['address']. "'",
                 'tel' => $data['tel'],
-                'specific_address' => $data['specific_address'],
+                'specific_address' => "'" .$data['specific_address']."'",
                 'zip_code' => $data['zip_code'],
                 'user_id' => $id
             );
