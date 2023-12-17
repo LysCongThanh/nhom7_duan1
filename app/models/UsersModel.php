@@ -42,7 +42,7 @@ class UsersModel extends Model
             ->table('users as u')
             ->leftJoin('addresses as a', 'u.id = a.user_id')
             ->where('u.id', '=', $id)
-            ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+            ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a Where a.user_id = $id LIMIT 1)")
             ->groupBy('u.id,a.address,a.tel,a.specific_address,a.zip_code,a.id')
             ->orderBy('a.id', 'DESC')
             ->first();
@@ -127,7 +127,7 @@ class UsersModel extends Model
             ->leftJoin('orders_detail as od', 'od.order_id = o.id')
             ->leftJoin('books as b', 'b.id = od.book_id')
             ->where('u.id', '=', $id)
-            ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+            ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a Where a.user_id = $id LIMIT 1)")
             ->groupBy('u.id,a.address,a.tel,a.specific_address,a.zip_code,a.id')
             ->orderBy('a.id', 'DESC')
             ->first();
