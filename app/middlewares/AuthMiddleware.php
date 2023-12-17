@@ -7,7 +7,7 @@ class AuthMiddleware extends Middlewares
         $response = new Response();
         // Kiểm tra xem user đã đăng nhập chưa
        if(!isset($_COOKIE['emailAdmin'])) {
-            if (Session::data('admin') == null) {
+            if (Session::data('user') == null) {
                 $response->redirect('dang-nhap');
             }
        }

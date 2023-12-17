@@ -10,7 +10,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $this->data['sub_content']['discount'] = $this->products->topDiscount();
+        $this->data['sub_content']['categoriesPopular'] = $this->products->categoriesByRating();
+        $this->data['sub_content']['discount'] = $this->products->topDiscount();
         $this->data['sub_content']['stars'] = $this->products->topStar();
         $this->data['sub_content']['views'] = $this->products->listTopView();
         $this->data['sub_content']['pds'] = $this->products->getListProducts();
@@ -19,21 +20,25 @@ class HomeController extends Controller
     }
 
     public function shopping_cart(){
+        $this->data['sub_content']['title'] = 'Giỏ Hàng';
         $this->data['content'] = 'client/products/shopping_cart';
         $this->render('layouts/client_layout', $this->data);
     }
 
     public function payment(){
+        $this->data['sub_content']['title'] = 'Giỏ Hàng';
         $this->data['content'] = 'client/products/payment';
         $this->render('layouts/client_layout', $this->data);
     }
 
     public function contact(){
+        $this->data['sub_content']['title'] = 'Giỏ Hàng';
         $this->data['content'] = 'client/contact/contact';
         $this->render('layouts/client_layout', $this->data);
     }
 
     public function about(){
+        $this->data['sub_content']['title'] = 'Giỏ Hàng';
         $this->data['content'] = 'client/about/about';
         $this->render('layouts/client_layout', $this->data);
     }

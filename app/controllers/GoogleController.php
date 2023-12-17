@@ -32,12 +32,11 @@ class GoogleController extends Controller
             $admin = $this->users->findUserByEmail($userInfo->getEmail());
             if ($admin) {
                 Session::data('msg', 'Đăng Nhập Thành Công');
+                Session::data('user', $admin);
                 if ($admin['role'] == '1') {
-                    Session::data('admin', $admin);
                     $response  = new Response();
                     $response->redirect('dashboard');
                 } else {
-                    Session::data('user', $admin);
                     $response  = new Response();
                     $response->redirect('ds-san-pham');
                 }

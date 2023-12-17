@@ -67,10 +67,10 @@ class UsersController extends Controller{
     public function profile()
     {
         $request = new Request();
-        $id = Session::data('admin')['id'];
+        $id = Session::data('user')['id'];
         $this->data['msg'] = Session::flash('msg');
         $this->data['sub_content']['old'] = Session::flash('old');
-        if($this->users->findUser('password', Session::data('admin')['password'])) 
+        if($this->users->findUser('password', Session::data('user')['password'])) 
         {
             $this->data['sub_content']['status_password'] = 'Đã có khóa bảo mật';
         } else {
