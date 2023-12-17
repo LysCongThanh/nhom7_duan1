@@ -51,8 +51,11 @@ class OrdersModel extends Model {
         ->table('orders_detail as od')
         ->join('orders as o', 'o.id=od.order_id')
         ->join('users as u', 'u.id=o.user_id')
+        ->join('addresses as a', 'u.id=a.user_id')
         ->join('books as b', 'b.id=od.book_id')
-        ->where('od.id', '=', $id)
+        ->join('shipping as s', 'o.id=s.order_id')
+        ->join('payments as p', 'p.order_id=o.id')
+        ->where('o.id', '=', $id)
         ->first();
         return $data;
     }
@@ -68,6 +71,7 @@ class OrdersModel extends Model {
 
     public function getOrdersNew()
     {
+        $idUser = Session::data('user')['id'];
         $data = $this->db->select('od.id as ID, o.created_at as dayOrder, a.address, s.shipping_cost, a.specific_address, a.tel, a.zip_code, b.book_name as name_book, o.status as trangThai, u.name as name_user, u.email as email, o.total_price as total')
         ->table('orders_detail as od')
         ->join('orders as o', 'o.id=od.order_id')
@@ -76,13 +80,14 @@ class OrdersModel extends Model {
         ->join('books as b', 'b.id=od.book_id')
         ->join('shipping as s', 'o.id=s.order_id')
         ->join('payments as p', 'p.order_id=o.id')
-        ->where('u.id', '=' , "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+        ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a Where a.user_id = $idUser LIMIT 1)")
         ->limit(1)
         ->first();
         return $data;
     }
     public function getOrderById($id)
     {
+        $idUser = Session::data('user')['id'];
         $data = $this->db->select('od.id as ID, o.created_at as dayOrder, a.address, s.shipping_cost, a.specific_address, a.tel, a.zip_code, b.book_name as name_book, o.status as trangThai, u.name as name_user, u.email as email, o.total_price as total')
         ->table('orders_detail as od')
         ->join('orders as o', 'o.id=od.order_id')
@@ -91,7 +96,7 @@ class OrdersModel extends Model {
         ->join('books as b', 'b.id=od.book_id')
         ->join('shipping as s', 'o.id=s.order_id')
         ->join('payments as p', 'p.order_id=o.id')
-        ->where('u.id', '=' , "(SELECT a.user_id FROM addresses AS a LIMIT 1)")
+        ->where('u.id', '=', "(SELECT a.user_id FROM addresses AS a Where a.user_id = $idUser LIMIT 1)")
         ->where('o.id', '=', $id)
         ->first();
         return $data;
