@@ -36,29 +36,22 @@ class AuthenticationController extends Controller
             $code = Session::data('verification_code');
             if ($code === $check_code['combinedValue']) {
                 if (Session::data('reset_password') == '1') {
-                    echo Session::data('reset_password');
-                    die();
                     $response->redirect('quen-mat-khau');
-                } else if (!Session::data('user') || !Session::data('admin')) {
+                } else if (!Session::data('user')) {
                     if ($admin['2_fa_qr'] === '1') {
                         $response->redirect('xac-minh-ung-dung');
                     } else {
+                        Session::data('user', $admin);
                         if ($admin['role'] == 1) {
-                            Session::data('admin', $admin);
                             $response  = new Response();
                             $response->redirect('dashboard');
                         } else {
-                            Session::data('user', $admin);
                             $response  = new Response();
                             $response->redirect('trang-chu');
                         }
                     }
                 } else {
-                    if (Session::data('user')) {
                         $id = Session::data('user')['id'];
-                    } else {
-                        $id = Session::data('admin')['id'];
-                    }
                     $dataUser = [
                         '2_fa_otp' => 1
                     ];
@@ -85,20 +78,15 @@ class AuthenticationController extends Controller
         if (Session::data('qr_code')) {
             $code = Session::data('qr_code');
             if ($code === $check_code['combinedValue']) {
-                if (!Session::data('user') || !Session::data('admin')) {
+                if (!Session::data('user')) {
+                    Session::data('user', $admin);
                     if ($admin['role'] == 1) {
-                        Session::data('admin', $admin);
                         $response->redirect('dashboard');
                     } else {
-                        Session::data('user', $admin);
                         $response->redirect('trang-chu');
                     }
                 } else {
-                    if (Session::data('user')) {
                         $id = Session::data('user')['id'];
-                    } else {
-                        $id = Session::data('admin')['id'];
-                    }
                     $dataUser = [
                         '2_fa_qr' => 1
                     ];
