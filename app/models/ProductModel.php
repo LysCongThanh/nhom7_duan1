@@ -214,10 +214,10 @@ class ProductModel extends Model
     //Tìm kiếm sản phầm theo tên
     public function searchProduct($name)
     {
-        $data = $this->db->select('COUNT(b.id) as quantityFound,b.id as id, b.book_name as name, b.price as price, c.name as categorie, i.name as images')
+        $data = $this->db->select('COUNT(b.id) as quantityFound,b.id as id, b.book_name as name, b.price as price, c.name as categorie, i.slug as slug_image, i.name as images')
             ->table('books as b')
             ->join('categories as c', 'c.id=b.category_id ')
-            ->join('images as i', 'i.book_id=b.id')
+            ->join('images as i', 'i.book_id=b.id and i.image_main =1')
             ->whereLike('b.book_name', $name)
             ->groupBy('b.id')
             ->get();
@@ -237,7 +237,7 @@ class ProductModel extends Model
     //Lọc sản phẩm
     public function filterBooks($queryParams)
     {
-        $query = $this->db->select('b.*, i.name as img, c.name as categorie, cm.rating as ratings')
+        $query = $this->db->select('b.*, i.slug as slug_image, i.name as img, c.name as categorie, cm.rating as ratings')
             ->table('books as b')
             ->leftJoin('categories as c', 'b.category_id = c.id')
             ->leftJoin('images as i', 'i.book_id = b.id')
