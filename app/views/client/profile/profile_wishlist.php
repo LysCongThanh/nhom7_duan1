@@ -10,7 +10,7 @@
           <a class="list-group-item" href="don-hang"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng của tôi</font></font></a>
           <a class="list-group-item" href="yeu-thich"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm yêu thích</font></font></a>
           <a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cài đặt</font></font></a>
-          <a class="list-group-item" href="cai-dat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đăng xuất</font></font></a>
+          <a class="list-group-item" href="admin/LogOut"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đăng xuất</font></font></a>
         </nav>
 		</aside> 
     <main class="col-md-9">

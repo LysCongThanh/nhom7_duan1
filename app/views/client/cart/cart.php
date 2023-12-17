@@ -5,7 +5,7 @@
 		<div class="row">
 			<main class="col-md-9">
 				<div class="card">
-
+					@if(isset($cart) && $cart != null)
 					<table class="table table-borderless table-shopping-cart">
 						<thead class="text-muted">
 							<tr class="small text-uppercase">
@@ -29,12 +29,11 @@
 						</thead>
 						<form action="" method="post">
 							<tbody>
-								@if(isset($cart) && $cart != null)
 								@foreach($cart as $key)
 								<tr>
 									<td>
 										<figure class="itemside">
-											<div class="aside"><img src="<?= _WEB_ROOT ?>/public/uploads/products/2023_11/bg_7.jpg" class="img-sm"></div>
+											<div class="aside"><img src="<?= _WEB_ROOT ?>{{$key['slug']}}" class="img-sm"></div>
 											<figcaption class="info">
 												<a href="#" class="title text-dark">
 													<font style="vertical-align: inherit;">
@@ -68,13 +67,15 @@
 									</td>
 								</tr>
 								@endforeach
-								@else
-								<h2>Giỏ hàng trống</h2>
-								@endif
 							</tbody>
 						</form>
 					</table>
-
+					@else
+					<div class="alert alert-info text-center">
+						<h4 class="alert-heading">Giỏ hàng của bạn trống</h4>
+						<p>Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm.</p>
+					</div>
+					@endif
 					<div class="card-body border-top">
 						<a href="thanh-toan" class="btn btn-primary float-md-right">
 							<font style="vertical-align: inherit;">

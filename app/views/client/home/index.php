@@ -10,7 +10,7 @@
 						<nav class="nav-home-aside">
 							<ul class="menu-category">
 								@foreach($categoriesPopular as $category)
-								<li><a href="{{_WEB_ROOT}}san-pham-ngang?category={{$category['category_id']}}">{{$category['category_name']}}</a></li>
+								<li><a href="{{_WEB_ROOT}}san-pham-ngang?category={{$category['category_id']}}">{{$category['category_name']??' '}}</a></li>
 								@endforeach
 								<li class="has-submenu"><a href="product.html">Xem ngay</a>
 								</li>

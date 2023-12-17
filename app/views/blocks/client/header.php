@@ -79,7 +79,7 @@
 								</a>
 							</div>
 							<div class="widget-header mr-3">
-								<a href="gio-hang" class="widget-view">
+								<a href="don-hang" class="widget-view">
 									<div class="icon-area">
 										<i class="fa fa-store"></i>
 									</div>

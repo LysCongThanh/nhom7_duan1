@@ -35,7 +35,7 @@
 							<?php $index = 1; ?>
 							@forEach($data as $key)
 							<div class="js-check box mb-2">
-								<input type="radio" name="address" value="{{$key['id']}}" onchange="toggleFields(this)">
+								<input type="radio" name="address" value="{{$key['id']}}" onchange="toggleFields(this)" <?php if ($index === 1) echo 'checked'; ?>>
 								<h6 class="title">Địa chỉ {{$index}}</h6>
 								<p class="text-muted">{{$key['address']}}</p>
 							</div>

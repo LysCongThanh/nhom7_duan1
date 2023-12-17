@@ -30,7 +30,7 @@
 						Cài đặt
 
 					</a>
-					<a class="list-group-item" href="cai-dat">
+					<a class="list-group-item" href="admin/LogOut">
 
 						Đăng xuất
 

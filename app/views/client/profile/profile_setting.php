@@ -10,7 +10,7 @@
           <a class="list-group-item" href="don-hang">Đơn hàng của tôi</a>
           <a class="list-group-item" href="yeu-thich">Sản phẩm yêu thích</a>
           <a class="list-group-item active" href="cai-dat">Cài đặt</a>
-          <a class="list-group-item" href="cai-dat">Đăng xuất</a>
+          <a class="list-group-item" href="admin/LogOut">Đăng xuất</a>
         </nav>
       </aside>
       <main class="col-md-9">

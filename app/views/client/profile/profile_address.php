@@ -30,7 +30,7 @@
                             <font style="vertical-align: inherit;">Cài đặt</font>
                         </font>
                     </a>
-                    <a class="list-group-item" href="cai-dat">
+                    <a class="list-group-item" href="admin/LogOut">
                         <font style="vertical-align: inherit;">
                             <font style="vertical-align: inherit;">Đăng xuất</font>
                         </font>

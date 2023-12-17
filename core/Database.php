@@ -35,15 +35,15 @@ class Database
     {
         if (!empty($data)) {
             $updateStr = '';
-                        foreach ($data as $key => $value) {
+            foreach ($data as $key => $value) {
                 if (strpos($value, ' ') !== false) {
                     $updateStr .= "$key=$value,";
-                } else if($value === 'null') {
-                    $updateStr .= "$key=$value,";
+                } else if($value === '') {
+                    $updateStr .= "$key=NULL,";
                 }else {
                     $updateStr .= "$key='$value',";
                 }
-}
+            }
             $updateStr = rtrim($updateStr, ',');
             $sql = "UPDATE $table SET $updateStr";
             if (!empty($condition)) {
