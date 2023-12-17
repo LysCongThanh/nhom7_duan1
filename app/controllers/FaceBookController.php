@@ -60,15 +60,14 @@ class FaceBookController extends Controller
                 $checkLogin = $this->users->findUser('facebook_id',  $dataUser['facebook_id']);
                 if($checkLogin)  
                 {
-                    Session::data('admin', $checkLogin);
+                    Session::data('user', $checkLogin);
                     $response  = new Response();
                     $response->redirect('dashboard');
                 } else {
-
                     $result = $this->users->insertUser($dataUser);
                     if (!$result) {
                         $dataUser = $this->users->findUser('facebook_id',  $dataUser['facebook_id']);
-                        Session::data('admin', $dataUser);
+                        Session::data('user', $dataUser);
                         $response  = new Response();
                         $response->redirect('dashboard');
                         
