@@ -26,12 +26,13 @@ class CommentsController extends Controller{
     {
 
         $request = new Request();
+        $id_user = Session::data('user')['id'];
         if ($request->isPost()) {
 
             $data = $request->getFields();
             $replyData = array(
                 'reply_id' => $data['parent_id'],
-                'user_id' => $data['user_id'],
+                'user_id' => $id_user,
                 'book_id' => $data['book_id'],
                 'content' => $data['content'],
             );
