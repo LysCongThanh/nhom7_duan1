@@ -14,7 +14,7 @@ $routes['danh-sach-binh-luan'] = 'comments/list';
 $routes['xoa-binh-luan'] = 'comments/delete';
 $routes['tra-loi-binh-luan'] = 'comments/replyComment';
 
-$routes['orders'] = 'order/list';
+$routes['danh-sach-don-hang'] = 'order/list';
 $routes['chi-tiet-don-hang'] = 'order/orders_detail';
 
 $routes['them-nguoi-dung'] = 'users/get_user';
@@ -43,19 +43,18 @@ $routes['dia-chi'] = 'profile/address';
 $routes['ca-nhan'] = 'profile/main';
 $routes['xem-tat-ca'] = 'profile/showAllOrder';
 $routes['cap-nhat-ca-nhan'] = 'profile/updateProfile';
-// $routes['don-hang'] = 'profile/orders';
 $routes['cai-dat'] = 'profile/setting';
 $routes['yeu-thich'] = 'profile/wishlist';
-// $routes['gioi-thieu'] = 'profile/setting';
+
 
 $routes['them-binh-luan'] = 'comments/insertComment';
 $routes['load-rating'] = 'comments/load_Rating';
 
 $routes['dang-ky'] = 'admin/page_register';
+$routes['dang-nhap-google'] = 'google/loginGoogle';
 $routes['dang-nhap'] = 'admin/login';
 $routes['quen-mat-khau'] = 'admin/forgotPassword';
 $routes['kiem-tra-email'] = 'admin/checkEmail';
-$routes['dang-nhap-google'] = 'google/loginGoogle';
 $routes['facebook-login'] = 'faceBook/facebookLogin';
 $routes['facebook-callback'] = 'faceBook/facebookCallback';
 $routes['xac-minh-2-buoc'] = 'authentication';

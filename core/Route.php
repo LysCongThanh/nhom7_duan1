@@ -12,13 +12,11 @@ class Route
         if (empty($url)) $url = '/';
         $handleUrl = $url;
     
-        if (!empty($routes)) {
-            foreach ($routes as $key => $value) {
-                if (strpos($url, $key) === 0) {
-                    $handleUrl = $value . substr($url, strlen($key));
-                    $this->_keyRoute = $key;
-                    break;
-                }
+        foreach ($routes as $key => $value) {
+            if (strpos($url, $key) === 0) {
+                $handleUrl = $value . substr($url, strlen($key));
+                $this->_keyRoute = $key;
+                break;
             }
         }
     
